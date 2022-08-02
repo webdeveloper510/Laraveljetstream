@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/uploadpage',[Controller::class, 'uploadpage']);
+Route::post('/uploadproduct',[Controller::class, 'store']);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
