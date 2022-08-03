@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => 'http://localhost/jetstream/public',
+    'asset_url' => 'public',
 
     /*
     |--------------------------------------------------------------------------

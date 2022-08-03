@@ -7,9 +7,6 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-        <link rel="stylesheet" href="<?php echo URL::to('/');?>/public/css/app.css">
-        <script src="<?php echo URL::to('/');?>/public/js/app.js" defer></script>
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
