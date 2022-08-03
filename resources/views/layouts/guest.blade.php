@@ -7,8 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link rel="stylesheet" href="http://localhost/jetstream/public/css/app.css">
-        <script src="http://localhost/jetstream/public/js/app.js" defer></script>
+        <link rel="stylesheet" href="http://localhost/Laraveljetstream/public/css/app.css">
+        <script src="http://localhost/Laraveljetstream/public/js/app.js"></script>
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
