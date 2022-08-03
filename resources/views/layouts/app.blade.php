@@ -7,8 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link rel="stylesheet" href="<?php echo base_url();?>public/css/app.css">
-        <script src="<?php echo base_url();?>public/js/app.js" defer></script>
+        <link rel="stylesheet" href="<?php echo URL::to('/');?>/public/css/app.css">
+        <script src="<?php echo URL::to('/');?>/public/js/app.js" defer></script>
 
         {{-- <script src="{{ asset('css') }}" defer></script> --}}
         <!-- Fonts -->
@@ -18,7 +18,6 @@
         @livewireStyles
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
