@@ -7,13 +7,14 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link rel="stylesheet" href="http://localhost/Laraveljetstream/public/css/app.css">
-        <script src="http://localhost/Laraveljetstream/public/js/app.js"></script>
+
+        <link rel="stylesheet" href="<?php echo URL::to('/');?>/public/css/app.css">
+        <script src="<?php echo URL::to('/');?>/public/js/app.js" defer></script>
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
