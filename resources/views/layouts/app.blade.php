@@ -12,9 +12,9 @@
 
         <!-- Styles -->
         @livewireStyles
-
+<link rel="stylesheet" href="<?php echo URL::to('/');?>/public/css/app.css">
+        <script src="<?php echo URL::to('/');?>/public/js/app.js" defer></script>
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
