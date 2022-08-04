@@ -30,6 +30,7 @@
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/style.css">
       <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/jquery.mCustomScrollbar.css">
+	  
   </head>
   <body>
   <body>

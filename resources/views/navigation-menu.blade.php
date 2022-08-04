@@ -102,7 +102,7 @@
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                                    {{ __('') }}
+                                    {{ __('API Tokens') }}
                                 </x-jet-dropdown-link>
                             @endif
 
@@ -217,3 +217,4 @@
    var user = {!! json_encode(Auth::user()) !!};
     localStorage.setItem("user", user);
 </script>
+
