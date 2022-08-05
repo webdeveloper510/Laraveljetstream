@@ -14,9 +14,9 @@ class Controller extends BaseController
     Public function uploadpage(){
         return view('product');
     }
-    Public function store(Request $request){ 
-        
-        $data=$request->all();      
+    Public function store(Request $request){
+
+        $data=$request->all();
         $rules=[
           'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required'];
 
@@ -29,16 +29,16 @@ class Controller extends BaseController
                        ->withInput();
        }else{
                   $video=$data['file'];
-                  $input = time().$video->getClientOriginalExtension();                 
+                  $input = time().$video->getClientOriginalExtension();
 
                       $user['file'] =$input;
-                      $user['name']= 'test';                      
+                      $user['name']= 'test';
                       $user['description'] = 'Demo video';
                       $user['created_at']  =date('Y-m-d h:i:s');
                       $user['updated_at']  =date('Y-m-d h:i:s');
                       DB::table('product')->insert($user);
                       return redirect()->back()->with('upload_success','upload_success');
               }
-              
+
     }
 }
