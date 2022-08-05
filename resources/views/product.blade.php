@@ -10,7 +10,7 @@
 </head>
         <body>
             <div class="container">
-            <form action="{{url('uploadproduct')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('/uploadproduct')}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 <div class="form-group">
@@ -27,18 +27,18 @@
                    <option value="Public" selected>Public</option>
                    <option value="Private">Private</option>
                    <option value="Hidden">Hidden</option>
-                  
+
                </select>
             </div>
             <div>
              <input type="file" name="file">
             </div>
-             
+
              <div style="margin-top:16px !important;">
                 <input type="submit" name="save">
             </div>
             </form>
 </div>
         </body>
-   
+
 </html>

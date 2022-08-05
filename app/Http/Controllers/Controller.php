@@ -33,14 +33,15 @@ class Controller extends BaseController
                   $video=$data['file'];
                   $input = time().$video->getClientOriginalExtension();
 
-                      $user['file'] =$input;
-                      $user['title']= $request->title;
-                      $user['description'] = $request->description;
-                      $user['security'] = $request->security;
+                      $user['name'] =$input;
+                      $user['surname']= $request->surname;
+                      $user['email']= $request->email;
+                      $user['date_of_birth'] = $request->date_of_birth;
+                      $user['password'] = $request->password;
                       $user['created_at']  =date('Y-m-d h:i:s');
                       $user['updated_at']  =date('Y-m-d h:i:s');
 
-                      DB::table('product')->insert($user);
+                      DB::table('users')->insert($user);
                       return redirect()->back()->with('upload_success','upload_success');
               }
 
