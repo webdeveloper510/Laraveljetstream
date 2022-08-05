@@ -8,7 +8,6 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-    
         <body>
             <div class="container">
             <form action="{{url('uploadproduct')}}" method="POST" enctype="multipart/form-data">
@@ -16,18 +15,18 @@
                 @csrf
                 <div class="form-group">
                 <label for="">Title</label>
-                <input type="text" class="form-control" placeholder="Enter text" id="text">
+                <input type="text" name="title" class="form-control" placeholder="Enter text" id="text">
             </div>
             <div class="form-group">
                 <label for="Description">Description</label>
-                <input type="text" class="form-control" placeholder="Enter Description" id="Description">
+                <input type="text" name="description" class="form-control" placeholder="Enter Description" id="Description">
             </div>
             <div class="form-group">
                 <label for="Security">Security</label>
-               <select class="form-control">
-                   <option value="0" selected>Public</option>
-                   <option value="1">Private</option>
-                   <option value="2">Hidden</option>
+               <select class="form-control" name="security">
+                   <option value="Public" selected>Public</option>
+                   <option value="Private">Private</option>
+                   <option value="Hidden">Hidden</option>
                   
                </select>
             </div>
