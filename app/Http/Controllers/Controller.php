@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Storage;
+use Aws\S3\S3Client;
+use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use League\Flysystem\Filesystem;
 
 class Controller extends BaseController
 {
@@ -18,32 +22,43 @@ class Controller extends BaseController
     Public function store(Request $request){
 
         $data=$request->all();
+        $folder = "uploads";
 
-        $rules=[
-          'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required'];
+        $destinationPath = $data['file']->store('/', 'spaces');
+       // Storage::setVisibility($destinationPath, 'public');
 
-        $validator = Validator($data,$rules);
+         die;
+        // echo "<pre>";
+        // print_r($data);
+        // die;
+        // $rules=[
+        //   'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,jpg,flv,avi,wmv,ts|max:100040|required'
+        // ];
 
-       if ($validator->fails()){
-           return redirect()
-                       ->back()
-                       ->withErrors($validator)
-                       ->withInput();
-       }else{
-                  $video=$data['file'];
-                  $input = time().$video->getClientOriginalExtension();
+      //  $validator = Validator($data,$rules);
 
-                      $user['name'] =$input;
-                      $user['surname']= $request->surname;
-                      $user['email']= $request->email;
-                      $user['date_of_birth'] = $request->date_of_birth;
-                      $user['password'] = $request->password;
-                      $user['created_at']  =date('Y-m-d h:i:s');
-                      $user['updated_at']  =date('Y-m-d h:i:s');
+    //    if ($validator->fails()){
+    //        return redirect()
+    //                    ->back()
+    //                    ->withErrors($validator)
+    //                    ->withInput();
+    //    }else{
 
-                      DB::table('users')->insert($user);
-                      return redirect()->back()->with('upload_success','upload_success');
-              }
+
+    //               $video=$data['file'];
+    //               $input = time().$video->getClientOriginalExtension();
+
+    //                   $user['name'] =$input;
+    //                   $user['surname']= $request->surname;
+    //                   $user['email']= $request->email;
+    //                   $user['date'] = $request->date_of_birth;
+    //                   $user['password'] = $request->password;
+    //                   $user['created_at']  =date('Y-m-d h:i:s');
+    //                   $user['updated_at']  =date('Y-m-d h:i:s');
+
+    //                   DB::table('users')->insert($user);
+    //                   return redirect()->back()->with('upload_success','upload_success');
+    //           }
 
     }
 }
