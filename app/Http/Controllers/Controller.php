@@ -8,19 +8,24 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Storage;
+use Aws\S3\S3Client;
+use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use League\Flysystem\Filesystem;
 
 class Controller extends BaseController
 {
     Public function uploadpage(){
         return view('product');
     }
-    Public function store(Request $request){ 
-        
+
+    Public function store(Request $request){
+
         $data=$request->all();
-      echo "<pre>";
-      print_r($data);die;
         $rules=[
-          'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required'];
+          'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required'
+        
+        ];
 
         $validator = Validator($data,$rules);
 
@@ -45,5 +50,9 @@ class Controller extends BaseController
                       return redirect()->back()->with('upload_success','upload_success');
               }
               
+        $folder = "uploads";
+
+        $destinationPath = $data['file']->store('/', 'spaces');
+
     }
 }
