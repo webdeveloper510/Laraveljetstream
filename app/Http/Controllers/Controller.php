@@ -17,7 +17,8 @@ class Controller extends BaseController
     Public function store(Request $request){ 
         
         $data=$request->all();
-      
+      echo "<pre>";
+      print_r($data);die;
         $rules=[
           'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts|max:100040|required'];
 
@@ -30,6 +31,7 @@ class Controller extends BaseController
                        ->withInput();
        }else{
                   $video=$data['file'];
+
                   $input = time().$video->getClientOriginalExtension();                 
 
                       $user['file'] =$input;
