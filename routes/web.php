@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 Route::get('/uploadpage',[Controller::class, 'uploadpage']);
 Route::post('/uploadproduct',[Controller::class, 'store']);
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
