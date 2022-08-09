@@ -12,19 +12,44 @@ use Illuminate\Support\Facades\Storage;
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
-
+use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
     Public function uploadpage(){
         return view('product');
     }
-
     Public function store(Request $request){
 
         $data=$request->all();
-        $folder = "uploads";
+        $folder = "video";
+        $validator = Validator::make($data, [
+          'title' => 'required|max:255',
+          'description' => 'required',
+          'thumbnail' => 'required',
+          'security' => 'required',
+          'file'=>'required'
+        ]);        
+     if ($validator->fails()){
+          return redirect()
+                  ->back()
+                  ->withErrors($validator)
+                  ->withInput();
+       }
+       else{
+                $destinationPath = $data['file']->store($folder.'/', 'spaces');
+                $destinationPath = $data['thumbnail']->store('images/', 'spaces');
+              
+                  $input = $data['file']->getClientOriginalExtension();
+                  $user['title'] =$request->title;
+                  $user['description']= $request->description;
+                  $user['thumbnail']= $request->thumbnail;
+                  $user['security'] = $request->security;
+                  $user['file'] = $input;
+      }
+              
 
-        $destinationPath = $data['file']->store('/', 'spaces');
+
+        
        // Storage::setVisibility($destinationPath, 'public');
 
          die;
@@ -46,7 +71,8 @@ class Controller extends BaseController
 
 
     //               $video=$data['file'];
-    //               $input = time().$video->getClientOriginalExtension();
+
+    //               $input = $video->getClientOriginalExtension();
 
     //                   $user['name'] =$input;
     //                   $user['surname']= $request->surname;
