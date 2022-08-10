@@ -20,6 +20,9 @@ class Controller extends BaseController
     }
     Public function store(Request $request){
 
+        //Auth::user;
+      
+        $id = auth()->user()->id;    
         $data=$request->all();
         $folder = "video";
         $validator = Validator::make($data, [
@@ -37,14 +40,18 @@ class Controller extends BaseController
        }
        else{
                 $destinationPath = $data['file']->store($folder.'/', 'spaces');
-                $destinationPath = $data['thumbnail']->store('images/', 'spaces');
-              
-                  $input = $data['file']->getClientOriginalExtension();
+                $destinationPath = $data['thumbnail']->store('images/', 'spaces');              
+                  $input = $data['file']->getClientOriginalName();
+                  $thumbnail = $data['thumbnail']->getClientOriginalName();
                   $user['title'] =$request->title;
                   $user['description']= $request->description;
-                  $user['thumbnail']= $request->thumbnail;
+                  $user['thumbnail']= $thumbnail;
                   $user['security'] = $request->security;
+                  $user['user_id'] =  $id;
                   $user['file'] = $input;
+
+                  DB::table('product')->insert($user);
+                  return redirect()->back()->with('message', 'uploaded succefully!');
       }
               
 

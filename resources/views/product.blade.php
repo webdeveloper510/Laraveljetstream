@@ -10,6 +10,11 @@
 </head>
         <body>
             <div class="container">
+            @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
             <form action="{{url('/uploadproduct')}}" method="POST" enctype="multipart/form-data">
 
                 @csrf

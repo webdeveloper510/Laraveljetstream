@@ -6,7 +6,7 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
             @csrf
 
             <div>
@@ -40,8 +40,8 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="profile" value="{{ __('Profile') }}" />
-                <x-jet-input id="profile" class="form-control" type="file" name="profile" required autocomplete="profile" />
+                <x-jet-label for="profile_photo_path" value="{{ __('Profile') }}" />
+                <x-jet-input id="profile" class="form-control" type="file" name="profile_photo_path" required autocomplete="profile_photo_path" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
