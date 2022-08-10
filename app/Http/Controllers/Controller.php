@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Aws\S3\S3Client;
+
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
@@ -20,6 +21,8 @@ class Controller extends BaseController
     }
     Public function store(Request $request){
 
+        //Auth::user;
+        $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
         $validator = Validator::make($data, [
@@ -28,7 +31,7 @@ class Controller extends BaseController
           'thumbnail' => 'required',
           'security' => 'required',
           'file'=>'required'
-        ]);        
+        ]);
      if ($validator->fails()){
           return redirect()
                   ->back()
@@ -36,23 +39,27 @@ class Controller extends BaseController
                   ->withInput();
        }
        else{
-                $destinationPath = $data['file']->store($folder.'/', 'spaces');
-                $destinationPath = $data['thumbnail']->store('images/', 'spaces');
-              
+                // $destinationPath = $data['file']->store($folder.'/', 'spaces');
+                // $destinationPath = $data['thumbnail']->store('images/', 'spaces');
+
                   $input = $data['file']->getClientOriginalExtension();
                   $user['title'] =$request->title;
                   $user['description']= $request->description;
                   $user['thumbnail']= $request->thumbnail;
                   $user['security'] = $request->security;
+                  $user['user_id'] =  $id;
                   $user['file'] = $input;
+
+                  DB::table('product')->insert($user);
+                  return redirect()->back()->with('message', 'content upload successfully');
       }
-              
 
 
-        
+
+
        // Storage::setVisibility($destinationPath, 'public');
 
-         die;
+        // die;
         // echo "<pre>";
         // print_r($data);
         // die;
@@ -88,3 +95,4 @@ class Controller extends BaseController
 
     }
 }
+
