@@ -22,6 +22,8 @@ class Controller extends BaseController
     Public function store(Request $request){
 
         //Auth::user;
+
+
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
@@ -39,59 +41,23 @@ class Controller extends BaseController
                   ->withInput();
        }
        else{
-                // $destinationPath = $data['file']->store($folder.'/', 'spaces');
-                // $destinationPath = $data['thumbnail']->store('images/', 'spaces');
-
-                  $input = $data['file']->getClientOriginalExtension();
+        $video_name = $data['file']->store($folder, 'spaces');
+        //print_r($destinationPath);die;
+        $imae_name = $data['thumbnail']->store('images', 'spaces');
+                  $input = $data['file']->getClientOriginalName();
+                  $thumbnail = $data['thumbnail']->getClientOriginalName();
                   $user['title'] =$request->title;
                   $user['description']= $request->description;
-                  $user['thumbnail']= $request->thumbnail;
+                  $user['thumbnail']= $imae_name;
                   $user['security'] = $request->security;
                   $user['user_id'] =  $id;
-                  $user['file'] = $input;
+                  $user['file'] = $video_name;
 
                   DB::table('product')->insert($user);
+
                   return redirect()->back()->with('message', 'content upload successfully');
+
       }
-
-
-
-
-       // Storage::setVisibility($destinationPath, 'public');
-
-        // die;
-        // echo "<pre>";
-        // print_r($data);
-        // die;
-        // $rules=[
-        //   'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,jpg,flv,avi,wmv,ts|max:100040|required'
-        // ];
-
-      //  $validator = Validator($data,$rules);
-
-    //    if ($validator->fails()){
-    //        return redirect()
-    //                    ->back()
-    //                    ->withErrors($validator)
-    //                    ->withInput();
-    //    }else{
-
-
-    //               $video=$data['file'];
-
-    //               $input = $video->getClientOriginalExtension();
-
-    //                   $user['name'] =$input;
-    //                   $user['surname']= $request->surname;
-    //                   $user['email']= $request->email;
-    //                   $user['date'] = $request->date_of_birth;
-    //                   $user['password'] = $request->password;
-    //                   $user['created_at']  =date('Y-m-d h:i:s');
-    //                   $user['updated_at']  =date('Y-m-d h:i:s');
-
-    //                   DB::table('users')->insert($user);
-    //                   return redirect()->back()->with('upload_success','upload_success');
-    //           }
 
     }
 }
