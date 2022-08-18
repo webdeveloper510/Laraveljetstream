@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Aws\S3\S3Client;
+
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
@@ -22,8 +23,9 @@ class Controller extends BaseController
     Public function store(Request $request){
 
         //Auth::user;
-      
-        $id = auth()->user()->id;    
+
+
+        $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
         $validator = Validator::make($data, [
@@ -32,7 +34,7 @@ class Controller extends BaseController
           'thumbnail' => 'required',
           'security' => 'required',
           'file'=>'required'
-        ]);        
+        ]);
      if ($validator->fails()){
           return redirect()
                   ->back()
@@ -54,47 +56,10 @@ class Controller extends BaseController
                   // $test = Storage::setVisibility($imae_name, 'public');
                   // print_r($test);die;
                   DB::table('product')->insert($user);
-                  return redirect()->back()->with('message', 'uploaded succefully!');
+
+                  return redirect()->back()->with('message', 'content upload successfully');
+
       }
-              
-
-
-        
-       // Storage::setVisibility($destinationPath, 'public');
-
-         die;
-        // echo "<pre>";
-        // print_r($data);
-        // die;
-        // $rules=[
-        //   'file' =>'mimes:mpeg,ogg,mp4,webm,3gp,mov,jpg,flv,avi,wmv,ts|max:100040|required'
-        // ];
-
-      //  $validator = Validator($data,$rules);
-
-    //    if ($validator->fails()){
-    //        return redirect()
-    //                    ->back()
-    //                    ->withErrors($validator)
-    //                    ->withInput();
-    //    }else{
-
-
-    //               $video=$data['file'];
-
-    //               $input = $video->getClientOriginalExtension();
-
-    //                   $user['name'] =$input;
-    //                   $user['surname']= $request->surname;
-    //                   $user['email']= $request->email;
-    //                   $user['date'] = $request->date_of_birth;
-    //                   $user['password'] = $request->password;
-    //                   $user['created_at']  =date('Y-m-d h:i:s');
-    //                   $user['updated_at']  =date('Y-m-d h:i:s');
-
-    //                   DB::table('users')->insert($user);
-    //                   return redirect()->back()->with('upload_success','upload_success');
-    //           }
 
     }
 }
