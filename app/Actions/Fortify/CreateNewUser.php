@@ -34,8 +34,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
-          $profile = $input['profile_photo_path']->getClientOriginalName();
-          $destinationPath = $input['profile_photo_path']->store('profile/', 'spaces');
+          $profile_path = $input['profile_photo_path']->store('profile', 'spaces');
         return User::create([
             // $input=$request->all();
             // $destinationPath = $input['profile_photo_path']->store('images/', 'spaces');
@@ -44,7 +43,7 @@ class CreateNewUser implements CreatesNewUsers
             'date_of_birth' => $input['date'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'profile_photo_path' =>$profile
+            'profile_photo_path' =>$profile_path
         ]);
     }
 }

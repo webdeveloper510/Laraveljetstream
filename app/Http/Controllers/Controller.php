@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
     Public function uploadpage(){
+      
         return view('product');
     }
     Public function store(Request $request){
@@ -39,17 +40,19 @@ class Controller extends BaseController
                   ->withInput();
        }
        else{
-                $destinationPath = $data['file']->store($folder.'/', 'spaces');
-                $destinationPath = $data['thumbnail']->store('images/', 'spaces');              
+                $video_name = $data['file']->store($folder, 'spaces');
+             
+                  $imae_name = $data['thumbnail']->store('images', 'spaces');              
                   $input = $data['file']->getClientOriginalName();
                   $thumbnail = $data['thumbnail']->getClientOriginalName();
                   $user['title'] =$request->title;
                   $user['description']= $request->description;
-                  $user['thumbnail']= $thumbnail;
+                  $user['thumbnail']= $imae_name;
                   $user['security'] = $request->security;
                   $user['user_id'] =  $id;
-                  $user['file'] = $input;
-
+                  $user['file'] = $video_name;
+                  // $test = Storage::setVisibility($imae_name, 'public');
+                  // print_r($test);die;
                   DB::table('product')->insert($user);
                   return redirect()->back()->with('message', 'uploaded succefully!');
       }
@@ -95,3 +98,4 @@ class Controller extends BaseController
 
     }
 }
+
