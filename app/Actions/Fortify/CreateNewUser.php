@@ -31,6 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
+
          $profile_photo_path = $input['profile_photo_path']->store('profile', 'spaces');
         return User::create([
             // $input=$request->all();

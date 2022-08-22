@@ -1,8 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-
+use App\models\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,20 +12,26 @@ use App\Http\Controllers\Controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/uploadpage',[Controller::class, 'uploadpage']);
 Route::post('/uploadproduct',[Controller::class, 'store']);
-
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $videos = product::all();
+        return view('dashboard', compact('videos'));
     })->name('dashboard');
 });
+Route::get('/', function () {
+    $videos = product::all();
+    return view('dashboard', compact('videos'));
+});
+Route::post('/likePost',[Controller::class, 'likePost']);
+
+

@@ -24,6 +24,7 @@ function queueJob(job) {
     queue.push(job);
   queueFlush();
 }
+
 function dequeueJob(job) {
   let index = queue.indexOf(job);
   if (index !== -1)

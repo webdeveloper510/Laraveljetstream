@@ -1,0 +1,19 @@
+p.title {
+    margin: 0px;
+    font-size: 28px;
+}
+
+p.small-tittle {
+    font-size: 12px;
+    margin: 0px;
+}
+
+ul.Views li {
+    display: inline;
+    font-size: 13px;
+}
+
+ul.Views {
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
