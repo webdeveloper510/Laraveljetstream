@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\models\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,7 @@ use App\Http\Controllers\Controller;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/uploadpage',[Controller::class, 'uploadpage']);
 Route::post('/uploadproduct',[Controller::class, 'store']);
 Route::middleware([
@@ -22,12 +24,14 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $videos = DB::table('product')->get();
+        $videos = product::all();
         return view('dashboard', compact('videos'));
     })->name('dashboard');
 });
 Route::get('/', function () {
-    $videos = DB::table('product')->get();
+    $videos = product::all();
     return view('dashboard', compact('videos'));
 });
+Route::post('/likePost',[Controller::class, 'likePost']);
+
 

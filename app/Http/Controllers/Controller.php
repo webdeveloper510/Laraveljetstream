@@ -10,12 +10,27 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Storage;
 use Aws\S3\S3Client;
-
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
+  Public function likePost(Request $request){
+
+    $post = product::find($request->contentId);
+    $post->like();
+    $post->save();
+    
+    
+    
+    // $likePost = DB::table('liked')->insert([
+    //   'video_id' => $request->contentId,
+    //   'user_id' =>auth()->user()->id,
+    //   'count'=>1
+    // ]);
+
+  }
+
     Public function uploadpage(){
       
         return view('product');
@@ -43,7 +58,6 @@ class Controller extends BaseController
        }
        else{
                 $video_name = $data['file']->store($folder, 'spaces');
-             
                   $imae_name = $data['thumbnail']->store('images', 'spaces');              
                   $input = $data['file']->getClientOriginalName();
                   $thumbnail = $data['thumbnail']->getClientOriginalName();

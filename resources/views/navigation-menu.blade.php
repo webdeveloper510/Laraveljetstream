@@ -1,7 +1,7 @@
 
 @include('header')
 
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100" style="display:none;">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -217,7 +217,7 @@
         </div>
     </div>
 </nav>
->>>>>>> 17734debe6e31a9876678598b0c308c629f88473
+
 <script>
    var user = {!! json_encode(Auth::user()) !!};
     localStorage.setItem("user", user);

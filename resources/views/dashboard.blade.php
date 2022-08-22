@@ -23,15 +23,30 @@
                     <div class="container">
                         <div class="home-demo py-5">
                             <div class="owl-carousel owl-theme">
-                            @foreach($videos as $video)                                     
+                                @foreach($videos as $video)                                     
                                 <div class="item">
                                     <div class="card">
-                                        <video width="100%" height="90%" controls>
+                                        <video width="100%" height="100%" controls>
                                         <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$video->file}}" type="video/mp4">
                                         </video>
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">{{$video->title}}</h5>
-                                            <p class="card-text">{{$video->description}}</p>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg" class="thump">
+                                                </div>
+                                                <div class="col-9">
+                                                    <div class="detail">
+                                                    <a href="" class="title">{{$video->title}}</a> <br/>
+                                                    <a href="" class="small-tittle"> Sony Music India</a>
+                                                    <ul class="Views">
+                                                        <li><a href="">131M views </a></li>
+                                                        <li><a href="">1 month ago </a></li>
+                                                    </ul>
+                                                    <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$video->id}}')">thumb_up</span></a></p>
+                                                       <a ><span class="material-symbols-outlined">thumb_down</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -40,6 +55,7 @@
                         </div>
                     </div>
                 </div>
+              
                 <div class="container">
                     <hr class="m-0">
                 </div>
@@ -317,9 +333,28 @@
             </div>
         </div>
     </div>
-
-
     <script>
+       function likePost(id){
+                $.ajax({
+                    type:'post',
+                    url:'http://localhost/Laraveljetstream/likePost',
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        "contentId":id
+                    },
+                    success : function (data){
+                        console.log(data) 
+                        info();                 
+                    }
+
+                    })
+            }
+
+        function info(){
+            toastr.info('Are you the 6 fingered man?')
+
+        }
+   
         $(function () {
             // Owl Carousel
             var owl = $(".owl-carousel");
