@@ -28,10 +28,10 @@ Route::middleware([
         return view('dashboard', compact('videos'));
     })->name('dashboard');
 });
-Route::get('/', function () {
+ Route::get('/', function () {
     $videos = product::all();
     return view('dashboard', compact('videos'));
-});
+}); 
 Route::post('/likePost',[Controller::class, 'likePost']);
 
 
