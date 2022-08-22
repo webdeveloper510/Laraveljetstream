@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-use App\models\Product;
+use App\Models\product; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,17 +29,7 @@ Route::middleware([
         return view('dashboard', compact('videos'));
     })->name('dashboard');
 });
-<<<<<<< HEAD
- Route::get('/', function () {
-    $videos = product::all();
-    return view('dashboard', compact('videos'));
-}); 
-=======
-// Route::get('/', function () {
-//     $videos = product::all();
-//     return view('dashboard', compact('videos'));
-// });
->>>>>>> 57d929c7a4ba647753683d1dbd3c37f8a1834fc1
+
 Route::post('/likePost',[Controller::class, 'likePost']);
 
 
