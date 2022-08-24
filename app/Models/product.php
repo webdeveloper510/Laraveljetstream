@@ -10,4 +10,9 @@ class product extends Model
     use HasFactory,Likeable;
     protected $table = 'product';
     public $timestamps=false;
+
+    public function likeUsers()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

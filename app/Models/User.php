@@ -61,4 +61,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function likedPosts()
+    {
+        return $this->belongsToMany('App\Post');
+    }
 }

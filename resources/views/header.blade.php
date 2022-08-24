@@ -112,7 +112,7 @@ ul.Views {
         input.form-control.me-2 {
             width: 600px;
         }
-  
+
 
     </style>
 </head>
@@ -129,12 +129,21 @@ ul.Views {
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"><span class="material-symbols-outlined">settings</span></a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+
+                            <x-jet-dropdown-link href="{{ route('logout') }}"
+                                     @click.prevent="$root.submit();">
+                                {{ __('Log Out') }}
+
+                            </x-jet-dropdown-link>
+                        </form>
                     </li>
                 </ul>
                 </div>

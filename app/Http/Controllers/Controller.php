@@ -37,9 +37,6 @@ class Controller extends BaseController
     }
     Public function store(Request $request){
 
-        //Auth::user;
-
-
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
@@ -72,8 +69,6 @@ class Controller extends BaseController
                   $user['file'] = $video_name;
 
 
-                //   $test = Storage::setVisibility($imae_name, 'public');
-                //   print_r($test);die;
 
                   DB::table('product')->insert($user);
 
@@ -81,6 +76,15 @@ class Controller extends BaseController
 
       }
 
+    }
+
+    function detail(Request $request,$id)
+    {
+
+        product::find($id)->increment('views');
+
+        $detail=product::find($id);
+        return view('dashboard',['detail'=>$detail]);
     }
 }
 
