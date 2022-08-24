@@ -34,5 +34,7 @@ Route::middleware([
 //     return view('dashboard', compact('videos'));
 // });
 Route::post('/likePost',[Controller::class, 'likePost']);
+Route::post('/unlikePost',[Controller::class, 'unlikePost']);
+Route::get('/channel',[Controller::class, 'channel']);
 
 

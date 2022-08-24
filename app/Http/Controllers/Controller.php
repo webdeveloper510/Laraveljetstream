@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
+use App\models\LikeDislike;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,31 +15,35 @@ use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
-  Public function likePost(Request $request){
-
-    $post = product::find($request->contentId);
-    $post->like();
-    $post->save();
+ 
+  public function unlikePost(Request $request)
+  {
+   
+       $id = auth()->user()->id;
+       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get();     
+       if(count($likeExist)<=0){
+        $data=new LikeDislike;
+        $data->content_id=$request->contentId;
+        $data->dislike=1;       
+        $data->user_id=$id;       
+        $data->save();  
+        return response()->json([
+            'bool'=>true
+        ]);
+       }
     
-    
-    
-    // $likePost = DB::table('liked')->insert([
-    //   'video_id' => $request->contentId,
-    //   'user_id' =>auth()->user()->id,
-    //   'count'=>1
-    // ]);
-
   }
-
     Public function uploadpage(){
       
         return view('product');
     }
+
+    public function channel(){
+      
+      return view('channel');
+    }
+
     Public function store(Request $request){
-
-        //Auth::user;
-
-
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
@@ -70,11 +74,26 @@ class Controller extends BaseController
                   // $test = Storage::setVisibility($imae_name, 'public');
                   // print_r($test);die;
                   DB::table('product')->insert($user);
-
                   return redirect()->back()->with('message', 'content upload successfully');
 
       }
 
     }
+
+    public function likePost(Request $request){
+      $id = auth()->user()->id;
+      $likeExist = LikeDislike::where(['user_id'=>$id,'content_id'=>$request->contentId])->get();     
+      if(count($likeExist)<=0){
+       $data=new LikeDislike;
+       $data->content_id=$request->contentId;
+       $data->like=1;       
+       $data->user_id=$id;       
+       $data->save();  
+       return response()->json([
+           'bool'=>true
+       ]);
+      }
+    }
 }
+
 

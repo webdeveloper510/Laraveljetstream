@@ -7,7 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Conner\Likeable\Likeable;
 class product extends Model
 {
-    use HasFactory,Likeable;
+    use HasFactory;
     protected $table = 'product';
-    public $timestamps=false;
+    public $timestamps=true;
+
+    public function likes(){
+        return $this->hasMany('App\models\LikeDislike','content_id')->sum('like');
+    }
+    // Dislikes
+    public function dislikes(){
+        return $this->hasMany('App\models\LikeDislike','content_id')->sum('dislike');
+    }
+
 }

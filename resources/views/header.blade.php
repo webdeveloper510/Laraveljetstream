@@ -7,29 +7,156 @@
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="style.css" type="css/text" >
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+    <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+    <link rel="canonical" href="https://codepen.io/pen?template=bKeqpr">
+    
+    
+  <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="<?php echo URL::to('/');?>/public/assets/css/dashboard.css" type="css/text">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+ <!-- Option 1: Bootstrap Bundle with Popper -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  
+
+ 
 <style>
-        .home-demo .item {
-            background: #ff3f4d;
-        }
+       .username {
+    padding: 14px;
+}
+
+.profile {
+    border-radius: 50%;
+}
+
+.text-banner {
+    padding: 20px 10px;
+}
+
+.views li {
+    display: inline-block;
+    padding-right: 13px;
+    color: #8f8f8f;
+}
+
+.views ul {
+    padding: 0px;
+}
+
+ #dropdown1{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+ul.dropdown-menu1 {
+    display: none;
+}
+
+#dropdown1 {
+    color: black;
+}
+
+.card {
+    background-color: transparent; 
+    border: 1px solid rgba(0, 0, 0, 0); 
+
+}
+
+.mains {
+    background-color: white;
+}
+
+
+body {
+    background: #e1dede30;
+}
+
+ul#pills-tab {
+    background: white;
+}
+
+.pills-color {
+    background: white;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    border-bottom: 2px solid black;
+    border-radius: 0px !important;
+    color: black !important;
+    background-color: transparent !important;
+    font-weight: 500;
+}
+
+.nav-pills .nav-link {
+    color: black;
+}
+
+.stats ul.list-group.list-group-flush li {
+        background: transparent;
+}
+
+.left {
+     width: 172px;
+}
+
+.cover img {
+    border-radius: 50% !important;
+    height: 100px;
+    width: 100px;
+    margin: 20px 0px;
+}
+
+.communit-img img {
+    border-radius: 50%;
+}
+.react p {
+    display: flex;
+    padding-right: 21px;
+}
+
+.react {
+    display: flex;
+    margin: 10px 0px;
+}
+.communitys .card {
+    border-color: red;
+    padding: 18px 18px 0px ;
+}
+
+.imagess {
+    position: relative;
+}
+
+.thumb-icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: black;
+    height: 100%;
+    width: 42%;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    padding: 22% 0px;
+    font-size: 20px;
+}
         img.thump {
     border-radius: 50%;
     height: 57px;
@@ -50,12 +177,7 @@
         .owl-nav {
             display: none;
         }
-       a.title {
-    color:black;
-    margin: 0px;
-    text-decoration: none;
-    font-size: 28px;
-}
+     
 header {
     position: sticky !important;
     top: 0;
@@ -87,7 +209,7 @@ ul.Views {
             margin: 17px 0px;
         }
         .explore h5 a{
-           color:white;
+           color:black;
            text-decoration:none;
             display: flex;
         }
@@ -134,7 +256,14 @@ ul.Views {
                     <a class="nav-link active" aria-current="page" href="#"><span class="material-symbols-outlined">settings</span></a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('logout') }}"
+                                         @click.prevent="$root.submit();">
+                                    {{ __('Log Out') }}
+                                </x-jet-dropdown-link>
+                            </form>
                     </li>
                 </ul>
                 </div>

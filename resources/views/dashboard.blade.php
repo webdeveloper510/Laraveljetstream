@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="container-fluid p-0">
         <div class="row g-0">
-            <div class="col-md-3 bg-dark position-relative">    
-                <div class="explore" style="color:white">
+            <div class="col-md-3 position-relative">    
+                <div class="explore">
                     <h5><a href="/Laraveljetstream/dashboard"><span class="material-symbols-outlined">home</span> Home</a></h5>
                     <!-- <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
                     <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <div class="bg-dark py-5">
+                <div class=" py-5">
                     <div class="container">
                         <div class="home-demo py-5">
                             <div class="owl-carousel owl-theme">
@@ -36,14 +36,16 @@
                                                 </div>
                                                 <div class="col-9">
                                                     <div class="detail">
-                                                    <a href="" class="title">{{$video->title}}</a> <br/>
+                                                    <a href="" class="title">{{$video->title}}</a><br/>
                                                     <a href="" class="small-tittle"> Sony Music India</a>
                                                     <ul class="Views">
                                                         <li><a href="">131M views </a></li>
                                                         <li><a href="">1 month ago </a></li>
                                                     </ul>
+                                                    {{ $video->likes() }}
                                                     <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$video->id}}')">thumb_up</span></a></p>
-                                                       <a ><span class="material-symbols-outlined">thumb_down</span></a>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$video->id}}')">thumb_down</span></a>
+                                                       <!-- {{ $video->dislikes() }}                                -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -59,8 +61,8 @@
                 <div class="container">
                     <hr class="m-0">
                 </div>
-                <div class="bg-dark">
-                    <div class="container bg-dark">
+                <div class="">
+                    <div class="container ">
                         <div class="home-demo py-5">
                             <h3 class="text-light mb-5">Breaking news</h5>
                                 <div class="owl-carousel owl-theme">
@@ -207,9 +209,9 @@
                     </div>
                 </div>
                 <hr class="m-0">
-                <div class="bg-dark">
+                <div class="">
                     <div class="container">
-                        <div class="row bg-dark py-5">
+                        <div class="row  py-5">
                         <div class="col-md-4 mb-3">
                                 <div class="card">
                                     <video width="100%" height="100%" controls>
@@ -335,25 +337,47 @@
     </div>
     <script>
        function likePost(id){
-                $.ajax({
-                    type:'post',
-                    url:'http://localhost/Laraveljetstream/likePost',
-                    data:{
-                        "_token": "{{ csrf_token() }}",
-                        "contentId":id
-                    },
-                    success : function (data){
-                        console.log(data) 
-                        info();                 
+
+           console.log(id)
+           
+            $.ajax 
+            ({ 
+                url: 'http://localhost/Laraveljetstream/likePost',
+                type: 'post',
+                data:{
+                   "contentId":id,
+                    "_token":"{{ csrf_token() }}"
+                },
+                    success: function(result)
+                    {
+                        console.log(result)
                     }
+            });
+    }    
 
-                    })
-            }
+    function unlikePost(id){
 
-        function info(){
-            toastr.info('Are you the 6 fingered man?')
+console.log(id)
 
-        }
+ $.ajax 
+ ({ 
+     url: 'http://localhost/Laraveljetstream/unlikePost',
+     type: 'post',
+     data:{
+        "contentId":id,
+         "_token":"{{ csrf_token() }}"
+     },
+         success: function(result)
+         {
+             console.log(result)
+         }
+ });
+} 
+    
+        // function info(){
+        //     toastr.info('Are you the 6 fingered man?')
+
+        // }
    
         $(function () {
             // Owl Carousel

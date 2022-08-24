@@ -1,0 +1,120 @@
+.username {
+    padding: 14px;
+}
+
+.profile {
+    border-radius: 50%;
+}
+
+.text-banner {
+    padding: 20px 10px;
+}
+
+.views li {
+    display: inline-block;
+    padding-right: 13px;
+    color: #8f8f8f;
+}
+
+.views ul {
+    padding: 0px;
+}
+
+ #dropdown1{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+ul.dropdown-menu1 {
+    display: none;
+}
+
+#dropdown1 {
+    color: black;
+}
+
+.card {
+    background-color: transparent; 
+    border: 1px solid rgba(0, 0, 0, 0); 
+
+}
+
+.mains {
+    background-color: white;
+}
+
+
+body {
+    background: #e1dede30;
+}
+
+ul#pills-tab {
+    background: white;
+}
+
+.pills-color {
+    background: white;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    border-bottom: 2px solid black;
+    border-radius: 0px !important;
+    color: black !important;
+    background-color: transparent !important;
+    font-weight: 500;
+}
+
+.nav-pills .nav-link {
+    color: black;
+}
+
+.stats ul.list-group.list-group-flush li {
+        background: transparent;
+}
+
+.left {
+     width: 172px;
+}
+
+.cover img {
+    border-radius: 50% !important;
+    height: 100px;
+    width: 100px;
+    margin: 20px 0px;
+}
+
+.communit-img img {
+    border-radius: 50%;
+}
+.react p {
+    display: flex;
+    padding-right: 21px;
+}
+
+.react {
+    display: flex;
+    margin: 10px 0px;
+}
+.communitys .card {
+    border-color: red;
+    padding: 18px 18px 0px ;
+}
+
+.imagess {
+    position: relative;
+}
+
+.thumb-icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: black;
+    height: 100%;
+    width: 42%;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    padding: 22% 0px;
+    font-size: 20px;
+}
