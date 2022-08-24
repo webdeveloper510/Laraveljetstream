@@ -35,6 +35,7 @@ Route::middleware([
 Route::post('/likePost',[Controller::class, 'likePost']);
 
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
+Route::get('/videodetail',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
 Route::get('detail/{id}',[Controller::class,'detail']);
 

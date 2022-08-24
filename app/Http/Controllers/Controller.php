@@ -45,10 +45,13 @@ class Controller extends BaseController
       
       return view('channel');
     }
+    public function videodetail(){
+      
+      return view('videodetail');
+    }
 
 
     Public function store(Request $request){
-
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";

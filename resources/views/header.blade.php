@@ -234,7 +234,31 @@ ul.Views {
         input.form-control.me-2 {
             width: 600px;
         }
+        .appricate {
+    display: flex;
+}
+ul.view {
+    padding: 0;
+    display: inline;
+}
 
+ul.view li {
+    display: inherit;
+    padding-right: 14px;
+    color: #939393;
+}
+p.video-title {
+    font-size: 21px;
+    margin: 0;
+    padding: 11px 0px;
+}
+
+.profile-image img {
+    border-radius: 50%;
+}
+.dropdown a {
+    text-decoration: none;
+}
 
     </style>
 </head>
@@ -257,7 +281,7 @@ ul.Views {
                     <a class="nav-link active" aria-current="page" href="#"><span class="material-symbols-outlined">settings</span></a>
                     </li>
                     <li class="nav-item">
-                        
+
                     <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 
