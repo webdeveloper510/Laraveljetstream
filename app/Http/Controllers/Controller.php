@@ -15,6 +15,7 @@ use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
+
  
   public function unlikePost(Request $request)
   {
@@ -31,10 +32,12 @@ class Controller extends BaseController
             'bool'=>true
         ]);
        }
+      }
     
-  }
-    Public function uploadpage(){
-      
+
+    Public function uploadpage()
+    {
+
         return view('product');
     }
 
@@ -43,7 +46,9 @@ class Controller extends BaseController
       return view('channel');
     }
 
+
     Public function store(Request $request){
+
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
@@ -61,8 +66,11 @@ class Controller extends BaseController
                   ->withInput();
        }
        else{
-                $video_name = $data['file']->store($folder, 'spaces');
-                  $imae_name = $data['thumbnail']->store('images', 'spaces');              
+
+        $video_name = $data['file']->store($folder, 'spaces');
+
+        $imae_name = $data['thumbnail']->store('images', 'spaces');
+
                   $input = $data['file']->getClientOriginalName();
                   $thumbnail = $data['thumbnail']->getClientOriginalName();
                   $user['title'] =$request->title;
@@ -71,14 +79,16 @@ class Controller extends BaseController
                   $user['security'] = $request->security;
                   $user['user_id'] =  $id;
                   $user['file'] = $video_name;
-                  // $test = Storage::setVisibility($imae_name, 'public');
-                  // print_r($test);die;
+
+
+
                   DB::table('product')->insert($user);
                   return redirect()->back()->with('message', 'content upload successfully');
 
       }
 
     }
+
 
     public function likePost(Request $request){
       $id = auth()->user()->id;
@@ -94,6 +104,16 @@ class Controller extends BaseController
        ]);
       }
     }
+
+    function detail(Request $request,$id)
+    {
+
+        product::find($id)->increment('views');
+
+        $detail=product::find($id);
+        return view('dashboard',['detail'=>$detail]);
+
+    }
+
+  
 }
-
-

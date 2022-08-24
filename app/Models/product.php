@@ -9,6 +9,7 @@ class product extends Model
 {
     use HasFactory;
     protected $table = 'product';
+    // public $timestamps=false;
     public $timestamps=true;
 
     public function likes(){
@@ -17,6 +18,14 @@ class product extends Model
     // Dislikes
     public function dislikes(){
         return $this->hasMany('App\models\LikeDislike','content_id')->sum('dislike');
+    }
+
+
+  
+
+    public function likeUsers()
+    {
+        return $this->belongsToMany('App\User');
     }
 
 }

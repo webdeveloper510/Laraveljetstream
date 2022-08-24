@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-use App\models\Product;
+use App\Models\product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,15 +26,17 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         $videos = product::all();
+        // echo "<pre>";
+        // print_r($videos);die;
         return view('dashboard', compact('videos'));
     })->name('dashboard');
 });
-// Route::get('/', function () {
-//     $videos = product::all();
-//     return view('dashboard', compact('videos'));
-// });
+
 Route::post('/likePost',[Controller::class, 'likePost']);
+
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
 Route::get('/channel',[Controller::class, 'channel']);
+Route::get('detail/{id}',[Controller::class,'detail']);
+
 
 

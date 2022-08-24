@@ -1,8 +1,13 @@
 <x-app-layout>
     <div class="container-fluid p-0">
         <div class="row g-0">
+
             <div class="col-md-3 position-relative">    
                 <div class="explore">
+<!-- 
+            <div class="col-md-3 bg-dark position-relative">
+                <div class="explore" style="color:white">
+ -->
                     <h5><a href="/Laraveljetstream/dashboard"><span class="material-symbols-outlined">home</span> Home</a></h5>
                     <!-- <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
                     <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
@@ -23,7 +28,7 @@
                     <div class="container">
                         <div class="home-demo py-5">
                             <div class="owl-carousel owl-theme">
-                                @foreach($videos as $video)                                     
+                                @foreach($videos as $video)
                                 <div class="item">
                                     <div class="card">
                                         <video width="100%" height="100%" controls>
@@ -39,7 +44,7 @@
                                                     <a href="" class="title">{{$video->title}}</a><br/>
                                                     <a href="" class="small-tittle"> Sony Music India</a>
                                                     <ul class="Views">
-                                                        <li><a href="">131M views </a></li>
+                                                        <li><a href="">{{$video->views}} views</a></li>
                                                         <li><a href="">1 month ago </a></li>
                                                     </ul>
                                                     {{ $video->likes() }}
@@ -52,12 +57,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach                    
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-              
+
                 <div class="container">
                     <hr class="m-0">
                 </div>
@@ -91,7 +96,7 @@
                                                 <p class="card-text">Video Dis</p>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="item">
                                         <div class="card">
@@ -336,8 +341,8 @@
         </div>
     </div>
     <script>
-       function likePost(id){
-
+       function likePost(id)
+       {
            console.log(id)
            
             $.ajax 
@@ -351,6 +356,18 @@
                     success: function(result)
                     {
                         console.log(result)
+// 
+//                 $.ajax({
+//                     type:'post',
+//                     url:'http://localhost/jetstream/likePost',
+//                     data:{
+//                         "_token": "{{ csrf_token() }}",
+//                         "contentId":id
+//                     },
+//                     success : function (data){
+//                         console.log(data)
+//                         // info();
+// 
                     }
             });
     }    
@@ -358,6 +375,7 @@
     function unlikePost(id){
 
 console.log(id)
+
 
  $.ajax 
  ({ 
@@ -374,11 +392,6 @@ console.log(id)
  });
 } 
     
-        // function info(){
-        //     toastr.info('Are you the 6 fingered man?')
-
-        // }
-   
         $(function () {
             // Owl Carousel
             var owl = $(".owl-carousel");

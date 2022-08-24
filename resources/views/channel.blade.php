@@ -4,6 +4,13 @@
     <div class="row g-0">
         <div class="col-md-3  position-relative">
             <div class="explore" >
+
+<!-- @include('header')
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="col-md-3 bg-dark position-relative">
+            <div class="explore" style="color:white"> -->
+
                 <h5><span class="material-symbols-outlined">home</span> Home</h5>
                 <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
                 <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
@@ -19,7 +26,11 @@
                 <h5><span class="material-symbols-outlined">music_note</span>Music</h5>
             </div>
         </div>
+
 <div class="col-md-9" style="height:100vh;">
+<!-- 
+        <div class="col-md-9 bg-dark" style="height:100vh;">
+ -->
 <div class="mains">
     <img src="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=600"  width="100%" height="300px"/>
 
