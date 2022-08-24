@@ -2,12 +2,13 @@
     <div class="container-fluid p-0">
         <div class="row g-0">
 
-            <div class="col-md-3 position-relative">    
+            <div class="col-md-3 position-relative">
                 <div class="explore">
-<!-- 
+{{--
             <div class="col-md-3 bg-dark position-relative">
                 <div class="explore" style="color:white">
- -->
+  --}}
+
                     <h5><a href="/Laraveljetstream/dashboard"><span class="material-symbols-outlined">home</span> Home</a></h5>
                     <!-- <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
                     <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
@@ -344,9 +345,9 @@
        function likePost(id)
        {
            console.log(id)
-           
-            $.ajax 
-            ({ 
+
+            $.ajax
+            ({
                 url: 'http://localhost/Laraveljetstream/likePost',
                 type: 'post',
                 data:{
@@ -356,7 +357,7 @@
                     success: function(result)
                     {
                         console.log(result)
-// 
+//
 //                 $.ajax({
 //                     type:'post',
 //                     url:'http://localhost/jetstream/likePost',
@@ -367,18 +368,18 @@
 //                     success : function (data){
 //                         console.log(data)
 //                         // info();
-// 
+//
                     }
             });
-    }    
+    }
 
     function unlikePost(id){
 
 console.log(id)
 
 
- $.ajax 
- ({ 
+ $.ajax
+ ({
      url: 'http://localhost/Laraveljetstream/unlikePost',
      type: 'post',
      data:{
@@ -390,8 +391,8 @@ console.log(id)
              console.log(result)
          }
  });
-} 
-    
+}
+
         $(function () {
             // Owl Carousel
             var owl = $(".owl-carousel");

@@ -21,7 +21,7 @@ class product extends Model
     }
 
 
-  
+
 
     public function likeUsers()
     {
