@@ -21,7 +21,8 @@ class Controller extends BaseController
   {
    
        $id = auth()->user()->id;
-       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get();     
+       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get(); 
+       //print_r($likeExist);die;    
        if(count($likeExist)<=0){
         $data=new LikeDislike;
         $data->content_id=$request->contentId;
@@ -32,7 +33,14 @@ class Controller extends BaseController
             'bool'=>true
         ]);
        }
-      }
+
+       else{     
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0]); 
+        return response()->json([
+            'bool'=>true
+        ]);
+       }
+    }
     
 
     Public function uploadpage()

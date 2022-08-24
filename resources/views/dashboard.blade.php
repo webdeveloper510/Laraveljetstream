@@ -372,25 +372,22 @@
             });
     }    
 
-    function unlikePost(id){
-
-console.log(id)
-
-
- $.ajax 
- ({ 
-     url: 'http://localhost/Laraveljetstream/unlikePost',
-     type: 'post',
-     data:{
-        "contentId":id,
-         "_token":"{{ csrf_token() }}"
-     },
-         success: function(result)
-         {
-             console.log(result)
-         }
- });
-} 
+        function unlikePost(id){
+        console.log(id)
+        $.ajax 
+        ({ 
+            url: 'http://localhost/Laraveljetstream/unlikePost',
+            type: 'post',
+            data:{
+                "contentId":id,
+                "_token":"{{ csrf_token() }}"
+            },
+                success: function(result)
+                {
+                    console.log(result)
+                }
+        });
+        } 
     
         $(function () {
             // Owl Carousel

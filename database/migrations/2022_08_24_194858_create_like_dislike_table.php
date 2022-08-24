@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdTable extends Migration
+class CreateLikeDislikeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class AddUserIdTable extends Migration
      */
     public function up()
     {
-        Schema::table('like_dislikes', function (Blueprint $table) {
+        Schema::create('like_dislikes', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->integer('content_id');
+            $table->smallInteger('like')->default(0);
+            $table->smallInteger('dislike')->default(0);
             $table->integer('user_id');
         });
     }
@@ -25,8 +30,6 @@ class AddUserIdTable extends Migration
      */
     public function down()
     {
-        Schema::table('like_dislikes', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('like_dislikes');
     }
 }
