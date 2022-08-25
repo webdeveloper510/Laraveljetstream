@@ -58,8 +58,14 @@ class Controller extends BaseController
       return view('channel');
     }
 
-    public function videodetail(){
-      $videos = User::with(['posts','likes'])->get()->toArray();
+    public function videodetail($id){
+
+      $videos = product::where('id',$id)->get()->toArray();;
+    
+    //   $videos = product::whereHas('likes',  function ($q) use ($id) {
+    //     $q->where('product_id', $id);
+    // })->get();
+
       return view('videodetail',compact('videos'));
     }
 

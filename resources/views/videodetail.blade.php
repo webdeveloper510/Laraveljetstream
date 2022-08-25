@@ -46,22 +46,22 @@
               <p class="video-title">Remove Friction From Your Inquiry Workflow | Varicent Incentive Compensation Management
               </p>
               @foreach($videos as $video)
-              @foreach($video['posts'] as $posts) 
+     
               <div class="row">
                 <div class="col-md-3">
                   <ul class="view">
-                    <li>View:{{ $posts['views']}}</li>
+                    <li>View:{{ $video['views']}}</li>
                     <li> Aug 19, 2022</li>
                   </ul>
                 </div>
                 <div class="col-md-9">
                   <div class="appricate">
-                  <button type="button" class="btn d-flex" onclick="likePost('{{$posts['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex" onclick="likePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_up 
                     </span> 
                   </button>
-                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$posts['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_down
                       </span> DISLIKE
@@ -95,7 +95,7 @@
                 </div>
               </div>
               @endforeach
-              @endforeach
+   
               <hr/>
               <div class="row">
                 <div class="col-md-1">

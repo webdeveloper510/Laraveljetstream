@@ -70,8 +70,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\product');
     }
 
-    public function likes()
-    {
-        return $this->belongsToMany(product::class,LikeDislike::class);
-    }
+    // public function likes()
+    // {
+    //     return $this->hasMany(product::class,LikeDislike::class);
+    // }
 }

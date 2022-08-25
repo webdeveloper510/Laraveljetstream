@@ -33,9 +33,9 @@
                                      @foreach($video['posts'] as $posts) 
                                 <div class="item">
                                     <div class="card">
-                                        <video width="100%" height="100%" controls>
+                               <video width="100%" height="100%" controls>
                                         <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}" type="video/mp4">
-                                        </video>
+                                </video>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-3">
@@ -49,8 +49,8 @@
                                                        
                                                         <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                     </ul>
-                                                    <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
-                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a>
+                                                    <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
                                                     </div>
                                                 </div>
                                             </div>

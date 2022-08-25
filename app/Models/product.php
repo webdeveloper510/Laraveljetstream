@@ -28,9 +28,9 @@ class product extends Model
 
   
 
-    public function likes()
-    {
-        return $this->belongsToMany(User::class,Like::class);
-    }
+    // public function likes()
+    // {
+    //     return $this->belongsToMany(User::class,LikeDislike::class);
+    // }
 
 }
