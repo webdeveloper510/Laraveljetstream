@@ -259,6 +259,50 @@ p.video-title {
 .dropdown a {
     text-decoration: none;
 }
+.video-details li {
+    display: inline;
+    font-size: 13px;
+    color: #7a7777;
+}
+
+.video-details ul {
+    padding: 0;
+}
+
+.icons-on a {
+    color: white;
+    background: black;
+    text-align: center;
+    padding: 7px;
+    font-size: 18px;
+}
+
+.icons-on {
+    position: absolute;
+    top: 0;
+    display: none;
+    right: 0;
+}
+
+.related-video.position-relative:hover .icons-on {
+    display: block;
+}
+
+.file-upload span {
+    font-size: 67px;
+    background: #efefef8a;
+    border-radius: 50%;
+    padding: 34px;
+    margin: 20px 0px;
+}
+
+.appricate span {
+    font-size: 16px;
+}
+
+.appricate button {
+    font-size: 13px;
+}
 
     </style>
 </head>

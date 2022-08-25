@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
+use App\models\User;
 use App\models\LikeDislike;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -48,13 +49,18 @@ class Controller extends BaseController
         return view('product');
     }
 
+    
+  
+
+
     public function channel(){
       
       return view('channel');
     }
+
     public function videodetail(){
-      
-      return view('videodetail');
+      $videos = User::with(['posts','likes'])->get()->toArray();
+      return view('videodetail',compact('videos'));
     }
 
 

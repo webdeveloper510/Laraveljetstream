@@ -40,6 +40,6 @@ Route::post('/unlikePost',[Controller::class, 'unlikePost']);
 Route::get('/videodetail',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
 Route::get('channel/{id}',[Controller::class,'detail']);
-
+Route::get('videodetail',[Controller::class,'videodetail']);
 
 
