@@ -66,4 +66,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Post');
     }
+    public function posts() {
+        return $this->hasMany('App\Models\product');
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(product::class,LikeDislike::class);
+    }
 }

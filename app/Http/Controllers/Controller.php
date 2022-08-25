@@ -35,7 +35,7 @@ class Controller extends BaseController
        }
 
        else{     
-        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0]); 
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]); 
         return response()->json([
             'bool'=>true
         ]);
@@ -45,7 +45,6 @@ class Controller extends BaseController
 
     Public function uploadpage()
     {
-
         return view('product');
     }
 
@@ -114,7 +113,17 @@ class Controller extends BaseController
            'bool'=>true
        ]);
       }
+      else{     
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]); 
+        return response()->json([
+            'bool'=>true
+        ]);
+       }
     }
+
+
+
+
 
     function detail(Request $request,$id)
     {
