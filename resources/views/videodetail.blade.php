@@ -1,28 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@include('header')
-<div class="container-fluid p-0">
-    <div class="row g-0">
-        <div class="col-md-3  position-relative">
-            <div class="explore" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+    <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+    <link rel="canonical" href="https://codepen.io/pen?template=bKeqpr">
 
 
-                <h5><span class="material-symbols-outlined">home</span> Home</h5>
-                <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
-                <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
-                <h5><span class="material-symbols-outlined">subscriptions</span> Subscriptions</h5>
-                <hr />
-                <h5><span class="material-symbols-outlined">video_library</span> Library</h5>
-                <h5><span class="material-symbols-outlined">history</span> History</h5>
-                <h5><a href=""><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
-                <h5><span class="material-symbols-outlined">schedule</span> Watch later</h5>
-                <h5><span class="material-symbols-outlined">thumb_up</span>Liked videos</h5>
-                <hr />
-                <h5 class="text-center">Subscriptions</h5>
-                <h5><span class="material-symbols-outlined">music_note</span>Music</h5>
-            </div>
-        </div>
+  <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-<div class="col-md-9" style="height:100vh;">
+    <title>Chenal</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+
+  </head>
+  <body>
+
 <div class="container-fluid">
         <div class="row">
            <div class="col-md-8">
@@ -55,7 +54,7 @@
                   <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_up
-                      </span> 
+                      </span> 12
                   </button>
                   <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
@@ -85,11 +84,11 @@
                   <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       more_horiz
-                      </span> 
+                      </span>
                   </button>
                 </div>
                 </div>
-               
+
               </div>
               <hr/>
               <div class="row">
@@ -97,7 +96,7 @@
                   <div class="profile-image">
                     <img src="./hq720.webp" height="60px" width="60px" />
                   </div>
-                    
+
                 </div>
                 <div class="col-md-8">
                     <h5>Books</h5>
@@ -109,8 +108,8 @@
                   <div class="shows">
                       <p>Upcoming Charges                    </p>
                   </div>
-                
-                
+
+
                 </div>
                 <div class="col-md-3 text-end">
                     <button class="btn btn-danger">
@@ -129,7 +128,7 @@
                                 short_text
                                 </span> Short By
                             </a>
-                          
+
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                               <li><a class="dropdown-item" href="#">Action</a></li>
                               <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -148,7 +147,7 @@
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add a comment">
                   </div>
                </div>
-                
+
                <div class="commentss">
                 <div class="row mt-3">
                   <div class="col-1 text-end">
@@ -172,20 +171,16 @@
                     </div>
                  </div>
                </div>
-
-
-
-
-              </div>
+             </div>
             </div>
            </div>
        </div>
 
       </div>
 
-    </div>
-    </div>
-    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
 
-    </body>
-    </html>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -16,32 +16,32 @@ use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
 
- 
+
   public function unlikePost(Request $request)
   {
-   
+
        $id = auth()->user()->id;
-       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get(); 
-       //print_r($likeExist);die;    
+       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get();
+       //print_r($likeExist);die;
        if(count($likeExist)<=0){
         $data=new LikeDislike;
         $data->content_id=$request->contentId;
-        $data->dislike=1;       
-        $data->user_id=$id;       
-        $data->save();  
+        $data->dislike=1;
+        $data->user_id=$id;
+        $data->save();
         return response()->json([
             'bool'=>true
         ]);
        }
 
-       else{     
-        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0]); 
+       else{
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0]);
         return response()->json([
             'bool'=>true
         ]);
        }
     }
-    
+
 
     Public function uploadpage()
     {
@@ -50,11 +50,11 @@ class Controller extends BaseController
     }
 
     public function channel(){
-      
+
       return view('channel');
     }
     public function videodetail(){
-      
+
       return view('videodetail');
     }
 
@@ -71,7 +71,9 @@ class Controller extends BaseController
           'file'=>'required'
         ]);
      if ($validator->fails()){
+
           return redirect()
+
                   ->back()
                   ->withErrors($validator)
                   ->withInput();
@@ -103,13 +105,13 @@ class Controller extends BaseController
 
     public function likePost(Request $request){
       $id = auth()->user()->id;
-      $likeExist = LikeDislike::where(['user_id'=>$id,'content_id'=>$request->contentId])->get();     
+      $likeExist = LikeDislike::where(['user_id'=>$id,'content_id'=>$request->contentId])->get();
       if(count($likeExist)<=0){
        $data=new LikeDislike;
        $data->content_id=$request->contentId;
-       $data->like=1;       
-       $data->user_id=$id;       
-       $data->save();  
+       $data->like=1;
+       $data->user_id=$id;
+       $data->save();
        return response()->json([
            'bool'=>true
        ]);
@@ -126,5 +128,5 @@ class Controller extends BaseController
 
     }
 
-  
+
 }
