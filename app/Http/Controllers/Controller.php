@@ -35,7 +35,6 @@ class Controller extends BaseController
         ]);
        }
 
-
        else{
         LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
         return response()->json([
@@ -50,22 +49,20 @@ class Controller extends BaseController
         return view('product');
     }
 
-
-
-
-
     public function channel(){
 
       return view('channel');
     }
 
-    public function videodetail(){
+    public function videodetail($id){
 
-      return view('videodetail');
+      $videos = product::where('id',$id)->get()->toArray();;
 
-      $videos = User::with(['posts','likes'])->get()->toArray();
+    //   $videos = product::whereHas('likes',  function ($q) use ($id) {
+    //     $q->where('product_id', $id);
+    // })->get();
+
       return view('videodetail',compact('videos'));
-
     }
 
 
@@ -81,9 +78,7 @@ class Controller extends BaseController
           'file'=>'required'
         ]);
      if ($validator->fails()){
-
           return redirect()
-
                   ->back()
                   ->withErrors($validator)
                   ->withInput();

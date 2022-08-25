@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LikeDislike extends Model
 {
     use HasFactory;
-    protected $table = 'like_dislikes';
+    protected $table = 'likes';
     public $timestamps=true;
 
 

@@ -32,9 +32,9 @@ class product extends Model
   
 >>>>>>> 2a09ad3e26d12c9ec877e741e4687544d17258f6
 
-    public function likes()
-    {
-        return $this->belongsToMany(User::class,Like::class);
-    }
+    // public function likes()
+    // {
+    //     return $this->belongsToMany(User::class,LikeDislike::class);
+    // }
 
 }

@@ -13,8 +13,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
     <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
     <link rel="canonical" href="https://codepen.io/pen?template=bKeqpr">
-    
-    
+
+
   <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="<?php echo URL::to('/');?>/public/assets/css/dashboard.css" type="css/text">
@@ -33,9 +33,9 @@
  <!-- Option 1: Bootstrap Bundle with Popper -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-  
 
- 
+
+
 <style>
        .username {
     padding: 14px;
@@ -74,8 +74,8 @@ ul.dropdown-menu1 {
 }
 
 .card {
-    background-color: transparent; 
-    border: 1px solid rgba(0, 0, 0, 0); 
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0);
 
 }
 
@@ -177,7 +177,7 @@ ul#pills-tab {
         .owl-nav {
             display: none;
         }
-     
+
 header {
     position: sticky !important;
     top: 0;

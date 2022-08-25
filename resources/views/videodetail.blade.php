@@ -1,35 +1,31 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
-    <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
-    <link rel="canonical" href="https://codepen.io/pen?template=bKeqpr">
+@include('header')
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="col-md-3  position-relative">
+            <div class="explore" >
 
 
-  <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-    <title>Chenal</title>
-    <link href="./style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
-
-
-  </head>
-  <body>
-
-<div class="container-fluid">
+                <h5><span class="material-symbols-outlined">home</span> Home</h5>
+                <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
+                <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
+                <h5><span class="material-symbols-outlined">subscriptions</span> Subscriptions</h5>
+                <hr />
+                <h5><span class="material-symbols-outlined">video_library</span> Library</h5>
+                <h5><span class="material-symbols-outlined">history</span> History</h5>
+                <h5><a href=""><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
+                <h5><span class="material-symbols-outlined">schedule</span> Watch later</h5>
+                <h5><span class="material-symbols-outlined">thumb_up</span>Liked videos</h5>
+                <hr />
+                <h5 class="text-center">Subscriptions</h5>
+                <h5><span class="material-symbols-outlined">music_note</span>Music</h5>
+            </div>
+        </div>
 
 <div class="col-md-9" style="height:100vh;">
 
    <!-------------------------- Add New content here  ---------------------->
    <div class="container-fluid my-3">
-
         <div class="row">
            <div class="col-md-8">
             <div class="">
@@ -50,27 +46,22 @@
               <p class="video-title">Remove Friction From Your Inquiry Workflow | Varicent Incentive Compensation Management
               </p>
               @foreach($videos as $video)
-              @foreach($video['posts'] as $posts)
+
               <div class="row">
                 <div class="col-md-3">
                   <ul class="view">
-                    <li>View:{{ $posts['views']}}</li>
+                    <li>View:{{ $video['views']}}</li>
                     <li> Aug 19, 2022</li>
                   </ul>
                 </div>
                 <div class="col-md-9">
                   <div class="appricate">
-                  <button type="button" class="btn d-flex" onclick="likePost('{{$posts['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex" onclick="likePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
-<<<<<<< HEAD
-                      thumb_up
-                      </span> 12
-=======
                       thumb_up
                     </span>
->>>>>>> 2a09ad3e26d12c9ec877e741e4687544d17258f6
                   </button>
-                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$posts['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_down
                       </span> DISLIKE
@@ -102,13 +93,9 @@
                   </button>
                 </div>
                 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 2a09ad3e26d12c9ec877e741e4687544d17258f6
               </div>
               @endforeach
-              @endforeach
+
               <hr/>
               <div class="row">
                 <div class="col-md-1">
@@ -190,7 +177,11 @@
                     </div>
                  </div>
                </div>
-             </div>
+
+
+
+
+              </div>
             </div>
            </div>
            <div class="col-md-4">
@@ -564,9 +555,6 @@
 
       </div>
 
-<<<<<<< HEAD
-    <!-- Optional JavaScript; choose one of the two! -->
-=======
     </div>
     </div>
     </div>
@@ -631,9 +619,6 @@
         });
 
     </script>
->>>>>>> 2a09ad3e26d12c9ec877e741e4687544d17258f6
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </body>
-</html>
+    </body>
+    </html>
