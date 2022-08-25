@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Models\product;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,20 +26,20 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $videos = product::all();
-        // echo "<pre>";
-        // print_r($videos);die;
+        $videos = User::with(['posts','likes'])->get()->toArray();
+     // $videos1 = json_encode($videos);
+    //  echo "<pre>";
+    //   print_r($videos);die;
         return view('dashboard', compact('videos'));
     })->name('dashboard');
 });
 
 Route::post('/likePost',[Controller::class, 'likePost']);
-
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
-Route::get('/videodetail',[Controller::class, 'videodetail']);
- Route::get('/channel',[Controller::class, 'channel']);
-// Route::view('channel','channel');
-Route::get('detail/{id}',[Controller::class,'detail']);
+Route::get('/videodetail{id}',[Controller::class, 'videodetail']);
+Route::get('/channel',[Controller::class, 'channel']);
+Route::get('channel/{id}',[Controller::class,'detail']);
+
 
 
 

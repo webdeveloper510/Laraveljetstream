@@ -23,11 +23,13 @@
                     <div class="container">
                         <div class="home-demo py-5">
                             <div class="owl-carousel owl-theme">
+                             
                                 @foreach($videos as $video)
+                                     @foreach($video['posts'] as $posts) 
                                 <div class="item">
                                     <div class="card">
                                         <video width="100%" height="100%" controls>
-                                        <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$video->file}}" type="video/mp4">
+                                        <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}" type="video/mp4">
                                         </video>
                                         <div class="card-body">
                                             <div class="row">
@@ -36,20 +38,30 @@
                                                 </div>
                                                 <div class="col-9">
                                                     <div class="detail">
+<<<<<<< HEAD
                                                     <a href="" class="title">{{$video->title}}</a> <br/>
+=======
+                                                    <a href="" class="title">{{$posts['title']}}</a><br/>
+>>>>>>> 2a09ad3e26d12c9ec877e741e4687544d17258f6
                                                     <a href="" class="small-tittle"> Sony Music India</a>
                                                     <ul class="Views">
-                                                        <li><a href="">{{$video->views}} views</a></li>
-                                                        <li><a href="">1 month ago </a></li>
+                                                       
+                                                        <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                     </ul>
+<<<<<<< HEAD
                                                     <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$video->id}}')">thumb_up</span></a></p>
                                                        <a ><span class="material-symbols-outlined">thumb_down</span></a>
+=======
+                                                    <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a>
+>>>>>>> 2a09ad3e26d12c9ec877e741e4687544d17258f6
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                                 @endforeach
                             </div>
                         </div>

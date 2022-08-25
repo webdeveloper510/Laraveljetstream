@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
+use App\models\User;
 use App\models\LikeDislike;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -34,8 +35,9 @@ class Controller extends BaseController
         ]);
        }
 
+
        else{
-        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0]);
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
         return response()->json([
             'bool'=>true
         ]);
@@ -45,17 +47,25 @@ class Controller extends BaseController
 
     Public function uploadpage()
     {
-
         return view('product');
     }
+
+
+
+
 
     public function channel(){
 
       return view('channel');
     }
+
     public function videodetail(){
 
       return view('videodetail');
+
+      $videos = User::with(['posts','likes'])->get()->toArray();
+      return view('videodetail',compact('videos'));
+
     }
 
 
@@ -116,7 +126,17 @@ class Controller extends BaseController
            'bool'=>true
        ]);
       }
+      else{
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]);
+        return response()->json([
+            'bool'=>true
+        ]);
+       }
     }
+
+
+
+
 
     function detail(Request $request,$id)
     {

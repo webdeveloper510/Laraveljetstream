@@ -12,7 +12,7 @@ class product extends Model
     // public $timestamps=false;
     public $timestamps=true;
 
-    public function likes(){
+    public function likes1(){
         return $this->hasMany('App\models\LikeDislike','content_id')->sum('like');
     }
     // Dislikes
@@ -21,11 +21,20 @@ class product extends Model
     }
 
 
+<<<<<<< HEAD
+
+=======
+    public function user() {
+        return $this->belongsTo('App\models\User');
+    }
 
 
-    public function likeUsers()
+  
+>>>>>>> 2a09ad3e26d12c9ec877e741e4687544d17258f6
+
+    public function likes()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany(User::class,Like::class);
     }
 
 }
