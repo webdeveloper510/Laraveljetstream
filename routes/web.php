@@ -30,16 +30,16 @@ Route::middleware([
      // $videos1 = json_encode($videos);
     //  echo "<pre>";
     //   print_r($videos);die;
-        return view('dashboard', compact('videos'));
+        return view('product.index', compact('videos'));
     })->name('dashboard');
 });
-
 Route::post('/likePost',[Controller::class, 'likePost']);
-
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
-Route::get('/videodetail/{id}',[Controller::class, 'videodetail']);
+Route::get('/product/{id}',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
 Route::get('channel/{id}',[Controller::class,'detail']);
+Route::get('get-video/{id}', [Controller::class,'getVideo']);
+Route::get('channel/{id}', [Controller::class,'channel']);
 
 
 

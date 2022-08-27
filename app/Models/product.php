@@ -22,7 +22,7 @@ class product extends Model
 
 
     public function user() {
-        return $this->belongsTo('App\models\User');
+        return $this->belongsTo('App\models\User','user_id');
     }
 
 

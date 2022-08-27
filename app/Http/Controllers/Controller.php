@@ -60,13 +60,13 @@ class Controller extends BaseController
 
     public function videodetail($id){
 
-      $videos = product::where('id',$id)->get()->toArray();;
+      $videos = product::where('id',$id)->get()->toArray();
     
     //   $videos = product::whereHas('likes',  function ($q) use ($id) {
     //     $q->where('product_id', $id);
     // })->get();
 
-      return view('videodetail',compact('videos'));
+      return view('product.single',compact('videos'));
     }
 
 
@@ -111,7 +111,6 @@ class Controller extends BaseController
 
     }
 
-
     public function likePost(Request $request){
       $id = auth()->user()->id;
       $likeExist = LikeDislike::where(['user_id'=>$id,'content_id'=>$request->contentId])->get();     
@@ -134,9 +133,6 @@ class Controller extends BaseController
     }
 
 
-
-
-
     function detail(Request $request,$id)
     {
 
@@ -146,6 +142,24 @@ class Controller extends BaseController
         return view('dashboard',['detail'=>$detail]);
 
     }
+
+
+    public function getVideo($id)
+{
+      $videos = product::with('user')->find($id);
+      
+
+      return view('product.single',compact('videos'));
+
+}
+public function single($id)
+{
+      $videos = product::with('user')->find($id);
+      
+
+      return view('dashboard',compact('videos'));
+
+}
 
   
 }

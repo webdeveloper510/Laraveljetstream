@@ -33,9 +33,10 @@
                                      @foreach($video['posts'] as $posts) 
                                 <div class="item">
                                     <div class="card">
-                               <video width="100%" height="100%" controls>
+                                    <a href="{{url('/get-video/'.$video['id'])}}"> 
+                                   <video width="100%" height="100%" controls>
                                         <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}" type="video/mp4">
-                                </video>
+                                    </video></a>
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-3">
@@ -44,7 +45,7 @@
                                                 <div class="col-9">
                                                     <div class="detail">
                                                     <a href="" class="title">{{$posts['title']}}</a><br/>
-                                                    <a href="" class="small-tittle"> Sony Music India</a>
+                                                    <a href="{{url('/channel/'.$video['id'])}}" class="small-tittle"> {{Auth::user()->name;}}</a>
                                                     <ul class="Views">
                                                        
                                                         <li><a href=""> View:{{ $posts['views']}} </a></li>
@@ -74,7 +75,7 @@
                                 <div class="owl-carousel owl-theme">
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls>
+                                          <video width="100%" height="100%" controls>
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.

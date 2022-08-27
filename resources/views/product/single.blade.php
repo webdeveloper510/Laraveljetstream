@@ -41,27 +41,31 @@
                     <track kind="captions" label="Français" srclang="fr" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt">
                     <!-- Fallback for browsers that don't support the <video> element -->
                     <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" download="">Download</a>
-                </video><div class="plyr__poster" style="background-image: url(&quot;https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg&quot;);"></div></div><div class="plyr__captions"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button></div>
+                </video>
+                <div class="plyr__poster" style="background-image: url(&quot;https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg&quot;);"></div></div><div class="plyr__captions"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button></div>
 
               <p class="video-title">Remove Friction From Your Inquiry Workflow | Varicent Incentive Compensation Management
               </p>
-              @foreach($videos as $video)
-     
+              
+            
+              
+              {{$video['id']??0}}
               <div class="row">
                 <div class="col-md-3">
                   <ul class="view">
-                    <li>View:{{ $video['views']}}</li>
+                    <li>View:</li>
                     <li> Aug 19, 2022</li>
                   </ul>
                 </div>
                 <div class="col-md-9">
                   <div class="appricate">
-                  <button type="button" class="btn d-flex" onclick="likePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  @foreach($videos as $video)
+                  <button type="button" class="btn d-flex" onclick="likePost('{{$video['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_up 
                     </span> 
                   </button>
-                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$video['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_down
                       </span> DISLIKE
@@ -91,16 +95,17 @@
                       more_horiz
                       </span> 
                   </button>
+                  @endforeach
                 </div>
                 </div>
               </div>
-              @endforeach
+              
    
               <hr/>
               <div class="row">
                 <div class="col-md-1">
                   <div class="profile-image">
-                    <img src="./hq720.webp" height="60px" width="60px" />
+                  <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   </div>
                     
                 </div>
@@ -193,7 +198,44 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
+                      <div class="icons-on">
+                        <a href=""><span class="material-symbols-outlined">
+                          schedule
+                          </span></a><br/>
+                        <a href="">
+                          <span class="material-symbols-outlined">
+                            playlist_play
+                            </span>
+                        </a>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="col-md-7">
+                 
+                    <div class="video-details ps-2">
+                   
+                        <p class="m-0"> <b> What is Lorem <br/> Ipsum? </b></p>
+                        <p class="m-0"> Channel Name</p>
+                        <div class="d-flex">
+                          <ul>
+                            <li>
+                              999k views
+                            </li>
+                            <li>
+                              1 month ago
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-3 g-0">
+                  <div class="col-md-5">
+                    <div class="related-video position-relative">
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -228,42 +270,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
-                      <div class="icons-on">
-                        <a href=""><span class="material-symbols-outlined">
-                          schedule
-                          </span></a><br/>
-                        <a href="">
-                          <span class="material-symbols-outlined">
-                            playlist_play
-                            </span>
-                        </a>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  <div class="col-md-7">
-                    <div class="video-details ps-2">
-                        <p class="m-0"> <b> What is Lorem <br/> Ipsum? </b></p>
-                        <p class="m-0"> Channel Name</p>
-                        <div class="d-flex">
-                          <ul>
-                            <li>
-                              999k views
-                            </li>
-                            <li>
-                              1 month ago
-                            </li>
-                          </ul>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row mb-3 g-0">
-                  <div class="col-md-5">
-                    <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -298,7 +305,7 @@
                    <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -333,7 +340,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -368,7 +375,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -399,11 +406,10 @@
                     </div>
                   </div>
                 </div>
-
-                <div class="row mb-3 g-0">
+                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -438,7 +444,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -473,7 +479,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -508,7 +514,17 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <video crossorigin="" playsinline="" poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+                  <source src="" type="video/mp4" size="100%">
+                    <!-- <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" size="720">
+                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" size="1080"> -->
+
+                    <!-- Caption files -->
+                    <track kind="captions" label="English" srclang="en" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt" default="">
+                    <track kind="captions" label="Français" srclang="fr" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt">
+                    <!-- Fallback for browsers that don't support the <video> element -->
+                    <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" download="">Download</a>
+                </video>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -558,67 +574,8 @@
     </div>
     </div>
     </div>
-    <script>
-       function likePost(id)
-       {
-           console.log(id)
-           
-            $.ajax 
-            ({ 
-                url: 'http://localhost/Laraveljetstream/likePost',
-                type: 'post',
-                data:{
-                   "contentId":id,
-                    "_token":"{{ csrf_token() }}"
-                },
-                    success: function(result)
-                    {
-                        console.log(result)
-// 
-//                 $.ajax({
-//                     type:'post',
-//                     url:'http://localhost/jetstream/likePost',
-//                     data:{
-//                         "_token": "{{ csrf_token() }}",
-//                         "contentId":id
-//                     },
-//                     success : function (data){
-//                         console.log(data)
-//                         // info();
-// 
-                    }
-            });
-    }    
-
-        function unlikePost(id){
-        console.log(id)
-        $.ajax 
-        ({ 
-            url: 'http://localhost/Laraveljetstream/unlikePost',
-            type: 'post',
-            data:{
-                "contentId":id,
-                "_token":"{{ csrf_token() }}"
-            },
-                success: function(result)
-                {
-                    console.log(result)
-                }
-        });
-        } 
-    
-        $(function () {
-            // Owl Carousel
-            var owl = $(".owl-carousel");
-            owl.owlCarousel({
-                items: 3,
-                margin: 10,
-                loop: true,
-                nav: true
-            });
-        });
-
-    </script>
+  
+    <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
 
     </body>
     </html>

@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Post');
     }
     public function posts() {
-        return $this->hasMany('App\Models\product');
+        return $this->hasMany('App\Models\product','user_id');
     }
 
     // public function likes()
