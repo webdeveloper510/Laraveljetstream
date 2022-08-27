@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
 use App\models\User;
+use App\models\Comment;
 use App\models\LikeDislike;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -17,54 +18,48 @@ use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
 
- 
+
   public function unlikePost(Request $request)
   {
-   
+
        $id = auth()->user()->id;
-       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get(); 
-       //print_r($likeExist);die;    
+       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get();
+       //print_r($likeExist);die;
        if(count($likeExist)<=0){
         $data=new LikeDislike;
         $data->content_id=$request->contentId;
-        $data->dislike=1;       
-        $data->user_id=$id;       
-        $data->save();  
+        $data->dislike=1;
+        $data->user_id=$id;
+        $data->save();
         return response()->json([
             'bool'=>true
         ]);
        }
 
-       else{     
-        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]); 
+       else{
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
         return response()->json([
             'bool'=>true
         ]);
        }
     }
-    
+
 
     Public function uploadpage()
     {
         return view('product');
     }
 
-    
-  
-
-
     public function channel(){
-      
+
       return view('channel');
     }
 
     public function videodetail($id){
 
-      $videos = product::where('id',$id)->get()->toArray();
     
-    //   $videos = product::whereHas('likes',  function ($q) use ($id) {
-    //     $q->where('product_id', $id);
-    // })->get();
+      $videos = product::with(['comments','user'])->find($id)->toArray();
+    
 
       return view('product.single',compact('videos'));
     }
@@ -113,19 +108,19 @@ class Controller extends BaseController
 
     public function likePost(Request $request){
       $id = auth()->user()->id;
-      $likeExist = LikeDislike::where(['user_id'=>$id,'content_id'=>$request->contentId])->get();     
+      $likeExist = LikeDislike::where(['user_id'=>$id,'content_id'=>$request->contentId])->get();
       if(count($likeExist)<=0){
        $data=new LikeDislike;
        $data->content_id=$request->contentId;
-       $data->like=1;       
-       $data->user_id=$id;       
-       $data->save();  
+       $data->like=1;
+       $data->user_id=$id;
+       $data->save();
        return response()->json([
            'bool'=>true
        ]);
       }
-      else{     
-        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]); 
+      else{
+        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]);
         return response()->json([
             'bool'=>true
         ]);

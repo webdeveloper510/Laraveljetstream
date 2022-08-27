@@ -80,7 +80,7 @@
  <!------------------------------------------ Tabs Content section ------------------------------------------------>
 
    <div class="container-fluid">
-    
+
       <div class="tab-content" id="pills-tabContent">
          <!-- ------------------------------Home section tab ----------------------->
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -120,7 +120,7 @@
                 <h3 class="d-flex">Uploads <button class="btn btn-sm btn-outline-primery d-flex"><span class="material-symbols-outlined">
                   play_arrow
                   </span> <span class="btn-text">Play All</span></button></h3>
-                
+
               </div>
 
               <div class="col-md-3">
@@ -130,7 +130,7 @@
                   <div class="card-body">
                  
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class="views">
                         <ul>
@@ -166,7 +166,7 @@
                   <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -202,7 +202,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -238,7 +238,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -269,12 +269,12 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
               <hr/>
 
      <!--------------------------------------- Shorts section start ------------------------------------->
-              
+
      <div class="row">
       <div class="col-12">
         <h3 class="d-flex">
@@ -282,17 +282,17 @@
           Shorts <button class="btn btn-sm btn-outline-primery d-flex"><span class="material-symbols-outlined">
           play_arrow
           </span> <span class="btn-text">Play All</span></button></h3>
-        
+
       </div>
 
-      
+
 
       <div class="col-md-3">
         <div class="card">
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -328,7 +328,7 @@
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -364,7 +364,7 @@
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -400,7 +400,7 @@
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -431,27 +431,27 @@
           </div>
         </div>
       </div>
-      
+
     </div>
  <!--------------------------------------- Funny section start ------------------------------------->
-             <hr/>  
+             <hr/>
  <div class="row">
       <div class="col-12">
         <h3 class="d-flex">
            Fun <button class="btn btn-sm btn-outline-primery d-flex"><span class="material-symbols-outlined">
           play_arrow
           </span> <span class="btn-text">Play All</span></button></h3>
-        
+
       </div>
 
-      
+
 
       <div class="col-md-3">
         <div class="card">
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -487,7 +487,7 @@
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -523,7 +523,7 @@
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -559,7 +559,7 @@
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
             <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             </p>
             <div class=" views">
                 <ul>
@@ -590,7 +590,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
           </div>
         </div>
@@ -616,7 +616,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -652,7 +652,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -688,7 +688,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -724,7 +724,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -761,7 +761,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -797,7 +797,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -833,7 +833,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -869,7 +869,7 @@
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                     <div class=" views">
                         <ul>
@@ -975,7 +975,7 @@
                   <small>VIEW FULL PLAYLIST</small>
                 </div>
               </div>
-              
+
             </div>
             <hr/>
 
@@ -1045,7 +1045,7 @@
                   <small>VIEW FULL PLAYLIST</small>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -1057,7 +1057,7 @@
                 <div class="card">
                      <div class="row">
                       <div class="col-md-2 text-end">
-                        <div class="communit-img"> 
+                        <div class="communit-img">
                         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" height="80px" width="80px" />
                         </div>
                       </div>
@@ -1090,13 +1090,13 @@
                 </div>
               </div>
               <div class="col-md-2">
-                
+
               </div>
             </div>
-            
+
           </div>
         </div>
-      
+
         <!-- ------------------------------Channels section tab ----------------------->
         <div class="tab-pane fade" id="pills-channel" role="tabpanel" aria-labelledby="pills-channel-tab">
           <div class="subs">
@@ -1211,15 +1211,15 @@
             <div class="row">
               <div class="col-md-8">
                 <p>Description            </p>
-                <p>This channel is about learning code step by step and we provide videos for PHP, react js, 
-                  react native, JavaScript, sencha, angular, and ext js tutorial by anil Sidhu and bhasker verma 
-               <br/>we make videos on Hindi and English both language 
+                <p>This channel is about learning code step by step and we provide videos for PHP, react js,
+                  react native, JavaScript, sencha, angular, and ext js tutorial by anil Sidhu and bhasker verma
+               <br/>we make videos on Hindi and English both language
               </p>
               <p>Instagram : code.steps          </p>
               <!----- Details css ------>
               <hr/>
               <div class="Details">
-               
+
                  <p>Details</p>
                  <div class="d-flex align-items-sm-baseline">
                   <p class="left">For business inquiries: </p>
@@ -1246,7 +1246,7 @@
               </div>
               <div class="col-md-4">
                 <div class="stats">
-                 
+
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><b> Status </b></li>
                     <li class="list-group-item">Joined Aug 29, 2015</li>
@@ -1258,16 +1258,16 @@
                 </div>
               </div>
             </div>
-           
+
           </div>
         </div>
       </div>
 </div>
-  
+
   </div>
 </div>
 </body>
-  
+
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
 <script src="https://unpkg.com/plyr@3"></script>

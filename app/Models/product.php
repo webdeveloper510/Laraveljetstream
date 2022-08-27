@@ -21,16 +21,14 @@ class product extends Model
     }
 
 
+
     public function user() {
         return $this->belongsTo('App\models\User','user_id');
     }
 
-
-  
-
-    // public function likes()
-    // {
-    //     return $this->belongsToMany(User::class,LikeDislike::class);
-    // }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'product_id');
+    }
 
 }

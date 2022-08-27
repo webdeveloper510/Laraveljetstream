@@ -2,9 +2,9 @@
     <div class="container-fluid p-0">
         <div class="row g-0">
 
-            <div class="col-md-3 position-relative">    
+            <div class="col-md-3 position-relative">
                 <div class="explore">
-<!-- 
+<!--
             <div class="col-md-3 bg-dark position-relative">
                 <div class="explore" style="color:white">
  -->
@@ -28,9 +28,9 @@
                     <div class="container">
                         <div class="home-demo py-5">
                             <div class="owl-carousel owl-theme">
-                             
+
                                 @foreach($videos as $video)
-                                     @foreach($video['posts'] as $posts) 
+                                     @foreach($video['posts'] as $posts)
                                 <div class="item">
                                     <div class="card">
                                     <a href="{{url('/get-video/'.$video['id'])}}"> 
@@ -47,7 +47,7 @@
                                                     <a href="" class="title">{{$posts['title']}}</a><br/>
                                                     <a href="{{url('/channel/'.$video['id'])}}" class="small-tittle"> {{Auth::user()->name;}}</a>
                                                     <ul class="Views">
-                                                       
+
                                                         <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                     </ul>
                                                     <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
@@ -346,9 +346,9 @@
        function likePost(id)
        {
            console.log(id)
-           
-            $.ajax 
-            ({ 
+
+            $.ajax
+            ({
                 url: 'http://localhost/Laraveljetstream/likePost',
                 type: 'post',
                 data:{
@@ -358,7 +358,7 @@
                     success: function(result)
                     {
                         console.log(result)
-// 
+//
 //                 $.ajax({
 //                     type:'post',
 //                     url:'http://localhost/jetstream/likePost',
@@ -369,15 +369,15 @@
 //                     success : function (data){
 //                         console.log(data)
 //                         // info();
-// 
+//
                     }
             });
-    }    
+    }
 
         function unlikePost(id){
         console.log(id)
-        $.ajax 
-        ({ 
+        $.ajax
+        ({
             url: 'http://localhost/Laraveljetstream/unlikePost',
             type: 'post',
             data:{
@@ -389,8 +389,8 @@
                     console.log(result)
                 }
         });
-        } 
-    
+        }
+
         $(function () {
             // Owl Carousel
             var owl = $(".owl-carousel");
