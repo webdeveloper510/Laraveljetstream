@@ -23,7 +23,6 @@
         </div>
 
 <div class="col-md-9" style="height:100vh;">
-
    <!-------------------------- Add New content here  ---------------------->
    <div class="container-fluid my-3">
         <div class="row">
@@ -45,23 +44,23 @@
 
               <p class="video-title">Remove Friction From Your Inquiry Workflow | Varicent Incentive Compensation Management
               </p>
-              @foreach($videos as $video)
 
               <div class="row">
                 <div class="col-md-3">
                   <ul class="view">
-                    <li>View:{{ $video['views']}}</li>
+                    {{-- <li>View:{{ $video['views']?? 0}}</li> --}}
                     <li> Aug 19, 2022</li>
                   </ul>
                 </div>
                 <div class="col-md-9">
                   <div class="appricate">
-                  <button type="button" class="btn d-flex" onclick="likePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                    @foreach($videos as $video)
+                  <button type="button" class="btn d-flex" onclick="likePost('{{$video['id'] ?? 0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_up
                     </span>
                   </button>
-                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$video['id']}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$video['id'] ?? 0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_down
                       </span> DISLIKE
@@ -91,10 +90,11 @@
                       more_horiz
                       </span>
                   </button>
+                  @endforeach
                 </div>
                 </div>
               </div>
-              @endforeach
+
 
               <hr/>
               <div class="row">
@@ -149,39 +149,44 @@
                     <img src="./hq720.webp" height="60px" width="60px" />
                   </div>
                 </div>
+                <form method="post" action="{{ route('comment.add') }}">
                   <div class="col-md-11 mt-3">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add a comment">
+                    <input type="text" class="form-control" name="body" id="exampleFormControlInput1"  placeholder="Add a comment">
+                  <input type="hidden" name="post_id" value="{{request()->segment(2);}}"/>
+                </div>
+                  <div class="col-md-11 mt-3">
+                    <button type="submit" class="form-control btn-primary" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
                   </div>
+                </form>
                </div>
+         @foreach($videos['comments'] as $key=> $commet)
+            <div class="commentss">
 
-               <div class="commentss">
                 <div class="row mt-3">
-                  <div class="col-1 text-end">
-                    <div class="profile-image">
-                      <img src="./hq720.webp" height="60px" width="60px" />
+                    <div class="col-1 text-end">
+                            <div class="profile-image">
+                            <img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
+                            " height="60px" width="60px" />
+                            </div>
                     </div>
-                  </div>
-                    <div class="col-md-11">
-                        <p class="m-0"> <b> Username </b> 1 hours ago </p>
-                        <p>The sound of the engine tearing the air is simply too sweet</p>
+                            <div class="col-md-11">
+                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b> 1 hours ago </p>
+                                <p>{{$commet['body']}}</p>
 
-                        <div class="d-flex">
-                           <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                            thumb_up
-                            </span> 12</p>
-                            <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                              thumb_down
-                              </span> 12</p>
-                              <p class="me-3">REPLY</p>
-                        </div>
-                    </div>
+                                <div class="d-flex">
+                                <p class="d-flex me-3"> <span class="material-symbols-outlined">
+                                    thumb_up
+                                    </span> 12</p>
+                                    <p class="d-flex me-3"> <span class="material-symbols-outlined">
+                                    thumb_down
+                                    </span> 12</p>
+                                    <p class="me-3">REPLY</p>
+                                </div>
+                            </div>
                  </div>
-               </div>
-
-
-
-
-              </div>
+            </div>
+            @endforeach
+           </div>
             </div>
            </div>
            <div class="col-md-4">

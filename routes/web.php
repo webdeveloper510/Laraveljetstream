@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CommentController;
 use App\Models\product;
 use App\Models\User;
 /*
@@ -37,8 +38,11 @@ Route::middleware([
 Route::post('/likePost',[Controller::class, 'likePost']);
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
 
-Route::get('/videodetail{id}',[Controller::class, 'videodetail']);
+Route::get('/videodetail/{id}',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
-Route::get('channel/{id}',[Controller::class,'detail']);
+Route::get('/channel/{id}',[Controller::class,'detail']);
+Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+
 
 

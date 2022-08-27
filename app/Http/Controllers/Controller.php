@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
 use App\models\User;
+use App\models\Comment;
 use App\models\LikeDislike;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -55,12 +56,10 @@ class Controller extends BaseController
     }
 
     public function videodetail($id){
-
-      $videos = product::where('id',$id)->get()->toArray();;
-
-    //   $videos = product::whereHas('likes',  function ($q) use ($id) {
-    //     $q->where('product_id', $id);
-    // })->get();
+            //print_r($id);die;
+      $videos = product::with(['comments','user'])->find($id)->toArray();
+    //     echo "<pre>";
+    //   print_r($videos);die;
 
       return view('videodetail',compact('videos'));
     }
