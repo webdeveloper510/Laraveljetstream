@@ -22,8 +22,6 @@ class CommentController extends Controller
         $comment->commentable_id =0;
         $comment->commentable_type ='You Tube';
         $comment->user()->associate($id);
-        // echo "<pre>";
-        // print_r($comment);die;
         $comment->save();
 
         return back();
@@ -31,13 +29,18 @@ class CommentController extends Controller
 
     public function replyStore(Request $request)
     {
+        $id = auth()->user()->id;
         $reply = new Comment();
 
-        $reply->comment = $request->get('comment');
+        $reply->body = $request->get('body');
 
-        $reply->user()->associate($request->user());
+        $reply->user()->associate($id);
 
         $reply->parent_id = $request->get('comment_id');
+
+        $reply->commentable_id =0;
+
+        $reply->commentable_type ='You Tube';
 
         $post = product::find($request->get('post_id'));
 

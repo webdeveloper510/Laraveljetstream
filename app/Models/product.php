@@ -31,4 +31,8 @@ class product extends Model
         return $this->hasMany(Comment::class,'product_id');
     }
 
+    public function ratings()
+    {
+        return $this->hasMany('App\Models\product_rating');
+    }
 }

@@ -56,11 +56,7 @@ class Controller extends BaseController
     }
 
     public function videodetail($id){
-            //print_r($id);die;
-      $videos = product::with(['comments','user'])->find($id)->toArray();
-    //     echo "<pre>";
-    //   print_r($videos);die;
-
+      $videos = product::with(['comments.replies','user'])->find($id)->toArray();
       return view('videodetail',compact('videos'));
     }
 
@@ -96,8 +92,6 @@ class Controller extends BaseController
                   $user['security'] = $request->security;
                   $user['user_id'] =  $id;
                   $user['file'] = $video_name;
-
-
 
                   DB::table('product')->insert($user);
                   return redirect()->back()->with('message', 'content upload successfully');

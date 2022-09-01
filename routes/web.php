@@ -28,9 +28,6 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         $videos = User::with(['posts'])->get()->toArray();
-     // $videos1 = json_encode($videos);
-    //  echo "<pre>";
-    //   print_r($videos);die;
         return view('dashboard', compact('videos'));
     })->name('dashboard');
 });
@@ -42,7 +39,7 @@ Route::get('/videodetail/{id}',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
 Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
-Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+Route::post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
 
 
 

@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-md-9">
                   <div class="appricate">
-                    @foreach($videos as $video)
+
                   <button type="button" class="btn d-flex" onclick="likePost('{{$video['id'] ?? 0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       thumb_up
@@ -80,7 +80,7 @@
                       content_cut
                       </span> CLIP
                   </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex" onclick="save()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       playlist_add
                       </span> SAVE
@@ -90,7 +90,7 @@
                       more_horiz
                       </span>
                   </button>
-                  @endforeach
+
                 </div>
                 </div>
               </div>
@@ -98,23 +98,22 @@
 
               <hr/>
               <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-2">
                   <div class="profile-image">
-                    <img src="./hq720.webp" height="60px" width="60px" />
+              <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" width="80px" height="80px"/>
                   </div>
 
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <h5>Books</h5>
                     <small>
                         190 Subscriber
                     </small>
                     <p>Create. Submit. Approve. Get an all-in-one solution with Varicent Incentive Compensation Management. Automatic updates to payroll</p>
-                  <a href="">Read More</a>
+                  <a href="./login">Read More</a>
                   <div class="shows">
-                      <p>Upcoming Charges                    </p>
+                      <p>Upcoming Charges</p>
                   </div>
-
 
                 </div>
                 <div class="col-md-3 text-end">
@@ -144,45 +143,65 @@
                     </div>
                 </div>
                <div class="row">
-                <div class="col-1 text-end">
+                <div class="col-2 text-end">
                   <div class="profile-image">
-                    <img src="./hq720.webp" height="60px" width="60px" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" width="50px" height="50px"/>
                   </div>
                 </div>
+                <div class="col-md-10">
                 <form method="post" action="{{ route('comment.add') }}">
-                  <div class="col-md-11 mt-3">
+                  <div class="commentBox">
                     <input type="text" class="form-control" name="body" id="exampleFormControlInput1"  placeholder="Add a comment">
                   <input type="hidden" name="post_id" value="{{request()->segment(2);}}"/>
+
                 </div>
-                  <div class="col-md-11 mt-3">
-                    <button type="submit" class="form-control btn-primary" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
+                  <div class="text-end mt-3">
+                    <button type="submit" class="btn btn-primary btn-sm" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
                   </div>
                 </form>
+            </div>
                </div>
          @foreach($videos['comments'] as $key=> $commet)
             <div class="commentss">
-
                 <div class="row mt-3">
-                    <div class="col-1 text-end">
+                    <div class="col-2 text-end">
                             <div class="profile-image">
                             <img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
-                            " height="60px" width="60px" />
+                            "height="40px" width="40px" />
                             </div>
                     </div>
-                            <div class="col-md-11">
+                            <div class="col-md-10">
                                 <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b> 1 hours ago </p>
-                                <p>{{$commet['body']}}</p>
+                                <p class="">{{$commet['body']}}</p>
+                                @foreach($commet['replies'] as $key=> $reply)
+                                  <div>{{$reply['body']}}</div>
+                                @endforeach
 
                                 <div class="d-flex">
-                                <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                    thumb_up
-                                    </span> 12</p>
-                                    <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                    thumb_down
-                                    </span> 12</p>
-                                    <p class="me-3">REPLY</p>
+                                    <a  class="me-3 text-decoration-none" onclick="reply(this)">REPLY</a>
                                 </div>
+                                <div class="row" id="replyBox"  style="display: none">
+                                    <div class="col-md-12 common" >
+                                        <form method="post" action="{{ route('reply.add') }}">
+                                          <div >
+                                            <input type="text" class="form-control "name="body" id="exampleFormControlInput1"  placeholder="Add a comment">
+                                             <input type="hidden" name="post_id" value="{{request()->segment(2);}}"/>
+                                             <input type="hidden" name="comment_id" value="{{$commet['id']}}"/>
+                                        </div>
+                                          <div class="text-end mt-3">
+                                            <button type="submit" class="btn btn-primary btn-sm" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
+                                          </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                 {{-- append div end --}}
+
+
+                                <hr/>
+
                             </div>
+
                  </div>
             </div>
             @endforeach
@@ -198,7 +217,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -233,7 +252,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -268,7 +287,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -303,7 +322,7 @@
                    <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -338,7 +357,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -373,7 +392,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -408,7 +427,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -443,7 +462,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -478,7 +497,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -513,7 +532,7 @@
                 <div class="row mb-3 g-0">
                   <div class="col-md-5">
                     <div class="related-video position-relative">
-                      <img src="./hq720.webp" class="img-fluid" />
+                    <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                       <div class="icons-on">
                         <a href=""><span class="material-symbols-outlined">
                           schedule
@@ -563,6 +582,7 @@
     </div>
     </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
        function likePost(id)
        {
@@ -623,6 +643,13 @@
             });
         });
 
+
+        function reply(a){
+
+        $(a).parent().next().show();
+
+
+}
     </script>
 
     </body>

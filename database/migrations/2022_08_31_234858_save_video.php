@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForignKey extends Migration
+class SaveVideo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateForignKey extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            //
-            $table->bigInteger('user_id')->unsigned()->change();
-            $table->foreign('user_id')
-            ->references('id')->on('users');
+        Schema::create('save_video', function (Blueprint $table) {
+            $table->id();
+            $table->integer('product_id');
+            $table->integer('user_id');
+            $table->timestamps();
         });
     }
 
@@ -28,8 +28,6 @@ class CreateForignKey extends Migration
      */
     public function down()
     {
-        Schema::table('product', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('save_video');
     }
 }
