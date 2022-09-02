@@ -1,8 +1,6 @@
 
 function likePost(id)
-{
-    console.log(id) ;return false;
-    
+{    
      $.ajax 
      ({ 
          url: 'http://localhost/Laraveljetstream/likePost',
@@ -13,23 +11,11 @@ function likePost(id)
          },
              success: function(result)
              {
-                 console.log(result)
-// 
-//                 $.ajax({
-//                     type:'post',
-//                     url:'http://localhost/jetstream/likePost',
-//                     data:{
-//                         "_token": "{{ csrf_token() }}",
-//                         "contentId":id
-//                     },
-//                     success : function (data){
-//                         console.log(data)
-//                         // info();
-// 
+                $('.liked').text(result.like)
+                $('.disliked').text(result.dislike)
              }
      });
-}    
-
+}  
  function unlikePost(id){
  console.log(id)
  $.ajax 

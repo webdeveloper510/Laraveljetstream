@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
+use App\models\Subscribe;
 use App\models\User;
 use App\models\Comment;
 use App\models\LikeDislike;
@@ -18,16 +19,15 @@ use Illuminate\Support\Facades\Validator;
 class Controller extends BaseController
 {
 
-
   public function unlikePost(Request $request)
   {
 
        $id = auth()->user()->id;
-       $likeExist = LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->get();
+       $likeExist = LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->get();
        //print_r($likeExist);die;
        if(count($likeExist)<=0){
         $data=new LikeDislike;
-        $data->content_id=$request->contentId;
+        $data->product_id=$request->contentId;
         $data->dislike=1;
         $data->user_id=$id;
         $data->save();
@@ -37,13 +37,21 @@ class Controller extends BaseController
        }
 
        else{
-        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
+        LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
         return response()->json([
             'bool'=>true
         ]);
        }
-    }
 
+       $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
+       $dislike = LikeDislike::where(['product_id'=>$request->contentId])->sum('dislike');
+
+       return response()->json([
+        'bool'=>true,
+        'like'=>$like,
+        'dislike'=>$dislike
+    ]);
+    }
 
     Public function uploadpage()
     {
@@ -58,10 +66,14 @@ class Controller extends BaseController
     public function videodetail($id){
 
     
-      $videos = product::with(['comments','user'])->find($id)->toArray();
-    
-
-      return view('product.single',compact('videos'));
+      $videos = product::with(['comments','user','like'])->find($id)->toArray();
+       $like = array_column($videos['like'], 'like');
+       $dislike = array_column($videos['like'], 'dislike');
+       $liked =  array_sum($like); 
+       $disliked =  array_sum($dislike); 
+ 
+ 
+      return view('product.single',compact('videos','liked','disliked'));
     }
 
 
@@ -108,23 +120,27 @@ class Controller extends BaseController
 
     public function likePost(Request $request){
       $id = auth()->user()->id;
-      $likeExist = LikeDislike::where(['user_id'=>$id,'content_id'=>$request->contentId])->get();
+      $likeExist = LikeDislike::where(['user_id'=>$id,'product_id'=>$request->contentId])->get();
       if(count($likeExist)<=0){
        $data=new LikeDislike;
-       $data->content_id=$request->contentId;
+       $data->product_id=$request->contentId;
        $data->like=1;
        $data->user_id=$id;
-       $data->save();
-       return response()->json([
-           'bool'=>true
-       ]);
+       $data->save();       
       }
       else{
-        LikeDislike::where(['user_id'=>$id, 'content_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]);
-        return response()->json([
-            'bool'=>true
-        ]);
+        LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]);
+      
        }
+
+       $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
+       $dislike = LikeDislike::where(['product_id'=>$request->contentId])->sum('dislike');
+
+       return response()->json([
+        'bool'=>true,
+        'like'=>$like,
+        'dislike'=>$dislike
+    ]);
     }
 
 
@@ -155,6 +171,19 @@ public function single($id)
       return view('dashboard',compact('videos'));
 
 }
+
+function subscribe(Request $request)
+    {
+    
+        $id = auth()->user()->id;
+        $data=new Subscribe;
+        $data->channel_id=$request->channel_id;
+        Subscribe::find($id)->increment('count');
+        $data->user_id=$id;
+        $data->save();
+        return redirect()->back()->with('message', 'Content Saved Successfully!');
+
+    }
 
   
 }

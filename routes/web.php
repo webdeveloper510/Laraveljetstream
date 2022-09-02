@@ -34,7 +34,9 @@ Route::middleware([
         return view('product.index', compact('videos'));
     })->name('dashboard');
 });
+
 Route::post('/likePost',[Controller::class, 'likePost']);
+Route::get('/likePost',[Controller::class, 'likePost']);
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
 // Route::get('/product/{id}',[Controller::class, 'videodetail']);
 // Route::get('/channel',[Controller::class, 'channel']);
@@ -47,6 +49,7 @@ Route::get('/channel',[Controller::class, 'channel']);
 Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
 Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+Route::post('/subscribe',[Controller::class, 'subscribe']);
 
 
 

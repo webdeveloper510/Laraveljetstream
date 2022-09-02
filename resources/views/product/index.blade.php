@@ -33,7 +33,7 @@
                                      @foreach($video['posts'] as $posts)
                                 <div class="item">
                                     <div class="card">
-                                    <a href="{{url('/get-video/'.$video['id'])}}"> 
+                                    <a href="{{url('/videodetail/'.$video['id'])}}"> 
                                    <video width="100%" height="100%" controls>
                                         <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}" type="video/mp4">
                                     </video></a>
@@ -289,7 +289,7 @@
                                     <video width="100%" height="100%" controls>
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                         <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                        Your browser does not support the video tag.
+                                         Your browser does not support the video tag.
                                     </video>
                                     <div class="card-body text-center">
                                         <h5 class="card-title">Video Title</h5>
@@ -302,7 +302,7 @@
                                     <video width="100%" height="100%" controls>
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                         <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                        Your browser does not support the video tag.
+                                            Your browser does not support the video tag.
                                     </video>
                                     <div class="card-body text-center">
                                         <h5 class="card-title">Video Title</h5>

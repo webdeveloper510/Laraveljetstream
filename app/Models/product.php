@@ -20,7 +20,12 @@ class product extends Model
         return $this->hasMany('App\models\LikeDislike','content_id')->sum('dislike');
     }
 
+        public function like()
+        {
+            return $this->hasMany(LikeDislike::class,'product_id');
+        }
 
+    
 
     public function user() {
         return $this->belongsTo('App\models\User','user_id');
