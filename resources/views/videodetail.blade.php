@@ -650,7 +650,7 @@ function save_video(){
         }
 
         $(function () {
-            // Owl Carousel
+
             var owl = $(".owl-carousel");
             owl.owlCarousel({
                 items: 3,

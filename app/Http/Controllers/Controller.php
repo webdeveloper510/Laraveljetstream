@@ -58,6 +58,8 @@ class Controller extends BaseController
 
     public function videodetail($id){
       $videos = product::with(['comments.replies','user'])->find($id)->toArray();
+    //   echo "<pre>";
+    //   print_r($videos);die;
       return view('videodetail',compact('videos'));
     }
 

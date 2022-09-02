@@ -33,8 +33,8 @@ class CommentController extends Controller
         $id = auth()->user()->id;
 
         $reply = new Comment();
-        echo "<pre>";
-        print_r($reply);die;
+        // echo "<pre>";
+        // print_r($reply);die;
         $reply->body = $request->get('body');
 
         $reply->user()->associate($id);
