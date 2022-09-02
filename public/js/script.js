@@ -1,4 +1,5 @@
 
+
 function likePost(id)
 {    
      $.ajax 
@@ -43,4 +44,5 @@ function likePost(id)
          nav: true
      });
  });
+
 

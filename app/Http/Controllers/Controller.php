@@ -16,6 +16,7 @@ use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 class Controller extends BaseController
 {
 
@@ -46,7 +47,7 @@ class Controller extends BaseController
        $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
        $dislike = LikeDislike::where(['product_id'=>$request->contentId])->sum('dislike');
 
-       return response()->json([
+       return response()->json([  
         'bool'=>true,
         'like'=>$like,
         'dislike'=>$dislike
@@ -58,15 +59,15 @@ class Controller extends BaseController
         return view('product');
     }
 
-    public function channel(){
-
+    public function channel()
+    {
       return view('channel');
     }
 
     public function videodetail($id){
-
-    
-      $videos = product::with(['comments','user','like'])->find($id)->toArray();
+      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
+      // echo "<pre>";
+      // print_r( $videos); die;
        $like = array_column($videos['like'], 'like');
        $dislike = array_column($videos['like'], 'dislike');
        $liked =  array_sum($like); 
@@ -75,7 +76,6 @@ class Controller extends BaseController
  
       return view('product.single',compact('videos','liked','disliked'));
     }
-
 
     Public function store(Request $request){
         $id = auth()->user()->id;
@@ -108,8 +108,6 @@ class Controller extends BaseController
                   $user['security'] = $request->security;
                   $user['user_id'] =  $id;
                   $user['file'] = $video_name;
-
-
 
                   DB::table('product')->insert($user);
                   return redirect()->back()->with('message', 'content upload successfully');
@@ -151,6 +149,19 @@ class Controller extends BaseController
 
         $detail=product::find($id);
         return view('dashboard',['detail'=>$detail]);
+
+    }
+
+    function save_video(Request $request)
+    {
+        $date = Carbon::now();
+        $id = auth()->user()->id;
+        $data['product_id'] = $request->product_id;
+        $data['user_id'] =$id;
+        $data['created_at'] = $date;
+        $data['updated_at'] = $date;
+        DB::table('save_video')->insert($data);
+        return redirect()->back()->with('message', 'Content Saved Successfully!');
 
     }
 

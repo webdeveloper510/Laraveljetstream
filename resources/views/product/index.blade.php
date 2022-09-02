@@ -8,14 +8,14 @@
             <div class="col-md-3 bg-dark position-relative">
                 <div class="explore" style="color:white">
  -->
-                    <h5><a href="/Laraveljetstream/dashboard"><span class="material-symbols-outlined">home</span> Home</a></h5>
+                    <h5><a href="/jetstream/dashboard"><span class="material-symbols-outlined">home</span> Home</a></h5>
                     <!-- <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
                     <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
                     <h5><span class="material-symbols-outlined">subscriptions</span> Subscriptions</h5>
                     <hr /> -->
                     <h5><span class="material-symbols-outlined">video_library</span>Library</h5>
                     <h5><span class="material-symbols-outlined">history</span> History</h5>
-                    <h5><a href="/Laraveljetstream/uploadpage"><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
+                    <h5><a href="/jetstream/uploadpage"><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
                     <!-- <h5><span class="material-symbols-outlined">schedule</span> Watch later</h5> -->
                     <h5><span class="material-symbols-outlined">thumb_up</span>Liked videos</h5>
                     <hr />
