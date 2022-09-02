@@ -15,6 +15,7 @@ use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 class Controller extends BaseController
 {
 
@@ -50,8 +51,8 @@ class Controller extends BaseController
         return view('product');
     }
 
-    public function channel(){
-
+    public function channel()
+    {
       return view('channel');
     }
 
@@ -133,6 +134,19 @@ class Controller extends BaseController
 
         $detail=product::find($id);
         return view('dashboard',['detail'=>$detail]);
+
+    }
+
+    function save_video(Request $request)
+    {
+        $date = Carbon::now();
+        $id = auth()->user()->id;
+        $data['product_id'] = $request->product_id;
+        $data['user_id'] =$id;
+        $data['created_at'] = $date;
+        $data['updated_at'] = $date;
+        DB::table('save_video')->insert($data);
+        return redirect()->back()->with('message', 'Content Saved Successfully!');
 
     }
 

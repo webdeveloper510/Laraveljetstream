@@ -80,7 +80,7 @@
                       content_cut
                       </span> CLIP
                   </button>
-                  <button type="button" class="btn d-flex" onclick="save()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex" onclick="save_video()" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       playlist_add
                       </span> SAVE
@@ -584,6 +584,23 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+function save_video(){
+    $.ajax
+    ({
+        url: 'http://localhost/jetstream/save_video',
+        type: 'post',
+        data:{
+           "product_id":"{{request()->segment(2)}}",
+            "_token":"{{ csrf_token() }}"
+        },
+            success: function(data)
+            {
+                console.log(data)
+            }
+    });
+
+}
+
        function likePost(id)
        {
            console.log(id)

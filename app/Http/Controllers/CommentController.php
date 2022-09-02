@@ -29,9 +29,12 @@ class CommentController extends Controller
 
     public function replyStore(Request $request)
     {
-        $id = auth()->user()->id;
-        $reply = new Comment();
 
+        $id = auth()->user()->id;
+
+        $reply = new Comment();
+        echo "<pre>";
+        print_r($reply);die;
         $reply->body = $request->get('body');
 
         $reply->user()->associate($id);
