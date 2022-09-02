@@ -1,11 +1,8 @@
-
 @include('header')
 <div class="container-fluid p-0">
     <div class="row g-0">
         <div class="col-md-3  position-relative">
             <div class="explore" >
-
-
                 <h5><span class="material-symbols-outlined">home</span> Home</h5>
                 <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
                 <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>

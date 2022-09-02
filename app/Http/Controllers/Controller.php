@@ -175,7 +175,7 @@ public function single($id)
 function subscribe(Request $request)
     {
     
-        $id = auth()->user()->id;
+        $id = auth()->user()->id; 
         $data=new Subscribe;
         $data->channel_id=$request->channel_id;
         Subscribe::find($id)->increment('count');
