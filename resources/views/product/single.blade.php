@@ -57,7 +57,6 @@
                 <div class="col-md-9">
                   <div class="appricate">
            
-                     
                     <button type="button" class="btn d-flex" onclick="likePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                       <span class="material-symbols-outlined">
                       thumb_up <span class="liked">{{$liked}}</span>
@@ -119,7 +118,7 @@
 
                 </div>
                 <div class="col-md-3 text-end">
-                    <button class="btn btn-danger" onclick="subscribe()">SUBSCRIBE</button>
+                    <button class="btn btn-danger" onclick="subscribe('{{request()->segment(2)}}')">SUBSCRIBE</button>
                 </div>
               </div>
               <hr/>
@@ -586,52 +585,11 @@
 
     </div>
     </div>
-    </div>
-
+    </div>  
+  
   
     <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
-    <script>
-      function subscribe(){
-    $.ajax
-    ({
-        url: 'http://localhost/Laraveljetstream/subscribe',
-        type: 'post',
-        data:{
-           "channel_id":"{{request()->segment(2)}}",
-           "count":"{{request()->segment(2)}}",
-            "_token":"{{ csrf_token() }}"
-        },
-            success: function(data)
-            {
-                console.log(data)
-            }
-    });
-
-}
-function save_video(){
-    $.ajax
-    ({
-        url: 'http://localhost/Laraveljetstream/save_video',
-        type: 'post',
-        data:{
-           "product_id":"{{request()->segment(2)}}",
-            "_token":"{{ csrf_token() }}"
-        },
-            success: function(data)
-            {
-                console.log(data)
-            }
-    });
-
-}
-
-function reply(a){
-
-$(a).parent().next().show();
-
-
-}
-    </script>
-
+    {!! Toastr::message() !!} 
     </body>
     </html>
+    

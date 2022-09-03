@@ -9,6 +9,7 @@ class Subscribe extends Model
 {
     use HasFactory;
     protected $table = 'subscribes';
+    public $timestamps = true;
 
     public function subscribes()
     {

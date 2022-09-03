@@ -7,6 +7,7 @@ use App\models\Subscribe;
 use App\models\User;
 use App\models\Comment;
 use App\models\LikeDislike;
+use Toastr;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -156,13 +157,28 @@ class Controller extends BaseController
     {
         $date = Carbon::now();
         $id = auth()->user()->id;
-        $data['product_id'] = $request->product_id;
-        $data['user_id'] =$id;
-        $data['created_at'] = $date;
-        $data['updated_at'] = $date;
-        DB::table('save_video')->insert($data);
-        return redirect()->back()->with('message', 'Content Saved Successfully!');
+        $saved_data = DB::table('save_video')->where(['user_id'=>$id,'product_id'=>$request->product_id])->count();
+        if($saved_data>1){
+            return response()->json([
+                'bool'=>true,
+                'message'=>'Already Saved Successfully!',
+                'code'=>1
+            ]);
+        }
+        else{
 
+            $data['product_id'] = $request->product_id;
+            $data['user_id'] =$id;
+            $data['created_at'] = $date;
+            $data['updated_at'] = $date;
+            DB::table('save_video')->insert($data);
+
+            return response()->json([
+                'bool'=>true,
+                'message'=>'Content Saved Successfully!',
+                'code'=>1
+            ]);
+        }
     }
 
 
@@ -185,15 +201,33 @@ public function single($id)
 
 function subscribe(Request $request)
     {
-    
-        $id = auth()->user()->id; 
-        $data=new Subscribe;
-        $data->channel_id=$request->channel_id;
-        Subscribe::find($id)->increment('count');
-        $data->user_id=$id;
-        $data->save();
-        return redirect()->back()->with('message', 'Content Saved Successfully!');
+      $id = auth()->user()->id; 
+      $alreadySubscribed = Subscribe::where(['user_id'=>$id,'channel_id'=>$request->channel_id])->count();
+      if($alreadySubscribed<=0){
+           $data=new Subscribe;
+           $data->channel_id=$request->channel_id;
+           $data->user_id=$id;
+           $data->count=1;
+           $data->save();
+           return response()->json([
+            'bool'=>true,
+            'message'=>'Subscribed Successfully!',
+            'code'=>1
+        ]);
+           //Subscribe::find($id)->increment('count');
+      }
 
+      else{
+          return response()->json([
+            'bool'=>true,
+            'message'=>'Already Subscribed!',
+            'code'=>1
+        ]);
+      }
+     
+        //return redirect()->back()->with('message', 'Content Saved Successfully!');
+    
+      
     }
 
   

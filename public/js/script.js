@@ -1,10 +1,59 @@
+var base_url ="http://localhost/Laraveljetstream"
+function subscribe(product_id){
+    toastr.options = {
+        "closeButton": true,
+        "newestOnTop": true,
+        "positionClass": "toast-top-right"
+      };
+    $.ajax
+    ({
+        url: base_url+'/subscribe',
+        type: 'post',
+        data:{
+           "channel_id":product_id,
+           "count":"{{request()->segment(2)}}",
+            "_token":"{{ csrf_token() }}"
+        },
+            success: function(data)
+            {
+               if(data.code==1){
+                toastr.success(data.message);
+               }
+            }
+    });
 
+}
+function save_video(){
+    $.ajax
+    ({
+        url: base_url+'/save_video',
+        type: 'post',
+        data:{
+           "product_id":"{{request()->segment(2)}}",
+            "_token":"{{ csrf_token() }}"
+        },
+            success: function(data)
+            {
+                if(data.bool){
+                    alert(data.message)
+                }
+            }
+    });
+
+}
+
+function reply(a){
+
+$(a).parent().next().show();
+
+
+}
 
 function likePost(id)
 {    
      $.ajax 
      ({ 
-         url: 'http://localhost/Laraveljetstream/likePost',
+         url: base_url+'/likePost',
          type: 'post',
          data:{
             "contentId":id,
@@ -18,10 +67,10 @@ function likePost(id)
      });
 }  
  function unlikePost(id){
- console.log(id)
+ 
  $.ajax 
  ({ 
-     url: 'http://localhost/Laraveljetstream/unlikePost',
+     url: base_url+'/unlikePost',
      type: 'post',
      data:{
          "contentId":id,
@@ -29,7 +78,10 @@ function likePost(id)
      },
          success: function(result)
          {
-             console.log(result)
+            if(result.bool){
+                $('.liked').text(result.like)
+                $('.disliked').text(result.dislike)
+            }
          }
  });
  } 
