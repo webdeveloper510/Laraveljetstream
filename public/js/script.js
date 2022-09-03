@@ -61,8 +61,10 @@ function likePost(id)
          },
              success: function(result)
              {
-                $('.liked').text(result.like)
-                $('.disliked').text(result.dislike)
+                if(result.bool){
+                    $('.liked').text(result.like)
+                    $('.disliked').text(result.dislike)
+                }
              }
      });
 }  
@@ -84,17 +86,25 @@ function likePost(id)
             }
          }
  });
- } 
+}
+function reply(a){
+ $(a).parent().next().show();
+}
 
- $(function () {
-     // Owl Carousel
-     var owl = $(".owl-carousel");
-     owl.owlCarousel({
-         items: 3,
-         margin: 10,
-         loop: true,
-         nav: true
-     });
- });
-
-
+function save_video(product_id){
+    $.ajax
+    ({
+        url: base_url+'/save_video',
+        type: 'post',
+        data:{
+           "product_id":product_id,
+            "_token":"{{ csrf_token() }}"
+        },
+            success: function(data)
+            {
+                if(data.bool){
+                    alert(data.message)
+                }
+            }
+    });
+}

@@ -22,4 +22,6 @@ class Comment extends Model
         return $this->belongsTo('App\models\product','product_id');
     }
 
+
+
 }

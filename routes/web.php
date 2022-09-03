@@ -39,7 +39,7 @@ Route::middleware([
 });
 
 Route::post('/likePost',[Controller::class, 'likePost']);
-Route::get('/likePost',[Controller::class, 'likePost']);
+//Route::get('/likePost',[Controller::class, 'likePost']);
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
 // Route::get('/product/{id}',[Controller::class, 'videodetail']);
 // Route::get('/channel',[Controller::class, 'channel']);

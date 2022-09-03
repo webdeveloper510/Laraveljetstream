@@ -33,22 +33,22 @@ class Controller extends BaseController
         $data->dislike=1;
         $data->user_id=$id;
         $data->save();
-        return response()->json([
-            'bool'=>true
-        ]);
+        // return response()->json([
+        //     'bool'=>true
+        // ]);
        }
 
        else{
         LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
-        return response()->json([
-            'bool'=>true
-        ]);
+        // return response()->json([
+        //     'bool'=>true
+        // ]);
        }
 
        $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
        $dislike = LikeDislike::where(['product_id'=>$request->contentId])->sum('dislike');
 
-       return response()->json([  
+       return response()->json([
         'bool'=>true,
         'like'=>$like,
         'dislike'=>$dislike
@@ -67,14 +67,11 @@ class Controller extends BaseController
 
     public function videodetail($id){
       $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
-      // echo "<pre>";
-      // print_r( $videos); die;
+
        $like = array_column($videos['like'], 'like');
        $dislike = array_column($videos['like'], 'dislike');
-       $liked =  array_sum($like); 
-       $disliked =  array_sum($dislike); 
- 
- 
+       $liked =  array_sum($like);
+       $disliked =  array_sum($dislike);
       return view('product.single',compact('videos','liked','disliked'));
     }
 
@@ -125,11 +122,11 @@ class Controller extends BaseController
        $data->product_id=$request->contentId;
        $data->like=1;
        $data->user_id=$id;
-       $data->save();       
+       $data->save();
       }
       else{
         LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]);
-      
+
        }
 
        $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
@@ -158,6 +155,7 @@ class Controller extends BaseController
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id'=>$id,'product_id'=>$request->product_id])->count();
+        // print_r($saved_data);die;
         if($saved_data>1){
             return response()->json([
                 'bool'=>true,
@@ -185,7 +183,7 @@ class Controller extends BaseController
     public function getVideo($id)
 {
       $videos = product::with('user')->find($id);
-      
+
 
       return view('product.single',compact('videos'));
 
@@ -193,7 +191,7 @@ class Controller extends BaseController
 public function single($id)
 {
       $videos = product::with('user')->find($id);
-      
+
 
       return view('dashboard',compact('videos'));
 
@@ -230,5 +228,5 @@ function subscribe(Request $request)
       
     }
 
-  
+
 }
