@@ -124,9 +124,11 @@
               </div>
 
               <div class="col-md-3">
+              <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                 <div class="card">
-                  <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
+                  
                   <div class="card-body">
+                 
                     <p class="m-0">
                       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>

@@ -19,7 +19,7 @@ class LikeDislike extends Model
 
    public function post()
     {
-        return $this->belongsTo(product::class);
+        return $this->belongsTo(product::class,'product_id');
     }
 
 

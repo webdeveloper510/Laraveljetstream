@@ -129,3 +129,4 @@ var nav = $('.fixed-button');
          nav.removeClass('active');
      }
  });
+

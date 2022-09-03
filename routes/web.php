@@ -28,18 +28,34 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         $videos = User::with(['posts'])->get()->toArray();
-        return view('dashboard', compact('videos'));
+     // $videos1 = json_encode($videos);
+    //  echo "<pre>";
+    //   print_r($videos);die;
+        return view('product.index', compact('videos'));
+
+        // return view('dashboard', compact('videos'));
+
     })->name('dashboard');
 });
 
 Route::post('/likePost',[Controller::class, 'likePost']);
+//Route::get('/likePost',[Controller::class, 'likePost']);
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
+// Route::get('/product/{id}',[Controller::class, 'videodetail']);
+// Route::get('/channel',[Controller::class, 'channel']);
+// Route::get('channel/{id}',[Controller::class,'detail']);
+// Route::get('get-video/{id}', [Controller::class,'getVideo']);
+// Route::get('channel/{id}', [Controller::class,'channel']);
 
 Route::get('/videodetail/{id}',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
 Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
+
+Route::post('/subscribe',[Controller::class, 'subscribe']);
+
 Route::post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
 Route::post('/save_video',[Controller::class, 'save_video']);
+
 
 
