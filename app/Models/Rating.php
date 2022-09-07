@@ -5,9 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class product_rating extends Model
+class Rating extends Model
 {
     use HasFactory;
+    protected $table = 'ratings';
+    protected $guarded = [];
+
+    protected $fillable = [
+        'comment'
+    ];
 
     public function user()
     {
@@ -16,6 +22,6 @@ class product_rating extends Model
 
     public function product()
     {
-        return $this->belongsTo('App\Models\product_rating');
+        return $this->belongsTo('App\Models\Product');
     }
 }

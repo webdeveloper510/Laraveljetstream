@@ -70,6 +70,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\product','user_id');
     }
 
+    public function ratings()
+{
+    return $this->hasMany('App\Models\product_rating'::class);
+}
+
+
     // public function likes()
     // {
     //     return $this->hasMany(product::class,LikeDislike::class);

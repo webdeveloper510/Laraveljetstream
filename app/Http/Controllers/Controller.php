@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
 use App\models\Subscribe;
+use App\models\product_rating;
 use App\models\User;
+use App\models\Rating;
 use App\models\Comment;
 use App\models\LikeDislike;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -65,12 +67,17 @@ class Controller extends BaseController
     }
 
     public function videodetail($id){
-      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
 
-       $like = array_column($videos['like'], 'like');
-       $dislike = array_column($videos['like'], 'dislike');
-       $liked =  array_sum($like);
-       $disliked =  array_sum($dislike);
+    product::find($id)->increment('views');
+
+    $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
+    $like = array_column($videos['like'], 'like');
+    $dislike = array_column($videos['like'], 'dislike');
+    $liked =  array_sum($like);
+    $disliked =  array_sum($dislike);
+
+    //print_r($videos);die;
+
       return view('product.single',compact('videos','liked','disliked'));
     }
 
@@ -104,6 +111,7 @@ class Controller extends BaseController
                   $user['thumbnail']= $imae_name;
                   $user['security'] = $request->security;
                   $user['user_id'] =  $id;
+                  $user['views'] =  0;
                   $user['file'] = $video_name;
 
                   DB::table('product')->insert($user);
@@ -139,15 +147,6 @@ class Controller extends BaseController
     }
 
 
-    function detail(Request $request,$id)
-    {
-
-        product::find($id)->increment('views');
-
-        $detail=product::find($id);
-        return view('dashboard',['detail'=>$detail]);
-
-    }
 
     function save_video(Request $request)
     {
@@ -178,24 +177,6 @@ class Controller extends BaseController
         }
     }
 
-
-    public function getVideo($id)
-{
-      $videos = product::with('user')->find($id);
-
-
-      return view('product.single',compact('videos'));
-
-}
-public function single($id)
-{
-      $videos = product::with('user')->find($id);
-
-
-      return view('dashboard',compact('videos'));
-
-}
-
 function subscribe(Request $request)
     {
 
@@ -209,5 +190,48 @@ function subscribe(Request $request)
 
     }
 
+    /**-----------------------------------------Rating System--------------------------------------- */
+
+    public function rate(Request $request)
+     {
+        $id = auth()->user()->id;
+
+        $data=new Rating;
+        $data->user_id = $id;
+        $data->comment = $request->description;
+        $data->rating  = $request->rating;
+        $data->product_id  = $request->product_id;
+        $data->status  = 1;
+        $data->save();
+        return redirect()->back()->with('message', 'Content Saved Successfully!');
+        // if (!empty($rating)) {
+        //     $rating->user_id = auth()->user()->id;
+        //     $rating->product_id = $this->product['id'];
+        //     $rating->rating = $this->rating;
+        //     $rating->comment = $this->comment;
+        //     $rating->status = 1;
+        //     try {
+        //         $rating->update();
+        //     } catch (\Throwable $th) {
+        //         throw $th;
+        //     }
+        //     session()->flash('message', 'Success!');
+        // }
+
+        // else {
+        //     $rating = new Rating;
+        //     $rating->user_id = auth()->user()->id;
+        //     $rating->product_id = $this->product->id;
+        //     $rating->rating = $this->rating;
+        //     $rating->comment = $this->comment;
+        //     $rating->status = 1;
+        //     try {
+        //         $rating->save();
+        //     } catch (\Throwable $th) {
+        //         throw $th;
+        //     }
+        //     $this->hideForm = true;
+        // }
+    }
 
 }

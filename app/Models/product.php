@@ -8,6 +8,7 @@ use Conner\Likeable\Likeable;
 class product extends Model
 {
     use HasFactory;
+    public $incrementing = true;
     protected $table = 'product';
     // public $timestamps=false;
     public $timestamps=true;
@@ -15,22 +16,20 @@ class product extends Model
     public function likes1(){
         return $this->hasMany('App\models\LikeDislike','content_id')->sum('like');
     }
+
     // Dislikes
-    public function dislikes(){
+
+      public function dislikes(){
         return $this->hasMany('App\models\LikeDislike','content_id')->sum('dislike');
+      }
+
+    public function like()
+    {
+        return $this->hasMany(LikeDislike::class,'product_id');
     }
-
-        public function like()
-        {
-            return $this->hasMany(LikeDislike::class,'product_id');
-        }
-
-
-
     public function user() {
-        return $this->belongsTo('App\models\User','user_id');
+       return $this->belongsTo('App\models\User','user_id');
     }
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -41,8 +40,8 @@ class product extends Model
         return $this->comments()->count();
     }
 
-    public function ratings()
-    {
-        return $this->hasMany('App\Models\product_rating');
-    }
+
+
+
+
 }
