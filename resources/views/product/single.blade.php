@@ -42,9 +42,34 @@
                     <li>Aug 19, 2022</li>
                   </ul>
                 </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            @livewire('product-ratings', ['product' => $videos], key($videos['id']))
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
                 <div class="col-md-9">
                   <div class="appricate">
+<<<<<<< HEAD
            
+=======
+
+
+                    <button type="button" class="btn d-flex"data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span class="material-symbols-outlined">
+                            star
+                            </span>
+                      </button>
+>>>>>>> def3a51fe3b698ec989b182f70938a596b042af0
                     <button type="button" class="btn d-flex" onclick="likePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                       <span class="material-symbols-outlined">
                       thumb_up <span class="liked">{{$liked}}</span>
@@ -159,6 +184,9 @@
                             "height="40px" width="40px" />
                             </div>
                     </div>
+
+
+
                             <div class="col-md-10">
                                 <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b> 1 hours ago </p>
                                 <p class="">{{$commet['body']}}</p>

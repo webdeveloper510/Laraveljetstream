@@ -57,6 +57,8 @@ Route::post('/subscribe',[Controller::class, 'subscribe']);
 
 Route::post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
 Route::post('/save_video',[Controller::class, 'save_video']);
+Route::post('/rating',[Controller::class, 'rating'])->name('postStar');
+Route::post('/rate',[Controller::class, 'rate']);
 
 
 

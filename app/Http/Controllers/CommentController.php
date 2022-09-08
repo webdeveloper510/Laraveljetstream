@@ -33,15 +33,14 @@ class CommentController extends Controller
         $id = auth()->user()->id;
 
         $reply = new Comment();
-        // echo "<pre>";
-        // print_r($reply);die;
+
         $reply->body = $request->get('body');
 
         $reply->user()->associate($id);
 
         $reply->parent_id = $request->get('comment_id');
 
-        $reply->commentable_id =0;
+        $reply->commentable_id = 0 ;
 
         $reply->commentable_type ='You Tube';
 
