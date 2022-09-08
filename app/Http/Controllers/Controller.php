@@ -18,6 +18,7 @@ use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
+
 class Controller extends BaseController
 {
 
@@ -65,17 +66,33 @@ class Controller extends BaseController
       return view('channel');
     }
 
-    public function videodetail($id){
-      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
 
+    public function watchlater()
+    {
+       $product = product::join('save_video' ,'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
+      //  echo "<pre>";
+      //  print_r($product);die;
+       return view('watchlater',compact('product'));
+    }
+
+    public function videodetail($id){
+      $auth_id = auth()->user()->id;
+
+      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
+  
+      $count = Subscribe::where(['channel_id'=>$id])->count();
+  
+  
+     
        $like = array_column($videos['like'], 'like');
        $dislike = array_column($videos['like'], 'dislike');
        $liked =  array_sum($like);
        $disliked =  array_sum($dislike);
-      return view('product.single',compact('videos','liked','disliked'));
+      return view('product.single',compact('videos','liked','disliked','count'));
     }
 
     Public function store(Request $request){
+     
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
@@ -163,13 +180,14 @@ class Controller extends BaseController
                 'code'=>1
             ]);
         }
-        else{
+        else{     
+          
 
             $data['product_id'] = $request->product_id;
             $data['user_id'] =$id;
             $data['created_at'] = $date;
             $data['updated_at'] = $date;
-            DB::table('save_video')->insert($data);
+            DB::table('save_video')->insert($data); 
 
             return response()->json([
                 'bool'=>true,
@@ -184,7 +202,7 @@ class Controller extends BaseController
 {
       $videos = product::with('user')->find($id);
 
-
+      print_r($videos);die;
       return view('product.single',compact('videos'));
 
 }
@@ -192,15 +210,17 @@ public function single($id)
 {
       $videos = product::with('user')->find($id);
 
-
       return view('dashboard',compact('videos'));
 
 }
 
 function subscribe(Request $request)
-    {
+  {
+    
       $id = auth()->user()->id; 
       $alreadySubscribed = Subscribe::where(['user_id'=>$id,'channel_id'=>$request->channel_id])->count();
+
+
       if($alreadySubscribed<=0){
            $data=new Subscribe;
            $data->channel_id=$request->channel_id;
@@ -209,7 +229,7 @@ function subscribe(Request $request)
            $data->save();
            return response()->json([
             'bool'=>true,
-            'message'=>'Subscribed Successfully!',
+            'message'=>'Subscribed Successfully!',  
             'code'=>1
         ]);
            //Subscribe::find($id)->increment('count');

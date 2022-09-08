@@ -11,12 +11,10 @@ class Subscribe extends Model
     protected $table = 'subscribes';
     public $timestamps = true;
 
-    public function subscribes()
-    {
-        return $this->hasMany('App\Subscribe', 'channel_id', 'count', 'id', 'user_id');
-    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
     }
+   
 }

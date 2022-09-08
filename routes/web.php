@@ -49,6 +49,7 @@ Route::post('/unlikePost',[Controller::class, 'unlikePost']);
 
 Route::get('/videodetail/{id}',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
+Route::get('/watchlater',[Controller::class, 'watchlater']);
 Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
 
