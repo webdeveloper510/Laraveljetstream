@@ -9,13 +9,12 @@ class Subscribe extends Model
 {
     use HasFactory;
     protected $table = 'subscribes';
+    public $timestamps = true;
 
-    public function subscribes()
-    {
-        return $this->hasMany('App\Subscribe', 'channel_id', 'count', 'id', 'user_id');
-    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
     }
+   
 }

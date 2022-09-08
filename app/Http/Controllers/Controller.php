@@ -9,6 +9,7 @@ use App\models\User;
 use App\models\Rating;
 use App\models\Comment;
 use App\models\LikeDislike;
+use Toastr;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -19,6 +20,7 @@ use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
+
 class Controller extends BaseController
 {
 
@@ -66,24 +68,37 @@ class Controller extends BaseController
       return view('channel');
     }
 
+    public function watchlater()
+    {
+       $product = product::join('save_video' ,'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
+
+       return view('watchlater',compact('product'));
+    }
+
     public function videodetail($id){
+      $auth_id = auth()->user()->id;
 
+      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
 
+        $count = Subscribe::where(['channel_id'=>$id])->count();
 
-    $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
+        // $startTime = Carbon::parse('2020-02-10 04:04:26');
+        // $endTime = Carbon::parse('2020-02-12 04:04:26');
+        // $totalDuration = $startTime->diffForHumans($endTime);
+        // dd($totalDuration);
 
-    // echo "<pre>";
-    // print_r($videos);die;
-    product::find($id)->increment('views');
-    $like = array_column($videos['like'], 'like');
-    $dislike = array_column($videos['like'], 'dislike');
-    $liked =  array_sum($like);
-    $disliked =  array_sum($dislike);
+        print_r($videos['created_at']->diffForHumans());die;
 
-      return view('product.single',compact('videos','liked','disliked'));
+       $like = array_column($videos['like'], 'like');
+       $dislike = array_column($videos['like'], 'dislike');
+       $liked =  array_sum($like);
+       $disliked =  array_sum($dislike);
+      return view('product.single',compact('videos','liked','disliked','count'));
+
     }
 
     Public function store(Request $request){
+
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
@@ -166,6 +181,7 @@ class Controller extends BaseController
         }
         else{
 
+
             $data['product_id'] = $request->product_id;
             $data['user_id'] =$id;
             $data['created_at'] = $date;
@@ -180,16 +196,54 @@ class Controller extends BaseController
         }
     }
 
-function subscribe(Request $request)
-    {
 
-        $id = auth()->user()->id;
-        $data=new Subscribe;
-        $data->channel_id=$request->channel_id;
-        Subscribe::find($id)->increment('count');
-        $data->user_id=$id;
-        $data->save();
-        return redirect()->back()->with('message', 'Content Saved Successfully!');
+    public function getVideo($id)
+{
+      $videos = product::with('user')->find($id);
+
+
+      return view('product.single',compact('videos'));
+
+}
+public function single($id)
+{
+      $videos = product::with('user')->find($id);
+
+      return view('dashboard',compact('videos'));
+
+}
+
+function subscribe(Request $request)
+  {
+
+      $id = auth()->user()->id;
+      $alreadySubscribed = Subscribe::where(['user_id'=>$id,'channel_id'=>$request->channel_id])->count();
+
+
+      if($alreadySubscribed<=0){
+           $data=new Subscribe;
+           $data->channel_id=$request->channel_id;
+           $data->user_id=$id;
+           $data->count=1;
+           $data->save();
+           return response()->json([
+            'bool'=>true,
+            'message'=>'Subscribed Successfully!',
+            'code'=>1
+        ]);
+
+      }
+
+      else{
+          return response()->json([
+            'bool'=>true,
+            'message'=>'Already Subscribed!',
+            'code'=>1
+        ]);
+      }
+
+        //return redirect()->back()->with('message', 'Content Saved Successfully!');
+
 
     }
 
@@ -207,34 +261,16 @@ function subscribe(Request $request)
         $data->status  = 1;
         $data->save();
         return redirect()->back()->with('message', 'Content Saved Successfully!');
-        // if (!empty($rating)) {
-        //     $rating->user_id = auth()->user()->id;
-        //     $rating->product_id = $this->product['id'];
-        //     $rating->rating = $this->rating;
-        //     $rating->comment = $this->comment;
-        //     $rating->status = 1;
-        //     try {
-        //         $rating->update();
-        //     } catch (\Throwable $th) {
-        //         throw $th;
-        //     }
-        //     session()->flash('message', 'Success!');
-        // }
 
-        // else {
-        //     $rating = new Rating;
-        //     $rating->user_id = auth()->user()->id;
-        //     $rating->product_id = $this->product->id;
-        //     $rating->rating = $this->rating;
-        //     $rating->comment = $this->comment;
-        //     $rating->status = 1;
-        //     try {
-        //         $rating->save();
-        //     } catch (\Throwable $th) {
-        //         throw $th;
-        //     }
-        //     $this->hideForm = true;
-        // }
+    }
+
+    public function time()
+    {
+        $dt = Carbon::now();
+        $past = $dt->subMonth()->diffForHumans();
+        echo $past;die;
+        return view('product.single',compact('past'));
+
     }
 
 }

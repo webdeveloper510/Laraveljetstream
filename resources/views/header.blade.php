@@ -13,6 +13,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
     <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
     <link rel="canonical" href="https://codepen.io/pen?template=bKeqpr">
+    <script src="https://cdn.jsdelivr.net/gh/SH20RAJ/Sopplayer/mooviejs/js/moovie.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SH20RAJ/Sopplayer/mooviejs/css/moovie.min.css">
 
 
   <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
@@ -20,6 +22,7 @@
 <link rel="stylesheet" href="<?php echo URL::to('/');?>/public/assets/css/dashboard.css" type="css/text">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -39,17 +42,20 @@
 
 
 <style>
-       .username {
-    padding: 14px;
-}
+    .moovie {
+                height:300px !important;
+            }
+    .username {
+                padding: 14px;
+                }
 
 .profile {
     border-radius: 50%;
 }
 
-.text-banner {
-    padding: 20px 10px;
-}
+        .text-banner {
+            padding: 20px 10px;
+        }
 
 .views li {
     display: inline-block;

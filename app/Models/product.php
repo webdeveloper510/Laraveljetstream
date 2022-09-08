@@ -28,7 +28,8 @@ class product extends Model
         return $this->hasMany(LikeDislike::class,'product_id');
     }
     public function user() {
-       return $this->belongsTo('App\models\User','user_id');
+
+        return $this->belongsTo('App\models\User','user_id');
     }
 
         public function comments()
@@ -40,8 +41,9 @@ class product extends Model
             return $this->comments()->count();
         }
 
-
-
-
+    public function ratings()
+    {
+        return $this->hasMany('App\Models\product_rating');
+    }
 
 }

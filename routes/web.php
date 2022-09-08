@@ -1,4 +1,8 @@
 <?php
+
+
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CommentController;
@@ -49,6 +53,7 @@ Route::post('/unlikePost',[Controller::class, 'unlikePost']);
 
 Route::get('/videodetail/{id}',[Controller::class, 'videodetail']);
 Route::get('/channel',[Controller::class, 'channel']);
+Route::get('/watchlater',[Controller::class, 'watchlater']);
 Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
 
@@ -58,6 +63,13 @@ Route::post('/reply/store', [CommentController::class,'replyStore'])->name('repl
 Route::post('/save_video',[Controller::class, 'save_video']);
 Route::post('/rating',[Controller::class, 'rating'])->name('postStar');
 Route::post('/rate',[Controller::class, 'rate']);
+Route::get('/time',[Controller::class, 'time']);
 
 
 
+// Route::get('/time',function(){
+
+//     $dt = Carbon::now();
+//     $past = $dt->subMonth()->diffForHumans();
+//     echo $past;
+// });
