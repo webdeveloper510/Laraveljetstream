@@ -1,4 +1,5 @@
 @include('header')
+{{-- @include('jetheader') --}}
 <div class="container-fluid p-0">
     <div class="row g-0">
         <div class="col-md-3  position-relative">
@@ -49,10 +50,13 @@
               </p>
               <div class="row">
                 <div class="col-md-3">
+                    {{-- @foreach($videos as $data) --}}
                   <ul class="view">
-                    <li>View:</li>
-                    <li>Aug 19, 2022</li>
+                    <li>View: {{$videos['views']}} </li>
+
+                    <li>{{$videos['created_at']}}</li>
                   </ul>
+                  {{-- @endforeach --}}
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -88,31 +92,31 @@
                         thumb_down<span class="disliked">{{$disliked}}</span>
                       </span>
                   </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  {{-- <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       google_plus_reshare
                       </span> SHARE
-                  </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  </button> --}}
+                  {{-- <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       monetization_on
                       </span> THANKS
-                  </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  </button> --}}
+                  {{-- <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       content_cut
                       </span> CLIP
-                  </button>
+                  </button> --}}
                   <button type="button" class="btn d-flex" onclick="save_video('{{request()->segment(2)}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       playlist_add
                       </span> SAVE
                   </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  {{-- <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       more_horiz
                       </span>
-                  </button>
+                  </button> --}}
                 </div>
                 </div>
               </div>
@@ -127,11 +131,11 @@
 
                 </div>
                 <div class="col-md-7">
-                    <h5>Books</h5>
+                    <h2>{{Auth::user()->name;}}</h2>
                     <small>
                         190 Subscriber
                     </small>
-                    <p>Create. Submit. Approve. Get an all-in-one solution with Varicent Incentive Compensation Management. Automatic updates to payroll</p>
+                    {{-- <p>Create. Submit. Approve. Get an all-in-one solution with Varicent Incentive Compensation Management. Automatic updates to payroll</p> --}}
                   <a href="./login">Read More</a>
                   <div class="shows">
                       <p>Upcoming Charges</p>
@@ -145,7 +149,7 @@
               <hr/>
               <div class="comments">
                 <div class="d-flex">
-                    <p>0 Comments</p>
+                    <p style="font-size:20px;">{{count($videos['comments'])}} Comments</p>
                     <div class="ms-3">
                         <div class="dropdown">
                             <a style=" color: black;" class=" dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -190,11 +194,8 @@
                             "height="40px" width="40px" />
                             </div>
                     </div>
-
-
-
-                            <div class="col-md-10">
-                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b> 1 hours ago </p>
+                      <div class="col-md-10">
+                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b> {{$videos['created_at']}}</p>
                                 <p class="">{{$commet['body']}}</p>
                                 @foreach($commet['replies'] as $key=> $reply)
                                   <div>{{$reply['body']}}</div>

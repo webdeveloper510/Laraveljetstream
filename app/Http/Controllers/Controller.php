@@ -68,15 +68,17 @@ class Controller extends BaseController
 
     public function videodetail($id){
 
-    product::find($id)->increment('views');
+
 
     $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
+
+    // echo "<pre>";
+    // print_r($videos);die;
+    product::find($id)->increment('views');
     $like = array_column($videos['like'], 'like');
     $dislike = array_column($videos['like'], 'dislike');
     $liked =  array_sum($like);
     $disliked =  array_sum($dislike);
-
-    //print_r($videos);die;
 
       return view('product.single',compact('videos','liked','disliked'));
     }
@@ -150,6 +152,7 @@ class Controller extends BaseController
 
     function save_video(Request $request)
     {
+
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id'=>$id,'product_id'=>$request->product_id])->count();

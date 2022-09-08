@@ -33,7 +33,7 @@
                                      @foreach($video['posts'] as $posts)
                                 <div class="item">
                                     <div class="card">
-                                    <a href="{{url('/videodetail/'.$video['id'])}}"> 
+                                    <a href="{{url('/videodetail/'.$video['id'])}}">
                                    <video width="100%" height="100%" controls>
                                         <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}" type="video/mp4">
                                     </video></a>
@@ -47,7 +47,6 @@
                                                     <a href="" class="title">{{$posts['title']}}</a><br/>
                                                     <a href="{{url('/channel/'.$video['id'])}}" class="small-tittle"> {{Auth::user()->name;}}</a>
                                                     <ul class="Views">
-
                                                         <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                     </ul>
                                                     <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
