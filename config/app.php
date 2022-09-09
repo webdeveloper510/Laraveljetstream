@@ -121,6 +121,8 @@ return [
 
     'key' => env('APP_KEY'),
 
+    'Carbon' => 'Carbon\Carbon',
+
     'cipher' => 'AES-256-CBC',
 
     /*

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
@@ -21,7 +22,5 @@ class Comment extends Model
     public function posts(){
         return $this->belongsTo('App\models\product','product_id');
     }
-
-
 
 }

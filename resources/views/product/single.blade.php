@@ -39,10 +39,12 @@
               <div class="row">
                 <div class="col-md-3">
                     {{-- @foreach($videos as $data) --}}
-                  <ul class="view">
+                  <ul class="view"> 
                     <li>View: {{$videos['views']}} </li>
+                    <li>
+                         {{\Carbon\Carbon::parse($videos['created_at'])->diffForHumans()}}
 
-                    <li>{{$past}}</li>
+                    </li>
                   </ul>
                   {{-- @endforeach --}}
                 </div>
@@ -189,7 +191,7 @@
                             </div>
                     </div>
                       <div class="col-md-10">
-                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b> {{$videos['created_at']}}</p>
+                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b>   {{\Carbon\Carbon::parse($commet['created_at'])->diffForHumans()}}</p>
                                 <p class="">{{$commet['body']}}</p>
                                 @foreach($commet['replies'] as $key=> $reply)
                                   <div>{{$reply['body']}}</div>

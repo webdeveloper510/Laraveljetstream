@@ -80,15 +80,8 @@ class Controller extends BaseController
 
       $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
 
-        $count = Subscribe::where(['channel_id'=>$id])->count();
 
-        // $startTime = Carbon::parse('2020-02-10 04:04:26');
-        // $endTime = Carbon::parse('2020-02-12 04:04:26');
-        // $totalDuration = $startTime->diffForHumans($endTime);
-        // dd($totalDuration);
-
-        print_r($videos['created_at']->diffForHumans());die;
-
+      $count = Subscribe::where(['channel_id'=>$id])->count();
        $like = array_column($videos['like'], 'like');
        $dislike = array_column($videos['like'], 'dislike');
        $liked =  array_sum($like);
@@ -201,7 +194,7 @@ class Controller extends BaseController
 {
       $videos = product::with('user')->find($id);
 
-
+      print_r($videos);die;
       return view('product.single',compact('videos'));
 
 }
@@ -264,13 +257,5 @@ function subscribe(Request $request)
 
     }
 
-    public function time()
-    {
-        $dt = Carbon::now();
-        $past = $dt->subMonth()->diffForHumans();
-        echo $past;die;
-        return view('product.single',compact('past'));
-
-    }
 
 }

@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div class="container-fluid p-0">
         <div class="row g-0">
 
@@ -342,6 +343,7 @@
         </div>
     </div>
     <script>
+
        function likePost(id)
        {
            console.log(id)
@@ -402,4 +404,13 @@
         });
 
     </script>
+     @push('js')
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+     <script>
+         console.log('fsdffdssdf');
+         var user = {!! json_encode((array)auth()->user()) !!};
+        console.log('user')
+     </script>
+ @endpush
 </x-app-layout>
