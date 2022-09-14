@@ -62,12 +62,6 @@ Route::post('/save_video',[Controller::class, 'save_video']);
 Route::post('/rating',[Controller::class, 'rating'])->name('postStar');
 Route::post('/rate',[Controller::class, 'rate']);
 Route::get('/time',[Controller::class, 'time']);
+Route::post('/report',[Controller::class, 'report']);
 
 
-
-// Route::get('/time',function(){
-
-//     $dt = Carbon::now();
-//     $past = $dt->subMonth()->diffForHumans();
-//     echo $past;
-// });

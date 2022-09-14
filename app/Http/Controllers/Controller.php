@@ -7,6 +7,7 @@ use App\models\Subscribe;
 use App\models\product_rating;
 use App\models\User;
 use App\models\Rating;
+use App\models\Report;
 use App\models\Comment;
 use App\models\LikeDislike;
 use Toastr;
@@ -75,6 +76,7 @@ class Controller extends BaseController
        return view('watchlater',compact('product'));
     }
 
+
     public function videodetail($id){
       $auth_id = auth()->user()->id;
 
@@ -131,6 +133,8 @@ class Controller extends BaseController
 
     }
 
+/*--------------------------------------like dislike---------------------------------------*/
+
     public function likePost(Request $request){
       $id = auth()->user()->id;
       $likeExist = LikeDislike::where(['user_id'=>$id,'product_id'=>$request->contentId])->get();
@@ -156,7 +160,7 @@ class Controller extends BaseController
     ]);
     }
 
-
+/*--------------------------------------save_video---------------------------------------*/
 
     function save_video(Request $request)
     {
@@ -176,7 +180,7 @@ class Controller extends BaseController
 
 
             $data['product_id'] = $request->product_id;
-            $data['user_id'] =$id;
+            $data['user_id'] = $id;
             $data['created_at'] = $date;
             $data['updated_at'] = $date;
             DB::table('save_video')->insert($data);
@@ -194,7 +198,7 @@ class Controller extends BaseController
 {
       $videos = product::with('user')->find($id);
 
-      print_r($videos);die;
+     // print_r($videos);die;
       return view('product.single',compact('videos'));
 
 }
@@ -205,6 +209,8 @@ public function single($id)
       return view('dashboard',compact('videos'));
 
 }
+
+/*--------------------------------------subscribe system---------------------------------------*/
 
 function subscribe(Request $request)
   {
@@ -235,15 +241,13 @@ function subscribe(Request $request)
         ]);
       }
 
-        //return redirect()->back()->with('message', 'Content Saved Successfully!');
-
-
     }
 
     /**-----------------------------------------Rating System--------------------------------------- */
 
     public function rate(Request $request)
      {
+
         $id = auth()->user()->id;
 
         $data=new Rating;
@@ -257,5 +261,29 @@ function subscribe(Request $request)
 
     }
 
+/*----------------------------------------Report_system-----------------------------------------*/
 
-}
+    public function report(Request $request)
+    {
+        $data = new Report;
+        $user = Report::where([
+            ['product_id','=',$request->product_id],
+            ['user_id','=',$request->user_id]
+        ])->first();
+
+       if($user){
+           echo "Already Reported!";
+           }
+           else{
+                $data->user_id = $request->user_id;
+                $data->product_id  = $request->product_id;
+                $data->description = $request->description;
+                $data->save();
+             }
+
+    }
+
+ }
+
+
+
