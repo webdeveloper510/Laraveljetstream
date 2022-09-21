@@ -1,25 +1,4 @@
 @include('header')
-<div class="container-fluid p-0">
-    <div class="row g-0">
-        <div class="col-md-3  position-relative">
-            <div class="explore" >
-                <h5><span class="material-symbols-outlined">home</span> Home</h5>
-                <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
-                <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
-                <h5><span class="material-symbols-outlined">subscriptions</span> Subscriptions</h5>
-                <hr />
-                <h5><span class="material-symbols-outlined">video_library</span> Library</h5>
-                <h5><span class="material-symbols-outlined">history</span> History</h5>
-                <h5><a href=""><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
-                <h5><span class="material-symbols-outlined">schedule</span> Watch later</h5>
-                <h5><span class="material-symbols-outlined">thumb_up</span>Liked videos</h5>
-                <hr/>
-                <h5 class="text-center">Subscriptions</h5>
-                <h5><span class="material-symbols-outlined">music_note</span>Music</h5>
-            </div>
-        </div>
-
-<div class="col-md-9" style="height:100vh;">
    <!-------------------------- Add New content here  ---------------------->
    <div class="container-fluid my-3">
         <div class="row">
@@ -36,7 +15,7 @@
               <p class="video-title">{{$videos['title']}}
               </p>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-5">
                   <ul class="view">
                     <li>View:</li>
                     <li>Aug 19, 2022</li>
@@ -57,61 +36,127 @@
                   </div>
 
 
-                <div class="col-md-9">
-                  <div class="appricate">
-<<<<<<< HEAD
+                <div class="col-md-7">
+                  <div class="appricate justify-content-end">
            
-=======
-
-
-                    <button type="button" class="btn d-flex"data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <span class="material-symbols-outlined">
-                            star
-                            </span>
-                      </button>
->>>>>>> def3a51fe3b698ec989b182f70938a596b042af0
-                    <button type="button" class="btn d-flex" onclick="likePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                    <button type="button" class="btn d-flex" onclick="likePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="I Like this ">
                       <span class="material-symbols-outlined">
-                      thumb_up <span class="liked">{{$liked}}</span>
-                      </span>
+                      thumb_up 
+                      </span><span class="liked">{{$liked}}</span>
                     </button>
-                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex"  onclick="unlikePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="I Unlike this">
                       <span class="material-symbols-outlined">
-                        thumb_down<span class="disliked">{{$disliked}}</span>
-                      </span>
+                        thumb_down
+                      </span> Dislike
                   </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Share">
                     <span class="material-symbols-outlined">
                       google_plus_reshare
                       </span> SHARE
                   </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
-                    <span class="material-symbols-outlined">
-                      monetization_on
-                      </span> THANKS
-                  </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
-                    <span class="material-symbols-outlined">
-                      content_cut
-                      </span> CLIP
-                  </button>
-                  <button type="button" class="btn d-flex" onclick="save_video('{{request()->segment(2)}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                  <button type="button" class="btn d-flex" onclick="save_video('{{request()->segment(2)}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Save the video watch later">
                     <span class="material-symbols-outlined">
                       playlist_add
                       </span> SAVE
                   </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
-                    <span class="material-symbols-outlined">
-                      more_horiz
-                      </span>
+                  <button type="button" class="btn d-flex" data-bs-toggle="modal" data-bs-target="#Report">
+                  <span class="material-symbols-outlined">flag</span> Report
                   </button>
+                  <!-- Modal -->
+                    <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="Report" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="Report">Report video</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label ml-2" for="flexRadioDefault1">
+                              Sexual content
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label ml-2" for="flexRadioDefault2">
+                            Violent or repulsive content
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                            <label class="form-check-label ml-2" for="flexRadioDefault3">
+                            Harassment or bullying
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+                            <label class="form-check-label ml-2" for="flexRadioDefault4">
+                            Harmful or dangerous acts
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+                            <label class="form-check-label ml-2" for="flexRadioDefault5">
+                            Child abuse
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
+                            <label class="form-check-label ml-2" for="flexRadioDefault6">
+                            Promotes terrorism
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
+                            <label class="form-check-label ml-2" for="flexRadioDefault7">
+                            Spam or misleading
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" checked>
+                            <label class="form-check-label ml-2" for="flexRadioDefault8">
+                            Infringes my rights
+                            </label>
+                          </div>
+                          <div class="form-check my-1.5">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
+                            <label class="form-check-label ml-2" for="flexRadioDefault9">
+                            Captions issue
+                            </label>
+                          </div>
+                          <small class="my-2">Flagged videos and users are reviewed by YouTube staff 24 hours a day, 7 days a week to determine whether they violate Community Guidelines. Accounts are penalized for Community Guidelines violations, and serious or repeated violations can lead to account termination. Report channel
+                          </small>
+                          <div class="hide">
+                              <form>
+                                <label>Timestamp selected *</label> <br/>
+                                <input type="time" class="form-control col-md-3 my-3"/>
+
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <label for="floatingTextarea2">Comments</label>
+                                  </div>
+                              </form>
+                              <small class="my-2">Flagged videos and users are reviewed by YouTube staff 24 hours a day, 7 days a week to determine whether they violate Community Guidelines. Accounts are penalized for Community Guidelines violations, and serious or repeated violations can lead to account termination. Report channel
+                             </small>
+                          </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                            <button type="button" class="btn btn-primary btn1">NEXT</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                 </div>
                 </div>
               </div>
 
 
               <hr/>
-              <div class="row">
+              <div class="row py-3.5">
                 <div class="col-md-2">
                   <div class="profile-image">
                       <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" width="80px" height="80px"/>
@@ -122,7 +167,7 @@
                     <h5>{{Auth::user()->name;}}</h5>
                     
                     <small style="font-size: 20px;">
-                        {{$count}}Subscribers
+                        {{ $subscriber }} Subscribers
                     </small>
                     <!-- <p>Create. Submit. Approve. Get an all-in-one solution with Varicent Incentive Compensation Management. Automatic updates to payroll</p> -->
                   <a href="./login">Read More</a>
@@ -133,7 +178,9 @@
                 </div>
                 <div class="col-md-3 text-end">
                     <button class="btn btn-danger subscribe" style="{{$count<=0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',1)">SUBSCRIBE</button>
-                    <button class="btn btn-danger" style="{{$count > 0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',0)">SUBSCRIBED</button> 
+                    <button class="btn btn-danger subscribes"  style="{{$count > 0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',0)">SUBSCRIBED</button>
+                    <button class="btn btn-danger subscrib"  style="{{$count > 0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',0)">UNSUBSCRIBED</button> 
+ 
                 </div>
               </div>
               <hr/>
@@ -622,6 +669,15 @@ document.addEventListener("DOMContentLoaded", function() {
       }
    });
 });
+
+// $(document).ready(function(){
+//   $(".btn1").click(function(){
+//     $(".hide").hide();
+//   });
+//   $(".btn1").click(function(){
+//     $(".hide").show();
+//   });
+// });
 </script>
     </body>
     </html>

@@ -1,33 +1,10 @@
 <x-app-layout>
-    <div class="container-fluid p-0">
-        <div class="row g-0">
 
-            <div class="col-md-3 position-relative">
-                <div class="explore">
-<!--
-            <div class="col-md-3 bg-dark position-relative">
-                <div class="explore" style="color:white">
- -->
-                    <h5><a href="/jetstream/dashboard"><span class="material-symbols-outlined">home</span> Home</a></h5>
-                    <!-- <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
-                    <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
-                    <h5><span class="material-symbols-outlined">subscriptions</span> Subscriptions</h5>
-                    <hr /> -->
-                    <h5><span class="material-symbols-outlined">video_library</span>Library</h5>
-                    <h5><span class="material-symbols-outlined">history</span> History</h5>
-                    <h5><a href="/jetstream/uploadpage"><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
-                    <!-- <h5><span class="material-symbols-outlined">schedule</span> Watch later</h5> -->
-                    <h5><span class="material-symbols-outlined">thumb_up</span>Liked videos</h5>
-                    <hr />
-                    <h5 class="text-center">Subscriptions</h5>
-                    <h5><span class="material-symbols-outlined">music_note</span>Music</h5>
-                </div>
-            </div>
-            <div class="col-md-9">
                 <div class=" py-5">
                     <div class="container">
-                        <div class="home-demo py-5">
+                        <div class="home-demo">
                             <div class="owl-carousel owl-theme">
+                            
 
                                 @foreach($videos as $video)
                                      @foreach($video['posts'] as $posts)
@@ -44,10 +21,9 @@
                                                 </div>
                                                 <div class="col-9">
                                                     <div class="detail">
-                                                    <a href="" class="title">{{$posts['title']}}</a><br/>
+                                                    <a href="" class="title font-bold">{{$posts['title']}}</a><br/>
                                                     <a href="{{url('/channel/'.$video['id'])}}" class="small-tittle"> {{Auth::user()->name;}}</a>
                                                     <ul class="Views">
-
                                                         <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                     </ul>
                                                     <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
@@ -71,7 +47,7 @@
                 <div class="">
                     <div class="container ">
                         <div class="home-demo py-5">
-                            <h3 class="text-light mb-5">Breaking news</h5>
+                            <h3 class=" text-3xl mb-3">Breaking news</h5>
                                 <div class="owl-carousel owl-theme">
                                     <div class="item">
                                         <div class="card">
@@ -80,7 +56,7 @@
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
                                             </video>
-                                            <div class="card-body text-center">
+                                            <div class="card-body">
                                                 <h5 class="card-title">Video Title</h5>
                                                 <p class="card-text">Video Dis</p>
                                             </div>

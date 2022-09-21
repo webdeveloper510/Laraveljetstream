@@ -11,14 +11,27 @@ function subscribe(channel_id,flag){
         type: 'post',
         data:{
            "channel_id":channel_id,
-           "count":"{{request()->segment(2)}}",
-            "_token":"{{ csrf_token() }}"
+           "count":1,
+            "_token":"{{ csrf_token() }}",
+            flag:flag
         },
             success: function(data)
             {
-               if(data.code==1){
+                console.log(data)
+               if(data.code){
                 toastr.success(data.message);
                }
+               if(data.code==1){
+               
+                // show like button
+                $('.subscribe').hide();
+                $('.subscribes').show();
+                }
+                else{
+                    $('.subscribe').show();
+                    $('.subscribes').hide();
+                    
+                }
             }
     });
 

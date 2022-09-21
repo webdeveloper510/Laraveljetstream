@@ -54,11 +54,13 @@ Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
 
 Route::post('/subscribe',[Controller::class, 'subscribe']);
+Route::get('/setting',[Controller::class, 'setting']);
 
 Route::post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
 Route::post('/save_video',[Controller::class, 'save_video']);
 Route::post('/rating',[Controller::class, 'rating'])->name('postStar');
 Route::post('/rate',[Controller::class, 'rate']);
+Route::get('/search',[Controller::class, 'search']);
 
 
 

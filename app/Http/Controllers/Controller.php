@@ -69,6 +69,12 @@ class Controller extends BaseController
     }
 
 
+    public function setting()
+    {
+      return view('setting');
+    }
+
+
     public function watchlater()
     {
        $product = product::join('save_video' ,'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
@@ -80,17 +86,29 @@ class Controller extends BaseController
     public function videodetail($id){
       $auth_id = auth()->user()->id;
 
-      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();
+      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();      // echo "<pre>";
   
-      $count = Subscribe::where(['channel_id'=>$id])->count();
-  
-  
-     
+      $subscriber = Subscribe::where(['channel_id'=>$videos['user_id']])->sum('count');
+ 
+      $count = Subscribe::where(['channel_id'=>$videos['user_id'],'user_id'=>$auth_id])->sum('count');     
+      $trending_product = DB::table('trending')->where('product_id', '=', $id)->count();
+      if($trending_product>0){
+        $update =DB::table('trending')->where('product_id', '=', $id)->update(['count' => DB::raw('count+1')]);
+      } 
+          
+       else{
+        $user['product_id'] = $id;
+        $user['count']= 1;
+        $user['created_at']= Carbon::now();
+        $user['updated_at']= Carbon::now();      
+         DB::table('trending')->insert($user);
+      }
+    
        $like = array_column($videos['like'], 'like');
-       $dislike = array_column($videos['like'], 'dislike');
+       $dislike = array_column($videos['like'], 'dislike');   
        $liked =  array_sum($like);
        $disliked =  array_sum($dislike);
-      return view('product.single',compact('videos','liked','disliked','count'));
+      return view('product.single',compact('videos','liked','disliked','count','subscriber'));
     }
 
     Public function store(Request $request){
@@ -103,7 +121,7 @@ class Controller extends BaseController
           'description' => 'required',
           'thumbnail' => 'required',
           'security' => 'required',
-          'file'=>'required'
+         
         ]);
      if ($validator->fails()){
           return redirect()
@@ -146,7 +164,6 @@ class Controller extends BaseController
       }
       else{
         LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->update(['dislike'=>0, 'like'=>1]);
-
        }
 
        $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
@@ -158,8 +175,6 @@ class Controller extends BaseController
         'dislike'=>$dislike
     ]);
     }
-
-
 
     function save_video(Request $request)
     {
@@ -178,7 +193,7 @@ class Controller extends BaseController
           
 
             $data['product_id'] = $request->product_id;
-            $data['user_id'] =$id;
+            $data['user_id'] = $id;
             $data['created_at'] = $date;
             $data['updated_at'] = $date;
             DB::table('save_video')->insert($data); 
@@ -191,11 +206,9 @@ class Controller extends BaseController
         }
     }
 
-
     public function getVideo($id)
 {
       $videos = product::with('user')->find($id);
-
       print_r($videos);die;
       return view('product.single',compact('videos'));
 
@@ -210,44 +223,61 @@ public function single($id)
 
 function subscribe(Request $request)
   {
-    
-      $id = auth()->user()->id; 
-      $alreadySubscribed = Subscribe::where(['user_id'=>$id,'channel_id'=>$request->channel_id])->count();
+    //print_r($request->all());die;
+    $id = auth()->user()->id; 
+    $alreadySubscribed = Subscribe::where(['user_id'=>$id,'channel_id'=>$request->channel_id])->count();
+     $flag = $request->flag;
+     if($flag==1){
+          if($alreadySubscribed<=0){
+            //print_r($request->all());die;
+              $code = $this->subscribed($request->all());
+              $message = 'Subscribed Successfully!';
+          }
+          else{
+            $code =1;
+            $message = 'Already Subscribed!';
+        } 
+          
+     }
 
-
-      if($alreadySubscribed<=0){
-           $data=new Subscribe;
-           $data->channel_id=$request->channel_id;
-           $data->user_id=$id;
-           $data->count=1;
-           $data->save();
-           return response()->json([
-            'bool'=>true,
-            'message'=>'Subscribed Successfully!',  
-            'code'=>1
-        ]);
-           //Subscribe::find($id)->increment('count');
-      }
-
-      else{
+     else{
+      $code = $this->unsubscribed($request);
+      $message = 'Unsubscribe Successfully!';
+      
+     }
+      
           return response()->json([
             'bool'=>true,
-            'message'=>'Already Subscribed!',
-            'code'=>1
-        ]);
-      }
-     
-        //return redirect()->back()->with('message', 'Content Saved Successfully!');
-    
-      
+            'message'=>$message,
+            'code'=>$code,
+         
+        ]); 
     }
+
+
+    public function subscribed($data){
+     // print_r($data);die;
+      $id = auth()->user()->id; 
+      $data1=new Subscribe;
+      $data1->channel_id=$data['channel_id'];
+      $data1->user_id=$id;
+      $data1->count=1;
+      $data1->save();
+      return 1;
+    }
+    public function unsubscribed($data){
+      $id = auth()->user()->id; 
+      $update =  Subscribe::where(['user_id'=>$id, 'channel_id'=>$data->channel_id])->update(['count'=>0]);
+      return 2;
+    
+    }
+
 
     /**-----------------------------------------Rating System--------------------------------------- */
 
     public function rate(Request $request)
      {
         $id = auth()->user()->id;
-
         $data=new Rating;
         $data->user_id = $id;
         $data->comment = $request->description;
@@ -286,4 +316,17 @@ function subscribe(Request $request)
         // }
     }
 
+    public function search(Request $request){
+      $search = $request->input('search');
+      $posts = product::with(['comments.replies','user','like'])
+                  ->where('title', 'LIKE', "%{$search}%")
+                  ->orWhere('description', 'LIKE', "%{$search}%")
+                  ->get()->toArray(); 
+                  // echo "<pre>";
+                  // print_r($posts);die;   
+      return view('search', compact('posts'));
+  }
 }
+
+
+

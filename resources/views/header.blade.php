@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Bootstrap Example</title>
+  <title>Laravel</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <!-- Bootstrap CSS -->
@@ -42,6 +42,11 @@
 
 
 <style>
+    .form-check-input {
+    width: 1.4em;
+    height: 1.4em;
+    }
+    
     .moovie {
                 height:300px !important;
             }
@@ -53,6 +58,12 @@
     border-radius: 50%;
 }
 
+.profile-image img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+}
         .text-banner {
             padding: 20px 10px;
         }
@@ -261,9 +272,6 @@ p.video-title {
     padding: 11px 0px;
 }
 
-.profile-image img {
-    border-radius: 50%;
-}
 .dropdown a {
     text-decoration: none;
 }
@@ -311,6 +319,14 @@ p.video-title {
 .appricate button {
     font-size: 13px;
 }
+a.title {
+    font-size: 21px;
+    text-transform: capitalize;
+    line-height: 19px;
+}
+.viewer {
+    object-fit: cover;
+}
 
     </style>
 </head>
@@ -323,12 +339,13 @@ p.video-title {
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex mx-auto">
+                <form  method="GET" action="{{url('/search')}}" class="d-flex mx-auto">
+                 
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit" >Search</button>
                 </form>
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mt-1.5">
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"><span class="material-symbols-outlined">settings</span></a>
                     </li>
@@ -337,7 +354,7 @@ p.video-title {
                     <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 
-                                <x-jet-dropdown-link href="{{ route('logout') }}"
+                                <x-jet-dropdown-link style="color:white;" href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
@@ -349,3 +366,24 @@ p.video-title {
             </div>
             </nav>
             </header>
+            <div class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="col-md-3  position-relative">
+            <div class="explore" >
+                <h5> <a href="{{ url('/dashboard') }}"><span class="material-symbols-outlined">home</span> Home</a></h5>
+                <h5><a href=""><span class="material-symbols-outlined">explore</span> Explore</a></h5>
+                <h5><a href=""><span class="material-symbols-outlined">whatshot</span> Shorts</a></h5>
+                <h5><a href=""><span class="material-symbols-outlined">subscriptions</span> Subscriptions</a></h5>
+                <hr />
+                <h5><a href=""><span class="material-symbols-outlined">video_library</span> Library</a></h5>
+                <h5><a href=""><span class="material-symbols-outlined">history</span> History</a></h5>
+                <h5><a href="{{ url('/uploadpage') }}"><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
+                <h5><a href="{{ url('/watchlater') }}"><span class="material-symbols-outlined">schedule</span> Watch later</a></h5>
+                <h5><a href=""><span class="material-symbols-outlined">thumb_up</span>Liked videos</a></h5>
+                <hr/>
+                <h5 class="text-center">Subscriptions</h5>
+                <h5><a href=""><span class="material-symbols-outlined">music_note</span>Music</a></h5>
+            </div>
+        </div>
+
+<div class="col-md-9" style="height:100vh; overflow-y:scroll;">
