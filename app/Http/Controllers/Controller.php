@@ -24,11 +24,14 @@ use Illuminate\Support\Carbon;
 
 class Controller extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('login');
+    }
 
   public function unlikePost(Request $request)
   {
-
-       $id = auth()->user()->id;
+      $id = auth()->user()->id;
        $likeExist = LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->get();
        //print_r($likeExist);die;
        if(count($likeExist)<=0){
@@ -261,7 +264,7 @@ function subscribe(Request $request)
 
     }
 
-/*----------------------------------------Report_system-----------------------------------------*/
+/*----------------------------------------Report system-----------------------------------------*/
 
     public function report(Request $request)
     {
@@ -273,17 +276,32 @@ function subscribe(Request $request)
 
        if($user){
            echo "Already Reported!";
-           }
-           else{
-                $data->user_id = $request->user_id;
-                $data->product_id  = $request->product_id;
-                $data->description = $request->description;
-                $data->save();
-             }
+        }
+        else{
+            $data->user_id = $request->user_id;
+            $data->product_id  = $request->product_id;
+            $data->description = $request->description;
+            $data->save();
+            }
 
     }
 
+
+    Public function contentsearch()
+    {
+        return view('search');
+    }
+
+/*--------------------------------------search system------------------------------------------*/
+
+    public function search(Request $request){
+
+        $search = $request->input('search');
+        $posts = product::with(['comments.replies','user','like'])
+                    ->where('title', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%")
+                    ->get()->toArray();
+          return view('search', compact('posts'));
+    }
+
  }
-
-
-

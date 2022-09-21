@@ -10,7 +10,6 @@ class product extends Model
     use HasFactory;
     public $incrementing = true;
     protected $table = 'product';
-    // public $timestamps=false;
     public $timestamps=true;
 
     public function likes1(){

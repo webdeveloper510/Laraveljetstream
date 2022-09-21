@@ -8,11 +8,13 @@
                 <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
                 <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
                 <h5><span class="material-symbols-outlined">subscriptions</span> Subscriptions</h5>
-                <hr />
+                <hr/>
                 <h5><span class="material-symbols-outlined">video_library</span> Library</h5>
                 <h5><span class="material-symbols-outlined">history</span> History</h5>
                 <h5><a href=""><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
-                <h5><span class="material-symbols-outlined">schedule</span> Watch later</h5>
+                <h5>
+                <a href="http://localhost/jetstream/watchlater"><span class="material-symbols-outlined">schedule</span> Watch later</a>
+                </h5>
                 <h5><span class="material-symbols-outlined">thumb_up</span>Liked videos</h5>
                 <hr/>
                 <h5 class="text-center">Subscriptions</h5>
@@ -38,15 +40,14 @@
               </p>
               <div class="row">
                 <div class="col-md-3">
-                    {{-- @foreach($videos as $data) --}}
-                  <ul class="view"> 
+                  <ul class="view">
                     <li>View: {{$videos['views']}} </li>
                     <li>
                          {{\Carbon\Carbon::parse($videos['created_at'])->diffForHumans()}}
 
                     </li>
                   </ul>
-                  {{-- @endforeach --}}
+               
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
