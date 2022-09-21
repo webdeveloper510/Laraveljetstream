@@ -47,7 +47,7 @@
 
                     </li>
                   </ul>
-               
+
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -146,7 +146,7 @@
               <hr/>
               <div class="comments">
                 <div class="d-flex">
-                    <p style="font-size:20px;">{{count($videos['comments'])}} Comments</p>
+                <p style="font-size:20px;">{{count($videos['comments'])}} Comments</p>
                     <div class="ms-3">
                         <div class="dropdown">
                             <a style="color: black;" class="dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">

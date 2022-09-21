@@ -40,16 +40,10 @@ class Controller extends BaseController
         $data->dislike=1;
         $data->user_id=$id;
         $data->save();
-        // return response()->json([
-        //     'bool'=>true
-        // ]);
        }
 
        else{
         LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
-        // return response()->json([
-        //     'bool'=>true
-        // ]);
        }
 
        $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
@@ -75,8 +69,10 @@ class Controller extends BaseController
     public function watchlater()
     {
        $product = product::join('save_video' ,'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
-
-       return view('watchlater',compact('product'));
+        //    echo "<pre>";
+        //     print_r($product);die;
+        $name = auth()->user()->name;
+       return view('watchlater',compact('product','name'));
     }
 
 
@@ -163,7 +159,7 @@ class Controller extends BaseController
     ]);
     }
 
-/*--------------------------------------save_video---------------------------------------*/
+/*--------------------------------------save video---------------------------------------*/
 
     function save_video(Request $request)
     {
@@ -200,7 +196,6 @@ class Controller extends BaseController
     public function getVideo($id)
 {
       $videos = product::with('user')->find($id);
-
      // print_r($videos);die;
       return view('product.single',compact('videos'));
 
@@ -284,12 +279,6 @@ function subscribe(Request $request)
             $data->save();
             }
 
-    }
-
-
-    Public function contentsearch()
-    {
-        return view('search');
     }
 
 /*--------------------------------------search system------------------------------------------*/
