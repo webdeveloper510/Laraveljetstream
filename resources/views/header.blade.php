@@ -331,6 +331,7 @@ a.title {
     </style>
 </head>
         <body>
+<<<<<<< HEAD
             <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -387,3 +388,5 @@ a.title {
         </div>
 
 <div class="col-md-9" style="height:100vh; overflow-y:scroll;">
+=======
+>>>>>>> 845e1f85820dddc9629f3607546adfff36edc2ea

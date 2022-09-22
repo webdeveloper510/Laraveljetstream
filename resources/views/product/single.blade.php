@@ -1,25 +1,53 @@
 @include('header')
+{{-- @include('jetheader') --}}
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="col-md-3  position-relative">
+            <div class="explore" >
+                <h5><span class="material-symbols-outlined">home</span> Home</h5>
+                <h5><span class="material-symbols-outlined">explore</span> Explore</h5>
+                <h5><span class="material-symbols-outlined">whatshot</span> Shorts</h5>
+                <h5><span class="material-symbols-outlined">subscriptions</span> Subscriptions</h5>
+                <hr/>
+                <h5><span class="material-symbols-outlined">video_library</span> Library</h5>
+                <h5><span class="material-symbols-outlined">history</span> History</h5>
+                <h5><a href=""><span class="material-symbols-outlined">smart_display</span> Your Videos </a></h5>
+                <h5>
+                <a href="http://localhost/jetstream/watchlater"><span class="material-symbols-outlined">schedule</span> Watch later</a>
+                </h5>
+                <h5><span class="material-symbols-outlined">thumb_up</span>Liked videos</h5>
+                <hr/>
+                <h5 class="text-center">Subscriptions</h5>
+                <h5><span class="material-symbols-outlined">music_note</span>Music</h5>
+            </div>
+        </div>
+
+<div class="col-md-9" style="height:100vh;">
    <!-------------------------- Add New content here  ---------------------->
    <div class="container-fluid my-3">
         <div class="row">
            <div class="col-md-8">
-            <div class="">  
+            <div class="">
 
             <video  width="320" height="240" id="example1" poster="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$videos['thumbnail']}}">
             <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$videos['file']}}" type="video/mp4">
 
-            <track kind="captions" label="English" srclang="en" src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">  
+            <track kind="captions" label="English" srclang="en" src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
             Your browser does not support the video tag.
           </video>
-     
+
               <p class="video-title">{{$videos['title']}}
               </p>
               <div class="row">
                 <div class="col-md-5">
                   <ul class="view">
-                    <li>View:</li>
-                    <li>Aug 19, 2022</li>
+                    <li>View: {{$videos['views']}} </li>
+                    <li>
+                         {{\Carbon\Carbon::parse($videos['created_at'])->diffForHumans()}}
+
+                    </li>
                   </ul>
+
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -36,10 +64,18 @@
                   </div>
 
 
-                <div class="col-md-7">
-                  <div class="appricate justify-content-end">
-           
-                    <button type="button" class="btn d-flex" onclick="likePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="I Like this ">
+                <div class="col-md-9">
+                  <div class="appricate">
+
+
+
+                    <button type="button" class="btn d-flex"data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <span class="material-symbols-outlined">
+                            star
+                            </span>
+                      </button>
+
+                    <button type="button" class="btn d-flex" onclick="likePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                       <span class="material-symbols-outlined">
                       thumb_up 
                       </span><span class="liked">{{$liked}}</span>
@@ -49,12 +85,22 @@
                         thumb_down
                       </span> Dislike
                   </button>
-                  <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Share">
+                  {{-- <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       google_plus_reshare
                       </span> SHARE
-                  </button>
-                  <button type="button" class="btn d-flex" onclick="save_video('{{request()->segment(2)}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Save the video watch later">
+                  </button> --}}
+                  {{-- <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                    <span class="material-symbols-outlined">
+                      monetization_on
+                      </span> THANKS
+                  </button> --}}
+                  {{-- <button type="button" class="btn d-flex" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+                    <span class="material-symbols-outlined">
+                      content_cut
+                      </span> CLIP
+                  </button> --}}
+                  <button type="button" class="btn d-flex" onclick="save_video('{{request()->segment(2)}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                     <span class="material-symbols-outlined">
                       playlist_add
                       </span> SAVE
@@ -164,12 +210,14 @@
 
                 </div>
                 <div class="col-md-7">
+
                     <h5>{{Auth::user()->name;}}</h5>
-                    
+
                     <small style="font-size: 20px;">
-                        {{ $subscriber }} Subscribers
+                        {{ $count  }} Subscribers
                     </small>
                     <!-- <p>Create. Submit. Approve. Get an all-in-one solution with Varicent Incentive Compensation Management. Automatic updates to payroll</p> -->
+
                   <a href="./login">Read More</a>
                   <div class="shows">
                       <p>Upcoming Charges</p>
@@ -178,15 +226,13 @@
                 </div>
                 <div class="col-md-3 text-end">
                     <button class="btn btn-danger subscribe" style="{{$count<=0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',1)">SUBSCRIBE</button>
-                    <button class="btn btn-danger subscribes"  style="{{$count > 0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',0)">SUBSCRIBED</button>
-                    <button class="btn btn-danger subscrib"  style="{{$count > 0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',0)">UNSUBSCRIBED</button> 
- 
+                    <button class="btn btn-danger" style="{{$count > 0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',0)">SUBSCRIBED</button>
                 </div>
               </div>
               <hr/>
               <div class="comments">
                 <div class="d-flex">
-                    <p>0 Comments</p>
+                <p style="font-size:20px;">{{count($videos['comments'])}} Comments</p>
                     <div class="ms-3">
                         <div class="dropdown">
                             <a style="color: black;" class="dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -231,11 +277,8 @@
                             "height="40px" width="40px" />
                             </div>
                     </div>
-
-
-
-                            <div class="col-md-10">
-                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b> 1 hours ago </p>
+                      <div class="col-md-10">
+                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b>   {{\Carbon\Carbon::parse($commet['created_at'])->diffForHumans()}}</p>
                                 <p class="">{{$commet['body']}}</p>
                                 @foreach($commet['replies'] as $key=> $reply)
                                   <div>{{$reply['body']}}</div>
@@ -646,9 +689,9 @@
       </div>
     </div>
     </div>
-    </div>  
+    </div>
         <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
-        {!! Toastr::message() !!} 
+        {!! Toastr::message() !!}
         <script>
 document.addEventListener("DOMContentLoaded", function() {
    video1 = new Moovie({
@@ -682,4 +725,4 @@ document.addEventListener("DOMContentLoaded", function() {
     </body>
     </html>
 
-    
+

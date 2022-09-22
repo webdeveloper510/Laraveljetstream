@@ -1,5 +1,8 @@
 <x-app-layout>
 
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+
                 <div class=" py-5">
                     <div class="container">
                         <div class="home-demo">
@@ -10,8 +13,8 @@
                                      @foreach($video['posts'] as $posts)
                                 <div class="item">
                                     <div class="card">
-                                    <a href="{{url('/videodetail/'.$video['id'])}}"> 
-                                   <video width="100%" height="100%" controls>
+                                    <a href="{{url('/videodetail/'.$video['id'])}}">
+                                   <video width="100%" height="100%" controls onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
                                         <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}" type="video/mp4">
                                     </video></a>
                                         <div class="card-body">
@@ -51,7 +54,7 @@
                                 <div class="owl-carousel owl-theme">
                                     <div class="item">
                                         <div class="card">
-                                          <video width="100%" height="100%" controls>
+                                          <video width="100%" height="100%" controls onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
@@ -64,7 +67,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls>
+                                            <video width="100%" height="100%" controls onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
@@ -78,7 +81,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls>
+                                            <video width="100%" height="100%" controls onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
@@ -91,7 +94,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls>
+                                            <video width="100%" height="100%" controls onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
@@ -319,6 +322,7 @@
         </div>
     </div>
     <script>
+
        function likePost(id)
        {
            console.log(id)
@@ -379,4 +383,13 @@
         });
 
     </script>
+     @push('js')
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+     <script>
+         console.log('fsdffdssdf');
+         var user = {!! json_encode((array)auth()->user()) !!};
+        console.log('user')
+     </script>
+ @endpush
 </x-app-layout>

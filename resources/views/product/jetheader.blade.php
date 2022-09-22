@@ -17,22 +17,35 @@
       <meta name="keywords" content="free dashboard template, free admin, free bootstrap template, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
       <meta name="author" content="codedthemes">
       <!-- Favicon icon -->
-      <link rel="icon" href="<?php echo URL::to('/');?>/public/assets/images/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
       <!-- Google font-->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
       <!-- Required Fremwork -->
-      <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/');?>/public/assets/css/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/bootstrap/css/bootstrap.min.css">
       <!-- themify-icons line icon -->
-      <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/');?>/public/assets/icon/themify-icons/themify-icons.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/');?>/public/assets/icon/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/icon/themify-icons/themify-icons.css">
+      <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/icon/font-awesome/css/font-awesome.min.css">
       <!-- ico font -->
-      <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/');?>/public/assets/icon/icofont/css/icofont.css">
+      <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/icon/icofont/css/icofont.css">
       <!-- Style.css -->
-      <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/');?>/public/assets/css/style.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/');?>/public/assets/css/jquery.mCustomScrollbar.css">
+      <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/jquery.mCustomScrollbar.css">
+	  
   </head>
   <body>
   <body>
+      <div class="fixed-button">
+        <a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
+        </a>
+      </div>
+       <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="loader-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
@@ -158,8 +171,3 @@
                    </div>
                </div>
            </nav>
-           @push('js')
-           <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-           <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
-       @endpush

@@ -7,6 +7,7 @@ use App\models\Subscribe;
 use App\models\product_rating;
 use App\models\User;
 use App\models\Rating;
+use App\models\Report;
 use App\models\Comment;
 use App\models\LikeDislike;
 use Toastr;
@@ -23,11 +24,14 @@ use Illuminate\Support\Carbon;
 
 class Controller extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('login');
+    }
 
   public function unlikePost(Request $request)
   {
-
-       $id = auth()->user()->id;
+      $id = auth()->user()->id;
        $likeExist = LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->get();
        //print_r($likeExist);die;
        if(count($likeExist)<=0){
@@ -36,16 +40,10 @@ class Controller extends BaseController
         $data->dislike=1;
         $data->user_id=$id;
         $data->save();
-        // return response()->json([
-        //     'bool'=>true
-        // ]);
        }
 
        else{
         LikeDislike::where(['user_id'=>$id, 'product_id'=>$request->contentId])->update(['dislike'=>1,'like'=>0]);
-        // return response()->json([
-        //     'bool'=>true
-        // ]);
        }
 
        $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
@@ -78,10 +76,12 @@ class Controller extends BaseController
     public function watchlater()
     {
        $product = product::join('save_video' ,'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
-      //  echo "<pre>";
-      //  print_r($product);die;
-       return view('watchlater',compact('product'));
+        //    echo "<pre>";
+        //     print_r($product);die;
+        $name = auth()->user()->name;
+       return view('watchlater',compact('product','name'));
     }
+
 
     public function videodetail($id){
       $auth_id = auth()->user()->id;
@@ -112,7 +112,7 @@ class Controller extends BaseController
     }
 
     Public function store(Request $request){
-     
+
         $id = auth()->user()->id;
         $data=$request->all();
         $folder = "video";
@@ -152,6 +152,8 @@ class Controller extends BaseController
 
     }
 
+/*--------------------------------------like dislike---------------------------------------*/
+
     public function likePost(Request $request){
       $id = auth()->user()->id;
       $likeExist = LikeDislike::where(['user_id'=>$id,'product_id'=>$request->contentId])->get();
@@ -176,8 +178,11 @@ class Controller extends BaseController
     ]);
     }
 
+/*--------------------------------------save video---------------------------------------*/
+
     function save_video(Request $request)
     {
+
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id'=>$id,'product_id'=>$request->product_id])->count();
@@ -189,14 +194,14 @@ class Controller extends BaseController
                 'code'=>1
             ]);
         }
-        else{     
-          
+        else{
+
 
             $data['product_id'] = $request->product_id;
             $data['user_id'] = $id;
             $data['created_at'] = $date;
             $data['updated_at'] = $date;
-            DB::table('save_video')->insert($data); 
+            DB::table('save_video')->insert($data);
 
             return response()->json([
                 'bool'=>true,
@@ -209,7 +214,7 @@ class Controller extends BaseController
     public function getVideo($id)
 {
       $videos = product::with('user')->find($id);
-      print_r($videos);die;
+     // print_r($videos);die;
       return view('product.single',compact('videos'));
 
 }
@@ -220,6 +225,8 @@ public function single($id)
       return view('dashboard',compact('videos'));
 
 }
+
+/*--------------------------------------subscribe system---------------------------------------*/
 
 function subscribe(Request $request)
   {
@@ -277,6 +284,7 @@ function subscribe(Request $request)
 
     public function rate(Request $request)
      {
+
         $id = auth()->user()->id;
         $data=new Rating;
         $data->user_id = $id;
@@ -286,47 +294,41 @@ function subscribe(Request $request)
         $data->status  = 1;
         $data->save();
         return redirect()->back()->with('message', 'Content Saved Successfully!');
-        // if (!empty($rating)) {
-        //     $rating->user_id = auth()->user()->id;
-        //     $rating->product_id = $this->product['id'];
-        //     $rating->rating = $this->rating;
-        //     $rating->comment = $this->comment;
-        //     $rating->status = 1;
-        //     try {
-        //         $rating->update();
-        //     } catch (\Throwable $th) {
-        //         throw $th;
-        //     }
-        //     session()->flash('message', 'Success!');
-        // }
 
-        // else {
-        //     $rating = new Rating;
-        //     $rating->user_id = auth()->user()->id;
-        //     $rating->product_id = $this->product->id;
-        //     $rating->rating = $this->rating;
-        //     $rating->comment = $this->comment;
-        //     $rating->status = 1;
-        //     try {
-        //         $rating->save();
-        //     } catch (\Throwable $th) {
-        //         throw $th;
-        //     }
-        //     $this->hideForm = true;
-        // }
     }
 
+/*----------------------------------------Report system-----------------------------------------*/
+
+    public function report(Request $request)
+    {
+        $data = new Report;
+        $user = Report::where([
+            ['product_id','=',$request->product_id],
+            ['user_id','=',$request->user_id]
+        ])->first();
+
+       if($user){
+           echo "Already Reported!";
+        }
+        else{
+            $data->user_id = $request->user_id;
+            $data->product_id  = $request->product_id;
+            $data->description = $request->description;
+            $data->save();
+            }
+
+    }
+
+/*--------------------------------------search system------------------------------------------*/
+
     public function search(Request $request){
-      $search = $request->input('search');
-      $posts = product::with(['comments.replies','user','like'])
-                  ->where('title', 'LIKE', "%{$search}%")
-                  ->orWhere('description', 'LIKE', "%{$search}%")
-                  ->get()->toArray(); 
-                  // echo "<pre>";
-                  // print_r($posts);die;   
-      return view('search', compact('posts'));
-  }
-}
 
+        $search = $request->input('search');
+        $posts = product::with(['comments.replies','user','like'])
+                    ->where('title', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%")
+                    ->get()->toArray();
+          return view('search', compact('posts'));
+    }
 
-
+ }

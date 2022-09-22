@@ -1,4 +1,4 @@
-var base_url ="http://localhost/Laraveljetstream"
+var base_url ="http://localhost/jetstream"
 function subscribe(channel_id,flag){
     toastr.options = {
         "closeButton": true,
@@ -46,9 +46,9 @@ $(a).parent().next().show();
 }
 
 function likePost(id)
-{    
-     $.ajax 
-     ({ 
+{
+     $.ajax
+     ({
          url: base_url+'/likePost',
          type: 'post',
          data:{
@@ -63,11 +63,11 @@ function likePost(id)
                 }
              }
      });
-}  
+}
  function unlikePost(id){
- 
- $.ajax 
- ({ 
+
+ $.ajax
+ ({
      url: base_url+'/unlikePost',
      type: 'post',
      data:{
@@ -97,7 +97,7 @@ function save_video(product_id){
     ({
         url: base_url+'/save_video',
         type: 'post',
-        data:{                                      
+        data:{
            "product_id":product_id,
             "_token":"{{ csrf_token() }}"
         },
@@ -109,7 +109,7 @@ function save_video(product_id){
             }
     });
 
- 
+
 }
 
 

@@ -12,9 +12,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
 
-        //print_r($request->all());die;
         $comment = new Comment;
-
         $comment->body = $request->get('body');
         $id = auth()->user()->id;
         $comment->parent_id =0;
