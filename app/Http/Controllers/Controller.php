@@ -87,25 +87,25 @@ class Controller extends BaseController
       $auth_id = auth()->user()->id;
 
       $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();      // echo "<pre>";
-  
+
       $subscriber = Subscribe::where(['channel_id'=>$videos['user_id']])->sum('count');
- 
-      $count = Subscribe::where(['channel_id'=>$videos['user_id'],'user_id'=>$auth_id])->sum('count');     
+
+      $count = Subscribe::where(['channel_id'=>$videos['user_id'],'user_id'=>$auth_id])->sum('count');
       $trending_product = DB::table('trending')->where('product_id', '=', $id)->count();
       if($trending_product>0){
         $update =DB::table('trending')->where('product_id', '=', $id)->update(['count' => DB::raw('count+1')]);
-      } 
-          
+      }
+
        else{
         $user['product_id'] = $id;
         $user['count']= 1;
         $user['created_at']= Carbon::now();
-        $user['updated_at']= Carbon::now();      
+        $user['updated_at']= Carbon::now();
          DB::table('trending')->insert($user);
       }
-    
+
        $like = array_column($videos['like'], 'like');
-       $dislike = array_column($videos['like'], 'dislike');   
+       $dislike = array_column($videos['like'], 'dislike');
        $liked =  array_sum($like);
        $disliked =  array_sum($dislike);
       return view('product.single',compact('videos','liked','disliked','count','subscriber'));
@@ -121,7 +121,7 @@ class Controller extends BaseController
           'description' => 'required',
           'thumbnail' => 'required',
           'security' => 'required',
-         
+
         ]);
      if ($validator->fails()){
           return redirect()
@@ -231,7 +231,7 @@ public function single($id)
 function subscribe(Request $request)
   {
     //print_r($request->all());die;
-    $id = auth()->user()->id; 
+    $id = auth()->user()->id;
     $alreadySubscribed = Subscribe::where(['user_id'=>$id,'channel_id'=>$request->channel_id])->count();
      $flag = $request->flag;
      if($flag==1){
@@ -243,28 +243,28 @@ function subscribe(Request $request)
           else{
             $code =1;
             $message = 'Already Subscribed!';
-        } 
-          
+        }
+
      }
 
      else{
       $code = $this->unsubscribed($request);
       $message = 'Unsubscribe Successfully!';
-      
+
      }
-      
+
           return response()->json([
             'bool'=>true,
             'message'=>$message,
             'code'=>$code,
-         
-        ]); 
+
+        ]);
     }
 
 
     public function subscribed($data){
      // print_r($data);die;
-      $id = auth()->user()->id; 
+      $id = auth()->user()->id;
       $data1=new Subscribe;
       $data1->channel_id=$data['channel_id'];
       $data1->user_id=$id;
@@ -273,10 +273,10 @@ function subscribe(Request $request)
       return 1;
     }
     public function unsubscribed($data){
-      $id = auth()->user()->id; 
+      $id = auth()->user()->id;
       $update =  Subscribe::where(['user_id'=>$id, 'channel_id'=>$data->channel_id])->update(['count'=>0]);
       return 2;
-    
+
     }
 
 
@@ -301,6 +301,7 @@ function subscribe(Request $request)
 
     public function report(Request $request)
     {
+        print_r($request->all());die;
         $data = new Report;
         $user = Report::where([
             ['product_id','=',$request->product_id],

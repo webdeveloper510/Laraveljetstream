@@ -22,7 +22,7 @@ function subscribe(channel_id,flag){
                 toastr.success(data.message);
                }
                if(data.code==1){
-               
+
                 // show like button
                 $('.subscribe').hide();
                 $('.subscribes').show();
@@ -30,7 +30,7 @@ function subscribe(channel_id,flag){
                 else{
                     $('.subscribe').show();
                     $('.subscribes').hide();
-                    
+
                 }
             }
     });
@@ -109,6 +109,20 @@ function save_video(product_id){
             }
     });
 
+
+/**-----------------------------------------Report Video--------------------------------------------- */
+$('#reportSubmit').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: base_url+'/report',
+      data: $(this).serialize(),
+      success: function (data) {
+        console.log(data)
+      }
+    });
+
+  });
 
 }
 

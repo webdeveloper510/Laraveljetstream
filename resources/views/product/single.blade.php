@@ -77,7 +77,7 @@
 
                     <button type="button" class="btn d-flex" onclick="likePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
                       <span class="material-symbols-outlined">
-                      thumb_up 
+                      thumb_up
                       </span><span class="liked">{{$liked}}</span>
                     </button>
                   <button type="button" class="btn d-flex"  onclick="unlikePost('{{$videos['id']??0}}')" data-bs-toggle="tooltip" data-bs-placement="bottom" title="I Unlike this">
@@ -110,7 +110,8 @@
                   </button>
                   <!-- Modal -->
                     <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="Report" aria-hidden="true">
-                      <div class="modal-dialog">
+                     <form method="post" id="reportSubmit">
+                        <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="Report">Report video</h5>
@@ -118,55 +119,55 @@
                           </div>
                           <div class="modal-body">
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault1">
                             <label class="form-check-label ml-2" for="flexRadioDefault1">
                               Sexual content
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault2" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault2">
                             Violent or repulsive content
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault3">
                             <label class="form-check-label ml-2" for="flexRadioDefault3">
                             Harassment or bullying
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault4" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault4">
                             Harmful or dangerous acts
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault5">
                             <label class="form-check-label ml-2" for="flexRadioDefault5">
                             Child abuse
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault6" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault6">
                             Promotes terrorism
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault7">
                             <label class="form-check-label ml-2" for="flexRadioDefault7">
                             Spam or misleading
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8" checked>
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault8" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault8">
                             Infringes my rights
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault9">
                             <label class="form-check-label ml-2" for="flexRadioDefault9">
                             Captions issue
                             </label>
@@ -176,10 +177,10 @@
                           <div class="hide">
                               <form>
                                 <label>Timestamp selected *</label> <br/>
-                                <input type="time" class="form-control col-md-3 my-3"/>
+                                <input type="time"  name="timestamp" class="form-control col-md-3 my-3"/>
 
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" style="height: 100px"></textarea>
+                                    <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" name="description" style="height: 100px"></textarea>
                                     <label for="floatingTextarea2">Comments</label>
                                   </div>
                               </form>
@@ -189,10 +190,11 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                            <button type="button" class="btn btn-primary btn1">NEXT</button>
+                            <button type="button" name="submit" class="btn btn-primary btn1">Submit</button>
                           </div>
                         </div>
                       </div>
+                     </form>
                     </div>
 
 
@@ -227,7 +229,7 @@
                 <div class="col-md-3 text-end">
                     <button class="btn btn-danger subscribe" style="{{$count<=0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',1)">SUBSCRIBE</button>
                     <button class="btn btn-danger subscribes"  style="{{$count > 0 ? 'display:block':'display:none'}}" onclick="subscribe('{{$videos['user_id']}}',0)">SUBSCRIBED</button>
- 
+
                 </div>
               </div>
               <hr/>
