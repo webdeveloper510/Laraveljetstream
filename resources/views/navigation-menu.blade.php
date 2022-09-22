@@ -21,7 +21,7 @@
                 </div>
             </div>
              <div class="">
-        <form method="GET" action="{{url('/search')}}">
+        <form method="GET" action="{{url('/search')}}" class="d-flex">
                 <div class="mt-3 bg-white px-4">
                     <label for="search" class="hidden">Search</label>
                     <input
@@ -38,7 +38,7 @@
                     />
                 </div>
 
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary btn-sm mt-3 px-4">Search</button>
 
          </form>
              </div>
