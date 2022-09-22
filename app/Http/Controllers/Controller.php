@@ -301,7 +301,7 @@ function subscribe(Request $request)
 
     public function report(Request $request)
     {
-        print_r($request->all());die;
+        //print_r($request->all());die;
         $data = new Report;
         $user = Report::where([
             ['product_id','=',$request->product_id],
