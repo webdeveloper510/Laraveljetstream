@@ -47,20 +47,14 @@ Route::get('/watchlater',[Controller::class, 'watchlater']);
 Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
 Route::post('/subscribe',[Controller::class, 'subscribe']);
-<<<<<<< HEAD
 Route::get('/setting',[Controller::class, 'setting']);
 
-=======
->>>>>>> 845e1f85820dddc9629f3607546adfff36edc2ea
 Route::post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
 Route::post('/save_video',[Controller::class, 'save_video']);
 Route::post('/rating',[Controller::class, 'rating'])->name('postStar');
 Route::post('/rate',[Controller::class, 'rate']);
-<<<<<<< HEAD
-=======
 Route::get('/time',[Controller::class, 'time']);
 Route::post('/report',[Controller::class, 'report']);
->>>>>>> 845e1f85820dddc9629f3607546adfff36edc2ea
 Route::get('/search',[Controller::class, 'search']);
 
 //});

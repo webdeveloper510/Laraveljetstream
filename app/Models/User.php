@@ -70,9 +70,6 @@ class User extends Authenticatable
     public function posts() {
         return $this->hasMany('App\Models\product','user_id');
     }
-<<<<<<< HEAD
-   
-=======
 
 
     public function ratings()
@@ -82,7 +79,6 @@ class User extends Authenticatable
 
 
 
->>>>>>> 845e1f85820dddc9629f3607546adfff36edc2ea
     // public function likes()
     // {
     //     return $this->hasMany(product::class,LikeDislike::class);
