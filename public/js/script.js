@@ -37,14 +37,16 @@ function subscribe(channel_id,flag){
 
 }
 
+/**-----------------------------------------Report Video--------------------------------------------- */
+
+
+
+
+
 
 function reply(a){
-
 $(a).parent().next().show();
-
-
 }
-
 function likePost(id)
 {
      $.ajax
@@ -65,7 +67,6 @@ function likePost(id)
      });
 }
  function unlikePost(id){
-
  $.ajax
  ({
      url: base_url+'/unlikePost',
@@ -108,22 +109,29 @@ function save_video(product_id){
                    }
             }
     });
-
-
-/**-----------------------------------------Report Video--------------------------------------------- */
-$('#reportSubmit').on('submit', function (e) {
-    e.preventDefault();
-    $.ajax({
-      type: 'post',
-      url: base_url+'/report',
-      data: $(this).serialize(),
-      success: function (data) {
-        console.log(data)
-      }
-    });
-
-  });
-
 }
 
 
+$("#submit_report").submit(function(e) {
+    toastr.options = {
+        "closeButton": true,
+        "newestOnTop": true,
+        "positionClass": "toast-top-right"
+      };
+    console.log('yee')
+     e.preventDefault();
+        var form = $(this);
+        var actionUrl = base_url+'/report';
+        $.ajax({
+            type: "POST",
+            url: actionUrl,
+            data: form.serialize(),
+            success: function(data)
+            {
+            if(data.code==1){
+            toastr.success(data.message);
+            }
+            }
+        });
+
+});

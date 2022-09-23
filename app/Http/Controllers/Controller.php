@@ -301,22 +301,20 @@ function subscribe(Request $request)
 
     public function report(Request $request)
     {
-        //print_r($request->all());die;
-        $data = new Report;
-        $user = Report::where([
-            ['product_id','=',$request->product_id],
-            ['user_id','=',$request->user_id]
-        ])->first();
-
-       if($user){
-           echo "Already Reported!";
-        }
-        else{
-            $data->user_id = $request->user_id;
+          $id = auth()->user()->id;
+            $data = new Report;
+            $data->user_id = $id;
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
-            $data->save();
+            if($data->save()){
+                return response()->json([
+                    'bool'=>true,
+                    'message'=>'Content Reported By user!',
+                    'code'=>1
+                ]);
             }
+
+
 
     }
 

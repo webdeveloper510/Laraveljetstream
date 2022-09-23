@@ -110,64 +110,66 @@
                   </button>
                   <!-- Modal -->
                     <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="Report" aria-hidden="true">
-                     <form method="post" id="reportSubmit">
+
                         <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="Report">Report video</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
+                       <form id="submit_report" method="POST">
                           <div class="modal-body">
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault1" value="Sexual content">
                             <label class="form-check-label ml-2" for="flexRadioDefault1">
                               Sexual content
                             </label>
                           </div>
+                          <input type="hidden" name="product_id" id="product_id" value="{{request()->segment(2)}}">
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault2" checked>
+                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault2" value="Violent or repulsive content" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault2">
                             Violent or repulsive content
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault3">
+                            <input class="form-check-input" type="radio" value="Harassment or bullying" name="report_desc" id="flexRadioDefault3">
                             <label class="form-check-label ml-2" for="flexRadioDefault3">
                             Harassment or bullying
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault4" checked>
+                            <input class="form-check-input" type="radio" value="Harmful or dangerous acts" name="report_desc" id="flexRadioDefault4" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault4">
                             Harmful or dangerous acts
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault5">
+                            <input class="form-check-input" type="radio" value="Child abuse" name="report_desc" id="flexRadioDefault5">
                             <label class="form-check-label ml-2" for="flexRadioDefault5">
                             Child abuse
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault6" checked>
+                            <input class="form-check-input" type="radio" value="Promotes terrorism" name="report_desc" id="flexRadioDefault6" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault6">
                             Promotes terrorism
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault7">
+                            <input class="form-check-input" value="Spam or misleading" type="radio" name="report_desc" id="flexRadioDefault7">
                             <label class="form-check-label ml-2" for="flexRadioDefault7">
                             Spam or misleading
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault8" checked>
+                            <input class="form-check-input" type="radio" value="Infringes my rights" name="report_desc" id="flexRadioDefault8" checked>
                             <label class="form-check-label ml-2" for="flexRadioDefault8">
                             Infringes my rights
                             </label>
                           </div>
                           <div class="form-check my-1.5">
-                            <input class="form-check-input" type="radio" name="report_desc" id="flexRadioDefault9">
+                            <input class="form-check-input" type="radio" value="Captions issue" name="report_desc" id="flexRadioDefault9">
                             <label class="form-check-label ml-2" for="flexRadioDefault9">
                             Captions issue
                             </label>
@@ -175,7 +177,6 @@
                           <small class="my-2">Flagged videos and users are reviewed by YouTube staff 24 hours a day, 7 days a week to determine whether they violate Community Guidelines. Accounts are penalized for Community Guidelines violations, and serious or repeated violations can lead to account termination. Report channel
                           </small>
                           <div class="hide">
-                              <form>
                                 <label>Timestamp selected *</label> <br/>
                                 <input type="time"  name="timestamp" class="form-control col-md-3 my-3"/>
 
@@ -183,18 +184,18 @@
                                     <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" name="description" style="height: 100px"></textarea>
                                     <label for="floatingTextarea2">Comments</label>
                                   </div>
-                              </form>
+
                               <small class="my-2">Flagged videos and users are reviewed by YouTube staff 24 hours a day, 7 days a week to determine whether they violate Community Guidelines. Accounts are penalized for Community Guidelines violations, and serious or repeated violations can lead to account termination. Report channel
                              </small>
                           </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                            <button type="submit" name="submit" class="btn btn-primary btn1">Submit</button>
+                            <button type="submit" class="btn btn-primary btn1">Submit</button>
                           </div>
                         </div>
+                      </form>
                       </div>
-                     </form>
                     </div>
 
 
@@ -693,39 +694,9 @@
     </div>
     </div>
     </div>
-        <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
-        {!! Toastr::message() !!}
-        <script>
-document.addEventListener("DOMContentLoaded", function() {
-   video1 = new Moovie({
-      selector: "#example1",
-      config: {
-          controls : {
-              playtime : true,
-              mute : true,
-              volume : true,
-              subtitles : true,
-              config : true,
-              fullscreen : true,
-              submenuCaptions : true,
-              submenuOffset : true,
-              submenuSpeed : true,
-              allowLocalSubtitles : true
-          }
-      }
-   });
-});
-
-// $(document).ready(function(){
-//   $(".btn1").click(function(){
-//     $(".hide").hide();
-//   });
-//   $(".btn1").click(function(){
-//     $(".hide").show();
-//   });
-// });
-</script>
     </body>
+    <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
+
     </html>
 
 
