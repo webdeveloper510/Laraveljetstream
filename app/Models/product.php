@@ -12,6 +12,11 @@ class product extends Model
     protected $table = 'product';
     public $timestamps=true;
 
+    protected $appends = [
+        'average-rating'
+    ];
+
+
     public function likes1(){
         return $this->hasMany('App\models\LikeDislike','content_id')->sum('like');
     }
@@ -42,6 +47,11 @@ class product extends Model
 
     public function ratings()
     {
-        return $this->hasMany('App\Models\product_rating');
+        return $this->hasMany('App\Models\Rating');
     }
+
+    public function getAverageRatingAttribute(){
+        return round($this->ratings()->avg('rating'),1);
+    }
+
 }

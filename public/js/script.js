@@ -116,9 +116,9 @@ $("#submit_report").submit(function(e) {
     toastr.options = {
         "closeButton": true,
         "newestOnTop": true,
-        "positionClass": "toast-top-right"
+        "positionClass": "toast-top-left"
       };
-    console.log('yee')
+    console.log('yes');
      e.preventDefault();
         var form = $(this);
         var actionUrl = base_url+'/report';

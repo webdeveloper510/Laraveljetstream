@@ -71,7 +71,7 @@
 
                     <button type="button" class="btn d-flex"data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <span class="material-symbols-outlined">
-                            star
+                            star{{number_format($Rating,2)}}
                             </span>
                       </button>
 
