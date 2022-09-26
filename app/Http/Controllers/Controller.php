@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\models\Product;
 use App\models\Subscribe;
-use App\models\product_rating;
 use App\models\User;
 use App\models\Rating;
 use App\models\Report;
@@ -86,29 +85,32 @@ class Controller extends BaseController
     public function videodetail($id){
       $auth_id = auth()->user()->id;
 
-      $videos = product::with(['comments.replies','user','like'])->find($id)->toArray();      // echo "<pre>";
-  
+      $videos = product::with(['comments.replies','user','like','ratings'])->find($id)->toArray();
+
+      $Rating = Rating::where('product_id',$id)->avg('rating');
+
       $subscriber = Subscribe::where(['channel_id'=>$videos['user_id']])->sum('count');
- 
-      $count = Subscribe::where(['channel_id'=>$videos['user_id'],'user_id'=>$auth_id])->sum('count');     
+
+      $count = Subscribe::where(['channel_id'=>$videos['user_id'],'user_id'=>$auth_id])->sum('count');
       $trending_product = DB::table('trending')->where('product_id', '=', $id)->count();
+
       if($trending_product>0){
         $update =DB::table('trending')->where('product_id', '=', $id)->update(['count' => DB::raw('count+1')]);
-      } 
-          
+      }
+
        else{
         $user['product_id'] = $id;
         $user['count']= 1;
         $user['created_at']= Carbon::now();
-        $user['updated_at']= Carbon::now();      
+        $user['updated_at']= Carbon::now();
          DB::table('trending')->insert($user);
       }
-    
+
        $like = array_column($videos['like'], 'like');
-       $dislike = array_column($videos['like'], 'dislike');   
+       $dislike = array_column($videos['like'], 'dislike');
        $liked =  array_sum($like);
        $disliked =  array_sum($dislike);
-      return view('product.single',compact('videos','liked','disliked','count','subscriber'));
+      return view('product.single',compact('videos','liked','disliked','count','subscriber','Rating'));
     }
 
     Public function store(Request $request){
@@ -190,7 +192,7 @@ class Controller extends BaseController
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id'=>$id,'product_id'=>$request->product_id])->count();
-        // print_r($saved_data);die;
+         //print_r($saved_data);die;
         if($saved_data>1){
             return response()->json([
                 'bool'=>true,
@@ -235,7 +237,7 @@ public function single($id)
 function subscribe(Request $request)
   {
     //print_r($request->all());die;
-    $id = auth()->user()->id; 
+    $id = auth()->user()->id;
     $alreadySubscribed = Subscribe::where(['user_id'=>$id,'channel_id'=>$request->channel_id])->count();
      $flag = $request->flag;
      if($flag==1){
@@ -247,28 +249,28 @@ function subscribe(Request $request)
           else{
             $code =1;
             $message = 'Already Subscribed!';
-        } 
-          
+        }
+
      }
 
      else{
       $code = $this->unsubscribed($request);
       $message = 'Unsubscribe Successfully!';
-      
+
      }
-      
+
           return response()->json([
             'bool'=>true,
             'message'=>$message,
             'code'=>$code,
-         
-        ]); 
+
+        ]);
     }
 
 
     public function subscribed($data){
      // print_r($data);die;
-      $id = auth()->user()->id; 
+      $id = auth()->user()->id;
       $data1=new Subscribe;
       $data1->channel_id=$data['channel_id'];
       $data1->user_id=$id;
@@ -277,10 +279,10 @@ function subscribe(Request $request)
       return 1;
     }
     public function unsubscribed($data){
-      $id = auth()->user()->id; 
+      $id = auth()->user()->id;
       $update =  Subscribe::where(['user_id'=>$id, 'channel_id'=>$data->channel_id])->update(['count'=>0]);
       return 2;
-    
+
     }
 
 
@@ -289,36 +291,47 @@ function subscribe(Request $request)
     public function rate(Request $request)
      {
 
-        $id = auth()->user()->id;
         $data=new Rating;
-        $data->user_id = $id;
-        $data->comment = $request->description;
-        $data->rating  = $request->rating;
-        $data->product_id  = $request->product_id;
-        $data->status  = 1;
-        $data->save();
-        return redirect()->back()->with('message', 'Content Saved Successfully!');
+        $id = auth()->user()->id;
+        //$user = Rating::where('user_id', '=', $id)->first();
+        $user = Rating::where([
+                ['user_id', '=', $id],
+                ['product_id', '=', $request->product_id]
+            ])->first();
 
+    if($user)
+            {
+                print_r($user);
+                echo "Already reported !!";
+            }
+
+    else
+        {
+            $data->user_id = $id;
+            $data->comment = $request->description;
+            $data->rating  = $request->rating;
+            $data->product_id  = $request->product_id;
+            $data->status  = 1;
+            $data->save();
+            return redirect()->back()->with('message', 'Content Saved Successfully!');
+        }
     }
 
 /*----------------------------------------Report system-----------------------------------------*/
 
     public function report(Request $request)
     {
-        $data = new Report;
-        $user = Report::where([
-            ['product_id','=',$request->product_id],
-            ['user_id','=',$request->user_id]
-        ])->first();
-
-       if($user){
-           echo "Already Reported!";
-        }
-        else{
-            $data->user_id = $request->user_id;
+          $id = auth()->user()->id;
+            $data = new Report;
+            $data->user_id = $id;
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
-            $data->save();
+            if($data->save()){
+                return response()->json([
+                    'bool'=>true,
+                    'message'=>'Content Reported By user!',
+                    'code'=>1
+                ]);
             }
 
     }

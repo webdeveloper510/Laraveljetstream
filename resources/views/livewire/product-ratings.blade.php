@@ -1,6 +1,13 @@
 <div>
     <section class="w-full px-8 pt-4 pb-10 xl:px-8">
         <div class="max-w-5xl mx-auto">
+            @if (session()->has('message'))
+            <div class="alert alert-primary" role="alert">
+            <p class="text-xl text-gray-600 md:pr-16">
+                {{ session('message') }}
+            </p>
+            </div>
+        @endif
             <div class="flex flex-col items-center md:flex-row">
 
                 <div class="w-full mt-16 md:mt-0">
@@ -11,11 +18,7 @@
                                     Rate this product
                                 </p>
                             </div>
-                            @if (session()->has('message'))
-                                <p class="text-xl text-gray-600 md:pr-16">
-                                    {{ session('message') }}
-                                </p>
-                            @endif
+
                             @if($hideForm != true)
                                 <form  method="POST" action="{{ url('/rate') }}">
                                     <div class="block max-w-3xl px-1 py-2 mx-auto">
@@ -75,7 +78,7 @@
             </div>
         </div>
     </section>
-    <section class="relative block pt-20 pb-24 overflow-hidden text-left bg-white">
+    {{-- <section class="relative block pt-20 pb-24 overflow-hidden text-left bg-white">
         <div class="w-full px-20 mx-auto text-left md:px-10 max-w-7xl xl:px-16">
             <div class="box-border flex flex-col flex-wrap justify-center -mx-4 text-indigo-900">
                 <div class="relative w-full mb-12 leading-6 text-left xl:flex-grow-0 xl:flex-shrink-0">
@@ -122,6 +125,6 @@
                 @endforelse
 
             </div>
-    </section>
+    </section> --}}
 
 </div>
