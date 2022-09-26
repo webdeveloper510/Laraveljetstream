@@ -113,6 +113,8 @@ class Controller extends BaseController
     }
 
     Public function store(Request $request){
+      echo "<pre>";
+      print_r($request->all());die;
 
         $id = auth()->user()->id;
         $data=$request->all();
@@ -122,7 +124,8 @@ class Controller extends BaseController
           'description' => 'required',
           'thumbnail' => 'required',
           'security' => 'required',
-
+          'kids' => 'kids',
+         
         ]);
      if ($validator->fails()){
           return redirect()
@@ -142,6 +145,7 @@ class Controller extends BaseController
                   $user['description']= $request->description;
                   $user['thumbnail']= $imae_name;
                   $user['security'] = $request->security;
+                  $user['kids'] = $request->kids;
                   $user['user_id'] =  $id;
                   $user['views'] =  0;
                   $user['file'] = $video_name;

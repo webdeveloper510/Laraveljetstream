@@ -38,7 +38,7 @@ Route::middleware([
 
 
 //Route::group(['middleware' => ['auth']], function () {
-    Route::get('/uploadpage',[Controller::class, 'uploadpage']);
+Route::get('/uploadpage',[Controller::class, 'uploadpage']);
 Route::post('/uploadproduct',[Controller::class, 'store']);
 Route::post('/likePost',[Controller::class, 'likePost']);
 Route::post('/unlikePost',[Controller::class, 'unlikePost']);
@@ -49,7 +49,6 @@ Route::get('/channel/{id}',[Controller::class,'detail']);
 Route::post('/comment/store', [CommentController::class,'store'])->name('comment.add');
 Route::post('/subscribe',[Controller::class, 'subscribe']);
 Route::get('/setting',[Controller::class, 'setting']);
-
 Route::post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
 Route::post('/save_video',[Controller::class, 'save_video']);
 Route::post('/rating',[Controller::class, 'rating'])->name('postStar');
