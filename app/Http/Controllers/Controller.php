@@ -93,7 +93,6 @@ class Controller extends BaseController
 
       $count = Subscribe::where(['channel_id'=>$videos['user_id'],'user_id'=>$auth_id])->sum('count');
       $trending_product = DB::table('trending')->where('product_id', '=', $id)->count();
-
       if($trending_product>0){
         $update =DB::table('trending')->where('product_id', '=', $id)->update(['count' => DB::raw('count+1')]);
       }
@@ -329,6 +328,8 @@ function subscribe(Request $request)
                     'code'=>1
                 ]);
             }
+
+
 
     }
 
