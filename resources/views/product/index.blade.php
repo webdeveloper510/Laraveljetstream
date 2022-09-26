@@ -1,9 +1,9 @@
 <x-app-layout>
     <div class="container-fluid p-0">
         <div class="row g-0">
-            @include('layouts.sidebar')
+            <!-- @include('layouts.sidebar') -->
 
-            <div class="col-md-9" style="height:100vh;">
+            <div class="col-md-12">
                 <div class=" py-5">
                     <div class="container">
                         <div class="home-demo">
@@ -13,7 +13,7 @@
                                 <div class="item">
                                     <div class="card">
                                         <a href="{{url('/videodetail/'.$video['id'])}}">
-                                            <video width="100%" height="100%" controls onmouseover="this.play()"
+                                            <video width="100%" height="100%"  onmouseover="this.play()"
                                                 onmouseout="this.pause();this.currentTime=0;">
                                                 <source
                                                     src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}"
@@ -21,17 +21,18 @@
                                             </video></a>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-3">
+                                                <div class="col-2">
                                                     <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
                                                         class="thump">
                                                 </div>
-                                                <div class="col-9">
+                                                <div class="col-10">
                                                     <div class="detail">
                                                         <a href="" class="title font-bold">{{$posts['title']}}</a><br />
                                                         <a href="{{url('/channel/'.$video['id'])}}"
                                                             class="small-tittle"> {{Auth::user()->name;}}</a>
                                                         <ul class="Views">
                                                             <li><a href=""> View:{{ $posts['views']}} </a></li>
+                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
                                                         </ul>
                                                         <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
                                                        <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
@@ -58,36 +59,70 @@
                                 <div class="owl-carousel owl-theme">
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls onmouseover="this.play()"
+                                            <video width="100%" height="100%"  onmouseover="this.play()"
                                                 onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
                                             </video>
                                             <div class="card-body">
-                                                <h5 class="card-title">Video Title</h5>
-                                                <p class="card-text">Video Dis</p>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
+                                                        class="thump">
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="detail">
+                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
+                                                        <a href="{{url('/channel/'.$video['id'])}}"
+                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
+                                                        <ul class="Views">
+                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
+                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
+                                                        </ul>
+                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls onmouseover="this.play()"
+                                            <video width="100%" height="100%"  onmouseover="this.play()"
                                                 onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
                                             </video>
-                                            <div class="card-body text-center">
-                                                <h5 class="card-title">Video Title</h5>
-                                                <p class="card-text">Video Dis</p>
+                                            <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
+                                                        class="thump">
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="detail">
+                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
+                                                        <a href="{{url('/channel/'.$video['id'])}}"
+                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
+                                                        <ul class="Views">
+                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
+                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
+                                                        </ul>
+                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
                                             </div>
                                         </div>
 
                                     </div>
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls onmouseover="this.play()"
+                                            <video width="100%" height="100%"  onmouseover="this.play()"
                                                 onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
@@ -101,7 +136,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="card">
-                                            <video width="100%" height="100%" controls onmouseover="this.play()"
+                                            <video width="100%" height="100%"  onmouseover="this.play()"
                                                 onmouseout="this.pause();this.currentTime=0;">
                                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
@@ -206,7 +241,67 @@
                 <div class="">
                     <div class="container">
                         <div class="row  py-5">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <video width="100%" height="100%" controls>
+                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="card-body ">
+                                    <div class="row">
+                                                <div class="col-2">
+                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
+                                                        class="thump">
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="detail">
+                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
+                                                        <a href="{{url('/channel/'.$video['id'])}}"
+                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
+                                                        <ul class="Views">
+                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
+                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
+                                                        </ul>
+                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <video width="100%" height="100%" controls>
+                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="card-body">
+                                    <div class="row">
+                                                <div class="col-2">
+                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
+                                                        class="thump">
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="detail">
+                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
+                                                        <a href="{{url('/channel/'.$video['id'])}}"
+                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
+                                                        <ul class="Views">
+                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
+                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
+                                                        </ul>
+                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
                                 <div class="card">
                                     <video width="100%" height="100%" controls>
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
@@ -219,7 +314,80 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <video width="100%" height="100%" controls>
+                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="card-body">
+                                    <div class="row">
+                                                <div class="col-2">
+                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
+                                                        class="thump">
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="detail">
+                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
+                                                        <a href="{{url('/channel/'.$video['id'])}}"
+                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
+                                                        <ul class="Views">
+                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
+                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
+                                                        </ul>
+                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <video width="100%" height="100%" controls>
+                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="card-body">
+                                    <div class="row">
+                                                <div class="col-2">
+                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
+                                                        class="thump">
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="detail">
+                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
+                                                        <a href="{{url('/channel/'.$video['id'])}}"
+                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
+                                                        <ul class="Views">
+                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
+                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
+                                                        </ul>
+                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
+                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <video width="100%" height="100%" >
+                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Video Title</h5>
+                                        <p class="card-text">Video Dis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
                                 <div class="card">
                                     <video width="100%" height="100%" controls>
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
@@ -232,7 +400,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="card">
                                     <video width="100%" height="100%" controls>
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
@@ -245,72 +413,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <video width="100%" height="100%" controls>
-                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Video Title</h5>
-                                        <p class="card-text">Video Dis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <video width="100%" height="100%" controls>
-                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Video Title</h5>
-                                        <p class="card-text">Video Dis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <video width="100%" height="100%" controls>
-                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Video Title</h5>
-                                        <p class="card-text">Video Dis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <video width="100%" height="100%" controls>
-                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Video Title</h5>
-                                        <p class="card-text">Video Dis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card">
-                                    <video width="100%" height="100%" controls>
-                                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Video Title</h5>
-                                        <p class="card-text">Video Dis</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="card">
                                     <video width="100%" height="100%" controls>
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
@@ -377,7 +480,7 @@
         // Owl Carousel
         var owl = $(".owl-carousel");
         owl.owlCarousel({
-            items: 3,
+            items: 4,
             margin: 10,
             loop: true,
             nav: true

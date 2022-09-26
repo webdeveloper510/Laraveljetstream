@@ -33,12 +33,24 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
  <!-- Option 1: Bootstrap Bundle with Popper -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
 <style>
+    body {
+        background-color: #0b0c2a !important; color: white; font-family: 'Mulish', sans-serif;
+    }
+    .dashboard a {
+    color: white !important;
+    text-decoration: none;
+}
+    .modal-content {
+        background-color:#29292a !important;
+    }
     .form-check-input {
     width: 1.4em;
     height: 1.4em;
@@ -58,6 +70,7 @@
 .profile-image img {
     border-radius: 50%;
     width: 60px;
+    max-width:60px;
     height: 60px;
     margin: auto;
 }
@@ -79,6 +92,11 @@
     position: absolute;
     top: 0;
     right: 0;
+}
+
+.detail a {
+    color: white;
+    text-decoration: none;
 }
 
 ul.dropdown-menu1 {
@@ -173,9 +191,11 @@ ul#pills-tab {
     padding: 22% 0px;
     font-size: 20px;
 }
-        img.thump {
+img.thump {
     border-radius: 50%;
-    height: 57px;
+    height: 30px;
+    width: 30px !important;
+    max-width: 57px;
 }
         .home-demo h2 {
             color: #FFF;
@@ -203,7 +223,7 @@ a.small-tittle {
     font-size: 12px;
     margin: 0px;
     text-decoration: none;
-    color:black;
+    color:white;
 }
 
 ul.Views li {
@@ -212,7 +232,7 @@ ul.Views li {
 }
 ul.Views li a{
     text-decoration: none;
-   color:black;
+   color:white;
 }
 
 ul.Views {
@@ -252,6 +272,7 @@ ul.Views {
         }
         .appricate {
     display: flex;
+    justify-content: end;
 }
 ul.view {
     padding: 0;
@@ -325,6 +346,25 @@ a.title {
     object-fit: cover;
 }
 
+/* Navbar CSS Start */
+nav.navbar.navbar-expand-lg.bg-light a {
+    color: white;
+  }
+
+  .bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #0b0c2a !important;
+    color: white;
+  }
+    .btn {
+      color: white;
+    }
+    .btn:hover {
+      color: white;
+    }
+
+    /* Navbar CSS End */
     </style>
 </head>
-        <body>
+        <body style="background-color: #0b0c2a; color: white; font-family: 'Mulish', sans-serif;">
+
