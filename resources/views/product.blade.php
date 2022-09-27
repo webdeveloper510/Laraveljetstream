@@ -23,6 +23,7 @@ html {
 body {
     font-family: montserrat, arial, verdana;
     background: transparent;
+    color: black !important;
 }
 
 /*form styles*/
@@ -31,7 +32,9 @@ body {
     position: relative;
     margin-top: 30px;
 }
-
+ul.ml-10.mt-3 {
+    list-style-type: none;
+}
 #msform fieldset {
     background: white;
     border: 0 none;
@@ -198,10 +201,10 @@ body {
                 <li class="active"> Details</li>
                 <li >Video elements</li>
                 <li>Checks</li>
-              
+
             </ul>
             <!-- fieldsets -->
-           
+
             <fieldset>
                 <h2 class="fs-title"> Details</h2>
                 <div class="mb-3">
@@ -229,7 +232,7 @@ body {
                     <h5 class="mb-2"><b> Is this video made from kids ? </b></h5>
                     <p>Regardless of your location, youre legally rergally required to comply with the children's Online Privacy
                          Protection Act (COPPA) and/or other laws. You're required to tell us whether your videos are made for ids.</p>
-                    
+
                          <div class="form-check my-3">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                             <label class="form-check-label" for="exampleRadios1">
@@ -247,7 +250,7 @@ body {
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">Preview</h2>
-                
+
                 <div class="mb-3">
                     <label>upload video</label>
                     <input type="file" name="upload_video"  required class="form-control" />
@@ -259,15 +262,15 @@ body {
                     Your browser does not support the video tag.
                 </video>
                 </div>
-                
+
                   <div class="my-3">
                  <label>Video Link</label> <br/>
                  <a href="">links</a>
-                 </div>    
+                 </div>
                  <div class="mb-3">
                  <label>Filename</label>
                   <p>videoname.mp4</p>
-                 </div>  
+                 </div>
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
@@ -299,7 +302,7 @@ body {
                         <li><div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                         <label class="form-check-label" for="exampleRadios1">
-                        Unlisted 
+                        Unlisted
                         </label><br/>
                         <small>
                         Anyone with the video link can watch your video
@@ -309,7 +312,7 @@ body {
                 <li><div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                         <label class="form-check-label" for="exampleRadios1">
-                        Public 
+                        Public
                         </label><br/>
                         <small>
                         Everyone can watch your video
@@ -326,19 +329,19 @@ body {
 
                    </div>
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                
+
                 <input type="submit" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
         </form>
         <!-- link to designify.me code snippets -->
-       
+
         <!-- /.link to designify.me code snippets -->
     </div>
     <div class="col"></div>
 </div>
 <!-- /.MultiStep Form -->
 <script>
-  
+
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
