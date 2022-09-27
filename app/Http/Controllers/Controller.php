@@ -114,7 +114,8 @@ class Controller extends BaseController
       return view('product.single',compact('videos','liked','disliked','count','subscriber','Rating','username'));
     }
 
-    Public function store(Request $request){
+    Public function store(Request $request)
+    {
         $id = auth()->user()->id;
         $data = $request->all();
         $folder = "video";
