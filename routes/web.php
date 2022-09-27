@@ -34,6 +34,16 @@ Route::middleware([
     //   print_r($videos);die;
         return view('product.index', compact('videos'));
     })->name('dashboard');
+
+});
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/uploadpage', function () { 
+    })->name('uploadpage');
+
 });
 
 

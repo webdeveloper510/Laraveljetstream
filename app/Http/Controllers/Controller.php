@@ -115,8 +115,8 @@ class Controller extends BaseController
     }
 
     Public function store(Request $request){
-    //   echo "<pre>";
-    //   print_r($request->all());die;
+      echo "<pre>";
+      print_r($request->all());die;
 
         $id = auth()->user()->id;
         $data=$request->all();

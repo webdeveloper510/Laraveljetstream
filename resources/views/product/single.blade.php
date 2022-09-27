@@ -221,7 +221,35 @@
                         <div class="comments my-2">
                             <div class="d-flex mb-2">
                                 <p>{{ count($videos['comments']) }} Comments</p>
-                                @foreach ($videos['comments'] as $key => $commet)
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-1 text-end">
+                                    <div class="profile-image">
+                                        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
+                                            width="60px" />
+                                    </div>
+                                </div>
+                                <div class="col-md-11 mt-3">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Add a comment">
+                                    <div class="text-end mt-2">
+                                        <button class="btn btn-primary" type="button">Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentss">
+                                <div class="row mt-3">
+                                    <div class="col-1 text-end">
+                                        <div class="profile-image">
+                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
+                                                width="60px" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <p class="mb-2"> <b> {{ $username }}
+                                            </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
+                                            @foreach ($videos['comments'] as $key => $commet)
                                     <div class="commentss">
                                         <div class="row mt-3">
                                             <div class="col-1 text-end">
@@ -259,7 +287,7 @@
                                                     </div>
                                                     <div class="col-md-11 mt-3">
                                                         <form method="post" action="{{ route('reply.add') }}">
-                                                            <input type="text" hidden class="form-control"
+                                                            <input type="text"  class="form-control"
                                                                 id="exampleFormControlInput1"
                                                                 placeholder="Add a comment">
                                                             <div class="text-end mt-2">
@@ -273,59 +301,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-                            </div>
-                            <div class="row">
-                                <div class="col-1 text-end">
-                                    <div class="profile-image">
-                                        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                            width="60px" />
-                                    </div>
-                                </div>
-                                <div class="col-md-11 mt-3">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Add a comment">
-                                    <div class="text-end mt-2">
-                                        <button class="btn btn-primary" type="button">Comment</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="commentss">
-                                <div class="row mt-3">
-                                    <div class="col-1 text-end">
-                                        <div class="profile-image">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                                width="60px" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11">
-                                        <p class="mb-2"> <b> {{ $username }}
-                                            </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
-                                        <p>The sound of the engine tearing the air is simply too sweet</p>
-
-                                        <div class="d-flex my-2">
-                                            <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                                    thumb_up
-                                                </span> 12</p>
-                                            <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                                    thumb_down
-                                                </span> 12</p>
-                                            <p class="me-3">REPLY</p>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-1 text-end">
-                                                <div class="profile-image mt-2">
-                                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                        height="50px" width="50px" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-11 mt-3">
-                                                <input type="text" class="form-control"
-                                                    id="exampleFormControlInput1" placeholder="Add a comment">
-                                                <div class="text-end mt-2">
-                                                    <button class="btn btn-primary" type="button">Comment</button>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -246,7 +246,7 @@ ul.ml-10.mt-3 {
                             </label>
                          </div>
                 </div>
-                <input type="button" name="next" class="next action-button" value="Next"/>
+                <input type="submit" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">Preview</h2>

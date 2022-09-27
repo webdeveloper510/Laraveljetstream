@@ -1,4 +1,4 @@
-var base_url ="http://localhost/jetstream"
+var base_url ="http://localhost/Laraveljetstream"
 function subscribe(channel_id,flag){
     toastr.options = {
         "closeButton": true,
