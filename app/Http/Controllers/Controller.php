@@ -86,14 +86,15 @@ class Controller extends BaseController
       $auth_id = auth()->user()->id;
 
       $videos = product::with(['comments.replies','user','like','ratings'])->find($id)->toArray();
-
+      $username = auth()->user()->name;
+    //   echo "<pre>";
+    //     print_r($videos);die;
       $Rating = Rating::where('product_id',$id)->avg('rating');
 
       $subscriber = Subscribe::where(['channel_id'=>$videos['user_id']])->sum('count');
 
       $count = Subscribe::where(['channel_id'=>$videos['user_id'],'user_id'=>$auth_id])->sum('count');
       $trending_product = DB::table('trending')->where('product_id', '=', $id)->count();
-
       if($trending_product>0){
         $update =DB::table('trending')->where('product_id', '=', $id)->update(['count' => DB::raw('count+1')]);
       }
@@ -110,12 +111,12 @@ class Controller extends BaseController
        $dislike = array_column($videos['like'], 'dislike');
        $liked =  array_sum($like);
        $disliked =  array_sum($dislike);
-      return view('product.single',compact('videos','liked','disliked','count','subscriber','Rating'));
+      return view('product.single',compact('videos','liked','disliked','count','subscriber','Rating','username'));
     }
 
     Public function store(Request $request){
-      echo "<pre>";
-      print_r($request->all());die;
+    //   echo "<pre>";
+    //   print_r($request->all());die;
 
         $id = auth()->user()->id;
         $data=$request->all();
@@ -126,7 +127,7 @@ class Controller extends BaseController
           'thumbnail' => 'required',
           'security' => 'required',
           'kids' => 'kids',
-         
+
         ]);
      if ($validator->fails()){
           return redirect()
@@ -333,6 +334,8 @@ function subscribe(Request $request)
                     'code'=>1
                 ]);
             }
+
+
 
     }
 

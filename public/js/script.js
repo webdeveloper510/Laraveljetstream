@@ -3,7 +3,7 @@ function subscribe(channel_id,flag){
     toastr.options = {
         "closeButton": true,
         "newestOnTop": true,
-        "positionClass": "toast-top-right"
+        "positionClass": "toast-top-center"
       };
     $.ajax
     ({
@@ -39,11 +39,6 @@ function subscribe(channel_id,flag){
 
 /**-----------------------------------------Report Video--------------------------------------------- */
 
-
-
-
-
-
 function reply(a){
 $(a).parent().next().show();
 }
@@ -66,7 +61,9 @@ function likePost(id)
              }
      });
 }
- function unlikePost(id){
+
+
+function unlikePost(id){
  $.ajax
  ({
      url: base_url+'/unlikePost',
@@ -84,6 +81,8 @@ function likePost(id)
          }
  });
 }
+
+
 function reply(a){
  $(a).parent().next().show();
 }
