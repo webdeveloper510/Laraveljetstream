@@ -1,10 +1,7 @@
 @include('header')
-
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous"></script>
-
-
 <style>
 /*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -195,7 +192,7 @@ ul.ml-10.mt-3 {
 <div class="row">
     <div class="col"></div>
     <div class="col-md-8">
-        <form id="msform"  action="{{URL('/uploadproduct')}}" method="POST">
+        <form id="msform"  method="POST">
             <!-- progressbar -->
             <ul id="progressbar">
                 <li class="active"> Details</li>
@@ -219,28 +216,19 @@ ul.ml-10.mt-3 {
                     <label>Thumbnail</label>
                     <input type="file" name="thumbnail"  required class="form-control" />
                 </div>
-                <!-- <div class="mb-3">
-                    <label>Playlists</label>
-                    <select class="form-select" class="form-control" aria-label="Default select example">
-                        <option selected>Select</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div> -->
                 <div class="mb-3">
                     <h5 class="mb-2"><b> Is this video made from kids ? </b></h5>
                     <p>Regardless of your location, youre legally rergally required to comply with the children's Online Privacy
                          Protection Act (COPPA) and/or other laws. You're required to tell us whether your videos are made for ids.</p>
 
                          <div class="form-check my-3">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                            <input class="form-check-input" type="radio" name="child_vis" id="exampleRadios1" value="option1" checked>
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes, its made for kids
                             </label>
                             </div>
                             <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                            <input class="form-check-input" type="radio" name="child_vis" id="exampleRadios2" value="option2">
                             <label class="form-check-label" for="exampleRadios2">
                                 No, it's not made for kids
                             </label>
@@ -279,7 +267,7 @@ ul.ml-10.mt-3 {
                 <h3 class="fs-subtitle">Choose when to publish and who csn see your video </h3>
                    <div class="">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="is_visible" id="exampleRadios" value="1" checked>
                         <label class="form-check-label" for="exampleRadios1">
                         Save or publish
                         </label><br/>
@@ -290,7 +278,7 @@ ul.ml-10.mt-3 {
                     <ul class="ml-10 mt-3">
                         <li>
                         <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="security" id="exampleRadios1" value="option1" checked>
                         <label class="form-check-label" for="exampleRadios1">
                         Private
                         </label><br/>
@@ -300,7 +288,7 @@ ul.ml-10.mt-3 {
                     </div>
                         </li>
                         <li><div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="security" id="exampleRadios1" value="option1" checked>
                         <label class="form-check-label" for="exampleRadios1">
                         Unlisted
                         </label><br/>
@@ -310,7 +298,7 @@ ul.ml-10.mt-3 {
                     </div>
                 </li>
                 <li><div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="security" id="exampleRadios1" value="option1" checked>
                         <label class="form-check-label" for="exampleRadios1">
                         Public
                         </label><br/>
@@ -328,9 +316,9 @@ ul.ml-10.mt-3 {
                     </ul>
 
                    </div>
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                {{-- <input type="button" name="previous" class="previous action-button-previous" value="Previous"/> --}}
 
-                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                <button type="submit" class="next action-button" value="Next">Submit</button>
             </fieldset>
         </form>
         <!-- link to designify.me code snippets -->
@@ -341,11 +329,9 @@ ul.ml-10.mt-3 {
 </div>
 <!-- /.MultiStep Form -->
 <script>
-
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
-
 $(".next").click(function(){
 	if(animating) return false;
 	animating = true;
@@ -424,4 +410,5 @@ $(".submit").click(function(){
 })
 </script>
 </body>
+<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 </html>

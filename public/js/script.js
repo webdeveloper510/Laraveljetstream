@@ -37,6 +37,7 @@ function subscribe(channel_id,flag){
 
 }
 
+
 /**-----------------------------------------Report Video--------------------------------------------- */
 
 function reply(a){
@@ -112,11 +113,11 @@ function save_video(product_id){
 
 
 $("#submit_report").submit(function(e) {
-    toastr.options = {
-        "closeButton": true,
-        "newestOnTop": true,
-        "positionClass": "toast-top-left"
-      };
+    // toastr.options = {
+    //     "closeButton": true,
+    //     "newestOnTop": true,
+    //     "positionClass": "toast-top-left"
+    //   };
     console.log('yes');
      e.preventDefault();
         var form = $(this);
@@ -133,4 +134,25 @@ $("#submit_report").submit(function(e) {
             }
         });
 
+});
+$("form#msform").submit(function(e) {
+        toastr.options = {
+        "closeButton": true,
+        "newestOnTop": true,
+        "positionClass": "toast-top-left"
+      };
+    e.preventDefault();
+    var formData = new FormData(this);
+
+    $.ajax({
+        url: base_url+'/uploadproduct',
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+            toastr.success(data.message);
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 });

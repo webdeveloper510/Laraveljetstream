@@ -115,48 +115,46 @@ class Controller extends BaseController
     }
 
     Public function store(Request $request){
-    //   echo "<pre>";
-    //   print_r($request->all());die;
-
         $id = auth()->user()->id;
-        $data=$request->all();
+        $data = $request->all();
         $folder = "video";
         $validator = Validator::make($data, [
-          'title' => 'required|max:255',
-          'description' => 'required',
-          'thumbnail' => 'required',
-          'security' => 'required',
-          'kids' => 'kids',
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'thumbnail' => 'required',
+            'security' => 'required',
+            'child_vis' => 'required',
 
-        ]);
-     if ($validator->fails()){
-          return redirect()
-                  ->back()
-                  ->withErrors($validator)
-                  ->withInput();
-       }
-       else{
+          ]);
+          if ($validator->fails()){
+            return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+         }
+         else{
 
-        $video_name = $data['file']->store($folder, 'spaces');
+            $video_name = $data['upload_video']->store($folder, 'spaces');
 
-        $imae_name = $data['thumbnail']->store('images', 'spaces');
+            $imae_name = $data['thumbnail']->store('images', 'spaces');
 
-                  $input = $data['file']->getClientOriginalName();
-                  $thumbnail = $data['thumbnail']->getClientOriginalName();
-                  $user['title'] =$request->title;
-                  $user['description']= $request->description;
-                  $user['thumbnail']= $imae_name;
-                  $user['security'] = $request->security;
-                  $user['kids'] = $request->kids;
-                  $user['user_id'] =  $id;
-                  $user['views'] =  0;
-                  $user['file'] = $video_name;
+                      $input = $data['upload_video']->getClientOriginalName();
+                      $thumbnail = $data['thumbnail']->getClientOriginalName();
+                      $user['title'] = $request->title;
+                      $user['description']= $request->description;
+                      $user['thumbnail']= $imae_name;
+                      $user['security'] = $request->security;
+                      $user['user_id'] =  $id;
+                      $user['views'] =  0;
+                      $user['file'] = $video_name;
 
-                  DB::table('product')->insert($user);
-                  return redirect()->back()->with('message', 'content upload successfully');
+                      $insert = DB::table('product')->insert($user);
+                      return response()->json([
+                        'status'=>$insert ? 1 : 0,
+                        'message'=>$insert ? 'Content Upload Successfully!' : 'Some eror occure'
+                    ]);
 
-      }
-
+          }
     }
 
 /*--------------------------------------like dislike---------------------------------------*/
