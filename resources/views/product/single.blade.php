@@ -21,7 +21,7 @@
                             <div class="col-md-8 pt-2">
                                 <h5>{{ $username }}</h5>
                                 <small>
-                                    190 Subscriber
+                                    {{ $subscriber }} Subscriber
                                 </small>
                             </div>
                             <div class="col-md-3 text-end">
@@ -198,23 +198,33 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">CANCEL</button>
-                                                    <button type="submit"
+                                                    <button type="submit" onClick="clearform();"
                                                         class="btn btn-primary btn1">Submit</button>
                                                 </div>
                                         </div>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
                             <hr />
                         </div>
-                        <div class="my-2">
-                            <p>Create. Submit. Approve. Get an all-in-one solution with Varicent Incentive Compensation
-                                Management. Automatic updates to payroll</p>
-                            <a href="">Read More</a>
-                            <div class="shows">
+                        <div class="my-2" id="add_to_me">
+                            {{-- <p>{{$videos['description']}}</p> --}}
+                            {{ substr($videos['description'], 70) }}
+
+                            <button onclick="addCode()">Read More</button>
+                            <script>
+                                function addCode() {
+                                    document.getElementById("add_to_me").innerHTML +=
+                                        "<p>{{ $videos['description'] }}</p>";
+                                }
+                            </script>
+
+
+                            {{-- <div class="shows">
                                 <p>Upcoming Charges </p>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <hr />
@@ -717,6 +727,43 @@
 </div>
 </body>
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+{!! Toastr::message() !!}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        video1 = new Moovie({
+            selector: "#example1",
+            config: {
+                controls: {
+                    playtime: true,
+                    mute: true,
+                    volume: true,
+                    subtitles: true,
+                    config: true,
+                    fullscreen: true,
+                    submenuCaptions: true,
+                    submenuOffset: true,
+                    submenuSpeed: true,
+                    allowLocalSubtitles: true
+                }
+            }
+        });
+    });
+
+    // $(document).ready(function(){
+    //   $(".btn1").click(function(){
+    //     $(".hide").hide();
+    //   });
+    //   $(".btn1").click(function(){
+    //     $(".hide").show();
+    //   });
+    // });
+</script>
+
 <script>
     $(document).ready(function() {
 

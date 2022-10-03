@@ -135,6 +135,8 @@ $("#submit_report").submit(function(e) {
         });
 
 });
+
+
 $("form#msform").submit(function(e) {
         toastr.options = {
         "closeButton": true,

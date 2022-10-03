@@ -192,7 +192,7 @@ ul.ml-10.mt-3 {
 <div class="row">
     <div class="col"></div>
     <div class="col-md-8">
-        <form id="msform"  method="POST">
+        <form id="msform" method="POST">
             <!-- progressbar -->
             <ul id="progressbar">
                 <li class="active"> Details</li>

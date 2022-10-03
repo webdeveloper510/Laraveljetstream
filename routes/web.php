@@ -37,6 +37,39 @@ Route::middleware([
 });
 
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/uploadpage', function () {
+    })->name('product');
+
+});
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/channel', function () {
+    })->name('channel');
+
+});
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/save_video', function () {
+    })->name('save_video');
+
+});
+
+Route::get('/notify',[Controller::class, 'notify']);
 //Route::group(['middleware' => ['auth']], function () {
 Route::get('/uploadpage',[Controller::class, 'uploadpage']);
 Route::post('/uploadproduct',[Controller::class, 'store']);
@@ -50,11 +83,13 @@ Route::post('/comment/store', [CommentController::class,'store'])->name('comment
 Route::post('/subscribe',[Controller::class, 'subscribe']);
 Route::get('/setting',[Controller::class, 'setting']);
 Route::post('/reply/store', [CommentController::class,'replyStore'])->name('reply.add');
-Route::post('/save_video',[Controller::class, 'save_video']);
+Route::post('/save_video',[Controller::class, 'print_r($request->all());die;']);
+Route::get('/save_video',[Controller::class, 'save_video']);
 Route::post('/rating',[Controller::class, 'rating'])->name('postStar');
 Route::post('/rate',[Controller::class, 'rate']);
 Route::get('/time',[Controller::class, 'time']);
 Route::post('/report',[Controller::class, 'report']);
 Route::get('/search',[Controller::class, 'search']);
+Route::get('/index', [Controller::class, 'index']);
 
 //});

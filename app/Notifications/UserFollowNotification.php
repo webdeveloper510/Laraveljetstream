@@ -6,22 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Post;
-class NotifyPostOwner extends Notification
+
+class UserFollowNotification extends Notification
 {
     use Queueable;
-
-
-    public $post;
-
+    public $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Post $post)
+    public function __construct($user)
     {
-        $this->post = $post;
+        $this->user = $user;
     }
 
     /**
@@ -35,30 +32,12 @@ class NotifyPostOwner extends Notification
         return ['database'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toDatabase($notifiable)
-    {
-        return [
-
-            'post' => $this->post
-        ];
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return [
-            //
+            'user_id' => $this->user['id'],
+            'name' => $this->user['name'],
+            'user_id' => $this->user['id'],
         ];
     }
 }
