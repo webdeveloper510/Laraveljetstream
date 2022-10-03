@@ -179,7 +179,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,
-
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
     ],
 
     /*
@@ -235,7 +235,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
-
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ],
 
 ];

@@ -57,14 +57,16 @@
                                 </div>
                                 <div class="col-md-7 ">
                                     <div class="appricate">
-
+                                        <ul>
+                                            @foreach($socialshare as $key => $value)
                                         <button type="button" class="btn d-flex" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" title="Tooltip on bottom">
                                             <span class="material-symbols-outlined">
                                                 google_plus_reshare
-                                            </span> SHARE
+                                            </span><a href="{{$value}}">{{$key}}</a> SHARE
                                         </button>
-
+                                        @endforeach
+                                            </ul>
                                         <button type="button" class="btn d-flex"
                                             onclick="save_video('{{ request()->segment(2) }}')"
                                             data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -209,8 +211,7 @@
                             <hr />
                         </div>
                         <div class="my-2">
-                            <p>Create. Submit. Approve. Get an all-in-one solution with Varicent Incentive Compensation
-                                Management. Automatic updates to payroll</p>
+                            <p>{{$videos['description']}}</p>
                             <a href="">Read More</a>
                             <div class="shows">
                                 <p>Upcoming Charges </p>
@@ -305,9 +306,6 @@
                                 </div>
                             </div>
 
-
-
-
                         </div>
                     </div>
 
@@ -325,7 +323,7 @@
                                             <div class="icons-on">
                                                 <a href=""><span class="material-symbols-outlined">
                                                         schedule
-                                                    </span></a><br />
+                                                    </span></a><br/>
                                                 <a href="">
                                                     <span class="material-symbols-outlined">
                                                         playlist_play
@@ -333,7 +331,6 @@
                                                 </a>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-md-7">
                                         <div class="video-details ps-2">
@@ -686,6 +683,42 @@
 </div>
 </body>
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
+        {!! Toastr::message() !!} 
+        <script>
+document.addEventListener("DOMContentLoaded", function() {
+   video1 = new Moovie({
+      selector: "#example1",
+      config: {
+          controls : {
+              playtime : true,
+              mute : true,
+              volume : true,
+              subtitles : true,
+              config : true,
+              fullscreen : true,
+              submenuCaptions : true,
+              submenuOffset : true,
+              submenuSpeed : true,
+              allowLocalSubtitles : true
+          }
+      }
+   });
+});
+
+// $(document).ready(function(){
+//   $(".btn1").click(function(){
+//     $(".hide").hide();
+//   });
+//   $(".btn1").click(function(){
+//     $(".hide").show();
+//   });
+// });
+</script>
 <script>
     $(document).ready(function() {
 

@@ -136,23 +136,23 @@ $("#submit_report").submit(function(e) {
 
 });
 $("form#msform").submit(function(e) {
-        toastr.options = {
-        "closeButton": true,
-        "newestOnTop": true,
-        "positionClass": "toast-top-left"
-      };
-    e.preventDefault();
-    var formData = new FormData(this);
+    toastr.options = {
+    "closeButton": true,
+    "newestOnTop": true,
+    "positionClass": "toast-top-left"
+  };
+e.preventDefault();
+var formData = new FormData(this);
 
-    $.ajax({
-        url: base_url+'/uploadproduct',
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-            toastr.success(data.message);
-        },
-        cache: false,
-        contentType: false,
-        processData: false
-    });
+$.ajax({
+    url: base_url+'/uploadproduct',
+    type: 'POST',
+    data: formData,
+    success: function (data) {
+        toastr.success(data.message);
+    },
+    cache: false,
+    contentType: false,
+    processData: false
+});
 });

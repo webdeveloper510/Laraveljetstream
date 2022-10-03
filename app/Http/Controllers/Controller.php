@@ -48,11 +48,11 @@ class Controller extends BaseController
        $like = LikeDislike::where(['product_id'=>$request->contentId])->sum('like');
        $dislike = LikeDislike::where(['product_id'=>$request->contentId])->sum('dislike');
 
-       return response()->json([
-        'bool'=>true,
-        'like'=>$like,
-        'dislike'=>$dislike
-    ]);
+        return response()->json([
+          'bool'=>true,
+          'like'=>$like,
+          'dislike'=>$dislike
+      ]);
     }
 
     Public function uploadpage()
@@ -106,12 +106,23 @@ class Controller extends BaseController
         $user['updated_at']= Carbon::now();
          DB::table('trending')->insert($user);
       }
-
+      
+          $socialshare = \Share::page(
+            'http://localhost/Laraveljetstream/videodetail/1'
+      )
+      ->facebook()
+      ->twitter()
+      
+      ->linkedin()
+      ->telegram()
+      ->reddit()
+      ->whatsapp()->getRawLinks();
        $like = array_column($videos['like'], 'like');
        $dislike = array_column($videos['like'], 'dislike');
        $liked =  array_sum($like);
        $disliked =  array_sum($dislike);
-      return view('product.single',compact('videos','liked','disliked','count','subscriber','Rating','username'));
+     
+      return view('product.single',compact('videos','liked','disliked','count','subscriber','Rating','username','socialshare'));
     }
 
     Public function store(Request $request)
@@ -152,7 +163,7 @@ class Controller extends BaseController
                       $insert = DB::table('product')->insert($user);
                       return response()->json([
                         'status'=>$insert ? 1 : 0,
-                        'message'=>$insert ? 'Content Upload Successfully!' : 'Some eror occure'
+                        'message'=>$insert ? 'Content Upload Successfully!' : 'Some erorr occure'
                     ]);
 
           }
@@ -201,7 +212,6 @@ class Controller extends BaseController
             ]);
         }
         else{
-
 
             $data['product_id'] = $request->product_id;
             $data['user_id'] = $id;
@@ -321,6 +331,7 @@ function subscribe(Request $request)
 
     public function report(Request $request)
     {
+      print_r($request->all());die;
           $id = auth()->user()->id;
             $data = new Report;
             $data->user_id = $id;
@@ -350,4 +361,5 @@ function subscribe(Request $request)
           return view('search', compact('posts'));
     }
 
- }
+
+}
