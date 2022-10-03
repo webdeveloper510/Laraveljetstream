@@ -24,22 +24,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
 use App\Notifications\UserFollowNotification;
 use Share;
+
 class Controller extends BaseController
 {
     public function __construct()
     {
         $this->middleware('auth')->except('login');
-    }
-
-    public function share()
-    {
-       $share_link = \Share::class('https://github.com/jorenvh/laravel-share','Laravel Share')
-        ->facebook()
-        ->twitter()
-        ->linkedin()
-        ->whatsapp()
-        ->telegram();
-        dd($share_link);
     }
 
 
@@ -51,12 +41,6 @@ class Controller extends BaseController
         //     Notification::send(auth()->user(), new UserFollowNotification($user));
         // }
     }
-
-
-
-
-
-
     public function unlikePost(Request $request)
     {
         $id = auth()->user()->id;
@@ -81,6 +65,7 @@ class Controller extends BaseController
             'dislike' => $dislike
         ]);
     }
+
 
     public function uploadpage()
     {
@@ -108,15 +93,14 @@ class Controller extends BaseController
         return view('watchlater', compact('product', 'name'));
     }
 
-
     public function videodetail($id)
     {
         $auth_id = auth()->user()->id;
 
         $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->find($id)->toArray();
         $username = auth()->user()->name;
-        // echo "<pre>";
-        // print_r($videos);die;
+        //   echo "<pre>";
+        //     print_r($videos);die;
         $Rating = Rating::where('product_id', $id)->avg('rating');
 
         $subscriber = Subscribe::where(['channel_id' => $videos['user_id']])->sum('count');
@@ -133,11 +117,21 @@ class Controller extends BaseController
             DB::table('trending')->insert($user);
         }
 
+        $socialshare = \Share::page(
+            'http://localhost/jetstream/videodetail/1'
+        )
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->reddit()
+            ->whatsapp()->getRawLinks();
         $like = array_column($videos['like'], 'like');
         $dislike = array_column($videos['like'], 'dislike');
         $liked =  array_sum($like);
         $disliked =  array_sum($dislike);
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username'));
+
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare'));
     }
 
     public function store(Request $request)
@@ -224,7 +218,6 @@ class Controller extends BaseController
                 'code' => 1
             ]);
         } else {
-
 
             $data['product_id'] = $request->product_id;
             $data['user_id'] = $id;

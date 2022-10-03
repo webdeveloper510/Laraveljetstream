@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/jetstream/'),
+    'url' => env('APP_URL', 'http://localhost/Laraveljetstream/'),
 
     'asset_url' => env('ASSET_URL', null),
 

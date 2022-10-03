@@ -57,6 +57,8 @@
                         <div class="home-demo py-5">
                             <h3 class=" text-3xl mb-3">Breaking news</h5>
                                 <div class="owl-carousel owl-theme">
+                                @foreach($videos as $video)
+                                @foreach($video['posts'] as $posts)
                                     <div class="item">
                                         <div class="card">
                                             <video width="100%" height="100%"  onmouseover="this.play()"
@@ -118,7 +120,8 @@
                                             </div>
                                             </div>
                                         </div>
-
+                                            @endforeach
+                                            @endforeach
                                     </div>
                                     <div class="item">
                                         <div class="card">
@@ -243,7 +246,7 @@
                         <div class="row  py-5">
                             <div class="col-md-3 mb-3">
                                 <div class="card">
-                                    <video width="100%" height="100%" controls>
+                                    <video width="100%" height="100%" >
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                         <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                         Your browser does not support the video tag.
@@ -263,8 +266,6 @@
                                                             <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                             <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
                                                         </ul>
-                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
-                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -273,7 +274,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <div class="card">
-                                    <video width="100%" height="100%" controls>
+                                    <video width="100%" height="100%" >
                                         <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                         <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                                         Your browser does not support the video tag.
@@ -427,7 +428,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                    </div> 
                 </div>
             </div>
         </div>

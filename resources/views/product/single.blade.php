@@ -21,7 +21,7 @@
                             <div class="col-md-8 pt-2">
                                 <h5>{{ $username }}</h5>
                                 <small>
-                                    {{ $subscriber }} Subscriber
+                                    190 Subscriber
                                 </small>
                             </div>
                             <div class="col-md-3 text-end">
@@ -57,14 +57,16 @@
                                 </div>
                                 <div class="col-md-7 ">
                                     <div class="appricate">
-
+                                        <ul>
+                                            @foreach($socialshare as $key => $value)
                                         <button type="button" class="btn d-flex" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" title="Tooltip on bottom">
                                             <span class="material-symbols-outlined">
                                                 google_plus_reshare
-                                            </span> SHARE
+                                            </span><a href="{{$value}}">{{ucfirst($key)}}</a> SHARE
                                         </button>
-
+                                        @endforeach
+                                            </ul>
                                         <button type="button" class="btn d-flex"
                                             onclick="save_video('{{ request()->segment(2) }}')"
                                             data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -198,40 +200,57 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">CANCEL</button>
-                                                    <button type="submit" onClick="clearform();"
+                                                    <button type="submit"
                                                         class="btn btn-primary btn1">Submit</button>
                                                 </div>
                                         </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
                             <hr />
                         </div>
-                        <div class="my-2" id="add_to_me">
-                            {{-- <p>{{$videos['description']}}</p> --}}
-                            {{ substr($videos['description'], 70) }}
-
-                            <button onclick="addCode()">Read More</button>
-                            <script>
-                                function addCode() {
-                                    document.getElementById("add_to_me").innerHTML +=
-                                        "<p>{{ $videos['description'] }}</p>";
-                                }
-                            </script>
-
-
-                            {{-- <div class="shows">
+                        <div class="my-2">
+                            <p>{{$videos['description']}}</p>
+                            <a href="">Read More</a>
+                            <div class="shows">
                                 <p>Upcoming Charges </p>
-                            </div> --}}
+                            </div>
                         </div>
 
                         <hr />
                         <div class="comments my-2">
                             <div class="d-flex mb-2">
                                 <p>{{ count($videos['comments']) }} Comments</p>
-                                @foreach ($videos['comments'] as $key => $commet)
+
+                            </div>
+                            <div class="row">
+                                <div class="col-1 text-end">
+                                    <div class="profile-image">
+                                        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
+                                            width="60px" />
+                                    </div>
+                                </div>
+                                <div class="col-md-11 mt-3">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Add a comment">
+                                    <div class="text-end mt-2">
+                                        <button class="btn btn-primary" type="button">Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commentss">
+                                <div class="row mt-3">
+                                    <div class="col-1 text-end">
+                                        <div class="profile-image">
+                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
+                                                width="60px" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <p class="mb-2"> <b> {{ $username }}
+                                            </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
+                                            @foreach ($videos['comments'] as $key => $commet)
                                     <div class="commentss">
                                         <div class="row mt-3">
                                             <div class="col-1 text-end">
@@ -269,7 +288,7 @@
                                                     </div>
                                                     <div class="col-md-11 mt-3">
                                                         <form method="post" action="{{ route('reply.add') }}">
-                                                            <input type="text" hidden class="form-control"
+                                                            <input type="text"  class="form-control"
                                                                 id="exampleFormControlInput1"
                                                                 placeholder="Add a comment">
                                                             <div class="text-end mt-2">
@@ -283,66 +302,9 @@
                                         </div>
                                     </div>
                                 @endforeach
-                            </div>
-                            <div class="row">
-                                <div class="col-1 text-end">
-                                    <div class="profile-image">
-                                        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                            width="60px" />
-                                    </div>
-                                </div>
-                                <div class="col-md-11 mt-3">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Add a comment">
-                                    <div class="text-end mt-2">
-                                        <button class="btn btn-primary" type="button">Comment</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="commentss">
-                                <div class="row mt-3">
-                                    <div class="col-1 text-end">
-                                        <div class="profile-image">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                                width="60px" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-11">
-                                        <p class="mb-2"> <b> {{ $username }}
-                                            </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
-                                        <p>The sound of the engine tearing the air is simply too sweet</p>
-
-                                        <div class="d-flex my-2">
-                                            <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                                    thumb_up
-                                                </span> 12</p>
-                                            <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                                    thumb_down
-                                                </span> 12</p>
-                                            <p class="me-3">REPLY</p>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-1 text-end">
-                                                <div class="profile-image mt-2">
-                                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                        height="50px" width="50px" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-11 mt-3">
-                                                <input type="text" class="form-control"
-                                                    id="exampleFormControlInput1" placeholder="Add a comment">
-                                                <div class="text-end mt-2">
-                                                    <button class="btn btn-primary" type="button">Comment</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
 
                         </div>
                     </div>
@@ -361,7 +323,7 @@
                                             <div class="icons-on">
                                                 <a href=""><span class="material-symbols-outlined">
                                                         schedule
-                                                    </span></a><br />
+                                                    </span></a><br/>
                                                 <a href="">
                                                     <span class="material-symbols-outlined">
                                                         playlist_play
@@ -369,7 +331,6 @@
                                                 </a>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-md-7">
                                         <div class="video-details ps-2">
@@ -477,7 +438,112 @@
                                                 </a>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="video-details ps-2">
+                                            <p class="m-0"> <b> What is Lorem <br /> Ipsum? </b></p>
+                                            <p class="m-0"> Channel Name</p>
+                                            <div class="d-flex">
+                                                <ul>
+                                                    <li>
+                                                        999k views
+                                                    </li>
+                                                    <li>
+                                                        1 month ago
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="row mb-3 g-0">
+                                    <div class="col-md-5">
+                                        <div class="related-video position-relative">
+                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
+                                                class="img-fluid" />
+                                            <div class="icons-on">
+                                                <a href=""><span class="material-symbols-outlined">
+                                                        schedule
+                                                    </span></a><br />
+                                                <a href="">
+                                                    <span class="material-symbols-outlined">
+                                                        playlist_play
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="video-details ps-2">
+                                            <p class="m-0"> <b> What is Lorem <br /> Ipsum? </b></p>
+                                            <p class="m-0"> Channel Name</p>
+                                            <div class="d-flex">
+                                                <ul>
+                                                    <li>
+                                                        999k views
+                                                    </li>
+                                                    <li>
+                                                        1 month ago
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 g-0">
+                                    <div class="col-md-5">
+                                        <div class="related-video position-relative">
+                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
+                                                class="img-fluid" />
+                                            <div class="icons-on">
+                                                <a href=""><span class="material-symbols-outlined">
+                                                        schedule
+                                                    </span></a><br />
+                                                <a href="">
+                                                    <span class="material-symbols-outlined">
+                                                        playlist_play
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="video-details ps-2">
+                                            <p class="m-0"> <b> What is Lorem <br /> Ipsum? </b></p>
+                                            <p class="m-0"> Channel Name</p>
+                                            <div class="d-flex">
+                                                <ul>
+                                                    <li>
+                                                        999k views
+                                                    </li>
+                                                    <li>
+                                                        1 month ago
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 g-0">
+                                    <div class="col-md-5">
+                                        <div class="related-video position-relative">
+                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
+                                                class="img-fluid" />
+                                            <div class="icons-on">
+                                                <a href=""><span class="material-symbols-outlined">
+                                                        schedule
+                                                    </span></a><br />
+                                                <a href="">
+                                                    <span class="material-symbols-outlined">
+                                                        playlist_play
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="video-details ps-2">
@@ -585,7 +651,6 @@
                                                 </a>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-md-7">
                                         <div class="video-details ps-2">
@@ -604,115 +669,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row mb-3 g-0">
-                                    <div class="col-md-5">
-                                        <div class="related-video position-relative">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                class="img-fluid" />
-                                            <div class="icons-on">
-                                                <a href=""><span class="material-symbols-outlined">
-                                                        schedule
-                                                    </span></a><br />
-                                                <a href="">
-                                                    <span class="material-symbols-outlined">
-                                                        playlist_play
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="video-details ps-2">
-                                            <p class="m-0"> <b> What is Lorem <br /> Ipsum? </b></p>
-                                            <p class="m-0"> Channel Name</p>
-                                            <div class="d-flex">
-                                                <ul>
-                                                    <li>
-                                                        999k views
-                                                    </li>
-                                                    <li>
-                                                        1 month ago
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3 g-0">
-                                    <div class="col-md-5">
-                                        <div class="related-video position-relative">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                class="img-fluid" />
-                                            <div class="icons-on">
-                                                <a href=""><span class="material-symbols-outlined">
-                                                        schedule
-                                                    </span></a><br />
-                                                <a href="">
-                                                    <span class="material-symbols-outlined">
-                                                        playlist_play
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="video-details ps-2">
-                                            <p class="m-0"> <b> What is Lorem <br /> Ipsum? </b></p>
-                                            <p class="m-0"> Channel Name</p>
-                                            <div class="d-flex">
-                                                <ul>
-                                                    <li>
-                                                        999k views
-                                                    </li>
-                                                    <li>
-                                                        1 month ago
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3 g-0">
-                                    <div class="col-md-5">
-                                        <div class="related-video position-relative">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                class="img-fluid" />
-                                            <div class="icons-on">
-                                                <a href=""><span class="material-symbols-outlined">
-                                                        schedule
-                                                    </span></a><br />
-                                                <a href="">
-                                                    <span class="material-symbols-outlined">
-                                                        playlist_play
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="video-details ps-2">
-                                            <p class="m-0"> <b> What is Lorem <br /> Ipsum? </b></p>
-                                            <p class="m-0"> Channel Name</p>
-                                            <div class="d-flex">
-                                                <ul>
-                                                    <li>
-                                                        999k views
-                                                    </li>
-                                                    <li>
-                                                        1 month ago
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -729,41 +685,40 @@
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
-<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
-{!! Toastr::message() !!}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        video1 = new Moovie({
-            selector: "#example1",
-            config: {
-                controls: {
-                    playtime: true,
-                    mute: true,
-                    volume: true,
-                    subtitles: true,
-                    config: true,
-                    fullscreen: true,
-                    submenuCaptions: true,
-                    submenuOffset: true,
-                    submenuSpeed: true,
-                    allowLocalSubtitles: true
-                }
-            }
-        });
-    });
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
+        {!! Toastr::message() !!}
+        <script>
+document.addEventListener("DOMContentLoaded", function() {
+   video1 = new Moovie({
+      selector: "#example1",
+      config: {
+          controls : {
+              playtime : true,
+              mute : true,
+              volume : true,
+              subtitles : true,
+              config : true,
+              fullscreen : true,
+              submenuCaptions : true,
+              submenuOffset : true,
+              submenuSpeed : true,
+              allowLocalSubtitles : true
+          }
+      }
+   });
+});
 
-    // $(document).ready(function(){
-    //   $(".btn1").click(function(){
-    //     $(".hide").hide();
-    //   });
-    //   $(".btn1").click(function(){
-    //     $(".hide").show();
-    //   });
-    // });
+// $(document).ready(function(){
+//   $(".btn1").click(function(){
+//     $(".hide").hide();
+//   });
+//   $(".btn1").click(function(){
+//     $(".hide").show();
+//   });
+// });
 </script>
-
 <script>
     $(document).ready(function() {
 
@@ -822,4 +777,4 @@
     }
 </script>
 
-</html>
+        </html>
