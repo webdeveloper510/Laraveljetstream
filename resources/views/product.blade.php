@@ -257,10 +257,11 @@
 
                     <div class="mb-3">
                         <label>upload video</label>
-                        <input type="file" name="upload_video" required class="form-control" />
+                        {{-- <input type="file" name="upload_video"  required class="form-control" /> --}}
+                        <input type='file' name="upload_video" required class="form-control" id='videoUpload' />
                     </div>
                     <div class="mx-auto">
-                        <video width="320" height="200" controls class="mx-auto">
+                        <video width="50" height="50" controls class="mx-auto" controls autoplay>
                             <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                             <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                             Your browser does not support the video tag.
@@ -445,6 +446,16 @@
         })
     </script>
 </body>
+
+<script>
+    document.getElementById("videoUpload").onchange = function(event) {
+        let file = event.target.files[0];
+        let blobURL = URL.createObjectURL(file);
+        document.querySelector("video").style.display = 'block';
+        document.querySelector("video").src = blobURL;
+    }
+</script>
+
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
 </html>

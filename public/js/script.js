@@ -70,11 +70,38 @@ function unlikePost (id) {
   });
 }
 
+function rate () {
+//   alert('okkkkk'); return false;
+  // toastr.options = {
+  //   closeButton: true,
+  //   newestOnTop: true,
+  //   positionClass: 'toast-top-right',
+  // };
+
+  var rate1 = $ ('#rate1').val ();
+  $.ajax ({
+    url: base_url + '/videodetail',
+    type: 'post',
+    data: {
+      rate1: rate1,
+      _token: '{{ csrf_token() }}',
+    },
+    success: function (data) {
+      if (result['success'] === 1) {
+        console.log (data);
+      } else {
+        console.log (data);
+      }
+    },
+  });
+}
+
 function reply (a) {
   $ (a).parent ().next ().show ();
 }
 
 function save_video (product_id) {
+   
   toastr.options = {
     closeButton: true,
     newestOnTop: true,

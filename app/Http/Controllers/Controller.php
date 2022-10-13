@@ -72,9 +72,13 @@ class Controller extends BaseController
         return view('product');
     }
 
-    public function channel()
+    public function channel($id)
     {
-        return view('channel');
+        $id = base64_decode($id);
+        $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id',$id)->get()->toArray();
+        // echo "<pre>";
+        // print_r($videos);die;
+        return view(('channel'), compact('videos'));
     }
 
 
@@ -98,6 +102,7 @@ class Controller extends BaseController
         $auth_id = auth()->user()->id;
 
         $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->find($id)->toArray();
+
         $username = auth()->user()->name;
         //   echo "<pre>";
         //     print_r($videos);die;
@@ -136,7 +141,9 @@ class Controller extends BaseController
 
     public function store(Request $request)
     {
+
         $id = auth()->user()->id;
+
         $data = $request->all();
         $folder = "video";
         $validator = Validator::make($data, [
@@ -145,7 +152,6 @@ class Controller extends BaseController
             'thumbnail' => 'required',
             'security' => 'required',
             'child_vis' => 'required',
-
         ]);
         if ($validator->fails()) {
             return redirect()
@@ -163,11 +169,10 @@ class Controller extends BaseController
             $user['title'] = $request->title;
             $user['description'] = $request->description;
             $user['thumbnail'] = $imae_name;
-            $user['security'] = $request->security;
+            $user['security'] = $request['security'];
             $user['user_id'] =  $id;
             $user['views'] = $request->views;
             $user['file'] = $video_name;
-
             $insert = DB::table('product')->insert($user);
             return response()->json([
                 'status' => $insert ? 1 : 0,
@@ -206,11 +211,11 @@ class Controller extends BaseController
 
     function save_video(Request $request)
     {
-        //print_r($request->all());die;
+        // print_r($request->all());die;
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id' => $id, 'product_id' => $request->product_id])->count();
-        //print_r($saved_data);die;
+        // print_r($saved_data);die;
         if ($saved_data > 1) {
             return response()->json([
                 'bool' => true,
@@ -233,18 +238,6 @@ class Controller extends BaseController
         }
     }
 
-    public function getVideo($id)
-    {
-        $videos = product::with('user')->find($id);
-        // print_r($videos);die;
-        return view('product.single', compact('videos'));
-    }
-    public function single($id)
-    {
-        $videos = product::with('user')->find($id);
-
-        return view('dashboard', compact('videos'));
-    }
 
     /*--------------------------------------subscribe system---------------------------------------*/
 
@@ -301,18 +294,14 @@ class Controller extends BaseController
 
     public function rate(Request $request)
     {
-
+        // echo "<pre>";
+        // print_r($request->all());die;
         $data = new Rating;
         $id = auth()->user()->id;
         //$user = Rating::where('user_id', '=', $id)->first();
-        $user = Rating::where([
-            ['user_id', '=', $id],
-            ['product_id', '=', $request->product_id]
-        ])->first();
-
+        $user = Rating::where(['user_id', '=', $id,'product_id', '=', $request->product_id])->first();
         if ($user) {
-            print_r($user);
-            echo "Already reported !!";
+
         } else {
             $data->user_id = $id;
             $data->comment = $request->description;
@@ -320,7 +309,12 @@ class Controller extends BaseController
             $data->product_id  = $request->product_id;
             $data->status  = 1;
             $data->save();
-            return redirect()->back()->with('message', 'Content Saved Successfully!');
+            return response()->json([
+                'bool' => true,
+                'message' => 'Rated Successfully!',
+                'code' => 1
+            ]);
+
         }
     }
 
@@ -328,7 +322,8 @@ class Controller extends BaseController
 
     public function report(Request $request)
     {
-
+        // echo "<pre>";
+        // print_r($request->all());die;
         $id = auth()->user()->id;
         $data = new Report;
         $data->user_id = $id;
@@ -339,9 +334,11 @@ class Controller extends BaseController
                 'bool' => true,
                 'message' => 'Content Reported By user!',
                 'code' => 1
+
             ]);
         }
     }
+
 
     /*--------------------------------------search system------------------------------------------*/
 

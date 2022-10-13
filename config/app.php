@@ -180,6 +180,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
     ],
 
     /*

@@ -49,36 +49,36 @@
             <hr />
         </div>
         <div class="search-videos">
-            @foreach($posts as $post)
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="{{url('/videodetail/'.$post['id'])}}">
-                    <video width="100%" height="200px" controls style="object-fit: fill;" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
-                        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                        <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+            @foreach ($posts as $post)
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="{{ url('/videodetail/' . $post['id']) }}">
+                            <video width="100%" height="200px" controls style="object-fit: fill;"
+                                onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
+                                <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+                                <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
 
-                    </video></a>
-                </div>
-                <div class="col-md-8">
-                    <h5>{{$post['title']}}</h5>
-                    <div class="Streamed">
-
-
-                        <div class=""></div>
-                        <ul>
-                            <li>View: {{$post['views']}}</li>
-                            <li>{{\Carbon\Carbon::parse($post['created_at'])->diffForHumans()}}</li>
-                        </ul>
+                            </video></a>
                     </div>
-                    <div class="d-flex">
-                        <img class="rounded-circle"
-                            src="<?php echo URL::to('/');?>/public/asstes/hq720.webp"
-                            height="40px" width="40px" />
-                        <p class="pt-2 ps-2"> {{$post['user']['name']}}</p>
-                    </div>
+                    <div class="col-md-8">
+                        <h5>{{ $post['title'] }}</h5>
+                        <div class="Streamed">
 
+
+                            <div class=""></div>
+                            <ul>
+                                <li>View: {{ $post['views'] }}</li>
+                                <li>{{ \Carbon\Carbon::parse($post['created_at'])->diffForHumans() }}</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex">
+                            <img class="rounded-circle" src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
+                                height="40px" width="40px" />
+                            <p class="pt-2 ps-2"> {{ $post['user']['name'] }}</p>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>

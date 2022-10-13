@@ -2,21 +2,24 @@
 @include('header')
 
  <div class="mains">
-    <img src="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=600"  width="100%" height="300px"/>
-
+    <video width="320" height="200" id="example1" controls autoplay>
+        <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file']}}"
+            type="video/mp4">
+        <track kind="captions" label="English" srclang="en"
+            src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+    </video>
     <div class="container-fluid">
       <div class="text-banner">
         <div class="row">
             <div class="col-md-4 d-flex">
-               <img src="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=600" width="80px" height="80px" class="profile"/>
-               <div class="username">
+              <div class="username">
                 <h4 class="m-0">Varicent</h4>
                 <p class="m-0">190 Subscriber</p>
                </div>
             </div>
             <div class="col-md-8">
                 <div class="text-sm-end p-4">
-                  <button class="btn btn-outline-primary" type="button">Join</button>
+                  <button class="btn btn-outline-primary" style="color: rgb(4, 4, 246)"  type="button">Join</button>
                     <button class="btn btn-danger" type="button">SUBSCRIBE</button>
                 </div>
             </div>
@@ -25,9 +28,7 @@
  </div>
  </div>
 
-
     <!------------------------------------------ Tabs list section ------------------------------------------------>
-
 
 <div class="py-3 mb-4 pills-color">
   <div class="container-fluid">
@@ -78,8 +79,10 @@
 			<track kind="captions" label="Français" srclang="fr" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt">
 			<!-- Fallback for browsers that don't support the <video> element -->
 			<a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" download="">Download</a>
-	</video><div class="plyr__poster" style="background-image: url(&quot;https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg&quot;);"></div></div><div class="plyr__captions"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button></div>
-</div>
+	</video>
+
+    <div class="plyr__poster" style="background-image: url(&quot;https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg&quot;);"></div></div><div class="plyr__captions"></div><button type="button" class="plyr__control plyr__control--overlaid" data-plyr="play" aria-label="Play"><svg aria-hidden="true" focusable="false"><use xlink:href="#plyr-play"></use></svg><span class="plyr__sr-only">Play</span></button></div>
+    </div>
                </div>
                <div class="col-md-5">
                 <p class="m-0"><b>What is Lorem Ipsum?</b></p>
@@ -98,22 +101,27 @@
                 <h3 class="d-flex">Uploads <button class="btn btn-sm btn-outline-primery d-flex"><span class="material-symbols-outlined">
                   play_arrow
                   </span> <span class="btn-text">Play All</span></button></h3>
-
               </div>
-
+              @foreach ($videos as $video)
               <div class="col-md-3">
-              <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
+                <video width="320" height="200" id="example1" onmouseover="this.play()"
+                onmouseout="this.pause();this.currentTime=0;">
+                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file']}}"
+                        type="video/mp4">
+
+                    <track kind="captions" label="English" srclang="en"
+                        src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+                </video>
                 <div class="card">
-                  
                   <div class="card-body">
-                 
+
                     <p class="m-0">
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                     {{$video['title']}}
                     </p>
                     <div class="views">
                         <ul>
-                          <li>47k views</li>
-                          <li>18 hours ago</li>
+                          <li>views:{{$video['views']}}</li>
+                          <li>{{ \Carbon\Carbon::parse($video['created_at'])->diffForHumans() }}</li>
                         </ul>
                     </div>
                     <a class="" href="#" role="button" id="dropdown1" >
@@ -139,8 +147,9 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
-                <div class="card">
+              @endforeach
+              {{-- <div class="col-md-3"> --}}
+                {{-- <div class="card">
                   <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
                     <p class="m-0">
@@ -173,9 +182,9 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-md-3">
+                </div> --}}
+              {{-- </div> --}}
+              {{-- <div class="col-md-3">
                 <div class="card">
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
@@ -210,8 +219,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3">
+              </div> --}}
+              {{-- <div class="col-md-3">
                 <div class="card">
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
@@ -246,7 +255,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
             </div>
               <hr/>
@@ -254,6 +263,7 @@
      <!--------------------------------------- Shorts section start ------------------------------------->
 
      <div class="row">
+
       <div class="col-12">
         <h3 class="d-flex">
           <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" class="style-scope yt-icon" style="pointer-events: none; display: block; width: 30px; height: 30px;"><g width="24" height="24" viewBox="0 0 24 24" class="style-scope yt-icon"><g class="style-scope yt-icon"><path d="M17.77,10.32l-1.2-.5L18,9.06a3.74,3.74,0,0,0-3.5-6.62L6,6.94a3.74,3.74,0,0,0,.23,6.74l1.2.49L6,14.93a3.75,3.75,0,0,0,3.5,6.63l8.5-4.5a3.74,3.74,0,0,0-.23-6.74Z" fill="red" class="style-scope yt-icon"></path><polygon points="10 14.65 15 12 10 9.35 10 14.65" fill="#fff" class="style-scope yt-icon"></polygon></g></g></svg>
@@ -262,10 +272,52 @@
           </span> <span class="btn-text">Play All</span></button></h3>
 
       </div>
+      @foreach ($videos as $video)
+      <div class="col-md-3">
+        <div class="card">
+            <video width="320" height="200" id="example1" onmouseover="this.play()"
+            onmouseout="this.pause();this.currentTime=0;">
+                <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file']}}"
+                    type="video/mp4">
 
-
-
-      <div class="col-md-3">
+                <track kind="captions" label="English" srclang="en"
+                    src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+            </video>
+          <div class="card-body">
+            <p class="m-0">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+            <div class=" views">
+                <ul>
+                  <li>47k views</li>
+                  <li>18 hours ago</li>
+                </ul>
+            </div>
+            <a class="" href="#" role="button" id="dropdown1" >
+              <span class="material-symbols-outlined">
+                more_vert
+                </span>
+            </a>
+            <div class="Queue">
+              <div class="dropdown">
+                <ul class="dropdown-menu1">
+                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
+                    playlist_play
+                    </span> Add to Queue</a></li>
+                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
+                    schedule
+                    </span>  Save to Watch later</a></li>
+                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
+                    playlist_add
+                    </span> Save to Playlist</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
+      {{-- <div class="col-md-3">
         <div class="card">
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
@@ -300,8 +352,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
+      </div> --}}
+      {{-- <div class="col-md-3">
         <div class="card">
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
@@ -336,8 +388,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
+      </div> --}}
+      {{-- <div class="col-md-3">
         <div class="card">
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
           <div class="card-body">
@@ -372,43 +424,7 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
-          <div class="card-body">
-            <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            <div class=" views">
-                <ul>
-                  <li>47k views</li>
-                  <li>18 hours ago</li>
-                </ul>
-            </div>
-            <a class="" href="#" role="button" id="dropdown1" >
-              <span class="material-symbols-outlined">
-                more_vert
-                </span>
-            </a>
-            <div class="Queue">
-              <div class="dropdown">
-                <ul class="dropdown-menu1">
-                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
-                    playlist_play
-                    </span> Add to Queue</a></li>
-                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
-                    schedule
-                    </span>  Save to Watch later</a></li>
-                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
-                    playlist_add
-                    </span> Save to Playlist</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div> --}}
 
     </div>
  <!--------------------------------------- Funny section start ------------------------------------->
@@ -419,14 +435,18 @@
            Fun <button class="btn btn-sm btn-outline-primery d-flex"><span class="material-symbols-outlined">
           play_arrow
           </span> <span class="btn-text">Play All</span></button></h3>
-
       </div>
-
-
-
+      @foreach ($videos as $video)
       <div class="col-md-3">
         <div class="card">
-        <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
+            <video width="320" height="200" id="example1" onmouseover="this.play()"
+            onmouseout="this.pause();this.currentTime=0;" controle autoplay>
+                <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file']}}"
+                    type="video/mp4">
+
+                <track kind="captions" label="English" srclang="en"
+                    src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+            </video>
           <div class="card-body">
             <p class="m-0">
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -460,6 +480,7 @@
           </div>
         </div>
       </div>
+      @endforeach
       <div class="col-md-3">
         <div class="card">
         <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
@@ -589,7 +610,7 @@
              <div class="row">
 <!-- ------------------------------ist row ----------------------->
 
-              <div class="col-md-3 mb-3">
+              {{-- <div class="col-md-3 mb-3">
                 <div class="card">
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
@@ -624,8 +645,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 mb-3">
+              </div> --}}
+              {{-- <div class="col-md-3 mb-3">
                 <div class="card">
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
@@ -660,8 +681,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 mb-3">
+              </div> --}}
+              {{-- <div class="col-md-3 mb-3">
                 <div class="card">
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
@@ -696,8 +717,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 mb-3">
+              </div> --}}
+              {{-- <div class="col-md-3 mb-3">
                 <div class="card">
                 <img src="<?php echo URL::to('/');?>/public/asstes/hq720.webp" class="img-fluid"/>
                   <div class="card-body">
@@ -732,7 +753,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
                    <!-- ------------------------------2nd row ----------------------->
               <div class="col-md-3 mb-3">
                 <div class="card">
@@ -1245,7 +1266,27 @@
   </div>
 </div>
 </body>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        video1 = new Moovie({
+            selector: "#example1",
+            config: {
+                controls: {
+                    playtime: true,
+                    mute: true,
+                    volume: true,
+                    subtitles: true,
+                    config: true,
+                    fullscreen: true,
+                    submenuCaptions: true,
+                    submenuOffset: true,
+                    submenuSpeed: true,
+                    allowLocalSubtitles: true
+                }
+            }
+        });
+    });
+    </script>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
 <script src="https://unpkg.com/plyr@3"></script>

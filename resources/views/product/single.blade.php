@@ -58,15 +58,15 @@
                                 <div class="col-md-7 ">
                                     <div class="appricate">
                                         <ul>
-                                            @foreach($socialshare as $key => $value)
-                                        <button type="button" class="btn d-flex" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="Tooltip on bottom">
-                                            <span class="material-symbols-outlined">
-                                                google_plus_reshare
-                                            </span><a href="{{$value}}">{{ucfirst($key)}}</a> SHARE
-                                        </button>
-                                        @endforeach
-                                            </ul>
+                                            @foreach ($socialshare as $key => $value)
+                                                <button type="button" class="btn d-flex" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom" title="Tooltip on bottom">
+                                                    <span class="material-symbols-outlined">
+                                                        google_plus_reshare
+                                                    </span><a href="{{ $value }}">{{ ucfirst($key) }}</a> SHARE
+                                                </button>
+                                            @endforeach
+                                        </ul>
                                         <button type="button" class="btn d-flex"
                                             onclick="save_video('{{ request()->segment(2) }}')"
                                             data-bs-toggle="tooltip" data-bs-placement="bottom"
@@ -184,9 +184,9 @@
                                                         <div class="form-floating">
                                                             <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" name="description"
                                                                 style="height: 100px"></textarea>
+
                                                             <label for="floatingTextarea2">Comments</label>
                                                         </div>
-
                                                         <small class="my-2">Flagged videos and users are
                                                             reviewed by YouTube staff 24 hours a day, 7 days a
                                                             week to determine whether they violate Community
@@ -200,18 +200,24 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">CANCEL</button>
-                                                    <button type="submit"
+                                                    <button type="submit" onclick="reloadPage( )"
                                                         class="btn btn-primary btn1">Submit</button>
                                                 </div>
                                         </div>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
                             <hr />
                         </div>
                         <div class="my-2">
-                            <p>{{$videos['description']}}</p>
+                            <p>{{ $videos['description'] }}</p>
+                            <span class="fa fa-star rating" name="rate1" value="1" id="rate1" onclick="rate()" ></span>
+                            <span class="fa fa-star rating" value="2" ></span>
+                            <span class="fa fa-star rating" value="3" ></span>
+                            <span class="fa fa-star " value="4" ></span>
+                            <span class="fa fa-star " value="5" ></span>
                             <a href="">Read More</a>
                             <div class="shows">
                                 <p>Upcoming Charges </p>
@@ -232,11 +238,16 @@
                                     </div>
                                 </div>
                                 <div class="col-md-11 mt-3">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Add a comment">
-                                    <div class="text-end mt-2">
-                                        <button class="btn btn-primary" type="button">Comment</button>
-                                    </div>
+                                    <form method="post" action="{{ route('comment.add') }}">
+                                        <div class="commentBox">
+                                          <input type="text" class="form-control" autocomplete="off" name="body" id="exampleFormControlInput1"  placeholder="Add a comment">
+                                        <input type="hidden" name="post_id" value="{{request()->segment(2);}}"/>
+
+                                      </div>
+                                        <div class="text-end mt-3">
+                                          <button type="submit" class="btn btn-primary btn-sm" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
+                                        </div>
+                                      </form>
                                 </div>
                             </div>
                             <div class="commentss">
@@ -250,58 +261,49 @@
                                     <div class="col-md-11">
                                         <p class="mb-2"> <b> {{ $username }}
                                             </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
-                                            @foreach ($videos['comments'] as $key => $commet)
-                                    <div class="commentss">
-                                        <div class="row mt-3">
-                                            <div class="col-1 text-end">
-                                                <div class="profile-image">
-                                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                        height="60px" width="60px" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-11">
-                                                <p class="mb-2"> <b>
-                                                        {{ $videos['user']['id'] == $commet['user_id'] ? $videos['user']['name'] : '' }}
-                                                    </b>
-                                                    {{ \Carbon\Carbon::parse($commet['created_at'])->diffForHumans() }}
-                                                </p>
-                                                <p class="">{{ $commet['body'] }}</p>
-                                                @foreach ($commet['replies'] as $key => $reply)
-                                                    <div>{{ $reply['body'] }}</div>
-                                                @endforeach
-                                                <div class="d-flex my-2">
-                                                    <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                                            thumb_up
-                                                        </span> 12</p>
-                                                    <p class="d-flex me-3"> <span class="material-symbols-outlined">
-                                                            thumb_down
-                                                        </span> 12</p>
-                                                    <a class="me-3 text-decoration-none"
-                                                        onclick="reply(this)">REPLY</a>
-                                                </div>
-                                                <div class="row" id="replyBox" style="display: none">
-                                                    <div class="col-1 text-end">
-                                                        <div class="profile-image mt-2">
-                                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                                height="50px" width="50px" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-11 mt-3">
-                                                        <form method="post" action="{{ route('reply.add') }}">
-                                                            <input type="text"  class="form-control"
-                                                                id="exampleFormControlInput1"
-                                                                placeholder="Add a comment">
-                                                            <div class="text-end mt-2">
-                                                                <button class="btn btn-primary"
-                                                                    type="submit">Comment</button>
+                                            @foreach($videos['comments'] as $key=> $commet)
+                                            <div class="comments">
+                                                <div class="row mt-3">
+                                                    <div class="col-2 text-end">
+                                                            <div class="profile-image">
+                                                            <img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
+                                                            "height="40px" width="40px" />
                                                             </div>
-                                                        </form>
                                                     </div>
-                                                </div>
+                                                      <div class="col-md-10">
+                                                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
+                                                                <p class="">{{$commet['body']}}</p>
+                                                                @foreach($commet['replies'] as $key=> $reply)
+                                                                  <div>{{$reply['body']}}</div>
+                                                                @endforeach
+                                                                <div class="d-flex">
+                                                                    <a  class="me-3 text-decoration-none" onclick="reply(this)">REPLY</a>
+                                                                </div>
+                                                                <div class="row" id="replyBox"  style="display: none">
+                                                                    <div class="col-md-12 common" >
+                                                                        <form method="post" action="{{ route('reply.add') }}">
+                                                                          <div >
+                                                                            <input type="text" class="form-control "name="body" id="exampleFormControlInput1"  placeholder="Add a comment">
+                                                                             <input type="hidden" name="post_id" value="{{request()->segment(2);}}"/>
+                                                                             <input type="hidden" name="comment_id" value="{{$commet['id']}}"/>
+                                                                        </div>
+                                                                          <div class="text-end mt-3">
+                                                                            <button type="submit" class="btn btn-primary btn-sm" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
+                                                                          </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+
+                                                                 {{-- append div end --}}
+
+
+                                                                <hr/>
+
+                                                            </div>
+
+                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                            @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -323,7 +325,7 @@
                                             <div class="icons-on">
                                                 <a href=""><span class="material-symbols-outlined">
                                                         schedule
-                                                    </span></a><br/>
+                                                    </span></a><br />
                                                 <a href="">
                                                     <span class="material-symbols-outlined">
                                                         playlist_play
@@ -685,41 +687,45 @@
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-    <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
-        {!! Toastr::message() !!}
-        <script>
-document.addEventListener("DOMContentLoaded", function() {
-   video1 = new Moovie({
-      selector: "#example1",
-      config: {
-          controls : {
-              playtime : true,
-              mute : true,
-              volume : true,
-              subtitles : true,
-              config : true,
-              fullscreen : true,
-              submenuCaptions : true,
-              submenuOffset : true,
-              submenuSpeed : true,
-              allowLocalSubtitles : true
-          }
-      }
-   });
-});
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+{!! Toastr::message() !!}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        video1 = new Moovie({
+            selector: "#example1",
+            config: {
+                controls: {
+                    playtime: true,
+                    mute: true,
+                    volume: true,
+                    subtitles: true,
+                    config: true,
+                    fullscreen: true,
+                    submenuCaptions: true,
+                    submenuOffset: true,
+                    submenuSpeed: true,
+                    allowLocalSubtitles: true
+                }
+            }
+        });
+    });
 
-// $(document).ready(function(){
-//   $(".btn1").click(function(){
-//     $(".hide").hide();
-//   });
-//   $(".btn1").click(function(){
-//     $(".hide").show();
-//   });
-// });
+    // $(document).ready(function(){
+    //   $(".btn1").click(function(){
+    //     $(".hide").hide();
+    //   });
+    //   $(".btn1").click(function(){
+    //     $(".hide").show();
+    //   });
+    // });
 </script>
 <script>
+    function reloadPage() {
+        location.reload();
+    }
+
     $(document).ready(function() {
 
         /* 1. Visualizing things on Hover - See next part for action on click */
@@ -777,4 +783,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 </script>
 
-        </html>
+</html>

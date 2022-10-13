@@ -3,80 +3,83 @@
 
 <style>
     .play {
-    text-align: center;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    background: #000000b8;
-    color: white;
-    padding-top: 8px;
-}
-ul.lists {
-    display: inline-flex;
-    /* padding: 0px; */
-}
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        background: #000000b8;
+        color: white;
+        padding-top: 8px;
+    }
+
+    ul.lists {
+        display: inline-flex;
+        /* padding: 0px; */
+    }
 
 
 
 
-ul.lists li {
-    padding-right: 18px;
-}
-.ps-3 {
-    padding-left: 4rem!important;
-}
-.moovie {
-    height: 100px !important;
-}
+    ul.lists li {
+        padding-right: 18px;
+    }
+
+    .ps-3 {
+        padding-left: 4rem !important;
+    }
+
+    .moovie {
+        height: 100px !important;
+    }
 </style>
 
 
 
-    <div class="container-fluid">
+<div class="container-fluid">
 
-        <div class="row">
+    <div class="row">
 
-            <div class="col-md-3 border-end">
-                <div class="position-relative">
-        <img src="{{'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['thumbnail']}}"
-                    alt="Trulli" class="img-fluid">
-                    <div class="play">
-                        <h4>PLAY ALL</h4>
-                    </div>
+        <div class="col-md-3 border-end">
+            <div class="position-relative">
+                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['thumbnail'] }}" alt="Trulli"
+                    class="img-fluid">
+                <div class="play">
+                    <h4>PLAY ALL</h4>
                 </div>
-                <h3 class="mt-3">Watch Later</h3>
-               <ul class="lists">
+            </div>
+            <h3 class="mt-3">Watch Later</h3>
+            <ul class="lists">
                 <li>2 videos</li>
                 <li>views</li>
                 <li>Updated today</li>
-               </ul>
+            </ul>
 
-               <button class="btn btn-secondary d-flex" disabled type="button"><span class="material-symbols-outlined">
-                lock
+            <button class="btn btn-secondary d-flex" disabled type="button"><span class="material-symbols-outlined">
+                    lock
                 </span> Private</button>
 
-                <p class="mt-3"><span class="material-symbols-outlined">
+            <p class="mt-3"><span class="material-symbols-outlined">
                     sync_disabled
-                    </span> <span class="material-symbols-outlined">
-                        more_horiz
-                        </span></p>
-                        <hr/>
+                </span> <span class="material-symbols-outlined">
+                    more_horiz
+                </span></p>
+            <hr />
 
-                        <div class="d-flex">
-                          <img src="{{$product[0]['file']}}" class="rounded-circle" width="60px" height="60px"/>
-                          <h4 class="mt-3 ms-3">{{$name}}</h4>
-
-                        </div>
-
+            <div class="d-flex">
+                <img src="{{ $product[0]['file'] }}" class="rounded-circle" width="60px" height="60px" />
+                <h4 class="mt-3 ms-3">{{ $name }}</h4>
 
             </div>
-            <div class="col-md-9 bg-light" style ="height: 100vh;">
-                <div class=" my-4">
-                    <p><span class="material-symbols-outlined">
-                            short_text
-                        </span> Shorts</p>
-                </div>
-                @foreach($product as $data)
+
+
+        </div>
+        <div class="col-md-9 bg-light" style="height: 100vh;">
+            <div class=" my-4">
+                <p><span class="material-symbols-outlined">
+                        short_text
+                    </span> Shorts</p>
+            </div>
+            @foreach ($product as $data)
                 <div class="d-flex w-full">
                     <span class="material-symbols-outlined alert mt-2">
                         vertical_distribute
@@ -84,25 +87,26 @@ ul.lists li {
                     <div class=" w-100">
                         <div class="row">
                             <div class="col-md-4">
-                                <video  width="320" height="240" id="example1" poster="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$data['thumbnail']}}">
-                                    <source src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$data['file']}}" type="video/mp4">
+                                <video width="400" height="400" id="example1"
+                                    poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['thumbnail'] }}">
+                                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['file'] }}"
+                                        type="video/mp4">
 
-                                    <track kind="captions" label="English" srclang="en" src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+                                    <track kind="captions" label="English" srclang="en"
+                                        src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                                     Your browser does not support the video tag.
-                                  </video>
+                                </video>
                             </div>
                             <div class="col-md-8 ps-3">
-                                <h5>view: {{$data['views']}} . Updated today</h5>
+                                <h5>view: {{ $data['views'] }} . Updated today</h5>
                                 {{-- <p>Lorem Ipsum is simply dummy text of the</p> --}}
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-                @endforeach
+            @endforeach
 
-                <!-- <div class="d-flex w-full mt-3">
+            <!-- <div class="d-flex w-full mt-3">
                     <span class="material-symbols-outlined alert mt-2">
                         vertical_distribute
                     </span>
@@ -114,53 +118,53 @@ ul.lists li {
         AyXxeAWqmdLHn/B5G8wYTFuCUN6mmZVbRiOYDH5wPI+sToqjI2zJTxVLEowXs1LG6nQzZwFqlFb6MnYf8ZdL+kWPkwmvUw9KoA66NyI7LqRyI5+RmfZbdh25s9jpbVVVSbej3Q0SGwnc0+0wrfSmVbeJ9gmQtfSQDSxlcIMupY8hxPgB/FpyjpiwhWphKuWxZaiN4EFWUX58W9U68KS30A0+3+BIjefYyYqg9FwO0OyT8x7dhh5GxkOP1Rl0f55Et3GUeqOU7Z3LDUaWJo3KPTR+8oXUGzd6a8eXv0N1tu1tn1ioNkJ++UmPZPDtDua1u0PDjOq7pU2XB0EcWZKYpsO40+ww9akSpYfGE7ZfAWRKJuQyquf5EOBma4t6JzMGWOSM8eX+NvruT6dVyNubFLG4zx863d69Ow6JsfalPE0lq0icpuNRYgg2IIm9NXZ+CFJcoZmub3YgnhbkABwm1OZk2dp7HDlfE1w2tlbXERETwexERAEREAREQBERAEREAREQBERAEREAREQBERAEREAT8v70fzvGf8RV/wAV57E6Pw37r7v7Rj1n7F3o/QOFqGls2kafZK4ell0BtamvfKX0a1WXHUgGIFVHDi5swUMyi3AWbXTvPeYiW6D+Xh/ZTrOMDrKaEfx3yJ2/2WpsujZ+I8TPYnVRklwN2seJ0vpyE0MNVIxy0wew9Cq7LyLU2pBG8CAzDTjzvYREHolDPO/yiIIMtNdBMWK0UnziJBJB7LqE9ZflVqD9Mn7Zztv/AFOno/5NoicPH9zN3T9TpZPt4u+J12IiYTSIiIAiIgCIiAIiIAiIgCIiAf/Z"
                                     alt="Trulli" height="80px">
                             </div> -->
-                            <!-- <div class="col-md-10 ps-3">
+            <!-- <div class="col-md-10 ps-3">
                                 <h5>2 vedio . NO Views . Updated today</h5>
                                 <p>Lorem Ipsum is simply dummy text of the</p>
                             </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-    <script src="<?php echo URL::to('/');?>/public/js/script.js"></script>
-        {!! Toastr::message() !!} 
-        <script>
-document.addEventListener("DOMContentLoaded", function() {
-   video1 = new Moovie({
-      selector: "#example1",
-      config: {
-          controls : {
-              playtime : true,
-              mute : true,
-              volume : true,
-              subtitles : true,
-              config : true,
-              fullscreen : true,
-              submenuCaptions : true,
-              submenuOffset : true,
-              submenuSpeed : true,
-              allowLocalSubtitles : true
-          }
-      }
-   });
-});
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+{!! Toastr::message() !!}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        video1 = new Moovie({
+            selector: "#example1",
+            config: {
+                controls: {
+                    playtime: true,
+                    mute: true,
+                    volume: true,
+                    subtitles: true,
+                    config: true,
+                    fullscreen: true,
+                    submenuCaptions: true,
+                    submenuOffset: true,
+                    submenuSpeed: true,
+                    allowLocalSubtitles: true
+                }
+            }
+        });
+    });
 
-// $(document).ready(function(){
-//   $(".btn1").click(function(){
-//     $(".hide").hide();
-//   });
-//   $(".btn1").click(function(){
-//     $(".hide").show();
-//   });
-// });
+    // $(document).ready(function(){
+    //   $(".btn1").click(function(){
+    //     $(".hide").hide();
+    //   });
+    //   $(".btn1").click(function(){
+    //     $(".hide").show();
+    //   });
+    // });
 </script>
 
 </html>
