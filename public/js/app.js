@@ -1325,6 +1325,7 @@ function isBooleanAttr(attrName) {
     "async",
     "defer",
     "nomodule"
+   
   ];
   return booleanAttributes.includes(attrName);
 }

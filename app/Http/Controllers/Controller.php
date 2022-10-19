@@ -22,6 +22,7 @@ use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
+use Notification;
 use App\Notifications\UserFollowNotification;
 use Share;
 
@@ -33,14 +34,25 @@ class Controller extends BaseController
     }
 
 
-    public function notify()
+    public function sendNotification()
     {
 
-        // if (auth()->user()) {
-        //     $user = User::first();
-        //     Notification::send(auth()->user(), new UserFollowNotification($user));
-        // }
+        $user = User::first();
+
+        $details = [
+            'greeting' => 'Hi Artisan',
+            'body' => 'This is my first notification from ItSolutionStuff.com',
+            'thanks' => 'Thank you for using ItSolutionStuff.com tuto!',
+            'actionText' => 'View My Site',
+            'actionURL' => url('/'),
+            'order_id' => 101
+        ];
+
+        $notify = Notification::send($user, new UserFollowNotification($details));
+        print_r($notify);die;
+
     }
+
     public function unlikePost(Request $request)
     {
         $id = auth()->user()->id;
@@ -75,10 +87,23 @@ class Controller extends BaseController
     public function channel($id)
     {
         $id = base64_decode($id);
-        $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id',$id)->get()->toArray();
+        $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
         // echo "<pre>";
         // print_r($videos);die;
-        return view(('channel'), compact('videos'));
+        $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
+        $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
+        $socialshare = \Share::page(
+            'http://localhost/jetstream/videodetail/1'
+        )
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->telegram()
+            ->reddit()
+            ->whatsapp()->getRawLinks();
+            // echo "<pre>";
+            // print_r($socialshare);die;
+        return view('channel', compact('videos', 'count', 'socialshare'));
     }
 
 
@@ -92,7 +117,7 @@ class Controller extends BaseController
     {
         $product = product::join('save_video', 'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
         //    echo "<pre>";
-        //     print_r($product);die;
+        //    print_r($product);die;
         $name = auth()->user()->name;
         return view('watchlater', compact('product', 'name'));
     }
@@ -104,8 +129,8 @@ class Controller extends BaseController
         $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->find($id)->toArray();
 
         $username = auth()->user()->name;
-        //   echo "<pre>";
-        //     print_r($videos);die;
+        //  echo "<pre>";
+        //  print_r($videos);die;
         $Rating = Rating::where('product_id', $id)->avg('rating');
 
         $subscriber = Subscribe::where(['channel_id' => $videos['user_id']])->sum('count');
@@ -136,14 +161,13 @@ class Controller extends BaseController
         $liked =  array_sum($like);
         $disliked =  array_sum($dislike);
 
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare'));
+        return view('product.single',compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare'));
     }
 
     public function store(Request $request)
     {
 
         $id = auth()->user()->id;
-
         $data = $request->all();
         $folder = "video";
         $validator = Validator::make($data, [
@@ -211,7 +235,7 @@ class Controller extends BaseController
 
     function save_video(Request $request)
     {
-        // print_r($request->all());die;
+
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id' => $id, 'product_id' => $request->product_id])->count();
@@ -299,9 +323,8 @@ class Controller extends BaseController
         $data = new Rating;
         $id = auth()->user()->id;
         //$user = Rating::where('user_id', '=', $id)->first();
-        $user = Rating::where(['user_id', '=', $id,'product_id', '=', $request->product_id])->first();
+        $user = Rating::where(['user_id', '=', $id, 'product_id', '=', $request->product_id])->first();
         if ($user) {
-
         } else {
             $data->user_id = $id;
             $data->comment = $request->description;
@@ -314,7 +337,6 @@ class Controller extends BaseController
                 'message' => 'Rated Successfully!',
                 'code' => 1
             ]);
-
         }
     }
 

@@ -28,7 +28,7 @@
                                 <button class="btn btn-danger subscribe"
                                     style="{{ $count <= 0 ? 'display:block' : 'display:none' }}"
                                     onclick="subscribe('{{ $videos['user_id'] }}',1)">SUBSCRIBE</button>
-                                <button class="btn btn-danger subscribes"
+                                <button class="btn btn-outline-success subscribes"
                                     style="{{ $count > 0 ? 'display:block' : 'display:none' }}"
                                     onclick="subscribe('{{ $videos['user_id'] }}',0)">SUBSCRIBED</button>
                             </div>

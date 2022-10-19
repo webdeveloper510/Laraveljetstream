@@ -23,7 +23,7 @@
                         {{ __('Upload Video') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="/jetstream/channel/{{base64_encode(auth()->user()->id)}}">
-                        {{ __('You Channel') }}
+                        {{ __('Your Channel') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="/jetstream/watchlater">
                         {{ __('Save Video') }}
@@ -42,9 +42,7 @@
                             :class="{ 'transition-border': search }" autocomplete="off" name="search"
                             placeholder="Search" type="search" />
                     </div>
-
                     <button type="submit" class="btn btn-primary btn-sm mt-3 px-4">Search</button>
-
                 </form>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">

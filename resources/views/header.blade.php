@@ -60,7 +60,7 @@
     }
 
     .moovie {
-                height:300px !important;
+                height:500px !important;
             }
     .username {
                 padding: 14px;

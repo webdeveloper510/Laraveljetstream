@@ -27,17 +27,15 @@ class UserFollowNotification extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable)
-    {
-        return ['database'];
+    public function via ($notifiable) {
+        return ['mail'];
     }
 
     public function toArray($notifiable)
     {
         return [
             'user_id' => $this->user['id'],
-            'name' => $this->user['name'],
-            'user_id' => $this->user['id'],
+            'name' => $this->user['name']
         ];
     }
 }

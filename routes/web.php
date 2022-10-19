@@ -93,7 +93,7 @@ Route::middleware([
     })->name('watchlater');
 });
 
-Route::get('/notify', [Controller::class, 'notify']);
+Route::get('/notification', [Controller::class, 'sendNotification']);
 //Route::group(['middleware' => ['auth']], function () {
 Route::get('/uploadpage', [Controller::class, 'uploadpage']);
 Route::post('/uploadproduct', [Controller::class, 'store']);

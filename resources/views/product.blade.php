@@ -261,13 +261,12 @@
                         <input type='file' name="upload_video" required class="form-control" id='videoUpload' />
                     </div>
                     <div class="mx-auto">
-                        <video width="50" height="50" controls class="mx-auto" controls autoplay>
+                        <video width="400" height="240" controls class="mx-auto" controls autoplay>
                             <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                             <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
                             Your browser does not support the video tag.
                         </video>
                     </div>
-
                     <div class="my-3">
                         <label>Video Link</label> <br />
                         <a href="">links</a>
