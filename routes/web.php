@@ -108,7 +108,7 @@ Route::get('/setting', [Controller::class, 'setting']);
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 Route::post('/save_video', [Controller::class, 'print_r($request->all());die;']);
 Route::post('/save_video', [Controller::class, 'save_video']);
-Route::post('/rating', [Controller::class, 'rating'])->name('postStar');
+// Route::post('/rating', [Controller::class, 'rating'])->name('postStar');
 Route::post('/rate', [Controller::class, 'rate']);
 Route::get('/time', [Controller::class, 'time']);
 Route::post('/report', [Controller::class, 'report']);

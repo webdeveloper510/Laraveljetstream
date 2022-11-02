@@ -3,8 +3,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container-fluid p-0">
     <div class="row g-0">
-
-
         <div class="col-md-12">
             <!-------------------------- Add New content here  ---------------------->
             <div class="container-fluid p-3">
@@ -16,7 +14,6 @@
                                     <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
                                         width="60px" />
                                 </div>
-
                             </div>
                             <div class="col-md-8 pt-2">
                                 <h5>{{ $username }}</h5>
@@ -40,12 +37,10 @@
                                 poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['thumbnail'] }}">
                                 <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['file'] }}"
                                     type="video/mp4">
-
                                 <track kind="captions" label="English" srclang="en"
                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                                 Your browser does not support the video tag.
                             </video>
-
                             <p class="video-title">{{ $videos['title'] }}
                             </p>
                             <div class="row mb-2">
@@ -86,7 +81,6 @@
                                 <!-- Modal -->
                                 <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="Report"
                                     aria-hidden="true">
-
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -205,7 +199,6 @@
                                                 </div>
                                         </div>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>
@@ -213,41 +206,41 @@
                         </div>
                         <div class="my-2">
                             <p>{{ $videos['description'] }}</p>
-                            <span class="fa fa-star rating" name="rate1" value="1" id="rate1" onclick="rate()" ></span>
-                            <span class="fa fa-star rating" value="2" ></span>
-                            <span class="fa fa-star rating" value="3" ></span>
-                            <span class="fa fa-star " value="4" ></span>
-                            <span class="fa fa-star " value="5" ></span>
+                            <i class="fa fa-star" aria-hidden="true" id="s2" onclick="rating(1, {{ request()->segment(2) }})" ></i>
+                            <i class="fa fa-star" aria-hidden="true" id="s3" onclick="rating(2, {{ request()->segment(2) }})"></i>
+                            <i class="fa fa-star" aria-hidden="true" id="s4" onclick="rating(3, {{ request()->segment(2) }})"></i>
+                            <span>{{$star_avg}}</span>
                             <a href="">Read More</a>
                             <div class="shows">
                                 <p>Upcoming Charges </p>
                             </div>
                         </div>
-
                         <hr />
                         <div class="comments my-2">
                             <div class="d-flex mb-2">
                                 <p>{{ count($videos['comments']) }} Comments</p>
-
                             </div>
                             <div class="row">
                                 <div class="col-1 text-end">
                                     <div class="profile-image">
                                         <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                            width="60px" />
+                                        width="60px" />
                                     </div>
                                 </div>
                                 <div class="col-md-11 mt-3">
                                     <form method="post" action="{{ route('comment.add') }}">
                                         <div class="commentBox">
-                                          <input type="text" class="form-control" autocomplete="off" name="body" id="exampleFormControlInput1"  placeholder="Add a comment">
-                                        <input type="hidden" name="post_id" value="{{request()->segment(2);}}"/>
-
-                                      </div>
-                                        <div class="text-end mt-3">
-                                          <button type="submit" class="btn btn-primary btn-sm" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
+                                            <input type="text" class="form-control" autocomplete="off"
+                                                name="body" id="exampleFormControlInput1"
+                                                placeholder="Add a comment">
+                                            <input type="hidden" name="post_id"
+                                                value="{{ request()->segment(2) }}" />
                                         </div>
-                                      </form>
+                                        <div class="text-end mt-3">
+                                            <button type="submit" class="btn btn-primary btn-sm"
+                                                id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <div class="commentss">
@@ -261,60 +254,70 @@
                                     <div class="col-md-11">
                                         <p class="mb-2"> <b> {{ $username }}
                                             </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
-                                            @foreach($videos['comments'] as $key=> $commet)
+                                        @foreach ($videos['comments'] as $key => $commet)
                                             <div class="comments">
                                                 <div class="row mt-3">
                                                     <div class="col-2 text-end">
-                                                            <div class="profile-image">
+                                                        <div class="profile-image">
                                                             <img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
-                                                            "height="40px" width="40px" />
-                                                            </div>
+                                                            "height="40px"
+                                                                width="40px" />
+                                                        </div>
                                                     </div>
-                                                      <div class="col-md-10">
-                                                                <p class="m-0"> <b> {{$videos['user']['id']==$commet['user_id'] ? $videos['user']['name']:''}} </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}</p>
-                                                                <p class="">{{$commet['body']}}</p>
-                                                                @foreach($commet['replies'] as $key=> $reply)
-                                                                  <div>{{$reply['body']}}</div>
-                                                                @endforeach
-                                                                <div class="d-flex">
-                                                                    <a  class="me-3 text-decoration-none" onclick="reply(this)">REPLY</a>
-                                                                </div>
-                                                                <div class="row" id="replyBox"  style="display: none">
-                                                                    <div class="col-md-12 common" >
-                                                                        <form method="post" action="{{ route('reply.add') }}">
-                                                                          <div >
-                                                                            <input type="text" class="form-control "name="body" id="exampleFormControlInput1"  placeholder="Add a comment">
-                                                                             <input type="hidden" name="post_id" value="{{request()->segment(2);}}"/>
-                                                                             <input type="hidden" name="comment_id" value="{{$commet['id']}}"/>
-                                                                        </div>
-                                                                          <div class="text-end mt-3">
-                                                                            <button type="submit" class="btn btn-primary btn-sm" id="exampleFormControlInput1" style="width:110px;">COMMENT</button>
-                                                                          </div>
-                                                                        </form>
+                                                    <div class="col-md-10">
+                                                        <p class="m-0"> <b>
+                                                                {{ $videos['user']['id'] == $commet['user_id'] ? $videos['user']['name'] : '' }}
+                                                            </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
+                                                        </p>
+                                                        <p class="">{{ $commet['body'] }}</p>
+                                                        @foreach ($commet['replies'] as $key => $reply)
+                                                            <div>{{ $reply['body'] }}</div>
+                                                        @endforeach
+                                                        <div class="d-flex">
+                                                            <a class="me-3 text-decoration-none"
+                                                                onclick="reply(this)">REPLY</a>
+                                                        </div>
+                                                        <div class="row" id="replyBox" style="display: none">
+                                                            <div class="col-md-12 common">
+                                                                <form method="post"
+                                                                    action="{{ route('reply.add') }}">
+                                                                    <div>
+                                                                        <input type="text"
+                                                                            class="form-control "name="body"
+                                                                            id="exampleFormControlInput1"
+                                                                            placeholder="Add a comment">
+                                                                        <input type="hidden" name="post_id"
+                                                                            value="{{ request()->segment(2) }}" />
+                                                                        <input type="hidden" name="comment_id"
+                                                                            value="{{ $commet['id'] }}" />
                                                                     </div>
-                                                                </div>
-
-                                                                 {{-- append div end --}}
-
-
-                                                                <hr/>
-
+                                                                    <div class="text-end mt-3">
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary btn-sm"
+                                                                            id="exampleFormControlInput1"
+                                                                            style="width:110px;">COMMENT</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
+                                                        </div>
 
-                                                 </div>
+                                                        {{-- append div end --}}
+
+
+                                                        <hr />
+
+                                                    </div>
+                                                </div>
                                             </div>
-                                            @endforeach
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                     <div class="col-md-4">
                         <div class="">
                             <h4 class="mb-3">Related video</h4>
-
                             <!------------- videoss-section ----------------------------->
                             <div class="videoss-section">
                                 <div class="row mb-3 g-0">
@@ -636,7 +639,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3 g-0">
                                     <div class="col-md-5">
                                         <div class="related-video position-relative">
@@ -678,7 +680,6 @@
             </div>
         </div>
     </div>
-
 </div>
 </div>
 </div>
@@ -722,6 +723,26 @@
     // });
 </script>
 <script>
+
+
+    $(document).ready(function(){
+
+        $("#s2").click(function(){
+            $(".fa-star").css("color","white");
+            $("#s1,#s2").css("color","yellow");
+        });
+        $("#s3").click(function(){
+            $(".fa-star").css("color","white");
+            $("#s1,#s2,#s3").css("color","yellow");
+        });
+        $("#s4").click(function(){
+            $(".fa-star").css("color","white");
+            $("#s1,#s2,#s3,#s4").css("color","yellow");
+        });
+    });
+
+
+
     function reloadPage() {
         location.reload();
     }
@@ -773,14 +794,11 @@
 
         });
 
-
     });
-
 
     function responseMessage(msg) {
         $('.success-box').fadeIn(200);
         $('.success-box div.text-message').html("<span>" + msg + "</span>");
     }
 </script>
-
 </html>

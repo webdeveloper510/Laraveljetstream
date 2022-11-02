@@ -22,7 +22,7 @@
                     <x-jet-nav-link href="/jetstream/uploadpage">
                         {{ __('Upload Video') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="/jetstream/channel/{{base64_encode(auth()->user()->id)}}">
+                    <x-jet-nav-link href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}">
                         {{ __('Your Channel') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="/jetstream/watchlater">
@@ -115,10 +115,7 @@
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
                                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
-
-
                                         {{ Auth::user()->name }}
-
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd"
@@ -129,29 +126,23 @@
                                 </span>
                             @endif
                         </x-slot>
-
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
-
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
-
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}
                                 </x-jet-dropdown-link>
                             @endif
-
                             <div class="border-t border-gray-100"></div>
-
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
-
                                 <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
@@ -160,7 +151,6 @@
                     </x-jet-dropdown>
                 </div>
             </div>
-
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
@@ -176,8 +166,6 @@
             </div>
         </div>
     </div>
-
-
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
@@ -185,7 +173,6 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
         </div>
-
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
@@ -195,13 +182,11 @@
                             alt="{{ Auth::user()->name }}" />
                     </div>
                 @endif
-
                 <div>
                     <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div>
             </div>
-
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
@@ -213,43 +198,34 @@
                         {{ __('API Tokens') }}
                     </x-jet-responsive-nav-link>
                 @endif
-
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}" x-data>
                     @csrf
-
                     <x-jet-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
                         {{ __('Log Out') }}
                     </x-jet-responsive-nav-link>
                 </form>
-
                 <!-- Team Management -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="border-t border-gray-200"></div>
-
                     <div class="block px-4 py-2 text-xs text-gray-400">
                         {{ __('Manage Team') }}
                     </div>
-
                     <!-- Team Settings -->
                     <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
                         :active="request()->routeIs('teams.show')">
                         {{ __('Team Settings') }}
                     </x-jet-responsive-nav-link>
-
                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                         <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
                             {{ __('Create New Team') }}
                         </x-jet-responsive-nav-link>
                     @endcan
-
                     <div class="border-t border-gray-200"></div>
-
                     <!-- Team Switcher -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
                         {{ __('Switch Teams') }}
                     </div>
-
                     @foreach (Auth::user()->allTeams() as $team)
                         <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
                     @endforeach
@@ -258,7 +234,6 @@
         </div>
     </div>
 </nav>
-
 <script>
     var user = {!! json_encode(Auth::user()) !!};
     localStorage.setItem("user", user);
@@ -266,20 +241,17 @@
     import {
         defineComponent
     } from "vue";
-
     export default defineComponent({
         props: {
             // any route name from laravel routes (ideally index route is what you'd search through)
             routeName: String,
         },
-
         data() {
             return {
                 // page.props.search will come from the backend after search has returned.
                 search: this.$inertia.page.props.search || null,
             };
         },
-
         watch: {
             search() {
                 if (this.search) {
@@ -291,7 +263,6 @@
                 }
             },
         },
-
         methods: {
             searchMethod: _.debounce(function() {
                 this.$inertia.get(

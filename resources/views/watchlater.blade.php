@@ -1,6 +1,5 @@
 @include('header')
 
-
 <style>
     .play {
         text-align: center;
@@ -17,9 +16,6 @@
         /* padding: 0px; */
     }
 
-
-
-
     ul.lists li {
         padding-right: 18px;
     }
@@ -32,13 +28,8 @@
         height: 100px !important;
     }
 </style>
-
-
-
 <div class="container-fluid">
-
     <div class="row">
-
         <div class="col-md-3 border-end">
             <div class="position-relative">
                 <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['thumbnail'] }}" alt="Trulli"
@@ -53,25 +44,19 @@
                 <li>views</li>
                 <li>Updated today</li>
             </ul>
-
             <button class="btn btn-secondary d-flex" disabled type="button"><span class="material-symbols-outlined">
                     lock
                 </span> Private</button>
-
             <p class="mt-3"><span class="material-symbols-outlined">
                     sync_disabled
                 </span> <span class="material-symbols-outlined">
                     more_horiz
                 </span></p>
             <hr />
-
             <div class="d-flex">
                 <img src="{{ $product[0]['file'] }}" class="rounded-circle" width="60px" height="60px" />
                 <h4 class="mt-3 ms-3">{{ $name }}</h4>
-
             </div>
-
-
         </div>
         <div class="col-md-9 bg-light" style="height: 100vh;">
             <div class=" my-4">
@@ -105,7 +90,6 @@
                     </div>
                 </div>
             @endforeach
-
             <!-- <div class="d-flex w-full mt-3">
                     <span class="material-symbols-outlined alert mt-2">
                         vertical_distribute
@@ -121,7 +105,7 @@
             <!-- <div class="col-md-10 ps-3">
                                 <h5>2 vedio . NO Views . Updated today</h5>
                                 <p>Lorem Ipsum is simply dummy text of the</p>
-                            </div> -->
+          </div> -->
         </div>
     </div>
 </div>

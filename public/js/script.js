@@ -31,10 +31,25 @@ function subscribe (channel_id, flag) {
   });
 }
 
+/*--------------------------------------------- Rating ----------------------------------------------*/
+function rating(ratenum,product_id) {
+
+    $.ajax ({
+        url: base_url + '/rate',
+        type: 'post',
+        data:{
+            'rating':ratenum,
+            'product_id':product_id
+        },
+        success: function (data) {
+           console.log(data);
+          },
+    });
+}
 /**-----------------------------------------Report Video--------------------------------------------- */
 
 function reply (a) {
-  $ (a).parent ().next ().show ();
+  $ (a).parent ().next ().show();
 }
 function likePost (id) {
   $.ajax ({
@@ -70,13 +85,6 @@ function unlikePost (id) {
   });
 }
 
-function rate () {
-//   alert('okkkkk'); return false;
-  // toastr.options = {
-  //   closeButton: true,
-  //   newestOnTop: true,
-  //   positionClass: 'toast-top-right',
-  // };
 
   var rate1 = $ ('#rate1').val ();
   $.ajax ({
@@ -94,14 +102,15 @@ function rate () {
       }
     },
   });
-}
+
 
 function reply (a) {
   $ (a).parent ().next ().show ();
 }
 
-function save_video (product_id) {
-   
+/*----------------------------------------save video--------------------------------------------*/
+
+function save_video(product_id) {
   toastr.options = {
     closeButton: true,
     newestOnTop: true,
@@ -122,12 +131,14 @@ function save_video (product_id) {
   });
 }
 
+
+
 $ ('#submit_report').submit (function (e) {
-  // toastr.options = {
-  //     "closeButton": true,
-  //     "newestOnTop": true,
-  //     "positionClass": "toast-top-left"
-  //   };
+//   toastr.options = {
+//       "closeButton": true,
+//       "newestOnTop": true,
+//       "positionClass": "toast-top-left"
+//     };
   console.log ('yes');
   e.preventDefault ();
   var form = $ (this);
@@ -137,7 +148,7 @@ $ ('#submit_report').submit (function (e) {
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
-      if (data.code == 1) {
+      if (data.code === 1) {
         toastr.success (data.message);
       }
     },

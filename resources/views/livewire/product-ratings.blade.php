@@ -9,7 +9,6 @@
                 </div>
             @endif
             <div class="flex flex-col items-center md:flex-row">
-
                 <div class="w-full mt-16 md:mt-0">
                     <div
                         class="relative z-10 h-auto p-4 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7">
@@ -19,7 +18,6 @@
                                     Rate this product
                                 </p>
                             </div>
-
                             @if ($hideForm != true)
                                 <form method="POST" action="{{ url('/rate') }}">
                                     <div class="block max-w-3xl px-1 py-2 mx-auto">
@@ -110,7 +108,6 @@
                         @endauth
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

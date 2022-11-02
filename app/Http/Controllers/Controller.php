@@ -33,7 +33,6 @@ class Controller extends BaseController
         $this->middleware('auth')->except('login');
     }
 
-
     public function sendNotification()
     {
 
@@ -48,8 +47,8 @@ class Controller extends BaseController
             'order_id' => 101
         ];
 
-        $notify = Notification::send($user, new UserFollowNotification($details));
-        print_r($notify);die;
+        // $notify = Notification::send($user, new UserFollowNotification($details));
+        // print_r($notify);die;
 
     }
 
@@ -101,17 +100,15 @@ class Controller extends BaseController
             ->telegram()
             ->reddit()
             ->whatsapp()->getRawLinks();
-            // echo "<pre>";
-            // print_r($socialshare);die;
+        // echo "<pre>";
+        // print_r($socialshare);die;
         return view('channel', compact('videos', 'count', 'socialshare'));
     }
-
 
     public function setting()
     {
         return view('setting');
     }
-
 
     public function watchlater()
     {
@@ -161,12 +158,13 @@ class Controller extends BaseController
         $liked =  array_sum($like);
         $disliked =  array_sum($dislike);
 
-        return view('product.single',compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare'));
+        $star_avg = Rating::avg('rating');
+        //print_r($star_avg);die;
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare','star_avg'));
     }
 
     public function store(Request $request)
     {
-
         $id = auth()->user()->id;
         $data = $request->all();
         $folder = "video";
@@ -219,6 +217,7 @@ class Controller extends BaseController
             $data->save();
         } else {
             LikeDislike::where(['user_id' => $id, 'product_id' => $request->contentId])->update(['dislike' => 0, 'like' => 1]);
+            LikeDislike::where(['user_id' => $id, 'product_id' => $request->contentId])->update(['dislike' => 0, 'like' => 1]);
         }
 
         $like = LikeDislike::where(['product_id' => $request->contentId])->sum('like');
@@ -235,7 +234,6 @@ class Controller extends BaseController
 
     function save_video(Request $request)
     {
-
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id' => $id, 'product_id' => $request->product_id])->count();
@@ -294,7 +292,6 @@ class Controller extends BaseController
         ]);
     }
 
-
     public function subscribed($data)
     {
         // print_r($data);die;
@@ -318,29 +315,33 @@ class Controller extends BaseController
 
     public function rate(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
+        //    echo "<pre>";
+        //    print_r($request->all());die;
         $data = new Rating;
         $id = auth()->user()->id;
-        //$user = Rating::where('user_id', '=', $id)->first();
-        $user = Rating::where(['user_id', '=', $id, 'product_id', '=', $request->product_id])->first();
+        $user = Rating::where(['user_id' => $id, 'product_id' => $request->product_id])->first();
         if ($user) {
+            $updated = Rating::where(['user_id' => $id, 'product_id' => $request->product_id])->update(['rating' => $user['rating']]);
+            return response()->json([
+                'bool' => true,
+                'message' => 'Rate Updated Successfully!',
+                'code' => 1
+            ]);
         } else {
             $data->user_id = $id;
-            $data->comment = $request->description;
             $data->rating  = $request->rating;
             $data->product_id  = $request->product_id;
             $data->status  = 1;
+            $data->comment = 'Star-Rating';
             $data->save();
             return response()->json([
-                'bool' => true,
                 'message' => 'Rated Successfully!',
-                'code' => 1
+                'status' => 1
             ]);
         }
     }
 
-    /*----------------------------------------Report system-----------------------------------------*/
+    /*---------------------------------------------Report system--------------------------------------------*/
 
     public function report(Request $request)
     {
