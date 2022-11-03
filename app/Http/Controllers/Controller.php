@@ -117,6 +117,7 @@ class Controller extends BaseController
         //    print_r($product);die;
         $name = auth()->user()->name;
         return view('watchlater', compact('product', 'name'));
+        
     }
 
     public function videodetail($id)
@@ -158,9 +159,12 @@ class Controller extends BaseController
         $liked =  array_sum($like);
         $disliked =  array_sum($dislike);
 
-        $star_avg = Rating::avg('rating');
-        //print_r($star_avg);die;
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare','star_avg'));
+        //$star_avg = Rating::avg('rating');
+        $averageRating = DB::table('ratings')
+          ->where('product_id', $id)
+           ->avg('rating');
+        // print_r($averageRating);die;
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare','averageRating'));
     }
 
     public function store(Request $request)
@@ -237,7 +241,7 @@ class Controller extends BaseController
         $date = Carbon::now();
         $id = auth()->user()->id;
         $saved_data = DB::table('save_video')->where(['user_id' => $id, 'product_id' => $request->product_id])->count();
-        // print_r($saved_data);die;
+
         if ($saved_data > 1) {
             return response()->json([
                 'bool' => true,

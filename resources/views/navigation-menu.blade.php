@@ -24,6 +24,7 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}">
                         {{ __('Your Channel') }}
+                        
                     </x-jet-nav-link>
                     <x-jet-nav-link href="/jetstream/watchlater">
                         {{ __('Save Video') }}
@@ -116,6 +117,9 @@
                                     <button type="button"
                                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
                                         {{ Auth::user()->name }}
+                                        <div class="d-flex">
+                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" class="rounded-circle" width="60px" height="60px" />
+                                        </div>
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd"

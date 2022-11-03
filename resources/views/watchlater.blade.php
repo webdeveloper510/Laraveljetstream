@@ -54,7 +54,7 @@
                 </span></p>
             <hr />
             <div class="d-flex">
-                <img src="{{ $product[0]['file'] }}" class="rounded-circle" width="60px" height="60px" />
+                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[1]['user']['profile_photo_path'] }}" class="rounded-circle" width="60px" height="60px" />
                 <h4 class="mt-3 ms-3">{{ $name }}</h4>
             </div>
         </div>
@@ -69,7 +69,7 @@
                     <span class="material-symbols-outlined alert mt-2">
                         vertical_distribute
                     </span>
-                    <div class=" w-100">
+                    <div class="w-100">
                         <div class="row">
                             <div class="col-md-4">
                                 <video width="400" height="400" id="example1"

@@ -209,7 +209,7 @@
                             <i class="fa fa-star" aria-hidden="true" id="s2" onclick="rating(1, {{ request()->segment(2) }})" ></i>
                             <i class="fa fa-star" aria-hidden="true" id="s3" onclick="rating(2, {{ request()->segment(2) }})"></i>
                             <i class="fa fa-star" aria-hidden="true" id="s4" onclick="rating(3, {{ request()->segment(2) }})"></i>
-                            <span>{{$star_avg}}</span>
+                            <span>{{number_format($averageRating,1)}}</span>
                             <a href="">Read More</a>
                             <div class="shows">
                                 <p>Upcoming Charges </p>
