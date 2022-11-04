@@ -206,13 +206,16 @@
                         </div>
                         <div class="my-2">
                             <p>{{ $videos['description'] }}</p>
-                            <i class="fa fa-star" aria-hidden="true" id="s2" onclick="rating(1, {{ request()->segment(2) }})" ></i>
-                            <i class="fa fa-star" aria-hidden="true" id="s3" onclick="rating(2, {{ request()->segment(2) }})"></i>
-                            <i class="fa fa-star" aria-hidden="true" id="s4" onclick="rating(3, {{ request()->segment(2) }})"></i>
-                            <span>{{number_format($averageRating,1)}}</span>
+                            <i class="fa fa-star" aria-hidden="true" id="s2"
+                                onclick="rating(1, {{ request()->segment(2) }})"></i>
+                            <i class="fa fa-star" aria-hidden="true" id="s3"
+                                onclick="rating(2, {{ request()->segment(2) }})"></i>
+                            <i class="fa fa-star" aria-hidden="true" id="s4"
+                                onclick="rating(3, {{ request()->segment(2) }})"></i>
+                            <span>{{ round($averageRating, 1) }}</span>
                             <a href="">Read More</a>
                             <div class="shows">
-                                <p>Upcoming Charges </p>
+                                <p>Upcoming Charges</p>
                             </div>
                         </div>
                         <hr />
@@ -224,7 +227,7 @@
                                 <div class="col-1 text-end">
                                     <div class="profile-image">
                                         <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                        width="60px" />
+                                            width="60px" />
                                     </div>
                                 </div>
                                 <div class="col-md-11 mt-3">
@@ -723,21 +726,19 @@
     // });
 </script>
 <script>
+    $(document).ready(function() {
 
-
-    $(document).ready(function(){
-
-        $("#s2").click(function(){
-            $(".fa-star").css("color","white");
-            $("#s1,#s2").css("color","yellow");
+        $("#s2").click(function() {
+            $(".fa-star").css("color", "white");
+            $("#s1,#s2").css("color", "yellow");
         });
-        $("#s3").click(function(){
-            $(".fa-star").css("color","white");
-            $("#s1,#s2,#s3").css("color","yellow");
+        $("#s3").click(function() {
+            $(".fa-star").css("color", "white");
+            $("#s1,#s2,#s3").css("color", "yellow");
         });
-        $("#s4").click(function(){
-            $(".fa-star").css("color","white");
-            $("#s1,#s2,#s3,#s4").css("color","yellow");
+        $("#s4").click(function() {
+            $(".fa-star").css("color", "white");
+            $("#s1,#s2,#s3,#s4").css("color", "yellow");
         });
     });
 
@@ -801,4 +802,5 @@
         $('.success-box div.text-message').html("<span>" + msg + "</span>");
     }
 </script>
+
 </html>

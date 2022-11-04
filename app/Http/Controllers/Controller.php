@@ -86,20 +86,24 @@ class Controller extends BaseController
     public function channel($id)
     {
         $id = base64_decode($id);
-        $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
-        // echo "<pre>";
-        // print_r($videos);die;
-        $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
-        $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
-        $socialshare = \Share::page(
-            'http://localhost/jetstream/videodetail/1'
-        )
-            ->facebook()
-            ->twitter()
-            ->linkedin()
-            ->telegram()
-            ->reddit()
-            ->whatsapp()->getRawLinks();
+        $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
+        if ($videos) {
+            $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
+            $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
+            $socialshare = \Share::page(
+                'http://localhost/jetstream/videodetail/1'
+            )
+                ->facebook()
+                ->twitter()
+                ->linkedin()
+                ->telegram()
+                ->reddit()
+                ->whatsapp()->getRawLinks();
+        } else {
+            echo "Can't find id !";
+            die();
+        }
+
         // echo "<pre>";
         // print_r($socialshare);die;
         return view('channel', compact('videos', 'count', 'socialshare'));
@@ -117,7 +121,6 @@ class Controller extends BaseController
         //    print_r($product);die;
         $name = auth()->user()->name;
         return view('watchlater', compact('product', 'name'));
-        
     }
 
     public function videodetail($id)
@@ -161,10 +164,10 @@ class Controller extends BaseController
 
         //$star_avg = Rating::avg('rating');
         $averageRating = DB::table('ratings')
-          ->where('product_id', $id)
-           ->avg('rating');
+            ->where('product_id', $id)
+            ->avg('rating');
         // print_r($averageRating);die;
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare','averageRating'));
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating'));
     }
 
     public function store(Request $request)

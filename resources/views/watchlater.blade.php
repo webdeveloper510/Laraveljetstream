@@ -54,7 +54,8 @@
                 </span></p>
             <hr />
             <div class="d-flex">
-                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[1]['user']['profile_photo_path'] }}" class="rounded-circle" width="60px" height="60px" />
+                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[1]['user']['profile_photo_path'] }}"
+                    class="rounded-circle" width="60px" height="60px" />
                 <h4 class="mt-3 ms-3">{{ $name }}</h4>
             </div>
         </div>
@@ -72,16 +73,13 @@
                     <div class="w-100">
                         <div class="row">
                             <div class="col-md-4">
-                                <video width="400" height="400" id="example1"
-                                    poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['thumbnail'] }}">
+                                <video width="400" height="400" class="example1" id="example1_{{$data['id']}}"
+                                    poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' .  $data['thumbnail']}}">
                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['file'] }}"
                                         type="video/mp4">
-
-                                    <track kind="captions" label="English" srclang="en"
-                                        src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                    Your browser does not support the video tag.
                                 </video>
                             </div>
+
                             <div class="col-md-8 ps-3">
                                 <h5>view: {{ $data['views'] }} . Updated today</h5>
                                 {{-- <p>Lorem Ipsum is simply dummy text of the</p> --}}
@@ -121,26 +119,29 @@
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 {!! Toastr::message() !!}
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        video1 = new Moovie({
-            selector: "#example1",
-            config: {
-                controls: {
-                    playtime: true,
-                    mute: true,
-                    volume: true,
-                    subtitles: true,
-                    config: true,
-                    fullscreen: true,
-                    submenuCaptions: true,
-                    submenuOffset: true,
-                    submenuSpeed: true,
-                    allowLocalSubtitles: true
+ $(".example1").each(function(){
+    let id = $(this).attr('id');
+    console.log(id)
+        document.addEventListener("DOMContentLoaded", function() {
+            video1 = new Moovie({
+                selector: "#"+id,
+                config: {
+                    controls: {
+                        playtime: true,
+                        mute: true,
+                        volume: true,
+                        subtitles: true,
+                        config: true,
+                        fullscreen: true,
+                        submenuCaptions: true,
+                        submenuOffset: true,
+                        submenuSpeed: true,
+                        allowLocalSubtitles: true
+                    }
                 }
-            }
+            });
         });
-    });
-
+});
     // $(document).ready(function(){
     //   $(".btn1").click(function(){
     //     $(".hide").hide();
