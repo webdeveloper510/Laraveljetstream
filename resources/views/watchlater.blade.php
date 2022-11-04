@@ -79,7 +79,6 @@
                                         type="video/mp4">
                                 </video>
                             </div>
-
                             <div class="col-md-8 ps-3">
                                 <h5>view: {{ $data['views'] }} . Updated today</h5>
                                 {{-- <p>Lorem Ipsum is simply dummy text of the</p> --}}

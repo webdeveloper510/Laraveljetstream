@@ -1,6 +1,5 @@
 @include('header')
 
-
 <nav x-data="{ open: false }" class=" border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +23,7 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}">
                         {{ __('Your Channel') }}
-                        
+
                     </x-jet-nav-link>
                     <x-jet-nav-link href="/jetstream/watchlater">
                         {{ __('Save Video') }}

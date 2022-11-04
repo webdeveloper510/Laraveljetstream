@@ -35,8 +35,8 @@ ul.dropdown-menu1 {
 }
 
 .card {
-    background-color: transparent; 
-    border: 1px solid rgba(0, 0, 0, 0); 
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0);
 
 }
 
@@ -71,6 +71,16 @@ ul#pills-tab {
 
 .stats ul.list-group.list-group-flush li {
         background: transparent;
+}
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    display: none;
+}
+.goog-te-gadget img {
+    vertical-align: middle;
+    border: none;
+    display: none;
 }
 
 .left {
