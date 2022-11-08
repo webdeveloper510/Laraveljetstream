@@ -329,7 +329,7 @@ class Controller extends BaseController
         $id = auth()->user()->id;
         $user = Rating::where(['user_id' => $id, 'product_id' => $request->product_id])->first();
         if ($user) {
-            $updated = Rating::where(['user_id' => $id, 'product_id' => $request->product_id])->update(['rating' => $user['rating']]);
+            $updated = Rating::where(['user_id' => $id, 'product_id' => $request->product_id])->update(['rating' => $request->rating]);
             return response()->json([
                 'bool' => true,
                 'message' => 'Rate Updated Successfully!',

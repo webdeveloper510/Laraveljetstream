@@ -857,7 +857,7 @@
         $('.success-box div.text-message').html("<span>" + msg + "</span>");
     }
 
-    getStars({{ round($averageRating, 1) }})
+    getStars({{round($averageRating, 1)}},{{request()->segment(2)}})
 </script>
 </html>
 </x-app-layout>
