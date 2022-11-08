@@ -1,5 +1,4 @@
-@include('header')
-
+<x-app-layout>
 <style>
     .play {
         text-align: center;
@@ -151,4 +150,19 @@
     // });
 </script>
 
+{{-- ------------------------------------Translator---------------------------------------}}
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en'
+        }, 'google_translate_element');
+    }
+    $(window).load(function() {
+        $(".goog-logo-link").empty();
+        $('.goog-te-gadget').html($('.goog-te-gadget').children());
+    })
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
 </html>
+</x-app-layout>

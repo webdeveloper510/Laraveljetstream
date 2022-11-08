@@ -33,7 +33,7 @@ function subscribe (channel_id, flag) {
 
 /*--------------------------------------------- Rating ----------------------------------------------*/
 function rating(ratenum,product_id) {
-
+// console.log(ratenum);return false;
     $.ajax ({
         url: base_url + '/rate',
         type: 'post',
@@ -46,6 +46,28 @@ function rating(ratenum,product_id) {
           },
     });
 }
+
+function getStars(rating) {
+
+    // Round to nearest half
+    rating = Math.round(rating * 2) / 2;
+    let output = [];
+
+    // Append all the filled whole stars
+    for (var i = rating; i >= 1; i--){
+      output.push('<i class="fa fa-star" aria-hidden="true" style="color: orange;"></i>&nbsp;');
+    }
+
+    // If there is a half a star, append it
+    if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: orange;"></i>&nbsp;');
+
+    // Fill the empty stars
+    for (let i = (5 - rating); i >= 1; i--)
+      output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: orange;"></i>&nbsp;');
+
+     $('#stars').html(output.join(''));
+
+  }
 /**-----------------------------------------Report Video--------------------------------------------- */
 
 function reply (a) {
@@ -176,3 +198,6 @@ $ ('form#msform').submit (function (e) {
     processData: false,
   });
 });
+
+
+

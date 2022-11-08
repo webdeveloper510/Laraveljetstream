@@ -87,7 +87,11 @@ class Controller extends BaseController
     {
         $id = base64_decode($id);
         $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
+        // echo "<pre>";
+        // print_r($videos);die;
         if ($videos) {
+            // echo "<pre>";
+            // print_r($videos);die;
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
             $socialshare = \Share::page(
@@ -99,9 +103,6 @@ class Controller extends BaseController
                 ->telegram()
                 ->reddit()
                 ->whatsapp()->getRawLinks();
-        } else {
-            echo "Can't find id !";
-            die();
         }
 
         // echo "<pre>";
@@ -166,7 +167,7 @@ class Controller extends BaseController
         $averageRating = DB::table('ratings')
             ->where('product_id', $id)
             ->avg('rating');
-        // print_r($averageRating);die;
+        //print_r($averageRating);die;
         return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating'));
     }
 

@@ -28,7 +28,6 @@
 a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
-    display: none;
 }
 
 /*

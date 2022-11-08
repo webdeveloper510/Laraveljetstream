@@ -30,6 +30,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         $videos = User::with(['posts'])->get()->toArray();
+
         // $videos1 = json_encode($videos);
         //  echo "<pre>";
         //   print_r($videos);die;

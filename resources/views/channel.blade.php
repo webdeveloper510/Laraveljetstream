@@ -1,3 +1,4 @@
+<x-app-layout>
 @include('header')
 <div class="mains">
     <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="560px" width="1380px"
@@ -364,7 +365,7 @@
                         <div class="views">
                             <p class="py-2 m-0">{{ $videos[0]['views'] }} views
                                 {{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}</p>
-                            <p>{{ $videos[0]['description'] }}</p>
+                            {{-- <p>{{ $videos[0]['description'] }}</p> --}}
                         </div>
                     </div>
                 </div>
@@ -979,11 +980,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <p>Description </p>
-                        <p>This channel is about learning code step by step and we provide videos for PHP, react js,
-                            react native, JavaScript, sencha, angular, and ext js tutorial by anil Sidhu and bhasker
-                            verma
-                            <br />we make videos on Hindi and English both language
-                        </p>
+                        <p>{{$videos[0]['description']}}</p>
                         <p>Instagram : code.steps</p>
                         <!-----Details css------>
                         <hr />
@@ -1002,7 +999,7 @@
                         <hr />
                         <!-- Links start -->
                         <p>Links</p>
-                        <div class="d-flex align-items-sm-baseline"">
+                        <div class="d-flex align-items-sm-baseline">
                             <a href="{{ $socialshare['twitter'] }}" class="left">Twiter</a>
                             <a href="{{ $socialshare['telegram'] }}">Telegram</a>
                         </div>
@@ -1060,8 +1057,23 @@
     src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL">
 </script>
 
+{{-- ------------------------------------Translator---------------------------------------}}
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en'
+        }, 'google_translate_element');
+    }
+    $(window).load(function() {
+        $(".goog-logo-link").empty();
+        $('.goog-te-gadget').html($('.goog-te-gadget').children());
+    })
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
 <!-- <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-acd9aae4-bc97-a8ad-40ce-c9e5378cc58d" crossorigin="">
 </script> -->
 
 
 </html>
+</x-app-layout>

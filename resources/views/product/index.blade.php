@@ -2,7 +2,6 @@
     <div class="container-fluid p-0">
         <div class="row g-0">
             <!-- @include('layouts.sidebar') -->
-
             <div class="col-md-12">
                 <div class=" py-5">
                     <div class="container">
@@ -10,39 +9,42 @@
                             <div class="owl-carousel owl-theme">
                                 @foreach($videos as $video)
                                 @foreach($video['posts'] as $posts)
-                                <div class="item">
-                                    <div class="card">
+                                    <div class="item">
                                         <a href="{{url('/videodetail/'.$video['id'])}}">
-                                            <video width="100%" height="100%"  onmouseover="this.play()"
-                                                onmouseout="this.pause();this.currentTime=0;">
+                                        <div class="card">
+                                            <video width="100%" height="100%"  autoplay onmouseover="this.play()"
+                                            onmouseout="this.pause();this.currentTime=0;">
                                                 <source
                                                     src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}"
                                                     type="video/mp4">
-                                            </video></a>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
-                                                        class="thump">
-                                                </div>
-                                                <div class="col-10">
-                                                    <div class="detail">
-                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
-                                                        <a href="{{url('/channel/'.$video['id'])}}"
-                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
-                                                        <ul class="Views">
-                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
-                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
-                                                        </ul>
-                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
-                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
+                                               </video>
+                                               <div class="card-body">
+                                                   <div class="row">
+                                                       <div class="col-2">
+                                                           <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                            class="thump">
+                                                    </div>
+                                                </a>
+                                                    <div class="col-10">
+                                                        <div class="detail">
+                                                            {{$posts['title']}}<br />
+                                                            {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                            {{Auth::user()->name;}}
+                                                            <ul class="Views">
+                                                                <li>
+                                                                  View:{{ $posts['views']}}
+                                                                </li>
+                                                            </ul>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+
+
                                     </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
                                 @endforeach
                             </div>
                         </div>
@@ -60,6 +62,7 @@
                                 @foreach($videos as $video)
                                 @foreach($video['posts'] as $posts)
                                     <div class="item">
+                                        <a href="www.google.com">
                                         <div class="card">
                                             <video width="100%" height="100%"  onmouseover="this.play()"
                                                 onmouseout="this.pause();this.currentTime=0;">
@@ -89,8 +92,11 @@
                                             </div>
                                             </div>
                                         </div>
+                                        </a>
                                     </div>
-                                    <div class="item">
+                                    @endforeach
+                                    @endforeach
+                                    {{-- <div class="item">
                                         <div class="card">
                                             <video width="100%" height="100%"  onmouseover="this.play()"
                                                 onmouseout="this.pause();this.currentTime=0;">
@@ -120,8 +126,7 @@
                                             </div>
                                             </div>
                                         </div>
-                                            @endforeach
-                                            @endforeach
+
                                     </div>
                                     <div class="item">
                                         <div class="card">
@@ -234,7 +239,7 @@
                                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                         </div>
 
@@ -255,7 +260,7 @@
                                     <div class="row">
                                                 <div class="col-2">
                                                     <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
-                                                        class="thump">
+                                                    class="thump">
                                                 </div>
                                                 <div class="col-10">
                                                     <div class="detail">
@@ -428,8 +433,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div> 
-                    </div> 
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -488,6 +493,27 @@
             nav: true
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        video1 = new Moovie({
+            selector: "#example1",
+            config: {
+                controls: {
+                    playtime: true,
+                    mute: true,
+                    volume: true,
+                    subtitles: true,
+                    config: true,
+                    fullscreen: true,
+                    submenuCaptions: true,
+                    submenuOffset: true,
+                    submenuSpeed: true,
+                    allowLocalSubtitles: true
+                }
+            }
+        });
+    });
+
     </script>
     @push('js')
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -501,5 +527,7 @@
     };
     console.log('user')
     </script>
+
+
     @endpush
 </x-app-layout>
