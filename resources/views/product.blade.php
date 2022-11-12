@@ -24,13 +24,6 @@
 
 
 
-    #loader{
-  display:none;
-}
-
-#loader.active{
-  display:block;
-}
 
 .lds-ring {
   display: inline-block;
@@ -213,6 +206,17 @@
         z-index: -1;
         /*put it behind the numbers*/
     }
+    /* .loader1 img {
+    width: 100%;
+}
+
+.loader1 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+} */
 
     #progressbar li:first-child:after {
         /*connector not needed before the first step*/
@@ -245,6 +249,8 @@
         font-size: 12px;
     }
 
+
+
     .dme_link a:hover,
     .dme_link a:focus {
         background: #C5C5F1;
@@ -256,6 +262,9 @@
     <!-- MultiStep Form -->
     <div class="row">
         <div class="col"></div>
+        {{-- <div>
+        <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
+        </div> --}}
         <div class="col-md-8">
             <form id="msform" method="POST">
                 <!-- progressbar -->
@@ -307,18 +316,21 @@
 
                 <fieldset>
                     <h2 class="fs-title">Preview</h2>
-
                     <div class="mb-3">
                         <label>upload video</label>
                         {{-- <input type="file" name="upload_video"  required class="form-control" /> --}}
                         <input type='file' name="upload_video" required class="form-control" id='videoUpload' />
                     </div>
                     <div class="mx-auto">
-                        <video width="400" height="240" controls class="mx-auto" controls autoplay>
-                            <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                            <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
+                        <video width="320" height="240" style="display:none"
+                                            controls autoplay>
+                                    Your browser does not support the video tag.
+                                    </video>
+                        {{-- <video width="400" height="240" class="mx-auto" controls>
+                            <source src="" type="video/mp4">
+                            <source src="" type="video/ogg">
                             Your browser does not support the video tag.
-                        </video>
+                        </video> --}}
                     </div>
                     <div class="my-3">
                         <label>Video Link</label> <br />
@@ -392,16 +404,8 @@
                         </ul>
 
                     </div>
-                    {{-- <input type="button" name="previous" class="previous action-button-previous" value="Previous"/> --}}
-                    <div id="loader">
-                        <div class="lds-ring">
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                          <div></div>
-                        </div>
-                      </div>
-                    <button type="submit" class="next action-button load" onclick="load()" value="Next">Submit</button>
+                    <button type="submit" class="next action-button load"  value="Next">Submit</button>
+
                 </fieldset>
             </form>
             <!-- link to designify.me code snippets -->
@@ -409,6 +413,9 @@
             <!-- /.link to designify.me code snippets -->
         </div>
         <div class="col"></div>
+    </div>
+    <div class="loader1" width="100%" style="display:none;">
+        <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
     </div>
     <!-- /.MultiStep Form -->
     <script>
@@ -506,26 +513,18 @@
     </script>
 </body>
 
-<script>
 
-function load() {
-  document.getElementById("loader").classList.add("active");
-  setTimeout(function(){
-    document.getElementById("loader").classList.remove("active");
-  },3000);
-};
-
-
-    document.getElementById("videoUpload").onchange = function(event) {
-        let file = event.target.files[0];
-        let blobURL = URL.createObjectURL(file);
-        document.querySelector("video").style.display = 'block';
-        document.querySelector("video").src = blobURL;
-    }
-</script>
 
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
+<script>
+    document.getElementById("videoUpload").onchange = function(event) {
+      let file = event.target.files[0];
+      let blobURL = URL.createObjectURL(file);
+      document.querySelector("video").style.display = 'block';
+      document.querySelector("video").src = blobURL;
+    }
+    </script>
 {{-- ------------------------------------Translator---------------------------------------}}
 <script type="text/javascript">
     function googleTranslateElementInit() {

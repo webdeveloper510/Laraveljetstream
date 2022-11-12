@@ -1074,6 +1074,5 @@
 <!-- <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-acd9aae4-bc97-a8ad-40ce-c9e5378cc58d" crossorigin="">
 </script> -->
 
-
 </html>
 </x-app-layout>

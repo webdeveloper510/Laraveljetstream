@@ -173,6 +173,7 @@ class Controller extends BaseController
 
     public function store(Request $request)
     {
+
         $id = auth()->user()->id;
         $data = $request->all();
         $folder = "video";

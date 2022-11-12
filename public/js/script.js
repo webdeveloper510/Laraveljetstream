@@ -32,7 +32,7 @@ function subscribe (channel_id, flag) {
 }
 
 /*--------------------------------------------- Rating ----------------------------------------------*/
-function rating(ratenum,product_id) {
+function rating(ratenum,product_id) {   
 console.log(ratenum);
     $.ajax ({
         url: base_url + '/rate',
@@ -186,12 +186,14 @@ $ ('form#msform').submit (function (e) {
   };
   e.preventDefault ();
   var formData = new FormData (this);
-
+  $('.loader1').show();
   $.ajax ({
     url: base_url + '/uploadproduct',
     type: 'POST',
     data: formData,
     success: function (data) {
+        console.log(data);
+        $('.loader1').hide();
       toastr.success (data.message);
     },
     cache: false,

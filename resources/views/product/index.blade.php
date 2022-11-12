@@ -527,7 +527,19 @@
     };
     console.log('user')
     </script>
-
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en'
+        }, 'google_translate_element');
+    }
+    $(window).load(function() {
+        $(".goog-logo-link").empty();
+        $('.goog-te-gadget').html($('.goog-te-gadget').children());
+    })
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
 
     @endpush
 </x-app-layout>

@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-8 px-3">
                         <div class="">
-                            <video width="320" height="240" id="example1"
+                            <video width="200" height="150" id="example1"
                                 poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['thumbnail'] }}">
                                 <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['file'] }}"
                                     type="video/mp4">
@@ -352,23 +352,15 @@
                         <div class="">
                             <h4 class="mb-3">Related video</h4>
                             <!------------- videoss-section ----------------------------->
+
                             <div class="videoss-section">
                                 <div class="row mb-3 g-0">
                                     <div class="col-md-5">
-                                        <div class="related-video position-relative">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
-                                                class="img-fluid" />
-                                            <div class="icons-on">
-                                                <a href=""><span class="material-symbols-outlined">
-                                                        schedule
-                                                    </span></a><br />
-                                                <a href="">
-                                                    <span class="material-symbols-outlined">
-                                                        playlist_play
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
+                                    <video width="400" height="400" class="example1" id="example1_{{$videos['id']}}"
+                                    poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' .  $videos['thumbnail']}}">
+                                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['file'] }}"
+                                    type="video/mp4">
+                                   </video>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="video-details ps-2">
@@ -386,9 +378,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                 </div>
 
-                                <div class="row mb-3 g-0">
+                                 <div class="row mb-3 g-0">
                                     <div class="col-md-5">
                                         <div class="related-video position-relative">
                                             <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
@@ -707,6 +699,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -726,25 +719,29 @@
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 {!! Toastr::message() !!}
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        video1 = new Moovie({
-            selector: "#example1",
-            config: {
-                controls: {
-                    playtime: true,
-                    mute: true,
-                    volume: true,
-                    subtitles: true,
-                    config: true,
-                    fullscreen: true,
-                    submenuCaptions: true,
-                    submenuOffset: true,
-                    submenuSpeed: true,
-                    allowLocalSubtitles: true
+   $(".example1").each(function(){
+    let id = $(this).attr('id');
+    console.log(id)
+        document.addEventListener("DOMContentLoaded", function() {
+            video1 = new Moovie({
+                selector: "#"+id,
+                config: {
+                    controls: {
+                        playtime: true,
+                        mute: true,
+                        volume: true,
+                        subtitles: true,
+                        config: true,
+                        fullscreen: true,
+                        submenuCaptions: true,
+                        submenuOffset: true,
+                        submenuSpeed: true,
+                        allowLocalSubtitles: true
+                    }
                 }
-            }
+            });
         });
-    });
+});
 
     // $(document).ready(function(){
     //   $(".btn1").click(function(){
@@ -858,6 +855,7 @@
     }
 
     getStars({{round($averageRating, 1)}},{{request()->segment(2)}})
+
 </script>
 </html>
 </x-app-layout>
