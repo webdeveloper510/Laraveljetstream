@@ -71,6 +71,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\product','user_id');
     }
 
+    public function Report_video() {
+        return $this->hasMany('App\Models\Report','user_id');
+    }
+
 
     public function ratings()
 {

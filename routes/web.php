@@ -29,9 +29,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $videos = User::with(['posts'])->get()->toArray();
+        $videos = User::with(['posts','Report_video'])->get()->toArray();
 
-        // $videos1 = json_encode($videos);
         //  echo "<pre>";
         //   print_r($videos);die;
         return view('product.index', compact('videos'));
@@ -107,7 +106,7 @@ Route::post('/comment/store', [CommentController::class, 'store'])->name('commen
 Route::post('/subscribe', [Controller::class, 'subscribe']);
 Route::get('/setting', [Controller::class, 'setting']);
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
-Route::post('/save_video', [Controller::class, 'print_r($request->all());die;']);
+//Route::post('/save_video', [Controller::class, 'print_r($request->all());die;']);
 Route::post('/save_video', [Controller::class, 'save_video']);
 // Route::post('/rating', [Controller::class, 'rating'])->name('postStar');
 Route::post('/rate', [Controller::class, 'rate']);

@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-8 px-3">
                         <div class="">
-                            <video width="200" height="150" id="example1"
+                            <video width="200" height="150" class="example1" id="example1"
                                 poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['thumbnail'] }}">
                                 <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['file'] }}"
                                     type="video/mp4">
@@ -223,7 +223,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">CANCEL</button>
-                                                    <button type="submit" onclick="reloadPage( )"
+                                                    <button type="submit"
                                                         class="btn btn-primary btn1">Submit</button>
                                                 </div>
                                         </div>
@@ -719,7 +719,8 @@
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 {!! Toastr::message() !!}
 <script>
-   $(".example1").each(function(){
+
+    $(".example1").each(function(){
     let id = $(this).attr('id');
     console.log(id)
         document.addEventListener("DOMContentLoaded", function() {
@@ -742,16 +743,8 @@
             });
         });
 });
-
-    // $(document).ready(function(){
-    //   $(".btn1").click(function(){
-    //     $(".hide").hide();
-    //   });
-    //   $(".btn1").click(function(){
-    //     $(".hide").show();
-    //   });
-    // });
 </script>
+
 
 
 
@@ -796,9 +789,9 @@
 
 
 
-    function reloadPage() {
-        location.reload();
-    }
+    // function reloadPage() {
+    //     location.reload();
+    // }
 
     $(document).ready(function() {
 

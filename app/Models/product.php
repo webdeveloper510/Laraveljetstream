@@ -35,15 +35,15 @@ class product extends Model
 
         return $this->belongsTo('App\models\User','user_id');
     }
-
-        public function comments()
+   public function comments()
     {
         return $this->hasMany(Comment::class)->where('parent_id', '=', 0);
     }
-        public function getCommentsCount()
-        {
-            return $this->comments()->count();
-        }
+
+    public function getCommentsCount()
+    {
+        return $this->comments()->count();
+    }
 
     public function ratings()
     {

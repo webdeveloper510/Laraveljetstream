@@ -32,8 +32,16 @@ function subscribe (channel_id, flag) {
 }
 
 /*--------------------------------------------- Rating ----------------------------------------------*/
-function rating(ratenum,product_id) {   
-console.log(ratenum);
+function rating(a,ratenum,product_id) {
+    $(".fa").removeAttr("style")
+    for(let i=1;i<=ratenum;i++){
+        console.log(i)
+        $('.fa').addClass('fa fa-star').removeClass('fa-star-o');
+
+        $('.rating_star_'+i).attr('style','color: orange');
+    }
+
+
     $.ajax ({
         url: base_url + '/rate',
         type: 'post',
@@ -55,16 +63,16 @@ console.log(url_value)
     let j=1;
     // Append all the filled whole stars
     for (var i = rating; i >= 1; i--){
-      output.push('<i class="fa fa-star" onclick="rating('+j+','+url_value+')" aria-hidden="true" style="color: orange;"></i>&nbsp;');
-    j++
+      output.push('<i class="fa fa-star rating_star_'+j+'" onclick="rating(this,'+j+','+url_value+')" aria-hidden="true" style="color: orange; cursor:pointer"></i>&nbsp;');
+       j++
     }
 
     // If there is a half a star, append it
-    if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: orange;"></i>&nbsp;');
+    if (i == .5) output.push('<i class="fa fa-star-half-o rating_star_'+j+'" onclick="rating(this,'+j+','+url_value+')" aria-hidden="true" style="color: orange;cursor:pointer"></i>&nbsp;');
 
     // Fill the empty stars
     for (let i = (3 - rating); i >= 1; i--)
-      output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: orange;"></i>&nbsp;');
+      output.push('<i class="fa fa-star-o rating_star_'+j+'" aria-hidden="true" onclick="rating(this,'+j+','+url_value+')" style="color: orange;cursor:pointer"></i>&nbsp;');
 
      $('#stars').html(output.join(''));
 
@@ -156,14 +164,17 @@ function save_video(product_id) {
 
 
 
-$ ('#submit_report').submit (function (e) {
+
+    $('#submit_report').submit(function(e){
+        e.preventDefault ();
+        console.log('yess');return false;
 //   toastr.options = {
 //       "closeButton": true,
 //       "newestOnTop": true,
 //       "positionClass": "toast-top-left"
 //     };
-  console.log ('yes');
-  e.preventDefault ();
+
+
   var form = $ (this);
   var actionUrl = base_url + '/report';
   $.ajax ({

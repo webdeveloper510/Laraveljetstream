@@ -352,31 +352,27 @@ class Controller extends BaseController
 
     /*---------------------------------------------Report system--------------------------------------------*/
 
-    public function report(Request $request)
-    {
-        // echo "<pre>";
-        // print_r($request->all());die;
-        $id = auth()->user()->id;
-        $data = new Report;
-        $data->user_id = $id;
-        $data->product_id  = $request->product_id;
-        $data->description = $request->description;
-        if ($data->save()) {
-            return response()->json([
-                'bool' => true,
-                'message' => 'Content Reported By user!',
-                'code' => 1
-
-            ]);
+      public function report(Request $request)
+        {
+            $id = auth()->user()->id;
+            $data = new Report;
+            $data->user_id = $id;
+            $data->product_id  = $request->product_id;
+            $data->description = $request->description;
+            if ($data->save()) {
+                return response()->json([
+                    'bool' => true,
+                    'message' => 'Content Reported By user!',
+                    'code' => 1
+                ]);
+            }
         }
-    }
 
 
     /*--------------------------------------search system------------------------------------------*/
 
     public function search(Request $request)
     {
-
         $search = $request->input('search');
         $posts = product::with(['comments.replies', 'user', 'like'])
             ->where('title', 'LIKE', "%{$search}%")
