@@ -1,5 +1,5 @@
 var base_url = 'http://localhost/jetstream';
-function subscribe (channel_id, flag) {
+function subscribe(channel_id, flag) {
   toastr.options = {
     closeButton: true,
     newestOnTop: true,
@@ -163,11 +163,9 @@ function save_video(product_id) {
 }
 
 
-
-
     $('#submit_report').submit(function(e){
         e.preventDefault ();
-        console.log('yess');return false;
+        console.log('yess');
 //   toastr.options = {
 //       "closeButton": true,
 //       "newestOnTop": true,

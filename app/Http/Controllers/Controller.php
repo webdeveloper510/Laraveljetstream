@@ -90,8 +90,6 @@ class Controller extends BaseController
         // echo "<pre>";
         // print_r($videos);die;
         if ($videos) {
-            // echo "<pre>";
-            // print_r($videos);die;
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
             $socialshare = \Share::page(
@@ -104,10 +102,10 @@ class Controller extends BaseController
                 ->reddit()
                 ->whatsapp()->getRawLinks();
         }
-
+        $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
         // echo "<pre>";
-        // print_r($socialshare);die;
-        return view('channel', compact('videos', 'count', 'socialshare'));
+        // print_r($subscriber);die;
+        return view('channel', compact('videos', 'count', 'socialshare', 'subscriber'));
     }
 
     public function setting()
@@ -167,7 +165,9 @@ class Controller extends BaseController
         $averageRating = DB::table('ratings')
             ->where('product_id', $id)
             ->avg('rating');
-        //print_r($averageRating);die;
+
+        // echo "<pre>";
+        // print_r($videos);die;
         return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating'));
     }
 
@@ -317,6 +317,7 @@ class Controller extends BaseController
         $id = auth()->user()->id;
         $update =  Subscribe::where(['user_id' => $id, 'channel_id' => $data->channel_id])->update(['count' => 0]);
         return 2;
+
     }
 
 
