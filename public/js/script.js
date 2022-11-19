@@ -195,14 +195,27 @@ $ ('form#msform').submit (function (e) {
   };
   e.preventDefault ();
   var formData = new FormData (this);
-  $('.loader1').show();
   $.ajax ({
     url: base_url + '/uploadproduct',
     type: 'POST',
     data: formData,
+
+    xhr: function() {
+        $(".divIDClass").show();
+        var xhr = new window.XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function(element) {
+            if (element.lengthComputable) {
+                var percentComplete = ((element.loaded / element.total) * 100);
+                $("#progress-bar").width(percentComplete + '%');
+                $("#progress-bar").html(percentComplete+'%');
+            }
+        }, false);
+        return xhr;
+    },
+
     success: function (data) {
         console.log(data);
-        $('.loader1').hide();
+        $(".divIDClass").hide();
       toastr.success (data.message);
     },
     cache: false,
@@ -210,6 +223,3 @@ $ ('form#msform').submit (function (e) {
     processData: false,
   });
 });
-
-
-

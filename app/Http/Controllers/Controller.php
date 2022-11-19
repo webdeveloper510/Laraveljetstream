@@ -86,7 +86,10 @@ class Controller extends BaseController
     public function channel($id)
     {
         $id = base64_decode($id);
+
+
         $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
+
         // echo "<pre>";
         // print_r($videos);die;
         if ($videos) {
@@ -127,15 +130,16 @@ class Controller extends BaseController
         $auth_id = auth()->user()->id;
 
         $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->find($id)->toArray();
-
+        // echo "<pre>";
+        // print_r($videos);die;
         $username = auth()->user()->name;
-        //  echo "<pre>";
-        //  print_r($videos);die;
+
         $Rating = Rating::where('product_id', $id)->avg('rating');
 
         $subscriber = Subscribe::where(['channel_id' => $videos['user_id']])->sum('count');
 
         $count = Subscribe::where(['channel_id' => $videos['user_id'], 'user_id' => $auth_id])->sum('count');
+        // print_r($count);die;
         $trending_product = DB::table('trending')->where('product_id', '=', $id)->count();
         if ($trending_product > 0) {
             $update = DB::table('trending')->where('product_id', '=', $id)->update(['count' => DB::raw('count+1')]);
@@ -173,7 +177,6 @@ class Controller extends BaseController
 
     public function store(Request $request)
     {
-
         $id = auth()->user()->id;
         $data = $request->all();
         $folder = "video";
@@ -283,6 +286,7 @@ class Controller extends BaseController
             if ($alreadySubscribed <= 0) {
                 //print_r($request->all());die;
                 $code = $this->subscribed($request->all());
+                print_r($code);die;
                 $message = 'Subscribed Successfully!';
             } else {
                 $code = 1;
@@ -355,11 +359,13 @@ class Controller extends BaseController
 
       public function report(Request $request)
         {
+
             $id = auth()->user()->id;
             $data = new Report;
             $data->user_id = $id;
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
+
             if ($data->save()) {
                 return response()->json([
                     'bool' => true,

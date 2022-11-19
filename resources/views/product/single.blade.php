@@ -42,14 +42,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 pt-2">
-                                    <h5>{{ $username }}</h5>
+                                    <h5>{{ $videos['user']['name'] }}</h5>
                                     <small>
                                         190 Subscriber
                                     </small>
                                 </div>
                                 <div class="col-md-3 text-end">
                                     <button class="btn btn-danger subscribe"
-                                        style="{{ $count <= 0 ? 'display:block' : 'display:none' }}"
+                                        style="{{ $count <= 0 && $videos['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
                                         onclick="subscribe('{{ $videos['user_id'] }}',1)">SUBSCRIBE</button>
                                     <button class="btn btn-outline-success subscribes"
                                         style="{{ $count > 0 ? 'display:block' : 'display:none' }}"
@@ -289,15 +289,15 @@
                                 <div class="commentss">
                                     <div class="row mt-3">
                                         <div class="col-1 text-end">
-                                            <div class="profile-image">
+                                            {{-- <div class="profile-image">
                                                 <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
                                                     width="60px" />
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="col-md-11">
-                                            <p class="mb-2"> <b> {{ $username }}
+                                            {{-- <p class="mb-2"> <b> {{ $username }}
                                                 </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
-                                            </p>
+                                            </p> --}}
                                             @foreach ($videos['comments'] as $key => $commet)
                                                 <div class="comments">
                                                     <div class="row mt-3">

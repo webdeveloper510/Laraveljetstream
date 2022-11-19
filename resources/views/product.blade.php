@@ -22,7 +22,15 @@
         /* Chrome 10-25, Safari 5.1-6 */
     }
 
-
+    #progress-bar {
+    background-color: #12CC1A;
+    color: #FFFFFF;
+    width: 0%;
+    -webkit-transition: width .3s;
+    -moz-transition: width .3s;
+    transition: width .3s;
+    border-radius: 5px;
+}
 
 
 .lds-ring {
@@ -268,6 +276,10 @@
         <div class="col-md-8">
             <form id="msform" method="POST">
                 <!-- progressbar -->
+
+                <div class="row">
+                    <div id="progress-bar" class="divIDClass" style="display: none">0%</div>
+                </div>
                 <ul id="progressbar">
                     <li class="active"> Details</li>
                     <li>Video elements</li>
@@ -414,9 +426,10 @@
         </div>
         <div class="col"></div>
     </div>
-    <div class="loader1" width="100%" style="display:none;">
+
+    {{-- <div class="loader1" width="100%" style="display:none;">
         <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
-    </div>
+    </div> --}}
     <!-- /.MultiStep Form -->
     <script>
         var current_fs, next_fs, previous_fs; //fieldsets

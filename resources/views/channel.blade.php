@@ -22,11 +22,12 @@
                     </div>
                 </div>
                 <div class="col-md-8">
+
                     <div class="text-sm-end p-4">
                         <button class="btn btn-outline-primary" style="color: rgb(4, 4, 246)"
                             type="button">Join</button>
                         <button class="btn btn-danger subscribe"
-                            style="{{ $count <= 0 ? 'display:block' : 'display:none' }}"
+                            style="{{ $count <= 0  && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
                             onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>
                         <button class="btn btn-outline-success subscribes"
                             style="{{ $count > 0 ? 'display:block' : 'display:none' }}"
