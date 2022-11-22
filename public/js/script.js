@@ -31,11 +31,19 @@ function subscribe(channel_id, flag) {
   });
 }
 
+// ----------------------------------------Form Validation---------------------------------//
+function printErrorMsg (msg) {
+    $.each( msg, function( key, value ) {
+    console.log(key);
+      $('.'+key+'_err').text(value);
+    });
+}
+
 /*--------------------------------------------- Rating ----------------------------------------------*/
 function rating(a,ratenum,product_id) {
     $(".fa").removeAttr("style")
     for(let i=1;i<=ratenum;i++){
-        console.log(i)
+        //console.log(i)
         $('.fa').addClass('fa fa-star').removeClass('fa-star-o');
 
         $('.rating_star_'+i).attr('style','color: orange');
@@ -56,7 +64,7 @@ function rating(a,ratenum,product_id) {
 }
 
 function getStars(rating,url_value) {
-console.log(url_value)
+//console.log(url_value)
     // Round to nearest half
     rating = Math.round(rating * 2) / 2;
     let output = [];
@@ -77,7 +85,7 @@ console.log(url_value)
      $('#stars').html(output.join(''));
 
   }
-/**-----------------------------------------Report Video--------------------------------------------- */
+
 
 function reply (a) {
   $ (a).parent ().next ().show();
@@ -162,16 +170,11 @@ function save_video(product_id) {
   });
 }
 
+// ----------------------------------------Report------------------------------------------//
 
-    $('#submit_report').submit(function(e){
+    $('#submitt_report').submit(function(e){
         e.preventDefault ();
         console.log('yess');
-//   toastr.options = {
-//       "closeButton": true,
-//       "newestOnTop": true,
-//       "positionClass": "toast-top-left"
-//     };
-
 
   var form = $ (this);
   var actionUrl = base_url + '/report';
@@ -180,9 +183,15 @@ function save_video(product_id) {
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
+
       if (data.code === 1) {
+        $.isEmptyObject(data.error)
         toastr.success (data.message);
+        $('.btn-close').trigger('click');
       }
+      else{
+        printErrorMsg(data.error);
+    }
     },
   });
 });
@@ -201,7 +210,7 @@ $ ('form#msform').submit (function (e) {
     data: formData,
 
     xhr: function() {
-        $(".divIDClass").show();
+        $(".progress_bar").show();
         var xhr = new window.XMLHttpRequest();
         xhr.upload.addEventListener("progress", function(element) {
             if (element.lengthComputable) {
@@ -215,8 +224,13 @@ $ ('form#msform').submit (function (e) {
 
     success: function (data) {
         console.log(data);
-        $(".divIDClass").hide();
+        if($.isEmptyObject(data.error)){
+
+        $(".progress_bar").hide();
       toastr.success (data.message);
+        }else{
+            printErrorMsg(data.error);
+        }
     },
     cache: false,
     contentType: false,

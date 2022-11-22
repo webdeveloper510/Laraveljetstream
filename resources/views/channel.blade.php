@@ -395,7 +395,6 @@
                         </div>
                     </div>
                     <hr />
-
                     <div class="row">
                         <div class="col-12">
                             <h3 class="d-flex">Uploads<button class="btn btn-sm btn-outline-primery d-flex"><span
@@ -410,7 +409,6 @@
                                 <video width="320" height="200" id="example1" controls muted>
                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file'] }}"
                                         type="video/mp4">
-
                                     <track kind="captions" label="English" srclang="en"
                                         src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                                 </video>

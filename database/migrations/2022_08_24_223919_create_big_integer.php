@@ -15,7 +15,7 @@ class CreateBigInteger extends Migration
     {
         Schema::table('product', function (Blueprint $table) {
             //
-            $table->bigInteger('user_id')->change();
+            $table->Integer('user_id')->change();
 
         });
     }

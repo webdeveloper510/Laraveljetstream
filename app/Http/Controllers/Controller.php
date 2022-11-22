@@ -86,8 +86,6 @@ class Controller extends BaseController
     public function channel($id)
     {
         $id = base64_decode($id);
-
-
         $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
 
         // echo "<pre>";
@@ -95,6 +93,7 @@ class Controller extends BaseController
         if ($videos) {
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
+
             $socialshare = \Share::page(
                 'http://localhost/jetstream/videodetail/1'
             )
@@ -184,14 +183,14 @@ class Controller extends BaseController
             'title' => 'required|max:255',
             'description' => 'required',
             'thumbnail' => 'required',
+            'upload_video' => 'required',
+            'security' => 'required',
+            'security' => 'required',
             'security' => 'required',
             'child_vis' => 'required',
         ]);
         if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
+            return response()->json(['error'=>$validator->errors()]);
         } else {
 
             $video_name = $data['upload_video']->store($folder, 'spaces');
@@ -281,12 +280,13 @@ class Controller extends BaseController
         // print_r($request->all());die;
         $id = auth()->user()->id;
         $alreadySubscribed = Subscribe::where(['user_id' => $id, 'channel_id' => $request->channel_id])->count();
+       // print_r($alreadySubscribed);die;
         $flag = $request->flag;
+
         if ($flag == 1) {
             if ($alreadySubscribed <= 0) {
                 //print_r($request->all());die;
                 $code = $this->subscribed($request->all());
-                print_r($code);die;
                 $message = 'Subscribed Successfully!';
             } else {
                 $code = 1;
@@ -307,7 +307,7 @@ class Controller extends BaseController
 
     public function subscribed($data)
     {
-        // print_r($data);die;
+       // print_r($data);die;
         $id = auth()->user()->id;
         $data1 = new Subscribe;
         $data1->channel_id = $data['channel_id'];
@@ -345,7 +345,7 @@ class Controller extends BaseController
             $data->user_id = $id;
             $data->rating  = $request->rating;
             $data->product_id  = $request->product_id;
-            $data->status  = 1;
+            //$data->status  = 1;
             $data->comment = 'Star-Rating';
             $data->save();
             return response()->json([
@@ -359,15 +359,23 @@ class Controller extends BaseController
 
       public function report(Request $request)
         {
-
             $id = auth()->user()->id;
+            $report_data = $request->all();
+            $validator = Validator::make($report_data, [
+                'timestamp' => 'required',
+                'description' => 'required',
+            ]);
+
+            if($validator->fails()) {
+                return response()->json(['error'=>$validator->errors()]);
+            }
+            else{
             $data = new Report;
             $data->user_id = $id;
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
-
-            if ($data->save()) {
-                return response()->json([
+            $data->save();
+                    return response()->json([
                     'bool' => true,
                     'message' => 'Content Reported By user!',
                     'code' => 1

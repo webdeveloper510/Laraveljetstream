@@ -116,7 +116,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <form id="submit_report" method="POST">
+                                                <form id="submitt_report" method="POST">
                                                     <div class="modal-body">
                                                         <div class="form-check my-1.5">
                                                             <input class="form-check-input" type="radio"
@@ -212,11 +212,11 @@
                                                             <label>Timestamp selected *</label> <br />
                                                             <input type="time" name="timestamp"
                                                                 class="form-control col-md-3 my-3" />
-
+                                                                <span class="text-danger error-text timestamp_err"></span>
                                                             <div class="form-floating">
                                                                 <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" name="description"
                                                                     style="height: 100px"></textarea>
-
+                                                                    <span class="text-danger error-text description_err"></span>
                                                                 <label for="floatingTextarea2">Comments</label>
                                                             </div>
                                                             <small class="my-2">Flagged videos and users are
@@ -252,7 +252,7 @@
                             <i class="fa fa-star" aria-hidden="true" id="s4"
                                 onclick="rating(3, {{ request()->segment(2) }})"></i> --}}
                                 <span>{{ round($averageRating, 1) }}</span>
-                                <a href="">Read More</a>
+                                <a href=""> Read More</a>
                                 <div class="shows">
                                     <p>Upcoming Charges</p>
                                 </div>
@@ -274,7 +274,7 @@
                                             <div class="commentBox">
                                                 <input type="text" class="form-control" autocomplete="off"
                                                     name="body" id="exampleFormControlInput1"
-                                                    placeholder="Add a comment">
+                                                    placeholder="Add a comment" required>
                                                 <input type="hidden" name="post_id"
                                                     value="{{ request()->segment(2) }}" />
                                             </div>
@@ -409,7 +409,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-    <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+
     {!! Toastr::message() !!}
     <script>
         $(".example1").each(function() {
@@ -437,13 +437,7 @@
         });
     </script>
 
-
-
-
-
-
     {{-- //---------------------translator------------------------ --}}
-
 
     <script type="text/javascript">
         function googleTranslateElementInit() {

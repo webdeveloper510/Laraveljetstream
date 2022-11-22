@@ -278,7 +278,7 @@
                 <!-- progressbar -->
 
                 <div class="row">
-                    <div id="progress-bar" class="divIDClass" style="display: none">0%</div>
+                    <div id="progress-bar" class="progress_bar" style="display: none">0%</div>
                 </div>
                 <ul id="progressbar">
                     <li class="active"> Details</li>
@@ -291,15 +291,18 @@
                     <h2 class="fs-title"> Details</h2>
                     <div class="mb-3">
                         <label>Title</label>
-                        <input type="text" name="title" class="form-control" required />
+                        <input type="text" name="title" class="form-control" />
+                        <span class="text-danger error-text title_err"></span>
                     </div>
                     <div class="mb-3">
                         <label>Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3" required></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+                        <span class="text-danger error-text description_err"></span>
                     </div>
                     <div class="mb-3">
                         <label>Thumbnail</label>
-                        <input type="file" name="thumbnail" required class="form-control" />
+                        <input type="file" name="thumbnail" class="form-control" />
+                        <span class="text-danger error-text thumbnail_err"></span>
                     </div>
                     <div class="mb-3">
                         <h5 class="mb-2"><b> Is this video made from kids ? </b></h5>
@@ -311,6 +314,7 @@
                         <div class="form-check my-3">
                             <input class="form-check-input" type="radio" name="child_vis" id="exampleRadios1"
                                 value="option1" checked>
+                                <span class="text-danger error-text child_vis_err"></span>
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes, its made for kids
                             </label>
@@ -331,7 +335,8 @@
                     <div class="mb-3">
                         <label>upload video</label>
                         {{-- <input type="file" name="upload_video"  required class="form-control" /> --}}
-                        <input type='file' name="upload_video" required class="form-control" id='videoUpload' />
+                        <input type='file' name="upload_video" class="form-control" id='videoUpload' />
+                        <span class="text-danger error-text upload_video_err"></span>
                     </div>
                     <div class="mx-auto">
                         <video width="320" height="240" style="display:none"
@@ -374,6 +379,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
                                         value="option1" checked>
+                                        <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Private
                                     </label><br />
@@ -386,6 +392,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
                                         value="option1" checked>
+                                        <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Unlisted
                                     </label><br />
@@ -398,6 +405,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
                                         value="option1" checked>
+                                        <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Public
                                     </label><br />
@@ -416,7 +424,7 @@
                         </ul>
 
                     </div>
-                    <button type="submit" class="next action-button load"  value="Next">Submit</button>
+                    <button type="submit"  value="Next">Submit</button>
 
                 </fieldset>
             </form>
