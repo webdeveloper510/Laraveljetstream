@@ -1,5 +1,27 @@
 <x-app-layout>
 <style>
+
+.goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+
+        body {
+            top: 0px a!importnt;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important
+        }
+
+        .goog-logo-link {
+            display: none
+        }
     .play {
         text-align: center;
         position: absolute;

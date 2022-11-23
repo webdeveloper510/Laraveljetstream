@@ -5,6 +5,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous">
 </script>
 <style>
+
+.goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important
+        }
+
+        .goog-logo-link {
+            display: none
+        }
     /*custom font*/
     @import url(https://fonts.googleapis.com/css?family=Montserrat);
 

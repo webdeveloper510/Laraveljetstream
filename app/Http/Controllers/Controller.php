@@ -127,14 +127,11 @@ class Controller extends BaseController
     public function videodetail($id)
     {
         $auth_id = auth()->user()->id;
-
         $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->find($id)->toArray();
         // echo "<pre>";
         // print_r($videos);die;
         $username = auth()->user()->name;
-
         $Rating = Rating::where('product_id', $id)->avg('rating');
-
         $subscriber = Subscribe::where(['channel_id' => $videos['user_id']])->sum('count');
 
         $count = Subscribe::where(['channel_id' => $videos['user_id'], 'user_id' => $auth_id])->sum('count');
@@ -289,11 +286,12 @@ class Controller extends BaseController
                 $code = $this->subscribed($request->all());
                 $message = 'Subscribed Successfully!';
             } else {
+                $this->unsubscribed($request,$flag);
                 $code = 1;
-                $message = 'Already Subscribed!';
+                $message = 'Subscribed Successfully!';
             }
         } else {
-            $code = $this->unsubscribed($request);
+            $code = $this->unsubscribed($request,$flag);
             $message = 'Unsubscribe Successfully!';
         }
 
@@ -316,14 +314,12 @@ class Controller extends BaseController
         $data1->save();
         return 1;
     }
-    public function unsubscribed($data)
+    public function unsubscribed($data,$flag)
     {
         $id = auth()->user()->id;
-        $update =  Subscribe::where(['user_id' => $id, 'channel_id' => $data->channel_id])->update(['count' => 0]);
+        $update = Subscribe::where(['user_id' => $id, 'channel_id' => $data->channel_id])->update(['count' => $flag]);
         return 2;
-
     }
-
 
     /**-----------------------------------------Rating System--------------------------------------- */
 

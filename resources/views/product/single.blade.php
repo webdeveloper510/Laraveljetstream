@@ -8,7 +8,6 @@
             border: none;
             display: none;
         }
-
         skiptranslate goog-te-gadget {
             display: none
         }
@@ -310,7 +309,7 @@
                                                         </div>
                                                         <div class="col-md-10">
                                                             <p class="m-0"> <b>
-                                                                    {{ $videos['user']['id'] == $commet['user_id'] ? $videos['user']['name'] : '' }}
+                                                                    {{ $videos['user']['id'] == $commet['user_id'] ? $videos['user']['name'] : Auth::user()->name }}
                                                                 </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
                                                             </p>
                                                             <p class="">{{ $commet['body'] }}</p>
@@ -329,7 +328,7 @@
                                                                             <input type="text"
                                                                                 class="form-control "name="body"
                                                                                 id="exampleFormControlInput1"
-                                                                                placeholder="Add a comment">
+                                                                                placeholder="Add a comment" required>
                                                                             <input type="hidden" name="post_id"
                                                                                 value="{{ request()->segment(2) }}" />
                                                                             <input type="hidden" name="comment_id"
@@ -357,7 +356,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="">
-                                <h4 class="mb-3">Related video123</h4>
+                                <h4 class="mb-3">Related video</h4>
                                 <!-------------------------------------- videoss-section ----------------------------->
 
                                 <div class="videoss-section">
