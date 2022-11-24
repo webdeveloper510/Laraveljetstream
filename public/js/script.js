@@ -39,6 +39,31 @@ function printErrorMsg (msg) {
     });
 }
 
+
+// ----------------------------------------Report------------------------------------------//
+
+$('#submitt_report').submit(function(e){
+    e.preventDefault();
+console.log('asdfsdf');
+    var form = $(this);
+    var actionUrl = base_url + '/report';
+        $.ajax({
+        type: 'POST',
+        url: actionUrl,
+        data: form.serialize(),
+        success: function(data) {
+            console.log(data);
+        if (data.code === 1){
+            $.isEmptyObject(data.error)
+            toastr.success (data.message);
+            $('.btn-close').trigger('click');
+        }
+        else{
+            printErrorMsg(data.error);
+        }
+        },
+        });
+        });
 /*--------------------------------------------- Rating ----------------------------------------------*/
 function rating(a,ratenum,product_id) {
     $(".fa").removeAttr("style")
@@ -170,31 +195,6 @@ function save_video(product_id) {
   });
 }
 
-// ----------------------------------------Report------------------------------------------//
-
-    $('#submitt_report').submit(function(e){
-        e.preventDefault ();
-        console.log('yess');
-
-  var form = $ (this);
-  var actionUrl = base_url + '/report';
-  $.ajax ({
-    type: 'POST',
-    url: actionUrl,
-    data: form.serialize (),
-    success: function (data) {
-
-      if (data.code === 1) {
-        $.isEmptyObject(data.error)
-        toastr.success (data.message);
-        $('.btn-close').trigger('click');
-      }
-      else{
-        printErrorMsg(data.error);
-    }
-    },
-  });
-});
 
 $ ('form#msform').submit (function (e) {
   toastr.options = {
@@ -208,7 +208,6 @@ $ ('form#msform').submit (function (e) {
     url: base_url + '/uploadproduct',
     type: 'POST',
     data: formData,
-
     xhr: function() {
         $(".progress_bar").show();
         var xhr = new window.XMLHttpRequest();
@@ -221,9 +220,8 @@ $ ('form#msform').submit (function (e) {
         }, false);
         return xhr;
     },
-
     success: function (data) {
-        console.log(data);
+        console.log(data);return false;
         if($.isEmptyObject(data.error)){
 
         $(".progress_bar").hide();
@@ -237,3 +235,6 @@ $ ('form#msform').submit (function (e) {
     processData: false,
   });
 });
+
+
+

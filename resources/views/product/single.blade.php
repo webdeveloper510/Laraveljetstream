@@ -36,12 +36,12 @@
                             <div class="row m-2">
                                 <div class="col-md-1">
                                     <div class="profile-image ms-2">
-                                        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
+                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
                                             width="60px" />
                                     </div>
                                 </div>
                                 <div class="col-md-8 pt-2">
-                                    <h5>{{ $videos['user']['name'] }}</h5>
+                                    <h5>{{$videos['user']['name']}}</h5>
                                     <small>
                                         190 Subscriber
                                     </small>
@@ -288,10 +288,7 @@
                                 <div class="commentss">
                                     <div class="row mt-3">
                                         <div class="col-1 text-end">
-                                            {{-- <div class="profile-image">
-                                                <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                                    width="60px" />
-                                            </div> --}}
+
                                         </div>
                                         <div class="col-md-11">
                                             {{-- <p class="mb-2"> <b> {{ $username }}
@@ -302,9 +299,9 @@
                                                     <div class="row mt-3">
                                                         <div class="col-2 text-end">
                                                             <div class="profile-image">
-                                                                <img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
+                                                                <a href="{{URL::to('/channel/'.base64_encode($videos['user_id']))}}"><img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
                                                             "height="40px"
-                                                                    width="40px" />
+                                                                    width="40px"/></a>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-10">

@@ -88,12 +88,9 @@ class Controller extends BaseController
         $id = base64_decode($id);
         $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
 
-        // echo "<pre>";
-        // print_r($videos);die;
         if ($videos) {
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
-
             $socialshare = \Share::page(
                 'http://localhost/jetstream/videodetail/1'
             )
@@ -148,7 +145,7 @@ class Controller extends BaseController
         }
 
         $socialshare = \Share::page(
-            'http://localhost/jetstream/videodetail/1'
+            'http://localhost/jetstream/videodetail/'.$videos['encripted_video_url']
         )
             ->facebook()
             ->twitter()
@@ -189,7 +186,6 @@ class Controller extends BaseController
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()]);
         } else {
-
             $video_name = $data['upload_video']->store($folder, 'spaces');
 
             $imae_name = $data['thumbnail']->store('images', 'spaces');
@@ -203,7 +199,9 @@ class Controller extends BaseController
             $user['user_id'] =  $id;
             $user['views'] = $request->views;
             $user['file'] = $video_name;
+            $user['encripted_video_url'] = $this->generateRandomString();
             $insert = DB::table('product')->insert($user);
+
             return response()->json([
                 'status' => $insert ? 1 : 0,
                 'message' => $insert ? 'Content Upload Successfully!' : 'Some erorr occure'
@@ -211,6 +209,17 @@ class Controller extends BaseController
         }
     }
 
+//---->->-->--->-->->->->->->------>->-->-Generate Random String-->-->-->->->->->->->->->--->--//
+
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
     /*--------------------------------------like dislike---------------------------------------*/
 
     public function likePost(Request $request)
@@ -372,11 +381,13 @@ class Controller extends BaseController
             $data->description = $request->description;
             $data->save();
                     return response()->json([
+                    'Report' => $data,
                     'bool' => true,
                     'message' => 'Content Reported By user!',
                     'code' => 1
                 ]);
             }
+
         }
 
 
