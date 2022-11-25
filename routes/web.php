@@ -31,8 +31,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         $videos = User::with(['posts','Report_video'])->get()->toArray();
 
-        //  echo "<pre>";
-        //   print_r($videos);die;
         return view('product.index', compact('videos'));
     })->name('dashboard');
 });
@@ -99,7 +97,7 @@ Route::get('/uploadpage', [Controller::class, 'uploadpage']);
 Route::post('/uploadproduct', [Controller::class, 'store']);
 Route::post('/likePost', [Controller::class, 'likePost']);
 Route::post('/unlikePost', [Controller::class, 'unlikePost']);
-Route::get('/videodetail/{id}', [Controller::class, 'videodetail']);
+Route::get('/watch/{id}', [Controller::class, 'videodetail']);
 Route::get('/watchlater', [Controller::class, 'watchlater']);
 Route::get('/channel/{id}', [Controller::class, 'channel']);
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');

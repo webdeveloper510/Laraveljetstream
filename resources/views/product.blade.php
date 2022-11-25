@@ -400,7 +400,7 @@
                             <li>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
-                                        value="option1" checked>
+                                        value="1" checked>
                                         <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Private
@@ -413,7 +413,7 @@
                             <li>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
-                                        value="option1" checked>
+                                        value="2" checked>
                                         <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Unlisted
@@ -426,7 +426,7 @@
                             <li>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
-                                        value="option1" checked>
+                                        value="3" checked>
                                         <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Public

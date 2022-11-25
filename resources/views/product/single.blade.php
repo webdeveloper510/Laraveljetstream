@@ -41,38 +41,38 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8 pt-2">
-                                    <h5>{{$videos['user']['name']}}</h5>
+                                    <h5>{{$videos[0]['user']['name']}}</h5>
                                     <small>
                                         190 Subscriber
                                     </small>
                                 </div>
                                 <div class="col-md-3 text-end">
                                     <button class="btn btn-danger subscribe"
-                                        style="{{ $count <= 0 && $videos['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
-                                        onclick="subscribe('{{ $videos['user_id'] }}',1)">SUBSCRIBE</button>
+                                        style="{{ $count <= 0 && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
+                                        onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>
                                     <button class="btn btn-outline-success subscribes"
                                         style="{{ $count > 0 ? 'display:block' : 'display:none' }}"
-                                        onclick="subscribe('{{ $videos['user_id'] }}',0)">SUBSCRIBED</button>
+                                        onclick="subscribe('{{ $videos[0]['user_id'] }}',0)">SUBSCRIBED</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-8 px-3">
                             <div class="">
                                 <video width="200" height="150" class="example1" id="example1"
-                                    poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['thumbnail'] }}">
-                                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['file'] }}"
+                                    poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
+                                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
                                         type="video/mp4">
                                     <track kind="captions" label="English" srclang="en"
                                         src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                                     Your browser does not support the video tag.
                                 </video>
-                                <p class="video-title">{{ $videos['title'] }}
+                                <p class="video-title">{{ $videos[0]['title'] }}
                                 </p>
                                 <div class="row mb-2">
                                     <div class="col-md-5">
                                         <ul class="view">
-                                            <li>{{ $videos['views'] }} Views</li>
-                                            <li> {{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
+                                            <li>{{ $videos[0]['views'] }} Views</li>
+                                            <li> {{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                             </li>
                                         </ul>
                                     </div>
@@ -127,7 +127,7 @@
                                                             </label>
                                                         </div>
                                                         <input type="hidden" name="product_id" id="product_id"
-                                                            value="{{ request()->segment(2) }}">
+                                                            value="{{ $videos[0]['id'] }}">
                                                         <div class="form-check my-1.5">
                                                             <input class="form-check-input" type="radio"
                                                                 name="report_desc" id="flexRadioDefault2"
@@ -242,7 +242,8 @@
                                 <hr />
                             </div>
                             <div class="my-2">
-                                <p>{{ $videos['description'] }}</p>
+                                <p>{{ $videos[0]['description'] }}</p>
+
                                 <span id="stars"></span>
                                 {{-- <i class="fa fa-star" aria-hidden="true" id="s2"
                                 onclick="rating(1, {{ request()->segment(2) }})"></i>
@@ -259,7 +260,7 @@
                             <hr />
                             <div class="comments my-2">
                                 <div class="d-flex mb-2">
-                                    <p>{{ count($videos['comments']) }} Comments</p>
+                                    <p>{{ count($videos[0]['comments']) }} Comments</p>
                                 </div>
                                 <div class="row">
                                     <div class="col-1 text-end">
@@ -294,20 +295,20 @@
                                             {{-- <p class="mb-2"> <b> {{ $username }}
                                                 </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
                                             </p> --}}
-                                            @foreach ($videos['comments'] as $key => $commet)
+                                            @foreach ($videos[0]['comments'] as $key => $commet)
                                                 <div class="comments">
                                                     <div class="row mt-3">
                                                         <div class="col-2 text-end">
                                                             <div class="profile-image">
-                                                                <a href="{{URL::to('/channel/'.base64_encode($videos['user_id']))}}"><img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
+                                                                <a href="{{URL::to('/channel/'.base64_encode($videos[0]['user_id']))}}"><img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
                                                             "height="40px"
                                                                     width="40px"/></a>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-10">
                                                             <p class="m-0"> <b>
-                                                                    {{ $videos['user']['id'] == $commet['user_id'] ? $videos['user']['name'] : Auth::user()->name }}
-                                                                </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
+                                                                    {{ $videos[0]['user']['id'] == $commet['user_id'] ? $videos[0]['user']['name'] : Auth::user()->name }}
+                                                                </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                                             </p>
                                                             <p class="">{{ $commet['body'] }}</p>
                                                             @foreach ($commet['replies'] as $key => $reply)
@@ -361,10 +362,10 @@
                                     <div class="row mb-3 g-0">
                                         <div class="col-md-5">
                                             <video width="200" height="150" class="example1"
-                                                id="example1_{{ $videos['id'] }}"
-                                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['thumbnail'] }}">
+                                                id="example1_{{ $videos[0]['id'] }}"
+                                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
                                                 <source
-                                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos['file'] }}"
+                                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
                                                     type="video/mp4">
                                                 <track kind="captions" label="English" srclang="en"
                                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
@@ -373,15 +374,15 @@
                                         </div>
                                         <div class="col-md-7">
                                             <div class="video-details ps-2">
-                                                <p class="m-0"> <b> {{ $videos['title'] }} <br /> </b></p>
-                                                <p class="m-0"> {{ $videos['user']['name'] }}</p>
+                                                <p class="m-0"> <b> {{ $videos[0]['title'] }} <br /> </b></p>
+                                                <p class="m-0"> {{ $videos[0]['user']['name'] }}</p>
                                                 <div class="d-flex">
                                                     <ul>
                                                         <li>
-                                                            {{ $videos['views'] }}
+                                                            {{ $videos[0]['views'] }}
                                                          </li>
                                                          <li>
-                                                            {{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
+                                                            {{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                                         </li>
                                                     </ul>
                                                  </div>
@@ -529,7 +530,7 @@
             $('.success-box div.text-message').html("<span>" + msg + "</span>");
         }
 
-        getStars({{ round($averageRating, 1) }}, {{ request()->segment(2) }})
+        getStars({{ round($averageRating, 1) }}, {{$videos[0]['id'] }})
     </script>
 
     </html>

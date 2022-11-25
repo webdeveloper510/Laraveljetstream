@@ -44,6 +44,11 @@
                 <x-jet-input id="profile" class="form-control" type="file" name="profile_photo_path" required autocomplete="profile_photo_path" />
             </div>
 
+            <div class="mt-3">
+                <x-jet-label for="cover_img" value="{{ __('Cover Image') }}" />
+                <x-jet-input id="coverimg" class="form-control" type="file" name="cover_img" required autocomplete="cover_img" />
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-jet-label for="terms">
