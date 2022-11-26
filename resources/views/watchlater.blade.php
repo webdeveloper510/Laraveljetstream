@@ -75,7 +75,7 @@
                 </span></p>
             <hr />
             <div class="d-flex">
-                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[1]['user']['profile_photo_path'] }}"
+                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['user']['profile_photo_path'] }}"
                     class="rounded-circle" width="60px" height="60px" />
                 <h4 class="mt-3 ms-3">{{ $name }}</h4>
             </div>

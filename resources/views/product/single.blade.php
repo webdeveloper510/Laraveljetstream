@@ -90,7 +90,7 @@
                                                 @endforeach
                                             </ul>
                                             <button type="button" class="btn d-flex"
-                                                onclick="save_video('{{ request()->segment(2) }}')"
+                                                onclick="save_video('{{ $videos[0]['id'] }}')"
                                                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                                                 title="Tooltip on bottom">
                                                 <span class="material-symbols-outlined">
@@ -276,7 +276,7 @@
                                                     name="body" id="exampleFormControlInput1"
                                                     placeholder="Add a comment" required>
                                                 <input type="hidden" name="post_id"
-                                                    value="{{ request()->segment(2) }}" />
+                                                    value="{{ $videos[0]['id'] }}" />
                                             </div>
                                             <div class="text-end mt-3">
                                                 <button type="submit" class="btn btn-primary btn-sm"
@@ -328,7 +328,7 @@
                                                                                 id="exampleFormControlInput1"
                                                                                 placeholder="Add a comment" required>
                                                                             <input type="hidden" name="post_id"
-                                                                                value="{{ request()->segment(2) }}" />
+                                                                                value="{{ $videos[0]['id'] }}" />
                                                                             <input type="hidden" name="comment_id"
                                                                                 value="{{ $commet['id'] }}" />
                                                                         </div>

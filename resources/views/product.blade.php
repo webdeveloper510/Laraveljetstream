@@ -556,10 +556,19 @@
     </script>
 </body>
 
-
-
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
+<script>
+    $(document).ready(function() {
+        $('input[type="file"]').change(function(e) {
+            var videoUpload = e.target.files[0].name;
+            console.log(videoUpload);
+            $("h4").text(videoUpload + ' is the selected file.');
+
+        });
+    });
+</script>
+{{-------------------------Preview of video file, selecting from input type='file'---------------------}}
 <script>
     document.getElementById("videoUpload").onchange = function(event) {
       let file = event.target.files[0];
@@ -568,6 +577,7 @@
       document.querySelector("video").src = blobURL;
     }
     </script>
+
 {{-- ------------------------------------Translator---------------------------------------}}
 <script type="text/javascript">
     function googleTranslateElementInit() {

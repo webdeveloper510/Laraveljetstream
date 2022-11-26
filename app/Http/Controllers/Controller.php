@@ -360,8 +360,8 @@ class Controller extends BaseController
 
     public function report(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
+        echo "<pre>";
+        print_r($request->all());die;
         $id = auth()->user()->id;
         // print_r($id);die;
         $report_data = $request->all();

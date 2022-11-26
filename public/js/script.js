@@ -43,7 +43,7 @@ function printErrorMsg (msg) {
 
 $ ('#submitt_report').submit (function (e) {
   e.preventDefault ();
-  console.log ('asdfsdf');
+  console.log ('testing');
   var form = $ (this);
   var actionUrl = base_url + '/report';
   $.ajax ({
@@ -64,7 +64,7 @@ $ ('#submitt_report').submit (function (e) {
 });
 /*--------------------------------------------- Rating ----------------------------------------------*/
 function rating (a, ratenum, product_id) {
-    console.log('I am now here');
+    console.log('Now I am here !');
   $ ('.fa').removeAttr ('style');
   for (let i = 1; i <= ratenum; i++) {
     //console.log(i)
