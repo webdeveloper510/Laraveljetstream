@@ -376,8 +376,8 @@
                         <a href="">links</a>
                     </div>
                     <div class="mb-3">
-                        <label>Filename</label>
-                        <p>videoname.mp4</p>
+                        <h5><label>Filename</label></h5>
+                        <p class="filename"></p>
                     </div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
@@ -555,15 +555,16 @@
         })
     </script>
 </body>
-
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+
+{{--------------------------------- Get selected input type file name ---------------------------------}}
 
 <script>
     $(document).ready(function() {
         $('input[type="file"]').change(function(e) {
             var videoUpload = e.target.files[0].name;
             console.log(videoUpload);
-            $("h4").text(videoUpload + ' is the selected file.');
+            $(".filename").text(videoUpload);
 
         });
     });

@@ -85,8 +85,10 @@ class Controller extends BaseController
     public function channel($id)
     {
         $id = base64_decode($id);
-        $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
 
+        $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
+        // echo "<pre>";
+        // print_r($videos);die;
         if ($videos) {
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
@@ -129,7 +131,8 @@ class Controller extends BaseController
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
-
+        // echo "<pre>";
+        // print_r($subscriber);die;
         $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $auth_id])->sum('count');
 
         $trending_product = DB::table('trending')->where('product_id', '=', $videos[0]['id'])->count();
@@ -360,8 +363,8 @@ class Controller extends BaseController
 
     public function report(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all());die;
+        // echo "<pre>";
+        // print_r($request->all());die;
         $id = auth()->user()->id;
         // print_r($id);die;
         $report_data = $request->all();

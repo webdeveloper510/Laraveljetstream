@@ -43,7 +43,7 @@
                                 <div class="col-md-8 pt-2">
                                     <h5>{{$videos[0]['user']['name']}}</h5>
                                     <small>
-                                        190 Subscriber
+                                        {{$subscriber}} Subscriber
                                     </small>
                                 </div>
                                 <div class="col-md-3 text-end">
@@ -242,7 +242,7 @@
                                 <hr />
                             </div>
                             <div class="my-2">
-                                <p>{{ $videos[0]['description'] }}</p>
+                                {{-- <p>{{ $videos[0]['description'] }}</p> --}}
 
                                 <span id="stars"></span>
                                 {{-- <i class="fa fa-star" aria-hidden="true" id="s2"
@@ -252,8 +252,13 @@
                             <i class="fa fa-star" aria-hidden="true" id="s4"
                                 onclick="rating(3, {{ request()->segment(2) }})"></i> --}}
                                 <span>{{ round($averageRating, 1) }}</span>
-                                <a href=""> Read More</a>
+
                                 <div class="shows">
+                                    <div id="main">
+                                       This is Description
+                                    </div>
+                                    <p>{{ $videos[0]['description'] }}<span id="dots">...</span><span id="more">{{ $videos[0]['description'] }}</span></p>
+                                    <button onclick="myFunction()" id="myBtn" style="color: rgb(8, 239, 38)">Read more</button>
                                     <p>Upcoming Charges</p>
                                 </div>
                             </div>
@@ -433,7 +438,24 @@
             });
         });
     </script>
+{{-- --------------------------------Read more data---------------------------------- --}}
+<script>
+    function myFunction() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("myBtn");
 
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+      } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+      }
+    }
+    </script>
     {{-- //---------------------translator------------------------ --}}
 
     <script type="text/javascript">
@@ -449,8 +471,6 @@
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
-
-
 
 
     <script>
@@ -531,7 +551,7 @@
         }
 
         getStars({{ round($averageRating, 1) }}, {{$videos[0]['id'] }})
-    </script>
+ </script>
 
     </html>
 </x-app-layout>
