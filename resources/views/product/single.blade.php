@@ -305,8 +305,7 @@
                                                     <div class="row mt-3">
                                                         <div class="col-2 text-end">
                                                             <div class="profile-image">
-                                                                <a href="{{URL::to('/channel/'.base64_encode($videos[0]['user_id']))}}"><img src="https://spaces3.nyc3.digitaloceanspaces.com/profile/MLfKOsusTithjf4TT6m7JMvHgS33BBx9Qot8rrjf.webp
-                                                            "height="40px"
+                                                                <a href="{{URL::to('/channel/'.base64_encode($videos[0]['user_id']))}}"><img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . auth()->user()->profile_photo_path }}"
                                                                     width="40px"/></a>
                                                             </div>
                                                         </div>

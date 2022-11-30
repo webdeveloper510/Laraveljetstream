@@ -303,7 +303,7 @@
                     <div id="progress-bar" class="progress_bar" style="display: none">0%</div>
                 </div>
                 <ul id="progressbar">
-                    <li class="active"> Details</li>
+                    <li class="active">Details</li>
                     <li>Video elements</li>
                     <li>Checks</li>
 
