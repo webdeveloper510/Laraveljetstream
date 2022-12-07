@@ -3,7 +3,7 @@
         <div class="row g-0">
             <!-- @include('layouts.sidebar') -->
             <div class="col-md-12">
-                <div class=" py-5">
+                <div class="py-5">
                     <div class="container">
                         <div class="home-demo">
                             <div class="owl-carousel owl-theme">
@@ -11,7 +11,7 @@
                                      @foreach($video['posts'] as $posts)
                                         @if(!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
                                         <div class="item_{{$posts['id']}}">
-                                                <a href="{{url('/watch/'.$posts['encripted_video_url'])}}">
+                                                <a href="{{url('/watch/'. $posts['encripted_video_url'])}}">
                                                 <div class="card">
                                                     <video width="100%" height="100%"  autoplay onmouseover="this.play()"
                                                     onmouseout="this.pause();this.currentTime=0;">
@@ -50,7 +50,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="container">
                     <hr class="m-0">
                 </div>
@@ -85,8 +84,6 @@
                                                             <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                             <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
                                                         </ul>
-                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
-                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,157 +93,13 @@
                                     </div>
                                     @endforeach
                                     @endforeach
-                                    {{-- <div class="item">
-                                        <div class="card">
-                                            <video width="100%" height="100%"  onmouseover="this.play()"
-                                                onmouseout="this.pause();this.currentTime=0;">
-                                                <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                                <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                            <div class="card-body ">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <img src="https://images.pexels.com/photos/13172083/pexels-photo-13172083.jpeg?cs=srgb&dl=pexels-andrew-neel-13172083.jpg&fm=jpg"
-                                                        class="thump">
-                                                </div>
-                                                <div class="col-10">
-                                                    <div class="detail">
-                                                        <a href="" class="title font-bold">{{$posts['title']}}</a><br />
-                                                        <a href="{{url('/channel/'.$video['id'])}}"
-                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
-                                                        <ul class="Views">
-                                                            <li><a href=""> View:{{ $posts['views']}} </a></li>
-                                                            <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
-                                                        </ul>
-                                                        <!-- <p><a ><span class="material-symbols-outlined" onclick="likePost('{{$posts['id']}}')"> thumb_up </span></a></p>
-                                                       <a ><span class="material-symbols-outlined" onclick="unlikePost('{{$posts['id']}}')">thumb_down</span></a> -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <video width="100%" height="100%"  onmouseover="this.play()"
-                                                onmouseout="this.pause();this.currentTime=0;">
-                                                <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                                <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                            <div class="card-body text-center">
-                                                <h5 class="card-title">Video Title</h5>
-                                                <p class="card-text">Video Dis</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <video width="100%" height="100%"  onmouseover="this.play()"
-                                                onmouseout="this.pause();this.currentTime=0;">
-                                                <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
-                                                <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                            <div class="card-body text-center">
-                                                <h5 class="card-title">Video Title</h5>
-                                                <p class="card-text">Video Dis</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make up
-                                                    the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make up
-                                                    the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make up
-                                                    the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make up
-                                                    the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make up
-                                                    the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make up
-                                                    the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="card">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title
-                                                    and make up
-                                                    the bulk of the card's content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                 </div>
                         </div>
 
                     </div>
                 </div>
                 <hr class="m-0">
-                
+
             </div>
         </div>
     </div>
@@ -263,18 +116,6 @@
             },
             success: function(result) {
                 console.log(result)
-                //
-                //                 $.ajax({
-                //                     type:'post',
-                //                     url:'http://localhost/jetstream/likePost',
-                //                     data:{
-                //                         "_token": "{{ csrf_token() }}",
-                //                         "contentId":id
-                //                     },
-                //                     success : function (data){
-                //                         console.log(data)
-                //                         // info();
-                //
             }
         });
     }

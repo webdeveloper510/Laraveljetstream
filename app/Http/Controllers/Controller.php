@@ -47,9 +47,6 @@ class Controller extends BaseController
             'order_id' => 101
         ];
 
-        // $notify = Notification::send($user, new UserFollowNotification($details));
-        // print_r($notify);die;
-
     }
 
     public function unlikePost(Request $request)
@@ -216,6 +213,7 @@ class Controller extends BaseController
         for ($i = 0; $i < $length; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
+
         return $randomString;
     }
     /*--------------------------------------like dislike---------------------------------------*/

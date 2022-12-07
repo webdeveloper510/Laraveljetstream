@@ -8,6 +8,7 @@
             border: none;
             display: none;
         }
+
         skiptranslate goog-te-gadget {
             display: none
         }
@@ -36,14 +37,14 @@
                             <div class="row m-2">
                                 <div class="col-md-1">
                                     <div class="profile-image ms-2">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
+                                        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
                                             width="60px" />
                                     </div>
                                 </div>
                                 <div class="col-md-8 pt-2">
-                                    <h5>{{$videos[0]['user']['name']}}</h5>
+                                    <h5>{{ $videos[0]['user']['name'] }}</h5>
                                     <small>
-                                        {{$subscriber}} Subscriber
+                                        {{ $subscriber }} Subscriber
                                     </small>
                                 </div>
                                 <div class="col-md-3 text-end">
@@ -60,7 +61,8 @@
                             <div class="">
                                 <video width="200" height="150" class="example1" id="example1"
                                     poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
-                                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
+                                    <source
+                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
                                         type="video/mp4">
                                     <track kind="captions" label="English" srclang="en"
                                         src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
@@ -90,9 +92,8 @@
                                                 @endforeach
                                             </ul>
                                             <button type="button" class="btn d-flex"
-                                                onclick="save_video('{{ $videos[0]['id'] }}')"
-                                                data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                title="Tooltip on bottom">
+                                                onclick="save_video('{{ $videos[0]['id'] }}')" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Tooltip on bottom">
                                                 <span class="material-symbols-outlined">
                                                     playlist_add
                                                 </span> SAVE
@@ -211,11 +212,12 @@
                                                             <label>Timestamp selected *</label> <br />
                                                             <input type="time" name="timestamp"
                                                                 class="form-control col-md-3 my-3" />
-                                                                <span class="text-danger error-text timestamp_err"></span>
+                                                            <span class="text-danger error-text timestamp_err"></span>
                                                             <div class="form-floating">
                                                                 <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" name="description"
                                                                     style="height: 100px"></textarea>
-                                                                    <span class="text-danger error-text description_err"></span>
+                                                                <span
+                                                                    class="text-danger error-text description_err"></span>
                                                                 <label for="floatingTextarea2">Comments</label>
                                                             </div>
                                                             <small class="my-2">Flagged videos and users are
@@ -255,10 +257,12 @@
 
                                 <div class="shows">
                                     <div id="main">
-                                       This is Description
+                                        This is Description
                                     </div>
-                                    <p>{{ $videos[0]['description'] }}<span id="dots">...</span><span id="more">{{ $videos[0]['description'] }}</span></p>
-                                    <button onclick="myFunction()" id="myBtn" style="color: rgb(8, 239, 38)">Read more</button>
+                                    <p>{{ $videos[0]['description'] }}<span id="dots">...</span><span
+                                            id="more">{{ $videos[0]['description'] }}</span></p>
+                                    <button onclick="myFunction()" id="myBtn" style="color: rgb(8, 239, 38)">Read
+                                        more</button>
                                     <p>Upcoming Charges</p>
                                 </div>
                             </div>
@@ -305,8 +309,10 @@
                                                     <div class="row mt-3">
                                                         <div class="col-2 text-end">
                                                             <div class="profile-image">
-                                                                <a href="{{URL::to('/channel/'.base64_encode($videos[0]['user_id']))}}"><img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . auth()->user()->profile_photo_path }}"
-                                                                    width="40px"/></a>
+                                                                <a
+                                                                    href="{{ URL::to('/channel/' . base64_encode($videos[0]['user_id'])) }}"><img
+                                                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . auth()->user()->profile_photo_path }}"
+                                                                        width="40px" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-10">
@@ -384,12 +390,12 @@
                                                     <ul>
                                                         <li>
                                                             {{ $videos[0]['views'] }}
-                                                         </li>
-                                                         <li>
+                                                        </li>
+                                                        <li>
                                                             {{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                                         </li>
                                                     </ul>
-                                                 </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -437,28 +443,35 @@
             });
         });
     </script>
-{{-- --------------------------------Read more data---------------------------------- --}}
-<script>
-    function myFunction() {
-      var dots = document.getElementById("dots");
-      var moreText = document.getElementById("more");
-      var btnText = document.getElementById("myBtn");
+    {{-- --------------------------------Read more data---------------------------------- --}}
+    <script>
+        function myFunction() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
 
-      if (dots.style.display === "none") {
-        dots.style.display = "inline";
-        btnText.innerHTML = "Read more";
-        moreText.style.display = "none";
-      } else {
-        dots.style.display = "none";
-        btnText.innerHTML = "Read less";
-        moreText.style.display = "inline";
-      }
-    }
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read more";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less";
+                moreText.style.display = "inline";
+            }
+        }
     </script>
-    {{-- //---------------------translator------------------------ --}}
+    {{-- ------------------------translator------------------------ --}}
 
     <script type="text/javascript">
+        function setCookie(key, value, expiry) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 15 * 1000));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
         function googleTranslateElementInit() {
+            setCookie('googtrans', '/en/es', 1);
             new google.translate.TranslateElement({
                 pageLanguage: 'en'
             }, 'google_translate_element');
@@ -473,21 +486,21 @@
 
 
     <script>
-        $(document).ready(function() {
+        // $(document).ready(function() {
 
-            $("#s2").click(function() {
-                $(".fa-star").css("color", "white");
-                $("#s1,#s2").css("color", "yellow");
-            });
-            $("#s3").click(function() {
-                $(".fa-star").css("color", "white");
-                $("#s1,#s2,#s3").css("color", "yellow");
-            });
-            $("#s4").click(function() {
-                $(".fa-star").css("color", "white");
-                $("#s1,#s2,#s3,#s4").css("color", "yellow");
-            });
-        });
+        //     $("#s2").click(function() {
+        //         $(".fa-star").css("color", "white");
+        //         $("#s1,#s2").css("color", "yellow");
+        //     });
+        //     $("#s3").click(function() {
+        //         $(".fa-star").css("color", "white");
+        //         $("#s1,#s2,#s3").css("color", "yellow");
+        //     });
+        //     $("#s4").click(function() {
+        //         $(".fa-star").css("color", "white");
+        //         $("#s1,#s2,#s3,#s4").css("color", "yellow");
+        //     });
+        // });
 
 
 
@@ -549,8 +562,8 @@
             $('.success-box div.text-message').html("<span>" + msg + "</span>");
         }
 
-        getStars({{ round($averageRating, 1) }}, {{$videos[0]['id'] }})
- </script>
+        getStars({{ round($averageRating, 1) }}, {{ $videos[0]['id'] }})
+    </script>
 
     </html>
 </x-app-layout>
