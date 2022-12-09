@@ -4,7 +4,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CommentController;
-use App\Models\product;
 use App\Models\User;
 
 /*

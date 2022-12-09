@@ -248,6 +248,7 @@ $ ('form#msform').submit (function (e) {
     },
     success: function (data) {
       console.log (data);
+      
       if ($.isEmptyObject (data.error)) {
         $ ('.progress_bar').hide ();
         toastr.success (data.message);

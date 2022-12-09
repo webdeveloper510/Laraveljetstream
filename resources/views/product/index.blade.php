@@ -79,7 +79,7 @@
                                                     <div class="detail">
                                                         <a href="" class="title font-bold">{{$posts['title']}}</a><br />
                                                         <a href="{{url('/channel/'.$video['id'])}}"
-                                                            class="small-tittle"> {{Auth::user()->name;}}</a>
+                                                        class="small-tittle"> {{Auth::user()->name;}}</a>
                                                         <ul class="Views">
                                                             <li><a href=""> View:{{ $posts['views']}} </a></li>
                                                             <li class="ms-3"><a href=""> View:{{ $posts['views']}} </a></li>
@@ -95,7 +95,6 @@
                                     @endforeach
                                 </div>
                         </div>
-
                     </div>
                 </div>
                 <hr class="m-0">
@@ -173,7 +172,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
-    console.log('fsdffdssdf');
+
     var user = {
         !!json_encode((array) auth() - > user()) !!
     };
