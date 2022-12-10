@@ -244,16 +244,8 @@
                             </div>
                             <div class="my-2">
                                 {{-- <p>{{ $videos[0]['description'] }}</p> --}}
-
                                 <span id="stars"></span>
-                                {{-- <i class="fa fa-star" aria-hidden="true" id="s2"
-                                onclick="rating(1, {{ request()->segment(2) }})"></i>
-                            <i class="fa fa-star" aria-hidden="true" id="s3"
-                                onclick="rating(2, {{ request()->segment(2) }})"></i>
-                            <i class="fa fa-star" aria-hidden="true" id="s4"
-                                onclick="rating(3, {{ request()->segment(2) }})"></i> --}}
                                 <span>{{ round($averageRating, 1) }}</span>
-
                                 <div class="shows">
                                     <div id="main">
                                         This is Description
@@ -297,12 +289,8 @@
                                 <div class="commentss">
                                     <div class="row mt-3">
                                         <div class="col-1 text-end">
-
                                         </div>
                                         <div class="col-md-11">
-                                            {{-- <p class="mb-2"> <b> {{ $username }}
-                                                </b>{{ \Carbon\Carbon::parse($videos['created_at'])->diffForHumans() }}
-                                            </p> --}}
                                             @foreach ($videos[0]['comments'] as $key => $commet)
                                                 <div class="comments">
                                                     <div class="row mt-3">
@@ -470,7 +458,7 @@
         }
 
         function googleTranslateElementInit() {
-            setCookie('googtrans', '/en/es', 1);
+            setCookie('googtrans', '/en', 1);
             new google.translate.TranslateElement({
                 pageLanguage: 'en'
             }, 'google_translate_element');
@@ -483,30 +471,7 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
     <script>
-        // $(document).ready(function() {
-
-        //     $("#s2").click(function() {
-        //         $(".fa-star").css("color", "white");
-        //         $("#s1,#s2").css("color", "yellow");
-        //     });
-        //     $("#s3").click(function() {
-        //         $(".fa-star").css("color", "white");
-        //         $("#s1,#s2,#s3").css("color", "yellow");
-        //     });
-        //     $("#s4").click(function() {
-        //         $(".fa-star").css("color", "white");
-        //         $("#s1,#s2,#s3,#s4").css("color", "yellow");
-        //     });
-        // });
-
-
-
-        // function reloadPage() {
-        //     location.reload();
-        // }
-
         $(document).ready(function() {
-
             /* 1. Visualizing things on Hover - See next part for action on click */
             $('#stars li').on('mouseover', function() {
                 var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on

@@ -225,7 +225,6 @@
             </ul>
           </li>
           <!-- Profile START -->
-
         </ul>
         <!-- Nav right END -->
       </div>

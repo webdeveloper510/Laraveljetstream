@@ -1,7 +1,38 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="en">
 
+{{-- old code  header--}}
+@include('header')
+
 <head>
+{{-- old code style tag--}}
+  <style>
+    .goog-te-gadget img {
+        vertical-align: middle;
+        border: none;
+        display: none;
+    }
+
+    skiptranslate goog-te-gadget {
+        display: none
+    }
+
+    body {
+        top: 0px !important;
+        position: static !important;
+    }
+
+    .goog-te-banner-frame {
+        display: none !important
+    }
+
+    .goog-logo-link {
+        display: none
+    }
+</style>
+{{-- old code link --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Social - Network, Community and Event Theme</title>
 
   <!-- Meta Tags -->
@@ -347,9 +378,14 @@ Header END -->
                 <div class="overflow-hidden fullscreen-video w-100">
                   <!-- HTML video START -->
                   <div class="player-wrapper card-img-top overflow-hidden">
-                    <video class="player-html" controls crossorigin="anonymous"
-                      poster="assets/images/videos/poster.jpg">
-                      <source src="assets/images/videos/video-feed.mp4" type="video/mp4">
+                    <video width="200" height="150" class="example1" id="example1"
+                                    poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
+                                    <source
+                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
+                                        type="video/mp4">
+                                    <track kind="captions" label="English" srclang="en"
+                                        src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+                                    Your browser does not support the video tag.
                     </video>
                   </div>
                   <!-- HTML video END -->
@@ -360,23 +396,21 @@ Header END -->
                 <div class="d-xxl-flex justify-content-between mb-3">
                   <div class="mb-2 mb-xxl-0">
                     <!-- Video title  -->
-                    <h4> New movie trailers (2021 - 2022) September </h4>
+                    <h4> {{ $videos[0]['title'] }} </h4>
                     <div class="d-flex mt-3 align-items-center">
                       <!-- Avatar -->
                       <div class="avatar me-2">
-                        <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
+                        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px" width="60px"/>
                       </div>
                       <!-- Avatar name -->
                       <div>
-                        <h6 class="mb-0"> <a
-                            href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/francesguerrero"> Frances
-                            Guerrero </a> </h6>
+                        <h6 class="mb-0">{{ $videos[0]['user']['name'] }}</h6>
                         <nav class="nav nav-divider small">
-                          <span class="nav-item">145.2K views</span>
-                          <span class="nav-item">12 dec, 2022</span>
+                          <span class="nav-item">{{ $videos[0]['views'] }} Views</span>
+                          <span class="nav-item">{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}</span>
                         </nav>
                       </div>
-                      <a  href="/Subscibe" class="rounded-pill btn btn-light ms-auto  ">Subscribe</a>
+                      <a  href="/Subscibe" class="rounded-pill btn btn-light ms-auto">Subscribe</a>
                     </div>
                   </div>
                   <div class="str d-flex ">
@@ -388,8 +422,15 @@ Header END -->
                       <div class="">
                         <div class="dropdown">
                           <a class="nav-link" href="/add" id="cardAddAction" data-bs-toggle="dropdown"
-                            aria-expanded="false"><button class="btn btn-light d-flex "><span
-                                class="material-symbols-outlined">add</span></button></a>
+                            aria-expanded="false">
+                            <button type="button" class="btn d-flex"
+                            onclick="save_video('{{ $videos[0]['id'] }}')" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" title="Tooltip on bottom">
+                            <span class="material-symbols-outlined">
+                                playlist_add
+                            </span> SAVE
+                        </button>
+                      </a>
                           <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="cardShareAction">
                             <li><a class="dropdown-item d-flex" href="#!">
                                 <div class="form-check ">
@@ -434,21 +475,22 @@ Header END -->
                         </div>
                       </div>
                       <div class="report">
-                        <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal"
-                          data-bs-target="#exampleModal" data-bs-whatever="@mdo"><span
-                            class="material-symbols-outlined">
-                            flag
-                          </span>Report</button>
-
+                      <button type="button" class="btn d-flex" data-bs-toggle="modal"
+                      data-bs-target="#Report">
+                      <span class="material-symbols-outlined">
+                          flag
+                      </span> Report
+                  </button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                           aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Report Vedio</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                  aria-label="Close"></button>
+                                  <h5 class="modal-title" id="Report">Report video</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                     aria-label="Close"></button>
                               </div>
+                              <form id="submitt_report" method="POST">
                               <div class="modal-body">
                                 <div class="form-check">
                                   <input class="form-check-input" type="radio" name="flexRadioDefault"
@@ -457,6 +499,8 @@ Header END -->
                                     Sexual Content
                                   </label>
                                 </div>
+                                <input type="hidden" name="product_id" id="product_id"
+                                  value="{{ $videos[0]['id'] }}">
                                 <div class="form-check">
                                   <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     id="flexRadioDefault2" checked>
@@ -517,8 +561,6 @@ Header END -->
                                   days a week to determine whether they violate Community Guidelines. Accounts are
                                   penalized for Community Guidelines violations, and serious or repeated violations can
                                   lead to account termination.</p>
-
-                                <form>
                                   <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">
                                       <h5>Timestamp selected *</h5>
@@ -530,14 +572,16 @@ Header END -->
                                     7 days a week to determine whether they violate Community Guidelines. Accounts are
                                     penalized for Community Guidelines violations, and serious or repeated violations
                                     can lead to account termination. </p>
-                                </form>
+
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCLE</button>
-                                <button type="button" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">CANCEL</button>
+                            <button type="submit"
+                                class="btn btn-primary btn1">Submit</button>
+                                </div>
                               </div>
-                            </div>
-                          </div>
+                        </form>
                         </div>
                       </div>
                       <div class=" d-flex align-items-start">
@@ -566,12 +610,15 @@ Header END -->
                       </div>
                     </div>
                   </div>
-
                   <!-- Interested button -->
-
                 </div>
-                <p>He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay
-                  assistance joy. Unaffected at ye of compliment alteration to.</p>
+                <div id="main">
+                  This is Description
+              </div>
+                <p>{{ $videos[0]['description'] }}<span id="dots">...</span><span
+                  id="more">{{ $videos[0]['description'] }}</span></p>
+          <button onclick="myFunction()" id="myBtn" style="color: rgb(8, 239, 38)">Read
+              more</button>
               </div>
             </div>
             <!-- Video END -->
@@ -579,7 +626,7 @@ Header END -->
           <div class="col-xl-4 col-xxl-3">
             <div class="card rounded-start-lg-0 border-start-0 h-100">
               <div class="card-header border-0 pb-0">
-                <h5 class="mb-4"> 3,664 Comments</h5>
+                <h5 class="mb-4">{{ count($videos[0]['comments']) }} Comments</h5>
               </div>
               <div class="card-body pt-0 h-400px">
                 <!-- Comment wrap START -->
@@ -596,7 +643,7 @@ Header END -->
                         <!-- Comment by -->
                         <div class="bg-light rounded-start-top-0 p-3 rounded">
                           <div class="d-flex justify-content-between">
-                            <h6 class="mb-1"> <a href="#!"> Frances Guerrero </a></h6>
+                            <h6 class="mb-1"> <a href="#!"> {{ $videos[0]['user']['name'] }} </a></h6>
                             <small>5hr</small>
                           </div>
                           <p class="small mb-0">Rooms oh fully taken by worse do. Points afraid but may end law lasted.
@@ -1021,5 +1068,136 @@ JS libraries, plugins and custom scripts -->
   <script src="assets/js/functions.js"></script>
 
 </body>
+<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+{!! Toastr::message() !!}
+<script>
+    $(".example1").each(function() {
+        let id = $(this).attr('id');
+        console.log(id)
+        document.addEventListener("DOMContentLoaded", function() {
+            video1 = new Moovie({
+                selector: "#" + id,
+                config: {
+                    controls: {
+                        playtime: true,
+                        mute: true,
+                        volume: true,
+                        subtitles: true,
+                        config: true,
+                        fullscreen: true,
+                        submenuCaptions: true,
+                        submenuOffset: true,
+                        submenuSpeed: true,
+                        allowLocalSubtitles: true
+                    }
+                }
+            });
+        });
+    });
+</script>
+{{-- --------------------------------Read more data---------------------------------- --}}
+<script>
+    function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    }
+</script>
+{{-- ------------------------translator------------------------ --}}
+
+<script type="text/javascript">
+    function setCookie(key, value, expiry) {
+        var expires = new Date();
+        expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 15 * 1000));
+        document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+    }
+
+    function googleTranslateElementInit() {
+        setCookie('googtrans', '/en', 1);
+        new google.translate.TranslateElement({
+            pageLanguage: 'en'
+        }, 'google_translate_element');
+    }
+    $(window).load(function() {
+        $(".goog-logo-link").empty();
+        $('.goog-te-gadget').html($('.goog-te-gadget').children());
+    })
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+<script>
+    $(document).ready(function() {
+
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function() {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this).parent().children('li.star').each(function(e) {
+                if (e < onStar) {
+                    $(this).addClass('hover');
+                } else {
+                    $(this).removeClass('hover');
+                }
+            });
+
+        }).on('mouseout', function() {
+            $(this).parent().children('li.star').each(function(e) {
+                $(this).removeClass('hover');
+            });
+        });
+
+
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function() {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+            var msg = "";
+            if (ratingValue > 1) {
+                msg = "Thanks! You rated this " + ratingValue + " stars.";
+            } else {
+                msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+            }
+            responseMessage(msg);
+
+        });
+
+    });
+
+    function responseMessage(msg) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<span>" + msg + "</span>");
+    }
+
+
+
+    getStars({{ round($averageRating, 1) }}, {{ $videos[0]['id'] }})
+</script>
 </html>
+</x-app-layout>
