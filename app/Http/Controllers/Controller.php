@@ -123,8 +123,7 @@ class Controller extends BaseController
     {
         $auth_id = auth()->user()->id;
         $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->get()->toArray();
-        // echo "<pre>";
-        // print_r($videos);die;
+
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
@@ -144,14 +143,17 @@ class Controller extends BaseController
         }
 
         $socialshare = \Share::page(
-            'http://localhost/jetstream/watch/' . $videos[0]['encripted_video_url']
+            'http://localhost/jetstream/watch/'.$videos[0]['encripted_video_url'],
+            'Share URL',
         )
-            ->facebook()
-            ->twitter()
-            ->linkedin()
-            ->telegram()
-            ->reddit()
-            ->whatsapp()->getRawLinks();
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()
+        ->reddit();
+        // echo "<pre>";
+        //     print_r($socialshare);die;
         $like = array_column($videos[0]['like'], 'like');
         $dislike = array_column($videos[0]['like'], 'dislike');
         $liked =  array_sum($like);
@@ -282,7 +284,7 @@ class Controller extends BaseController
         // print_r($request->all());die;
         $id = auth()->user()->id;
         $alreadySubscribed = Subscribe::where(['user_id' => $id, 'channel_id' => $request->channel_id])->count();
-        // print_r($alreadySubscribed);die;
+        //print_r($alreadySubscribed);die;
         $flag = $request->flag;
 
         if ($flag == 1) {

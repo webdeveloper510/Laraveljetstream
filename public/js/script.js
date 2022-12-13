@@ -17,6 +17,7 @@ function subscribe (channel_id, flag) {
     success: function (data) {
       console.log (data);
       if (data.code) {
+        $ ('#subscribe').html (data.count);
         toastr.success (data.message);
       }
       if (data.code == 1) {
@@ -66,7 +67,6 @@ $ ('#submitt_report').submit (function (e) {
 /*---------------------------------------------Rating----------------------------------------------*/
 
 function rating (a, ratenum, product_id) {
-    console.log('Now I am here !');
   $ ('.fa').removeAttr ('style');
   for (let i = 1; i <= ratenum; i++) {
     //console.log(i)
@@ -88,23 +88,23 @@ function rating (a, ratenum, product_id) {
   });
 }
 
-function getStars (rating, url_value) {
+function getStars(rating, url_value) {
+   // Round to nearest half
 
-  console.log("Mai aya hu" + rating)
-  // Round to nearest half
+
   rating = Math.round (rating * 2) / 2;
   let output = [];
   let j = 1;
   // Append all the filled whole stars
   for (var i = rating; i >= 1; i--) {
     output.push (
-      '<i class="fa fa-star rating_star_' +
+      '<span class="fa fa-star rating_star_' +
         j +
         '" onclick="rating(this,' +
         j +
         ',' +
         url_value +
-        ')" aria-hidden="true" style="color: orange; cursor:pointer"></i>&nbsp;'
+        ')" aria-hidden="true" style="color: orange; cursor:pointer"></span>&nbsp;'
     );
     j++;
   }

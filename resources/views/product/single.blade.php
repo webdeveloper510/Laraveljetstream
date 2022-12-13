@@ -14,6 +14,22 @@
                 display: none;
             }
 
+            div#social-links {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+            div#social-links ul li {
+                display: inline-block;
+            }
+            div#social-links ul li a {
+                padding: 20px;
+                border: 1px solid #ccc;
+                margin: 1px;
+                font-size: 30px;
+                color: #222;
+                background-color: #ccc;
+            }
+
             skiptranslate goog-te-gadget {
                 display: none
             }
@@ -317,37 +333,35 @@ Header END -->
                         <div class="offcanvas-body pt-5 pt-lg-0">
                             <!-- Avatar -->
                             <div class="avatar avatar-lg mb-3">
-                                <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html"><img
+                                <a href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html"><img
                                         class="avatar-img rounded-circle border border-white border-3"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/07.jpg" alt=""></a>
+                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
+                                    </a>
                             </div>
                             <!-- Info -->
                             <h5 class="mb-0"> <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">Sam
-                                    Lanson </a> </h5>
-                            <small>Web Developer at Webestica</small>
+                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">{{auth()->user()->name}} </a> </h5>
+                            {{-- <small>Web Developer at Webestica</small> --}}
                             <!-- User stat START -->
                             <div class="hstack gap-2 gap-xl-3 mt-3">
                                 <!-- User stat item -->
                                 <div>
-                                    <h6 class="mb-0">256</h6>
-                                    <small>Post</small>
+                                    {{$subscriber}} Subscribers
                                 </div>
                                 <!-- Divider -->
                                 <div class="vr"></div>
                                 <!-- User stat item -->
-                                <div>
+                                {{-- <div>
                                     <h6 class="mb-0">2.5K</h6>
                                     <small>Followers</small>
-                                </div>
+                                </div> --}}
                                 <!-- Divider -->
                                 <div class="vr"></div>
                                 <!-- User stat item -->
-                                <div>
+                                {{-- <div>
                                     <h6 class="mb-0">365</h6>
                                     <small>Following</small>
-                                </div>
+                                </div> --}}
                             </div>
                             <!-- User stat END -->
 
@@ -462,7 +476,7 @@ Header END -->
                                                 <div>
                                                     <h6 class="mb-0">{{ $videos[0]['user']['name'] }}</h6>
                                                     <nav class="nav nav-divider small">
-                                                        <span class="nav-item">{{$subscriber}} subscribers</span>
+                                                        <span class="nav-item" id="subscribe">{{$subscriber}} subscribers</span>
 
                                                     </nav>
                                                 </div>
@@ -477,10 +491,7 @@ Header END -->
                                             </div>
                                         </div>
                                         <div class="str d-flex ">
-                                            <span class="material-symbols-outlined text-dark">star</span>
-                                            <span class="material-symbols-outlined text-dark">star</span>
-                                            <span class="material-symbols-outlined text-dark"> star</span>
-                                            <span class="material-symbols-outlined text-dark">star </span>
+                                            <div id="stars"></div>
                                             <div class="sub d-flex ms-auto">
                                                 <div class="">
                                                     <div class="dropdown">
@@ -562,12 +573,12 @@ Header END -->
                                                             flag
                                                         </span> Report
                                                     </button>
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                    <div class="modal fade" id="Report" tabindex="-1"
                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="Report">Report
+                                                                    <h5 class="modal-title" id="Report_user">Report
                                                                         video</h5>
                                                                     <button type="button" class="btn-close"
                                                                         data-bs-dismiss="modal"
@@ -708,30 +719,7 @@ Header END -->
                                                               (3)</button>
                                                       </a>
                                                       <!-- Dropdown menu -->
-                                                      <ul class="dropdown-menu dropdown-menu-end"
-                                                          aria-labelledby="cardShareAction">
-                                                          <li><a class="dropdown-item" href="#"> <i
-                                                                      class="fa fa-facebook"></i>Facebook
-                                                                  Share</a></li>
-                                                          <li><a class="dropdown-item" href="#"> <i
-                                                                      class="bi bi-bookmark-check fa-fw pe-2"></i>Twitter
-                                                              </a></li>
-                                                          <li><a class="dropdown-item" href="#"> <i
-                                                                      class="bi bi-link fa-fw pe-2"></i>Linkdin</a>
-                                                          </li>
-                                                          <li><a class="dropdown-item" href="#"> <i
-                                                                      class="bi bi-share fa-fw pe-2"></i>Telegram</a>
-                                                          </li>
-                                                          <li><a class="dropdown-item" href="#"> <i
-                                                                      class="bi bi-share fa-fw pe-2"></i>Watsapp</a>
-                                                          </li>
-                                                          <li>
-                                                              <hr class="dropdown-divider">
-                                                          </li>
-                                                          <li><a class="dropdown-item" href="#"> <i
-                                                                      class="bi bi-pencil-square fa-fw pe-2"></i>Share
-                                                                  to News Feed</a></li>
-                                                      </ul>
+                                                      {!! $socialshare !!}
                                                   </div>
                                               </div>
                                             </div>
@@ -852,8 +840,7 @@ Header END -->
                                 <!-- Video info -->
                                 <div class="card-body">
                                     <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> 8 shocking bitcoin
-                                            crypto predictions for 2022
+                                    <h6> <a class="stretched-link" href="video-details.html"> {{$videos[0]['title']}}
                                         </a> </h6>
                                     <span class="small"> 665.1K views</span>
                                 </div>
@@ -862,22 +849,16 @@ Header END -->
                         </div>
                         <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                             <!-- Video START -->
-                            <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <div class="ratio ratio-16x9 oveflow-hidden">
-                                        <iframe src="https://player.vimeo.com/video/151500895?h=68ba58e49a"
-                                            title="Vimeo video" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a href="video-details.html"> A trading platform - an easy start in trading
-                                        </a> </h6>
-                                    <span class="small"> 458.3K views</span>
-                                </div>
-                            </div>
+                            <video width="200" height="150" class="example1"
+                                                id="example1_{{ $videos[0]['id'] }}"
+                                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
+                                                <source
+                                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
+                                                    type="video/mp4">
+                                                <track kind="captions" label="English" srclang="en"
+                                                    src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+                                                Your browser does not support the video tag.
+                                            </video>
                             <!-- Video END -->
                         </div>
                         <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
