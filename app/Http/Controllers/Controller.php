@@ -130,8 +130,13 @@ class Controller extends BaseController
         $auth_id = auth()->user()->id;
 
         $videos = product::with(['comments.replies', 'user', 'like', 'ratings'])->find($id)->toArray();
-        // echo "<pre>";
-        // print_r($videos);die;
+        //$comment = $videos['comments'][0]['body'];
+        // $validator = Validator::make($comment, [
+        //     'body' => 'required',
+        // ]);
+        // if ($validator->fails()) {
+        //     echo "comment body is null";
+        // } 
         $username = auth()->user()->name;
 
         $Rating = Rating::where('product_id', $id)->avg('rating');
@@ -184,14 +189,14 @@ class Controller extends BaseController
             'title' => 'required|max:255',
             'description' => 'required',
             'thumbnail' => 'required',
+            'upload_video' => 'required',
+            'security' => 'required',
+            'security' => 'required',
             'security' => 'required',
             'child_vis' => 'required',
         ]);
         if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
+            return response()->json(['error'=>$validator->errors()]);
         } else {
 
             $video_name = $data['upload_video']->store($folder, 'spaces');
@@ -272,7 +277,6 @@ class Controller extends BaseController
         }
     }
 
-
     /*--------------------------------------subscribe system---------------------------------------*/
 
     function subscribe(Request $request)
@@ -324,7 +328,6 @@ class Controller extends BaseController
 
     }
 
-
     /**-----------------------------------------Rating System--------------------------------------- */
 
     public function rate(Request $request)
@@ -359,22 +362,29 @@ class Controller extends BaseController
 
       public function report(Request $request)
         {
-
             $id = auth()->user()->id;
+            $report_data = $request->all();
+            $validator = Validator::make($report_data, [
+                'timestamp' => 'required',
+                'description' => 'required',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['error'=>$validator->errors()]);
+            }
+            else{
             $data = new Report;
             $data->user_id = $id;
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
-
-            if ($data->save()) {
+            $data->save();
                 return response()->json([
+                    'reports' => $data,
                     'bool' => true,
                     'message' => 'Content Reported By user!',
                     'code' => 1
                 ]);
             }
         }
-
 
     /*--------------------------------------search system------------------------------------------*/
 

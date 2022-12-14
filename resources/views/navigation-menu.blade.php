@@ -18,14 +18,14 @@
                         {{ __('Home') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="/jetstream/uploadpage">
+                    <x-jet-nav-link href="/Laraveljetstream/uploadpage">
                         {{ __('Upload Video') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}">
+                    <x-jet-nav-link href="/Laraveljetstream/channel/{{ base64_encode(auth()->user()->id) }}">
                         {{ __('Your Channel') }}
 
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="/jetstream/watchlater">
+                    <x-jet-nav-link href="/Laraveljetstream/watchlater">
                         {{ __('Save Video') }}
                     </x-jet-nav-link>
                     <div id="google_translate_element">Translate</div>

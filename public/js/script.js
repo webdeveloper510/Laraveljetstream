@@ -1,4 +1,4 @@
-var base_url = 'http://localhost/jetstream';
+var base_url = 'http://localhost/Laraveljetstream';
 function subscribe(channel_id, flag) {
   toastr.options = {
     closeButton: true,
@@ -28,6 +28,14 @@ function subscribe(channel_id, flag) {
         $ ('.subscribes').hide ();
       }
     },
+  });
+}
+
+// ------------------------------------------Form validation-------------------//
+function printErrorMsg (msg) {
+  $.each( msg, function( key, value ) {
+  console.log(key);
+    $('.'+key+'_err').text(value);
   });
 }
 
@@ -180,8 +188,15 @@ function save_video(product_id) {
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
+      console.log(data);
       if (data.code === 1) {
+        $.isEmptyObject(data.error)
+          //alert(data.success);
         toastr.success (data.message);
+        $('.btn-close').trigger('click');
+      }
+      else{
+        printErrorMsg(data.error);
       }
     },
   });
@@ -201,7 +216,7 @@ $ ('form#msform').submit (function (e) {
     data: formData,
 
     xhr: function() {
-        $(".divIDClass").show();
+        $(".progress_baar").show();
         var xhr = new window.XMLHttpRequest();
         xhr.upload.addEventListener("progress", function(element) {
             if (element.lengthComputable) {
@@ -214,9 +229,16 @@ $ ('form#msform').submit (function (e) {
     },
 
     success: function (data) {
+      console.log('test');
         console.log(data);
-        $(".divIDClass").hide();
+        if($.isEmptyObject(data.error)){
+          alert(data.success);
+          $(".progress_baar").hide();
       toastr.success (data.message);
+      }else{
+          printErrorMsg(data.error);
+      }
+        
     },
     cache: false,
     contentType: false,

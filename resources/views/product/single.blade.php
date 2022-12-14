@@ -1,5 +1,6 @@
 <x-app-layout>
     @include('header')
+    
     {{-- @include('jetheader') --}}
 
     <style>
@@ -160,7 +161,7 @@
                                                             <input class="form-check-input" type="radio"
                                                                 value="Child abuse" name="report_desc"
                                                                 id="flexRadioDefault5">
-                                                            <label class="form-check-label ml-2"
+                                                          <label class="form-check-label ml-2"
                                                                 for="flexRadioDefault5">
                                                                 Child abuse
                                                             </label>
@@ -212,11 +213,11 @@
                                                             <label>Timestamp selected *</label> <br />
                                                             <input type="time" name="timestamp"
                                                                 class="form-control col-md-3 my-3" />
-
+                                                                <span class="text-danger error-text timestamp_err"></span>
                                                             <div class="form-floating">
                                                                 <textarea class="form-control" placeholder="Provide additional details" id="floatingTextarea2" name="description"
                                                                     style="height: 100px"></textarea>
-
+                                                                    <span class="text-danger error-text description_err"></span>
                                                                 <label for="floatingTextarea2">Comments</label>
                                                             </div>
                                                             <small class="my-2">Flagged videos and users are
@@ -232,7 +233,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">CANCEL</button>
-                                                        <button type="submit"
+                                                        <button type="submit" onclick="resetform();"
                                                             class="btn btn-primary btn1">Submit</button>
                                                     </div>
                                             </div>
@@ -274,7 +275,7 @@
                                             <div class="commentBox">
                                                 <input type="text" class="form-control" autocomplete="off"
                                                     name="body" id="exampleFormControlInput1"
-                                                    placeholder="Add a comment">
+                                                    placeholder="Add a comment" required>
                                                 <input type="hidden" name="post_id"
                                                     value="{{ request()->segment(2) }}" />
                                             </div>
@@ -404,7 +405,7 @@
     </div>
     </div>
     </body>
-    <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+    <!-- <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -541,6 +542,10 @@
 
         getStars({{ round($averageRating, 1) }}, {{ request()->segment(2) }})
     </script>
-
+<!-- <script>
+function resetform(){
+document.getElementById("submit_report").reset();
+}
+</script> -->
     </html>
 </x-app-layout>
