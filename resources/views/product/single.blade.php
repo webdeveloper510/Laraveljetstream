@@ -739,7 +739,7 @@ Header END -->
                             <!-- Video END -->
                         </div>
                         <div class="col-md-11 mt-3">
-                            <form method="post" action="{{ route('comment.add') }}">
+                            <form method="post"  id="comment" action="{{ route('comment.add') }}">
                                 <div class="commentBox">
                                     <input type="text" class="form-control" autocomplete="off"
                                         name="body" id="exampleFormControlInput1"

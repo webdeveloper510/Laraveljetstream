@@ -40,6 +40,8 @@ function printErrorMsg (msg) {
   });
 }
 
+
+
 // ----------------------------------------Report------------------------------------------//
 
 $ ('#submitt_report').submit (function (e) {
@@ -64,6 +66,21 @@ $ ('#submitt_report').submit (function (e) {
   });
 });
 
+
+$ ('#comment').submit (function (e) {
+  e.preventDefault ();
+  console.log ('hello');
+  var form = $ (this);
+  var actionUrl = base_url + '/comment/store';
+  $.ajax ({
+    type: 'POST',
+    url: actionUrl,
+    data: form.serialize (),
+    success: function (data) {
+      console.log (data);
+    },
+  });
+});
 /*---------------------------------------------Rating----------------------------------------------*/
 
 function rating (a, ratenum, product_id) {
