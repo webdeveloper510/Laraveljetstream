@@ -1,5 +1,28 @@
 <x-app-layout>
     @include('header')
+    <style>
+        .goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important
+        }
+
+        .goog-logo-link {
+            display: none
+        }
+        </style>
     <div class="mains">
         <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="560px" width="1380px"
             poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}/>
@@ -11,7 +34,6 @@
         <track kind="captions" label="English" srclang="en"
             src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
     </video> --}}
-
     <div class="container-fluid">
         <div class="text-banner">
             <div class="row">
@@ -22,7 +44,6 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-
                     <div class="text-sm-end p-4">
                         <button class="btn btn-outline-primary" style="color: rgb(4, 4, 246)"
                             type="button">Join</button>
@@ -395,7 +416,6 @@
                         </div>
                     </div>
                     <hr />
-
                     <div class="row">
                         <div class="col-12">
                             <h3 class="d-flex">Uploads<button class="btn btn-sm btn-outline-primery d-flex"><span
@@ -410,7 +430,6 @@
                                 <video width="320" height="200" id="example1" controls muted>
                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file'] }}"
                                         type="video/mp4">
-
                                     <track kind="captions" label="English" srclang="en"
                                         src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                                 </video>
@@ -865,7 +884,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6>Username <small> 10 days ago</small></h6>
+                                        <h6>{{ $videos[0]['user']['name'] }} <small> 10 days ago</small></h6>
                                         <p>Thank you V. This is an honour for me ❤️❤️❤️
                                         </p>
                                         <img src="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -898,7 +917,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ------------------------------Channels section tab ----------------------->
+            <!-- ------------------------------Channels section tab----------------------->
             <div class="tab-pane fade" id="pills-channel" role="tabpanel" aria-labelledby="pills-channel-tab">
                 <div class="subs">
                     <h6>Subscriptions</h6>
@@ -909,7 +928,7 @@
                             </div>
                             <h5>Channel Name</h5>
                             <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
+                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
                         </div>
                         <div class="col-md-2 card text-center">
                             <div class="cover">
@@ -952,7 +971,15 @@
                             </div>
                             <h5>Channel Name</h5>
                             <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
+                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
+                        </div>
+                        <div class="col-md-2 card text-center">
+                            <div class="cover">
+                                <img src="./hq720.webp" class="img-fluid" />
+                            </div>
+                            <h5>Channel Name</h5>
+                            <p>1 Subscriber</p>
+                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
                         </div>
                         <div class="col-md-2 card text-center">
                             <div class="cover">
@@ -976,15 +1003,7 @@
                             </div>
                             <h5>Channel Name</h5>
                             <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
+                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
                         </div>
                         <div class="col-md-2 card text-center">
                             <div class="cover">

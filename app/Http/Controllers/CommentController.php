@@ -8,11 +8,11 @@ use App\models\Comment;
 
 class CommentController extends Controller
 {
-    //
 
     public function store(Request $request)
     {
-
+        // echo "<pre>";
+        // print_r($request->all());die;
         $comment = new Comment;
         $comment->body = $request->get('body');
         $id = auth()->user()->id;
@@ -28,7 +28,8 @@ class CommentController extends Controller
 
     public function replyStore(Request $request)
     {
-
+        // echo "<pre>";
+        // print_r($request->all());die;
         $id = auth()->user()->id;
 
         $reply = new Comment();

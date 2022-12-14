@@ -63,8 +63,6 @@
                     <div class="col-md-8">
                         <h5>{{ $post['title'] }}</h5>
                         <div class="Streamed">
-
-
                             <div class=""></div>
                             <ul>
                                 <li>View: {{ $post['views'] }}</li>

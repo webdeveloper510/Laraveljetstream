@@ -5,6 +5,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous">
 </script>
 <style>
+
+.goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important
+        }
+
+        .goog-logo-link {
+            display: none
+        }
     /*custom font*/
     @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
@@ -278,10 +300,10 @@
                 <!-- progressbar -->
 
                 <div class="row">
-                    <div id="progress-bar" class="progress_baar" style="display: none">0%</div>
+                    <div id="progress-bar" class="progress_bar" style="display: none">0%</div>
                 </div>
                 <ul id="progressbar">
-                    <li class="active"> Details</li>
+                    <li class="active">Details</li>
                     <li>Video elements</li>
                     <li>Checks</li>
 
@@ -296,12 +318,12 @@
                     </div>
                     <div class="mb-3">
                         <label>Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3" ></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
                         <span class="text-danger error-text description_err"></span>
                     </div>
                     <div class="mb-3">
                         <label>Thumbnail</label>
-                        <input type="file" name="thumbnail"  class="form-control" />
+                        <input type="file" name="thumbnail" class="form-control" />
                         <span class="text-danger error-text thumbnail_err"></span>
                     </div>
                     <div class="mb-3">
@@ -334,8 +356,8 @@
                     <h2 class="fs-title">Preview</h2>
                     <div class="mb-3">
                         <label>upload video</label>
-                        {{-- <input type="file" name="upload_video"  class="form-control" /> --}}
-                        <input type='file' name="upload_video"  class="form-control" id='videoUpload' />
+                        {{-- <input type="file" name="upload_video"  required class="form-control" /> --}}
+                        <input type='file' name="upload_video" class="form-control" id='videoUpload' />
                         <span class="text-danger error-text upload_video_err"></span>
                     </div>
                     <div class="mx-auto">
@@ -354,8 +376,8 @@
                         <a href="">links</a>
                     </div>
                     <div class="mb-3">
-                        <label>Filename</label>
-                        <p>videoname.mp4</p>
+                        <h5><label>Filename</label></h5>
+                        <p class="filename"></p>
                     </div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     
@@ -379,7 +401,7 @@
                             <li>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
-                                        value="option1" checked>
+                                        value="1" checked>
                                         <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Private
@@ -392,7 +414,7 @@
                             <li>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
-                                        value="option1" checked>
+                                        value="2" checked>
                                         <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Unlisted
@@ -405,7 +427,7 @@
                             <li>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
-                                        value="option1" checked>
+                                        value="3" checked>
                                         <span class="text-danger error-text security_err"></span>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Public
@@ -534,11 +556,21 @@
         })
     </script>
 </body>
-
-
-
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
+{{--------------------------------- Get selected input type file name ---------------------------------}}
+
+<script>
+    $(document).ready(function() {
+        $('input[type="file"]').change(function(e) {
+            var videoUpload = e.target.files[0].name;
+            console.log(videoUpload);
+            $(".filename").text(videoUpload);
+
+        });
+    });
+</script>
+{{-------------------------Preview of video file, selecting from input type='file'---------------------}}
 <script>
     document.getElementById("videoUpload").onchange = function(event) {
       let file = event.target.files[0];
@@ -547,6 +579,7 @@
       document.querySelector("video").src = blobURL;
     }
     </script>
+
 {{-- ------------------------------------Translator---------------------------------------}}
 <script type="text/javascript">
     function googleTranslateElementInit() {

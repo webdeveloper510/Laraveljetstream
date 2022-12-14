@@ -1,5 +1,27 @@
 <x-app-layout>
 <style>
+
+.goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+
+        body {
+            top: 0px a!importnt;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important
+        }
+
+        .goog-logo-link {
+            display: none
+        }
     .play {
         text-align: center;
         position: absolute;
@@ -53,9 +75,10 @@
                 </span></p>
             <hr />
             <div class="d-flex">
-                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[1]['user']['profile_photo_path'] }}"
+                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . auth()->user()->profile_photo_path }}"
                     class="rounded-circle" width="60px" height="60px" />
-                <h4 class="mt-3 ms-3">{{ $name }}</h4>
+                <h4 class="mt-3 ms-3"></h4>
+                <h4>{{$name}}</h4>
             </div>
         </div>
         <div class="col-md-9 bg-light" style="height: 100vh;">

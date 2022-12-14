@@ -4,7 +4,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CommentController;
-use App\Models\product;
 use App\Models\User;
 
 /*
@@ -31,8 +30,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         $videos = User::with(['posts','Report_video'])->get()->toArray();
 
-        //  echo "<pre>";
-        //   print_r($videos);die;
         return view('product.index', compact('videos'));
     })->name('dashboard');
 });
@@ -99,7 +96,7 @@ Route::get('/uploadpage', [Controller::class, 'uploadpage']);
 Route::post('/uploadproduct', [Controller::class, 'store']);
 Route::post('/likePost', [Controller::class, 'likePost']);
 Route::post('/unlikePost', [Controller::class, 'unlikePost']);
-Route::get('/videodetail/{id}', [Controller::class, 'videodetail']);
+Route::get('/watch/{id}', [Controller::class, 'videodetail']);
 Route::get('/watchlater', [Controller::class, 'watchlater']);
 Route::get('/channel/{id}', [Controller::class, 'channel']);
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
@@ -112,6 +109,6 @@ Route::post('/rate', [Controller::class, 'rate']);
 Route::get('/time', [Controller::class, 'time']);
 Route::post('/report', [Controller::class, 'report']);
 Route::get('/search', [Controller::class, 'search']);
-Route::get('/share', [Controller::class, 'share']);
+Route::get('/share ', [Controller::class, 'share']);
 
 //});

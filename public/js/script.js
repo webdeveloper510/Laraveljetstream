@@ -1,5 +1,5 @@
 var base_url = 'http://localhost/Laraveljetstream';
-function subscribe(channel_id, flag) {
+function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
     newestOnTop: true,
@@ -17,6 +17,7 @@ function subscribe(channel_id, flag) {
     success: function (data) {
       console.log (data);
       if (data.code) {
+        $ ('#subscribe').html (data.count);
         toastr.success (data.message);
       }
       if (data.code == 1) {
@@ -31,64 +32,130 @@ function subscribe(channel_id, flag) {
   });
 }
 
-// ------------------------------------------Form validation-------------------//
+// ----------------------------------------Form Validation---------------------------------//
 function printErrorMsg (msg) {
-  $.each( msg, function( key, value ) {
-  console.log(key);
-    $('.'+key+'_err').text(value);
+  $.each (msg, function (key, value) {
+    console.log (key);
+    $ ('.' + key + '_err').text (value);
   });
 }
 
-/*--------------------------------------------- Rating ----------------------------------------------*/
-function rating(a,ratenum,product_id) {
-    $(".fa").removeAttr("style")
-    for(let i=1;i<=ratenum;i++){
-        console.log(i)
-        $('.fa').addClass('fa fa-star').removeClass('fa-star-o');
-
-        $('.rating_star_'+i).attr('style','color: orange');
-    }
 
 
-    $.ajax ({
-        url: base_url + '/rate',
-        type: 'post',
-        data:{
-            'rating':ratenum,
-            'product_id':product_id
-        },
-        success: function (data) {
-           console.log(data);
-          },
-    });
+// ----------------------------------------Report------------------------------------------//
+
+$ ('#submitt_report').submit (function (e) {
+  e.preventDefault ();
+  console.log ('testing');
+  var form = $ (this);
+  var actionUrl = base_url + '/report';
+  $.ajax ({
+    type: 'POST',
+    url: actionUrl,
+    data: form.serialize (),
+    success: function (data) {
+      console.log (data);
+      if (data.code === 1) {
+        $.isEmptyObject (data.error);
+        toastr.success (data.message);
+        $ ('.btn-close').trigger ('click');
+      } else {
+        printErrorMsg (data.error);
+      }
+    },
+  });
+});
+
+
+$ ('#comment').submit (function (e) {
+  e.preventDefault ();
+  console.log ('hello');
+  var form = $ (this);
+  var actionUrl = base_url + '/comment/store';
+  $.ajax ({
+    type: 'POST',
+    url: actionUrl,
+    data: form.serialize (),
+    success: function (data) {
+      console.log (data);
+    },
+  });
+});
+/*---------------------------------------------Rating----------------------------------------------*/
+
+function rating (a, ratenum, product_id) {
+  $ ('.fa').removeAttr ('style');
+  for (let i = 1; i <= ratenum; i++) {
+    //console.log(i)
+    $ ('.fa').addClass ('fa fa-star').removeClass ('fa-star-o');
+
+    $ ('.rating_star_' + i).attr ('style', 'color: orange');
+  }
+
+  $.ajax ({
+    url: base_url + '/rate',
+    type: 'post',
+    data: {
+      rating: ratenum,
+      product_id: product_id,
+    },
+    success: function (data) {
+      console.log (data);
+    },
+  });
 }
 
-function getStars(rating,url_value) {
-console.log(url_value)
-    // Round to nearest half
-    rating = Math.round(rating * 2) / 2;
-    let output = [];
-    let j=1;
-    // Append all the filled whole stars
-    for (var i = rating; i >= 1; i--){
-      output.push('<i class="fa fa-star rating_star_'+j+'" onclick="rating(this,'+j+','+url_value+')" aria-hidden="true" style="color: orange; cursor:pointer"></i>&nbsp;');
-       j++
-    }
+function getStars(rating, url_value) {
+   // Round to nearest half
 
-    // If there is a half a star, append it
-    if (i == .5) output.push('<i class="fa fa-star-half-o rating_star_'+j+'" onclick="rating(this,'+j+','+url_value+')" aria-hidden="true" style="color: orange;cursor:pointer"></i>&nbsp;');
 
-    // Fill the empty stars
-    for (let i = (3 - rating); i >= 1; i--)
-      output.push('<i class="fa fa-star-o rating_star_'+j+'" aria-hidden="true" onclick="rating(this,'+j+','+url_value+')" style="color: orange;cursor:pointer"></i>&nbsp;');
-
-     $('#stars').html(output.join(''));
-
+  rating = Math.round (rating * 2) / 2;
+  let output = [];
+  let j = 1;
+  // Append all the filled whole stars
+  for (var i = rating; i >= 1; i--) {
+    output.push (
+      '<span class="fa fa-star rating_star_' +
+        j +
+        '" onclick="rating(this,' +
+        j +
+        ',' +
+        url_value +
+        ')" aria-hidden="true" style="color: orange; cursor:pointer"></span>&nbsp;'
+    );
+    j++;
   }
-/**-----------------------------------------Report Video--------------------------------------------- */
+
+  // If there is a half a star, append it
+  if (i == 0.5)
+    output.push (
+      '<i class="fa fa-star-half-o rating_star_' +
+        j +
+        '" onclick="rating(this,' +
+        j +
+        ',' +
+        url_value +
+        ')" aria-hidden="true" style="color: orange;cursor:pointer"></i>&nbsp;'
+    );
+
+  // Fill the empty stars
+  for (let i = 3 - rating; i >= 1; i--){
+    output.push (
+      '<i class="fa fa-star-o rating_star_' +
+        j +
+        '" aria-hidden="true" onclick="rating(this,' +
+        j +
+        ',' +
+        url_value +
+        ')" style="color: orange;cursor:pointer"></i>&nbsp;'
+    );
+    j++;
+ }
+  $ ('#stars').html (output.join (''));
+}
 
 function reply (a) {
-  $ (a).parent ().next ().show();
+  $ (a).parent ().next ().show ();
 }
 function likePost (id) {
   $.ajax ({
@@ -124,24 +191,22 @@ function unlikePost (id) {
   });
 }
 
-
-  var rate1 = $ ('#rate1').val ();
-  $.ajax ({
-    url: base_url + '/videodetail',
-    type: 'post',
-    data: {
-      rate1: rate1,
-      _token: '{{ csrf_token() }}',
-    },
-    success: function (data) {
-      if (result['success'] === 1) {
-        console.log (data);
-      } else {
-        console.log (data);
-      }
-    },
-  });
-
+var rate1 = $ ('#rate1').val ();
+$.ajax ({
+  url: base_url + '/videodetail',
+  type: 'post',
+  data: {
+    rate1: rate1,
+    _token: '{{ csrf_token() }}',
+  },
+  success: function (data) {
+    if (result['success'] === 1) {
+      console.log (data);
+    } else {
+      console.log (data);
+    }
+  },
+});
 
 function reply (a) {
   $ (a).parent ().next ().show ();
@@ -149,7 +214,7 @@ function reply (a) {
 
 /*----------------------------------------save video--------------------------------------------*/
 
-function save_video(product_id) {
+function save_video (product_id) {
   toastr.options = {
     closeButton: true,
     newestOnTop: true,
@@ -170,38 +235,6 @@ function save_video(product_id) {
   });
 }
 
-
-    $('#submit_report').submit(function(e){
-        e.preventDefault ();
-        console.log('yess');
-//   toastr.options = {
-//       "closeButton": true,
-//       "newestOnTop": true,
-//       "positionClass": "toast-top-left"
-//     };
-
-
-  var form = $ (this);
-  var actionUrl = base_url + '/report';
-  $.ajax ({
-    type: 'POST',
-    url: actionUrl,
-    data: form.serialize (),
-    success: function (data) {
-      console.log(data);
-      if (data.code === 1) {
-        $.isEmptyObject(data.error)
-          //alert(data.success);
-        toastr.success (data.message);
-        $('.btn-close').trigger('click');
-      }
-      else{
-        printErrorMsg(data.error);
-      }
-    },
-  });
-});
-
 $ ('form#msform').submit (function (e) {
   toastr.options = {
     closeButton: true,
@@ -214,31 +247,30 @@ $ ('form#msform').submit (function (e) {
     url: base_url + '/uploadproduct',
     type: 'POST',
     data: formData,
-
-    xhr: function() {
-        $(".progress_baar").show();
-        var xhr = new window.XMLHttpRequest();
-        xhr.upload.addEventListener("progress", function(element) {
-            if (element.lengthComputable) {
-                var percentComplete = ((element.loaded / element.total) * 100);
-                $("#progress-bar").width(percentComplete + '%');
-                $("#progress-bar").html(percentComplete+'%');
-            }
-        }, false);
-        return xhr;
+    xhr: function () {
+      $ ('.progress_bar').show ();
+      var xhr = new window.XMLHttpRequest ();
+      xhr.upload.addEventListener (
+        'progress',
+        function (element) {
+          if (element.lengthComputable) {
+            var percentComplete = element.loaded / element.total * 100;
+            $ ('#progress-bar').width (percentComplete + '%');
+            $ ('#progress-bar').html (percentComplete + '%');
+          }
+        },
+        false
+      );
+      return xhr;
     },
-
     success: function (data) {
-      console.log('test');
-        console.log(data);
-        if($.isEmptyObject(data.error)){
-          alert(data.success);
-          $(".progress_baar").hide();
-      toastr.success (data.message);
-      }else{
-          printErrorMsg(data.error);
+      console.log (data);
+      if ($.isEmptyObject (data.error)) {
+        $ ('.progress_bar').hide ();
+        toastr.success (data.message);
+      } else {
+        printErrorMsg (data.error);
       }
-        
     },
     cache: false,
     contentType: false,

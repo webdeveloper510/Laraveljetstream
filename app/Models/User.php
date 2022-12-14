@@ -29,7 +29,8 @@ class User extends Authenticatable
         'password',
         'surname',
         'date_of_birth',
-        'profile_photo_path'
+        'profile_photo_path',
+        'cover_img'
     ];
 
     /**
