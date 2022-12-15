@@ -23,13 +23,17 @@ class CommentController extends Controller
         $comment->user()->associate($id);
         $comment->save();
 
-        return back();
+        return response()->json([
+            'message' => 'comment save successfully !!',
+            'comment' => $comment
+        ]);
     }
 
     public function replyStore(Request $request)
     {
         // echo "<pre>";
         // print_r($request->all());die;
+
         $id = auth()->user()->id;
 
         $reply = new Comment();
@@ -48,6 +52,9 @@ class CommentController extends Controller
 
         $post->comments()->save($reply);
 
-        return back();
+        return response()->json([
+            'message' => 'reply save successfully !!',
+            'reply' => $reply
+        ]);
     }
 }

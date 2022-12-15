@@ -103,7 +103,7 @@
 
         <!-- =======================
 Header START -->
-        <header class="navbar-light fixed-top header-static bg-mode">
+        {{-- <header class="navbar-light fixed-top header-static bg-mode">
 
             <!-- Logo Nav START -->
             <nav class="navbar navbar-expand-lg">
@@ -316,7 +316,7 @@ Header START -->
                 </div>
             </nav>
             <!-- Logo Nav END -->
-        </header>
+        </header> --}}
         <!-- =======================
 Header END -->
 
@@ -379,24 +379,24 @@ Header END -->
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/Popular"> <img
+                                        href="/jetstream/uploadpage"> <img
                                             class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
                                             alt=""><span>Uploade Vedio </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/Recent"> <img
+                                        href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}"> <img
                                             class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
                                             alt=""><span>Your Channel </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/Subscriptions">
+                                        href="/jetstream/watchlater">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Save
-                                            Vedio </span></a>
+                                            Video </span></a>
                                 </li>
                                 <!-- <li class="nav-item">
                 <a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/My favorites"> <img class="me-2 h-20px fa-fw"
@@ -436,7 +436,6 @@ Header END -->
 
                 <!-- Main content START -->
                 <div class="page-content">
-
                     <!-- Official trailer START -->
                     <div class="row g-0 mb-4">
                         <div class="col-xl-8 col-xxl-9">
@@ -477,7 +476,6 @@ Header END -->
                                                     <h6 class="mb-0">{{ $videos[0]['user']['name'] }}</h6>
                                                     <nav class="nav nav-divider small">
                                                         <span class="nav-item" id="subscribe">{{$subscriber}} subscribers</span>
-
                                                     </nav>
                                                 </div>
                                                 <div class="col-md-3 text-end">
@@ -506,7 +504,7 @@ Header END -->
                                                                 </span> SAVE
                                                             </button>
                                                         </a>
-                                                        <ul class="dropdown-menu dropdown-menu-end "
+                                                        {{-- <ul class="dropdown-menu dropdown-menu-end "
                                                             aria-labelledby="cardShareAction">
                                                             <li><a class="dropdown-item d-flex" href="#!">
                                                                     <div class="form-check ">
@@ -563,7 +561,7 @@ Header END -->
                                                                     </div>
                                                                 </div>
                                                             </Form>
-                                                        </ul>
+                                                        </ul> --}}
                                                     </div>
                                                 </div>
                                                 <div class="report">
@@ -739,7 +737,7 @@ Header END -->
                             <!-- Video END -->
                         </div>
                         <div class="col-md-11 mt-3">
-                            <form method="post"  id="comment" action="{{ route('comment.add') }}">
+                            <form id="comment">
                                 <div class="commentBox">
                                     <input type="text" class="form-control" autocomplete="off"
                                         name="body" id="exampleFormControlInput1"
@@ -749,14 +747,13 @@ Header END -->
                                 </div>
                                 <div class="text-end mt-3">
                                     <button type="submit" class="btn btn-primary btn-sm"
-                                        id="exampleFormControlInput1"
                                         style="width:110px;">COMMENT</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-11 comments">
                             @foreach ($videos[0]['comments'] as $key => $commet)
-                                <div class="comments">
+                                <div>
                                     <div class="row mt-3">
                                         <div class="col-2 text-end">
                                             <div class="profile-image">
@@ -772,17 +769,20 @@ Header END -->
                                                 </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                             </p>
                                             <p class="">{{ $commet['body'] }}</p>
+                                            <div class="comment_reply">
                                             @foreach ($commet['replies'] as $key => $reply)
-                                                <div>{{ $reply['body'] }}</div>
+
+                                                <div class="reply">{{ $reply['body'] }}</div>
+
                                             @endforeach
+                                        </div>
                                             <div class="d-flex">
                                                 <a class="me-3 text-decoration-none"
                                                     onclick="reply(this)">REPLY</a>
                                             </div>
                                             <div class="row" id="replyBox" style="display: none">
                                                 <div class="col-md-12 common">
-                                                    <form method="post"
-                                                        action="{{ route('reply.add') }}">
+
                                                         <div>
                                                             <input type="text"
                                                                 class="form-control "name="body"

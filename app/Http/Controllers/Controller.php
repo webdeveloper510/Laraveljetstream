@@ -306,7 +306,6 @@ class Controller extends BaseController
             'bool' => true,
             'message' => $message,
             'code' => $code,
-
         ]);
     }
 
