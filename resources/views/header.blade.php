@@ -272,7 +272,7 @@ ul.Views {
         }
 
         input.form-control.me-2 {
-            width: 600px;
+            width: 500px;
         }
         .appricate {
     display: flex;

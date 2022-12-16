@@ -60,6 +60,16 @@
             .navbar-vertical {
                 top: 41px !important;
             }
+
+            .comments {
+                /* background: #4CAF50; */
+                color: white;
+                padding: 15px;
+                width: 100%;
+                max-height: 400px;
+                overflow: scroll;
+                /* border: 1px solid #ccc; */
+            }
         </style>
         {{-- old code link --}}
         {{-- Removeable content ------->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
@@ -107,6 +117,23 @@
 
         small {
             color: black !important;
+        }
+
+        .parag {
+            margin-left: 10px;
+        }
+
+        .nam {
+            margin-left: 10px;
+
+        }
+
+        .moovie {
+            height: 350px !important;
+        }
+        .form-control{
+            /* width: 328px; */
+
         }
     </style>
 
@@ -451,16 +478,16 @@ Header END -->
                 <!-- Main content START -->
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row g-0 mb-4">
+                    <div class="row gx-4 mb-4">
                         <div class="col-xl-8 col-xxl-9">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
-                                <div class="card-image">
+                                <div class="card-image ">
                                     <div class="overflow-hidden fullscreen-video w-100">
                                         <!-- HTML video START -->
                                         <div class="player-wrapper card-img-top overflow-hidden">
-                                            <video width="200" height="150" class="example1" id="example1"
+                                            <video width="200px" height="100px" class="example1 " id="example1"
                                                 poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
                                                 <source
                                                     src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
@@ -755,8 +782,8 @@ Header END -->
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-md-4">
-                            <h4>{{$total_comment}} Comments</h4>
+                        <div class="col-md-4 g-3 ">
+                            <h4>{{ $total_comment }} Comments</h4>
                             {{-- <div class=" mt-3">
                                 <form id="comment">
                                     <div class="commentBox">
@@ -783,25 +810,26 @@ Header END -->
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
-                                                <p class="m-0"> <b>
+                                                <p class="m-0"> <b class="nam">
                                                         {{ $videos[0]['user']['id'] == $commet['user_id'] ? $videos[0]['user']['name'] : Auth::user()->name }}
                                                     </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                                 </p>
-                                                <p class="">{{ $commet['body'] }}</p>
+                                                <p class="parag">{{ $commet['body'] }}</p>
                                                 <div class="comment_reply">
                                                     @foreach ($commet['replies'] as $key => $reply)
                                                         <div class="reply">{{ $reply['body'] }}</div>
                                                     @endforeach
                                                 </div>
                                                 <div class="d-flex">
-                                                    <a class="me-3 text-decoration-none" onclick="reply(this)">REPLY</a>
+                                                    <a class="me-3 text-decoration-none"
+                                                        onclick="reply(this)">REPLY</a>
                                                 </div>
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
 
                                                         <div>
                                                             <input type="text" class="form-control "name="body"
-                                                                id="exampleFormControlInput1" placeholder="Add a comment"
+                                                                id="exampleFormControlInput1" placeholder="Reply..."
                                                                 required>
                                                             <input type="hidden" name="post_id"
                                                                 value="{{ $videos[0]['id'] }}" />
@@ -827,10 +855,10 @@ Header END -->
                                 <form id="comment">
                                     <div class="commentBox">
                                         <input type="text" class="form-control" autocomplete="off" name="body"
-                                            id="exampleFormControlInput1" placeholder="Add a comment" required>
+                                            id="exampleFormControlInput1" placeholder="Message..." required>
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
-                                    <div class="text-end mt-3">
+                                    <div class="text-end mt-1">
                                         <button type="submit" class="btn btn-primary btn-sm"
                                             style="width:110px;">COMMENT</button>
                                     </div>
