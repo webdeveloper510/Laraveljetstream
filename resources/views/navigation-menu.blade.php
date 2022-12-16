@@ -18,14 +18,14 @@
                         {{ __('Home') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="<?php echo URL::to('/'); ?>/Laraveljetstream/uploadpage">
+                    <x-jet-nav-link href="<?php echo URL::to('/'); ?>/uploadpage">
                         {{ __('Upload Video') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="<?php echo URL::to('/'); ?>/Laraveljetstream/channel/{{ base64_encode(auth()->user()->id) }}">
+                    <x-jet-nav-link href="<?php echo URL::to('/'); ?>/channel/{{ base64_encode(auth()->user()->id) }}">
                         {{ __('Your Channel') }}
 
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="<?php echo URL::to('/'); ?>/Laraveljetstream/watchlater">
+                    <x-jet-nav-link href="<?php echo URL::to('/'); ?>/watchlater">
                         {{ __('Save Video') }}
                     </x-jet-nav-link>
                     <div id="google_translate_element">Translate</div>
