@@ -396,7 +396,7 @@ Header END -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
-                                            alt=""><span>Uploade Vedio </span></a>
+                                            alt=""><span>Uploade Video </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
