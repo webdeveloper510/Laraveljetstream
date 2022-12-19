@@ -136,7 +136,7 @@ Header START -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
 
                         <!-- Nav Search START -->
-                        <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
+                        <!-- <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
                             <div class="nav-item w-100">
                                 <form class="rounded position-relative">
                                     <input class="form-control ps-5 bg-light" type="search" placeholder="Search..."
@@ -146,7 +146,7 @@ Header START -->
                                         type="submit"><i class="bi bi-search fs-5"> </i></button>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Main navbar END -->
 
@@ -739,7 +739,7 @@ Header END -->
                             <!-- Video END -->
                         </div>
                         <div class="col-md-11 mt-3">
-                            <form method="post"  id="comment" action="{{ route('comment.add') }}">
+                            <form id="comment">
                                 <div class="commentBox">
                                     <input type="text" class="form-control" autocomplete="off"
                                         name="body" id="exampleFormControlInput1"
@@ -754,7 +754,7 @@ Header END -->
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-11">
+                        <div class="col-md-11" id="comment">
                             @foreach ($videos[0]['comments'] as $key => $commet)
                                 <div class="comments">
                                     <div class="row mt-3">
@@ -1011,7 +1011,7 @@ JS libraries, plugins and custom scripts -->
         <script src="assets/js/functions.js"></script>
 
     </body>
-    <!-- <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script> -->
+    <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

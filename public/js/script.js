@@ -69,7 +69,7 @@ $ ('#submitt_report').submit (function (e) {
 
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
-  console.log ('hello');
+ console.log('comment');
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
@@ -77,7 +77,7 @@ $ ('#comment').submit (function (e) {
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
-      console.log (data);
+      $('#comment').append(data.comment);
     },
   });
 });
