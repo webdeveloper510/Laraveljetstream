@@ -66,10 +66,11 @@ $ ('#submitt_report').submit (function (e) {
   });
 });
 
+// ---------------------------------------Comment-----------------------------------//
 
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
- console.log('comment');
+  console.log('hello');
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
@@ -77,7 +78,32 @@ $ ('#comment').submit (function (e) {
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
-      $('#comment').append(data.comment);
+      console.log(data);
+      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/profile/S7Sd4lb5SbIZcFsjRoCM9rw9mKpDY4jdVyZhJ653.jpg' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
+      "<b>Braun</b>1 second ago</p><p class=''>fyujtyu</p><div class='d-flex'>"+
+      "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
+        "<div class='col-md-12 common'><form><div>"+
+      "<input type='text' class='form-control' name='body' id='exampleFormControlInput1' placeholder='Add a comment' required>"+
+       "<input type='hidden' name='post_id' value='1'><input type='hidden' name='comment_id' value='1'>"+
+      "</div><div class='text-end mt-3'>"+
+      "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
+    },
+  });
+});
+
+//----------------------------------------Reply of comment--------------------------------//
+
+$ ('#save_reply').click (function (e) {
+  e.preventDefault ();
+  alert('hello');
+  var actionUrl = base_url + '/reply/store';
+  $.ajax ({
+    type: 'POST',
+    url: actionUrl,
+    data: {'body':$('.body_reply').val(),'post_id':$('.post_id').val(),'comment_id':$('.comment_id').val()},
+    success: function (data) {
+      console.log(data);
+    //   $('.comments').append(data.comment.body);
     },
   });
 });

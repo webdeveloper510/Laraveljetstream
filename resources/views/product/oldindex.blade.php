@@ -6,47 +6,47 @@
                 <div class="py-5">
                     <div class="container">
                         <div class="home-demo">
-                            <div class="owl-carousel owl-theme">
-                                @foreach($videos as $video)
-                                     @foreach($video['posts'] as $posts)
-                                        @if(!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
-                                        <div class="item_{{$posts['id']}}">
-                                                <a href="{{url('/watch/'. $posts['encripted_video_url'])}}">
-                                                <div class="card">
-                                                    <video width="100%" height="100%"  autoplay onmouseover="this.play()"
-                                                    onmouseout="this.pause();this.currentTime=0;">
-                                                        <source
-                                                            src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}"
-                                                            type="video/mp4">
-                                                    </video>
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-2">
-                                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
-                                                                    class="thump">
-                                                            </div>
-                                                        </a>
-                                                    <div class="col-10">
-                                                        <div class="detail">
-                                                            {{$posts['title']}}<br />
-                                                            {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                            {{Auth::user()->name;}}
-                                                            <ul class="Views">
-                                                                <li>
-                                                                  View:{{ $posts['views']}}
-                                                                </li>
-                                                            </ul>
-                                                            </div>
+                                <div class="owl-carousel owl-theme">
+                                    @foreach($videos as $video)
+                                        @foreach($video['posts'] as $posts)
+                                            @if(!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
+                                            <div class="item_{{$posts['id']}}">
+                                                    <a href="{{url('/watch/'. $posts['encripted_video_url'])}}">
+                                                    <div class="card">
+                                                        <video width="100%" height="100%"  autoplay onmouseover="this.play()"
+                                                        onmouseout="this.pause();this.currentTime=0;">
+                                                            <source
+                                                                src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}"
+                                                                type="video/mp4">
+                                                        </video>
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                    <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                                        class="thump">
+                                                                </div>
+                                                            </a>
+                                                        <div class="col-10">
+                                                            <div class="detail">
+                                                                {{$posts['title']}}<br />
+                                                                {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                                {{Auth::user()->name;}}
+                                                                <ul class="Views">
+                                                                    <li>
+                                                                    View:{{ $posts['views']}}
+                                                                    </li>
+                                                                </ul>
+                                                                </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                @endif
+                                                    @endif
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        @endforeach
                                     @endforeach
-                                @endforeach
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,6 @@
     }
 
     $(function() {
-        // Owl Carousel
         var owl = $(".owl-carousel");
         owl.owlCarousel({
             items: 4,

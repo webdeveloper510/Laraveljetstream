@@ -23,8 +23,8 @@ class CommentController extends Controller
         $comment->save();
 
         return response()->json([
-            'comment' => $comment,
-            'message' => 'comment store successfully !!'
+            'message' => 'comment save successfully !!',
+            'comment' => $comment
         ]);
     }
 
@@ -32,6 +32,7 @@ class CommentController extends Controller
     {
         // echo "<pre>";
         // print_r($request->all());die;
+
         $id = auth()->user()->id;
 
         $reply = new Comment();
@@ -50,6 +51,9 @@ class CommentController extends Controller
 
         $post->comments()->save($reply);
 
-        return back();
+        return response()->json([
+            'message' => 'reply save successfully !!',
+            'reply' => $reply
+        ]);
     }
 }
