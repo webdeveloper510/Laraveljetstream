@@ -14,7 +14,7 @@
 
                 <!-- Navigation Links -->
                 <div class="dashboard hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{-- <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-jet-nav-link>
 
@@ -26,10 +26,12 @@
 
                     </x-jet-nav-link>
                     <x-jet-nav-link href="<?php echo URL::to('/'); ?>/watchlater">
-                        {{ __('Save Video') }}
-                    </x-jet-nav-link>
-                    <div id="google_translate_element">Translate</div>
+                        {{ __('Save Video') }} --}}
+<x-jet-nav-link>
+            <div id="google_translate_element">Translate</div>
+        </x-jet-nav-link>
                 </div>
+
             </div>
             <div class="">
                 <form method="GET" action="{{ url('/search') }}" class="d-flex">

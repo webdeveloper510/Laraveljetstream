@@ -329,7 +329,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
                                             src="http://localhost/jetstream/public/assets/images/icon/medal-outline-filled.svg"
-                                            alt=""><span>Uploade Vedio </span></a>
+                                            alt=""><span>Upload Video </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/jetstream/channel/Mg=="> <img class="me-2 h-20px fa-fw"
