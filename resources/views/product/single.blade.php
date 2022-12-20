@@ -414,7 +414,7 @@ Header END -->
                             <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+                                        href="<?php echo URL::to('/'); ?>/dashboard">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
                                             alt=""><span>Home
@@ -436,8 +436,7 @@ Header END -->
                                     <a class="nav-link" href="/jetstream/watchlater">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
-                                            alt=""><span>Save
-                                            Video </span></a>
+                                            alt=""><span>Watch Later </span></a>
                                 </li>
                                 <!-- <li class="nav-item">
                 <a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/My favorites"> <img class="me-2 h-20px fa-fw"
@@ -447,7 +446,7 @@ Header END -->
                 <a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/Wishlist"> <img class="me-2 h-20px fa-fw"
                     src="assets/images/icon/task-done-outline-filled.svg" alt=""><span>Wishlist </span></a>
               </li> -->
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link"
                                         href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html">
                                         <img class="me-2 h-20px fa-fw"
@@ -467,7 +466,7 @@ Header END -->
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
                                             alt=""><span>Logout </span></a>
-                                </li>
+                                </li> --}}
                             </ul>
                             <!-- Side Nav END -->
                         </div>

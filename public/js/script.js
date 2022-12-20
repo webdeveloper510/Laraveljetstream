@@ -70,7 +70,7 @@ $ ('#submitt_report').submit (function (e) {
 
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
-  console.log('hello');
+  //console.log('hello');
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
@@ -80,7 +80,7 @@ $ ('#comment').submit (function (e) {
     success: function (data) {
       console.log(data);
       $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/profile/S7Sd4lb5SbIZcFsjRoCM9rw9mKpDY4jdVyZhJ653.jpg' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
-      "<b>Braun</b>1 second ago</p><p class=''>fyujtyu</p><div class='d-flex'>"+
+      "<b>Braun</b>1 second ago</p><p class=''>" + data.body +"</p><div class='d-flex'>"+
       "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
         "<div class='col-md-12 common'><form><div>"+
       "<input type='text' class='form-control' name='body' id='exampleFormControlInput1' placeholder='Add a comment' required>"+
@@ -95,7 +95,7 @@ $ ('#comment').submit (function (e) {
 
 $ ('#save_reply').click (function (e) {
   e.preventDefault ();
-  alert('hello');
+//   alert('hello');
   var actionUrl = base_url + '/reply/store';
   $.ajax ({
     type: 'POST',

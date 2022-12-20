@@ -125,7 +125,7 @@ class Controller extends BaseController
         $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->get()->toArray();
 
        $total_comment = count($videos[0]['comments']);
-      
+
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');

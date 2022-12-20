@@ -11,10 +11,10 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
+        echo "<pre>";
+        print_r($request->all());die;
         $comment = new Comment;
-        $comment->body = $request->get('body');
+       $body = $comment->body = $request->get('body');
         $id = auth()->user()->id;
         $comment->parent_id = 0;
         $comment->product_id = $request->get('post_id');
@@ -25,7 +25,7 @@ class CommentController extends Controller
 
         return response()->json([
             'message' => 'comment save successfully !!',
-            'comment' => $comment
+            'comment' => $comment,
         ]);
     }
 

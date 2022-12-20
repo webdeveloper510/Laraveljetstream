@@ -37,9 +37,10 @@
                 display: flex !important;
             }
 
-            .detail{
+            .detail {
                 color: black !important;
             }
+
             .navbar-vertical {
                 bottom: 0;
                 display: block;
@@ -263,12 +264,9 @@
         {{-- </header> --}}
         <!-- =======================
   Header END -->
-
         <main>
-
             <!-- Container START -->
             <div class="container-fluid">
-
                 <!-- Sidenav START -->
                 <div class="navbar navbar-vertical navbar-light">
                     <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3" tabindex="-1"
@@ -281,12 +279,11 @@
                                 <a
                                     href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html"><img
                                         class="avatar-img rounded-circle border border-white border-3"
-                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
+                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
+                                        alt=""></a>
                             </div>
                             <!-- Info -->
-                            <h5 class="mb-0"> <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">Sam
-                                    Lanson </a> </h5>
+                            <h5 class="mb-0">{{ auth()->user()->name }} </h5>
                             <small>Web Developer at Webestica</small>
                             <div></div>
                             <!-- User stat START -->
@@ -322,47 +319,43 @@
                                     <a class="nav-link"
                                         href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
                                         <img class="me-2 h-20px fa-fw"
-                                            src="http://localhost/jetstream/public/assets/images/icon/home-outline-filled.svg"
+                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
                                             alt=""><span>Home
                                         </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
-                                            src="http://localhost/jetstream/public/assets/images/icon/medal-outline-filled.svg"
+                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
                                             alt=""><span>Upload Video </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/jetstream/channel/Mg=="> <img class="me-2 h-20px fa-fw"
-                                            src="http://localhost/jetstream/public/assets/images/icon/clock-outline-filled.svg"
+                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
                                             alt=""><span>Your Channel </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/jetstream/watchlater">
                                         <img class="me-2 h-20px fa-fw"
-                                            src="http://localhost/jetstream/public/assets/images/icon/like-outline-filled.svg"
-                                            alt=""><span>Save
-                                            Video </span></a>
+                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
+                                            alt=""><span>Watch Later </span></a>
                                 </li>
+                                <div class="card-footer text-center py-2">
+                                    <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
+                                </div>
+
                                 <!-- <li class="nav-item">
-<a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/My favorites"> <img class="me-2 h-20px fa-fw"
-  src="assets/images/icon/star-outline-filled.svg" alt=""><span>My favorites </span></a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/Wishlist"> <img class="me-2 h-20px fa-fw"
-  src="assets/images/icon/task-done-outline-filled.svg" alt=""><span>Wishlist </span></a>
-</li> -->
                                 <li class="nav-item">
                                     <a class="nav-link"
                                         href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html">
                                         <img class="me-2 h-20px fa-fw"
-                                            src="http://localhost/jetstream/public/assets/images/icon/notification-outlined-filled.svg"
-                                            alt=""><span>Notifications </span></a>
+                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/notification-outlined-filled.svg"
+                                            alt=""><span>Notifications</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
                                         href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/settings.html">
                                         <img class="me-2 h-20px fa-fw"
-                                            src="http://localhost/jetstream/public/assets/images/icon/cog-outline-filled.svg"
+                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/cog-outline-filled.svg"
                                             alt=""><span>Settings
                                         </span></a>
                                 </li>
@@ -370,63 +363,70 @@
                                     <a class="nav-link"
                                         href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/sign-in-advance.html">
                                         <img class="me-2 h-20px fa-fw"
-                                            src="http://localhost/jetstream/public/assets/images/icon/arrow-boxed-outline-filled.svg"
+                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
                                             alt=""><span>Logout </span></a>
                                 </li>
                             </ul>
                             <!-- Side Nav END -->
                         </div>
+
                     </div>
+
                 </div>
+
+
+
                 <!-- Sidenav END -->
 
                 <!-- Main content START -->
                 <div class="page-content">
                     <div class="row mb-4">
+
                         <div class="col-12">
                             <!-- Video main feed -->
                             <div class="owl-carousel owl-theme">
-                                @foreach($videos as $video)
-                                    @foreach($video['posts'] as $posts)
-                                        @if(!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
-                                        <div class="item_{{$posts['id']}}">
-                                                <a href="{{url('/watch/'. $posts['encripted_video_url'])}}">
-                                                <div class="card">
-                                                    <video width="100%" height="100%" autoplay onmouseover="this.play()"
-                                                    onmouseout="this.pause();this.currentTime=0;">
-                                                        <source
-                                                            src="{{'https://spaces3.nyc3.digitaloceanspaces.com/'.$posts['file']}}"
-                                                            type="video/mp4">
-                                                    </video>
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-2">
-                                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
-                                                                    class="thump">
-                                                            </div>
-                                                        </a>
-                                                    <div class="col-10">
-                                                        <div class="detail">
-                                                            {{$posts['title']}}<br />
-                                                            {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                            {{Auth::user()->name;}}
-                                                            <ul class="Views">
-                                                                <li>
-                                                                View:{{ $posts['views']}}
-                                                                </li>
-                                                            </ul>
-                                                            </div>
+                                @foreach ($videos as $video)
+                                    @foreach ($video['posts'] as $posts)
+                                        @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
+                                            <div class="item_{{ $posts['id'] }}">
+                                                <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
+                                                    <div class="card">
+                                                        <video width="100%" height="100%" autoplay
+                                                            onmouseover="this.play()"
+                                                            onmouseout="this.pause();this.currentTime=0;">
+                                                            <source
+                                                                src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
+                                                                type="video/mp4">
+                                                        </video>
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                    <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                                        class="thump">
+                                                                </div>
+                                                </a>
+                                                <div class="col-10">
+                                                    <div class="detail">
+                                                        {{ $posts['title'] }}<br />
+                                                        {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                        {{ Auth::user()->name }}
+                                                        <ul class="Views">
+                                                            <li>
+                                                                View:{{ $posts['views'] }}
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
-                                                @endif
-
                                             </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                @endforeach
+                                        @endif
+
                             </div>
-                            {{-- <div class="rounded py-4 py-sm-5 overflow-hidden position-relative"
+                        </div>
+                    </div>
+                    @endforeach
+                    @endforeach
+                </div>
+                {{-- <div class="rounded py-4 py-sm-5 overflow-hidden position-relative"
                                 style="background-image:url(assets/images/post/16by9/big/02.jpg); background-position: center center; background-size: cover; background-repeat: no-repeat;">
                                 <div class="bg-overlay bg-dark opacity-5"></div>
                                 <div class="p-4 p-sm-5 position-relative">
@@ -449,28 +449,389 @@
                                             class="bi bi-file-earmark-play pe-1"></i>Watch now</a>
                                 </div>
                             </div> --}}
-                            <!-- Video main END -->
-                        </div>
+                <!-- Video main END -->
+            </div>
+            </div>
+            <div class="row g-3 mb-4">
+                <div class="col-12 mt-4">
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <h5 class="mb-md-0">Trending </h5>
+                        <a class="btn btn-sm btn-primary" href="#!">View more video</a>
                     </div>
-                    <div class="row g-3 mb-4">
-                        <div class="col-12 mt-4">
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                                <h5 class="mb-md-0">Trending </h5>
-                                <a class="btn btn-sm btn-primary" href="#!">View more video</a>
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <img class="card-img-top"
+                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/01.jpg"
+                                alt="">
+                            <!-- Play icon -->
+                            <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
+                                <a class="icon-md bg-mode text-secondary rounded-circle" href="video-details.html"> <i
+                                        class="bi bi-play-fill fs-5"> </i> </a>
+                            </div>
+                            <!-- Duration -->
+                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
+                                        class="fa-solid fa-heart"></i></span>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <!-- Video info -->
+                        <div class="card-body">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> Should you become a web
+                                    designer in 2022? </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/01.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Frances Guerrero </a></h6>
+                                    <span class="ms-auto small"> 156.9K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <div class="ratio ratio-16x9 card-img-top overflow-hidden">
+                                <iframe src="https://www.youtube.com/embed/CgEZNJSeofs" title="YouTube video"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body position-relative">
+                            <h6> <a class="stretched-link" href="video-details.html"> Learn web development as
+                                    an absolute beginner </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/02.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Lori Ferguson <i
+                                                class="bi bi-patch-check-fill text-success small"></i> </a>
+                                    </h6>
+                                    <span class="ms-auto small"> 458.4K views</span>
+                                </div>
+                            </div>
+                            <!-- Video title  -->
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <img class="card-img-top"
+                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/02.jpg"
+                                alt="">
+                            <!-- Play icon -->
+                            <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
+                                <a class="icon-md bg-mode text-secondary rounded-circle" href="video-details.html"> <i
+                                        class="bi bi-play-fill fs-5"> </i> </a>
+                            </div>
+                            <!-- Duration -->
+                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:40</span>
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
+                                        class="fa-solid fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> Python tutorial - Python
+                                    for beginners [full course] </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/03.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Louis Crawford </a> </h6>
+                                    <span class="ms-auto small"> 235.4K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <img class="card-img-top"
+                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/03.jpg"
+                                alt="">
+                            <!-- Play icon -->
+                            <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
+                                <a class="icon-md bg-mode text-secondary rounded-circle" href="video-details.html"> <i
+                                        class="bi bi-play-fill fs-5"> </i> </a>
+                            </div>
+                            <!-- Duration -->
+                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">06:12</span>
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
+                                        class="fa-solid fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> One of the greatest
+                                    speeches ever | Steve Jobs </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/04.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Larry Lawson </a> </h6>
+                                    <span class="ms-auto small"> 891.7K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <img class="card-img-top"
+                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/04.jpg"
+                                alt="">
+                            <!-- Play icon -->
+                            <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
+                                <a class="icon-md bg-mode text-secondary rounded-circle" href="video-details.html"> <i
+                                        class="bi bi-play-fill fs-5"> </i> </a>
+                            </div>
+                            <!-- Duration -->
+                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:45</span>
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
+                                        class="fa-solid fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> A trading platform - an
+                                    easy start in trading </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/05.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Joan Wallace </a> </h6>
+                                    <span class="ms-auto small"> 457.2K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <img class="card-img-top"
+                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/05.jpg"
+                                alt="">
+                            <!-- Play icon -->
+                            <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
+                                <a class="icon-md bg-mode text-secondary rounded-circle" href="video-details.html"> <i
+                                        class="bi bi-play-fill fs-5"> </i> </a>
+                            </div>
+                            <!-- Duration -->
+                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
+                                <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
+                                        class="fa-solid fa-heart"></i></span>
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> 8 shocking bitcoin
+                                    crypto predictions for 2022 </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/07.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Carolyn Ortiz </a> </h6>
+                                    <span class="ms-auto small"> 876.2K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+            </div>
+
+            <!-- Official trailer START -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 mt-4">
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <h5 class="mb-md-0">Official Trailer </h5>
+                        <a class="btn btn-sm btn-primary" href="#!">View more video</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <div class="overflow-hidden fullscreen-video w-100">
+                                <!-- HTML video START -->
+                                <div class="player-wrapper card-img-top overflow-hidden">
+                                    <video class="player-html" controls crossorigin="anonymous"
+                                        poster="<?php echo URL::to('/'); ?>/public/assets/images/videos/poster.jpg">
+                                        <source src="assets/images/videos/video-feed.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <!-- HTML video END -->
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body position-relative">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> New movie trailers (2021
+                                    - 2022) September </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/01.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!">Frances Guerrero</a></h6>
+                                    <span class="ms-auto small">145.2K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <!-- Video START -->
+                    <div class="card h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <div class="ratio ratio-16x9 card-img-top overflow-hidden">
+                                <iframe src="https://www.youtube.com/embed/7E45f46yDFI" title="YouTube video"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body position-relative">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> 15 useful apps for
+                                    android smartphones users </a> </h6>
+                            <div class="d-flex mt-2">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/02.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Lori Ferguson <i
+                                                class="bi bi-patch-check-fill text-success small"></i> </a>
+                                    </h6>
+                                    <span class="ms-auto small"> 235.8K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <!-- Video START -->
+                    <div class="card position-relative h-100">
+                        <!-- Video image -->
+                        <div class="card-image">
+                            <div class="ratio ratio-16x9 card-img-top overflow-hidden">
+                                <iframe src="https://player.vimeo.com/video/225888984?h=65630c41c6"
+                                    title="Vimeo video" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <!-- Video info -->
+                        <div class="card-body position-relative">
+                            <!-- Video title  -->
+                            <h6> <a class="stretched-link" href="video-details.html"> The Red notice |
+                                    Official teaser | Netflix </a> </h6>
+                            <div class="d-flex mt-3">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xxs me-2">
+                                    <img class="avatar-img rounded-circle"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/03.jpg" alt="">
+                                </div>
+                                <!-- Avatar name -->
+                                <div>
+                                    <h6 class="mb-0 lh-1"> <a href="#!"> Louis Crawford </a> </h6>
+                                    <span class="ms-auto small"> 785.2K views</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video END -->
+                </div>
+            </div>
+            <!-- Official trailer END -->
+
+            <div class="row g-3 mb-4">
+                <div class="col-12 mt-4">
+                    <h5>Music </h5>
+                </div>
+                <!-- Story START -->
+                <div class="tiny-slider arrow-hover overflow-hidden">
+                    <div class="tiny-slider-inner d-flex" data-arrow="true" data-dots="true" data-loop="true"
+                        data-autoplay="false" data-items-xxl="6" data-items-xl="5" data-items-lg="4"
+                        data-items-md="4" data-items-sm="3" data-items-xs="1" data-gutter="12" data-edge="0">
+                        <div>
                             <!-- Video START -->
                             <div class="card position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
                                     <img class="card-img-top"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/01.jpg"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/06.jpg"
                                         alt="">
                                     <!-- Play icon -->
-                                    <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-mode text-secondary rounded-circle"
-                                            href="video-details.html"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                    <div class="position-absolute top-50 start-50 translate-middle">
+                                        <a class="icon-md bg-danger text-white rounded-circle" href="#">
+                                            <i class="bi bi-play-fill fs-5"> </i> </a>
                                     </div>
                                     <!-- Duration -->
                                     <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
@@ -482,71 +843,45 @@
                                 <!-- Video info -->
                                 <div class="card-body">
                                     <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> Should you become a web
-                                            designer in 2022? </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/01.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Frances Guerrero </a></h6>
-                                            <span class="ms-auto small"> 156.9K views</span>
-                                        </div>
-                                    </div>
+                                    <h6> <a class="stretched-link" href="video-details.html"> 8 shocking
+                                            bitcoin crypto predictions for 2022 </a> </h6>
+                                    <span class="small"> 665.1K views</span>
                                 </div>
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div>
                             <!-- Video START -->
                             <div class="card position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
                                     <div class="ratio ratio-16x9 card-img-top overflow-hidden">
-                                        <iframe src="https://www.youtube.com/embed/CgEZNJSeofs" title="YouTube video"
-                                            allowfullscreen></iframe>
+                                        <iframe src="https://player.vimeo.com/video/169562083?h=5785cc7ede"
+                                            title="Vimeo video" allowfullscreen></iframe>
                                     </div>
                                 </div>
                                 <!-- Video info -->
                                 <div class="card-body position-relative">
-                                    <h6> <a class="stretched-link" href="video-details.html"> Learn web development as
-                                            an absolute beginner </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/02.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Lori Ferguson <i
-                                                        class="bi bi-patch-check-fill text-success small"></i> </a>
-                                            </h6>
-                                            <span class="ms-auto small"> 458.4K views</span>
-                                        </div>
-                                    </div>
                                     <!-- Video title  -->
+                                    <h6> <a class="stretched-link" href="video-details.html"> A trading
+                                            platform - an easy start in trading </a> </h6>
+                                    <span class="small"> 458.3K views</span>
                                 </div>
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div>
                             <!-- Video START -->
                             <div class="card position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
                                     <img class="card-img-top"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/02.jpg"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/09.jpg"
                                         alt="">
                                     <!-- Play icon -->
-                                    <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-mode text-secondary rounded-circle"
-                                            href="video-details.html"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                    <div class="position-absolute top-50 start-50 translate-middle">
+                                        <a class="icon-md bg-danger text-white rounded-circle" href="#">
+                                            <i class="bi bi-play-fill fs-5"> </i> </a>
                                     </div>
                                     <!-- Duration -->
                                     <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
@@ -558,37 +893,25 @@
                                 <!-- Video info -->
                                 <div class="card-body">
                                     <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> Python tutorial - Python
-                                            for beginners [full course] </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/03.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Louis Crawford </a> </h6>
-                                            <span class="ms-auto small"> 235.4K views</span>
-                                        </div>
-                                    </div>
+                                    <h6> <a class="stretched-link" href="video-details.html"> How does the
+                                            stock market work? </a> </h6>
+                                    <span class="small"> 985.1K views</span>
                                 </div>
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div>
                             <!-- Video START -->
                             <div class="card position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
                                     <img class="card-img-top"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/03.jpg"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/10.jpg"
                                         alt="">
                                     <!-- Play icon -->
-                                    <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-mode text-secondary rounded-circle"
-                                            href="video-details.html"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                    <div class="position-absolute top-50 start-50 translate-middle">
+                                        <a class="icon-md bg-danger text-white rounded-circle" href="#">
+                                            <i class="bi bi-play-fill fs-5"> </i> </a>
                                     </div>
                                     <!-- Duration -->
                                     <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
@@ -600,37 +923,25 @@
                                 <!-- Video info -->
                                 <div class="card-body">
                                     <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> One of the greatest
-                                            speeches ever | Steve Jobs </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/04.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Larry Lawson </a> </h6>
-                                            <span class="ms-auto small"> 891.7K views</span>
-                                        </div>
-                                    </div>
+                                    <h6> <a class="stretched-link" href="video-details.html"> How to create a
+                                            app for your e-commerce website </a> </h6>
+                                    <span class="small"> 658.2K views</span>
                                 </div>
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div>
                             <!-- Video START -->
                             <div class="card position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
                                     <img class="card-img-top"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/04.jpg"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/07.jpg"
                                         alt="">
                                     <!-- Play icon -->
-                                    <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-mode text-secondary rounded-circle"
-                                            href="video-details.html"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                    <div class="position-absolute top-50 start-50 translate-middle">
+                                        <a class="icon-md bg-danger text-white rounded-circle" href="#">
+                                            <i class="bi bi-play-fill fs-5"> </i> </a>
                                     </div>
                                     <!-- Duration -->
                                     <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
@@ -642,37 +953,25 @@
                                 <!-- Video info -->
                                 <div class="card-body">
                                     <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> A trading platform - an
-                                            easy start in trading </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/05.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Joan Wallace </a> </h6>
-                                            <span class="ms-auto small"> 457.2K views</span>
-                                        </div>
-                                    </div>
+                                    <h6> <a class="stretched-link" href="video-details.html"> Dilen - When I
+                                            See You (Official Music) </a> </h6>
+                                    <span class="small"> 325.1K views</span>
                                 </div>
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div>
                             <!-- Video START -->
                             <div class="card position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
                                     <img class="card-img-top"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/05.jpg"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/08.jpg"
                                         alt="">
                                     <!-- Play icon -->
-                                    <div class="card-element-hover position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-mode text-secondary rounded-circle"
-                                            href="video-details.html"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                    <div class="position-absolute top-50 start-50 translate-middle">
+                                        <a class="icon-md bg-danger text-white rounded-circle" href="#">
+                                            <i class="bi bi-play-fill fs-5"> </i> </a>
                                     </div>
                                     <!-- Duration -->
                                     <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
@@ -684,369 +983,48 @@
                                 <!-- Video info -->
                                 <div class="card-body">
                                     <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> 8 shocking bitcoin
-                                            crypto predictions for 2022 </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/07.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Carolyn Ortiz </a> </h6>
-                                            <span class="ms-auto small"> 876.2K views</span>
-                                        </div>
-                                    </div>
+                                    <h6> <a class="stretched-link" href="video-details.html"> Complete
+                                            cryptocurrency course - start learning </a> </h6>
+                                    <span class="small"> 785.9K views</span>
                                 </div>
                             </div>
                             <!-- Video END -->
                         </div>
-                    </div>
-
-                    <!-- Official trailer START -->
-                    <div class="row g-3 mb-4">
-                        <div class="col-12 mt-4">
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                                <h5 class="mb-md-0">Official Trailer </h5>
-                                <a class="btn btn-sm btn-primary" href="#!">View more video</a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4">
+                        <div>
                             <!-- Video START -->
                             <div class="card position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
-                                    <div class="overflow-hidden fullscreen-video w-100">
-                                        <!-- HTML video START -->
-                                        <div class="player-wrapper card-img-top overflow-hidden">
-                                            <video class="player-html" controls crossorigin="anonymous"
-                                                poster="<?php echo URL::to('/'); ?>/public/assets/images/videos/poster.jpg">
-                                                <source src="assets/images/videos/video-feed.mp4" type="video/mp4">
-                                            </video>
-                                        </div>
-                                        <!-- HTML video END -->
+                                    <img class="card-img-top"
+                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/01.jpg"
+                                        alt="">
+                                    <!-- Play icon -->
+                                    <div class="position-absolute top-50 start-50 translate-middle">
+                                        <a class="icon-md bg-danger text-white rounded-circle" href="#">
+                                            <i class="bi bi-play-fill fs-5"> </i> </a>
+                                    </div>
+                                    <!-- Duration -->
+                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
+                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
+                                                class="fa-solid fa-heart"></i></span>
                                     </div>
                                 </div>
                                 <!-- Video info -->
-                                <div class="card-body position-relative">
+                                <div class="card-body">
                                     <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> New movie trailers (2021
-                                            - 2022) September </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/01.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!">Frances Guerrero</a></h6>
-                                            <span class="ms-auto small">145.2K views</span>
-                                        </div>
-                                    </div>
+                                    <h6> <a class="stretched-link" href="video-details.html"> Should you
+                                            become a web designer in 2022? </a> </h6>
+                                    <span class="small"> 785.9K views</span>
                                 </div>
                             </div>
                             <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-lg-4">
-                            <!-- Video START -->
-                            <div class="card h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <div class="ratio ratio-16x9 card-img-top overflow-hidden">
-                                        <iframe src="https://www.youtube.com/embed/7E45f46yDFI" title="YouTube video"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body position-relative">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> 15 useful apps for
-                                            android smartphones users </a> </h6>
-                                    <div class="d-flex mt-2">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/02.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Lori Ferguson <i
-                                                        class="bi bi-patch-check-fill text-success small"></i> </a>
-                                            </h6>
-                                            <span class="ms-auto small"> 235.8K views</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-lg-4">
-                            <!-- Video START -->
-                            <div class="card position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <div class="ratio ratio-16x9 card-img-top overflow-hidden">
-                                        <iframe src="https://player.vimeo.com/video/225888984?h=65630c41c6"
-                                            title="Vimeo video" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body position-relative">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> The Red notice |
-                                            Official teaser | Netflix </a> </h6>
-                                    <div class="d-flex mt-3">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-xxs me-2">
-                                            <img class="avatar-img rounded-circle"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/03.jpg"
-                                                alt="">
-                                        </div>
-                                        <!-- Avatar name -->
-                                        <div>
-                                            <h6 class="mb-0 lh-1"> <a href="#!"> Louis Crawford </a> </h6>
-                                            <span class="ms-auto small"> 785.2K views</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Video END -->
-                        </div>
-                    </div>
-                    <!-- Official trailer END -->
-
-                    <div class="row g-3 mb-4">
-                        <div class="col-12 mt-4">
-                            <h5>Music </h5>
-                        </div>
-                        <!-- Story START -->
-                        <div class="tiny-slider arrow-hover overflow-hidden">
-                            <div class="tiny-slider-inner d-flex" data-arrow="true" data-dots="true"
-                                data-loop="true" data-autoplay="false" data-items-xxl="6" data-items-xl="5"
-                                data-items-lg="4" data-items-md="4" data-items-sm="3" data-items-xs="1"
-                                data-gutter="12" data-edge="0">
-                                <div>
-                                    <!-- Video START -->
-                                    <div class="card position-relative h-100">
-                                        <!-- Video image -->
-                                        <div class="card-image">
-                                            <img class="card-img-top"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/06.jpg"
-                                                alt="">
-                                            <!-- Play icon -->
-                                            <div class="position-absolute top-50 start-50 translate-middle">
-                                                <a class="icon-md bg-danger text-white rounded-circle" href="#">
-                                                    <i class="bi bi-play-fill fs-5"> </i> </a>
-                                            </div>
-                                            <!-- Duration -->
-                                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                        class="fa-solid fa-heart"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- Video info -->
-                                        <div class="card-body">
-                                            <!-- Video title  -->
-                                            <h6> <a class="stretched-link" href="video-details.html"> 8 shocking
-                                                    bitcoin crypto predictions for 2022 </a> </h6>
-                                            <span class="small"> 665.1K views</span>
-                                        </div>
-                                    </div>
-                                    <!-- Video END -->
-                                </div>
-                                <div>
-                                    <!-- Video START -->
-                                    <div class="card position-relative h-100">
-                                        <!-- Video image -->
-                                        <div class="card-image">
-                                            <div class="ratio ratio-16x9 card-img-top overflow-hidden">
-                                                <iframe src="https://player.vimeo.com/video/169562083?h=5785cc7ede"
-                                                    title="Vimeo video" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                        <!-- Video info -->
-                                        <div class="card-body position-relative">
-                                            <!-- Video title  -->
-                                            <h6> <a class="stretched-link" href="video-details.html"> A trading
-                                                    platform - an easy start in trading </a> </h6>
-                                            <span class="small"> 458.3K views</span>
-                                        </div>
-                                    </div>
-                                    <!-- Video END -->
-                                </div>
-                                <div>
-                                    <!-- Video START -->
-                                    <div class="card position-relative h-100">
-                                        <!-- Video image -->
-                                        <div class="card-image">
-                                            <img class="card-img-top"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/09.jpg"
-                                                alt="">
-                                            <!-- Play icon -->
-                                            <div class="position-absolute top-50 start-50 translate-middle">
-                                                <a class="icon-md bg-danger text-white rounded-circle" href="#">
-                                                    <i class="bi bi-play-fill fs-5"> </i> </a>
-                                            </div>
-                                            <!-- Duration -->
-                                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:40</span>
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                        class="fa-solid fa-heart"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- Video info -->
-                                        <div class="card-body">
-                                            <!-- Video title  -->
-                                            <h6> <a class="stretched-link" href="video-details.html"> How does the
-                                                    stock market work? </a> </h6>
-                                            <span class="small"> 985.1K views</span>
-                                        </div>
-                                    </div>
-                                    <!-- Video END -->
-                                </div>
-                                <div>
-                                    <!-- Video START -->
-                                    <div class="card position-relative h-100">
-                                        <!-- Video image -->
-                                        <div class="card-image">
-                                            <img class="card-img-top"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/10.jpg"
-                                                alt="">
-                                            <!-- Play icon -->
-                                            <div class="position-absolute top-50 start-50 translate-middle">
-                                                <a class="icon-md bg-danger text-white rounded-circle" href="#">
-                                                    <i class="bi bi-play-fill fs-5"> </i> </a>
-                                            </div>
-                                            <!-- Duration -->
-                                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">06:12</span>
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                        class="fa-solid fa-heart"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- Video info -->
-                                        <div class="card-body">
-                                            <!-- Video title  -->
-                                            <h6> <a class="stretched-link" href="video-details.html"> How to create a
-                                                    app for your e-commerce website </a> </h6>
-                                            <span class="small"> 658.2K views</span>
-                                        </div>
-                                    </div>
-                                    <!-- Video END -->
-                                </div>
-                                <div>
-                                    <!-- Video START -->
-                                    <div class="card position-relative h-100">
-                                        <!-- Video image -->
-                                        <div class="card-image">
-                                            <img class="card-img-top"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/07.jpg"
-                                                alt="">
-                                            <!-- Play icon -->
-                                            <div class="position-absolute top-50 start-50 translate-middle">
-                                                <a class="icon-md bg-danger text-white rounded-circle" href="#">
-                                                    <i class="bi bi-play-fill fs-5"> </i> </a>
-                                            </div>
-                                            <!-- Duration -->
-                                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:45</span>
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                        class="fa-solid fa-heart"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- Video info -->
-                                        <div class="card-body">
-                                            <!-- Video title  -->
-                                            <h6> <a class="stretched-link" href="video-details.html"> Dilen - When I
-                                                    See You (Official Music) </a> </h6>
-                                            <span class="small"> 325.1K views</span>
-                                        </div>
-                                    </div>
-                                    <!-- Video END -->
-                                </div>
-                                <div>
-                                    <!-- Video START -->
-                                    <div class="card position-relative h-100">
-                                        <!-- Video image -->
-                                        <div class="card-image">
-                                            <img class="card-img-top"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/08.jpg"
-                                                alt="">
-                                            <!-- Play icon -->
-                                            <div class="position-absolute top-50 start-50 translate-middle">
-                                                <a class="icon-md bg-danger text-white rounded-circle" href="#">
-                                                    <i class="bi bi-play-fill fs-5"> </i> </a>
-                                            </div>
-                                            <!-- Duration -->
-                                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                        class="fa-solid fa-heart"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- Video info -->
-                                        <div class="card-body">
-                                            <!-- Video title  -->
-                                            <h6> <a class="stretched-link" href="video-details.html"> Complete
-                                                    cryptocurrency course - start learning </a> </h6>
-                                            <span class="small"> 785.9K views</span>
-                                        </div>
-                                    </div>
-                                    <!-- Video END -->
-                                </div>
-                                <div>
-                                    <!-- Video START -->
-                                    <div class="card position-relative h-100">
-                                        <!-- Video image -->
-                                        <div class="card-image">
-                                            <img class="card-img-top"
-                                                src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/01.jpg"
-                                                alt="">
-                                            <!-- Play icon -->
-                                            <div class="position-absolute top-50 start-50 translate-middle">
-                                                <a class="icon-md bg-danger text-white rounded-circle" href="#">
-                                                    <i class="bi bi-play-fill fs-5"> </i> </a>
-                                            </div>
-                                            <!-- Duration -->
-                                            <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                                <span
-                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                        class="fa-solid fa-heart"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- Video info -->
-                                        <div class="card-body">
-                                            <!-- Video title  -->
-                                            <h6> <a class="stretched-link" href="video-details.html"> Should you
-                                                    become a web designer in 2022? </a> </h6>
-                                            <span class="small"> 785.9K views</span>
-                                        </div>
-                                    </div>
-                                    <!-- Video END -->
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Main content END -->
+            </div>
+            </div>
+            <!-- Main content END -->
 
             </div>
             <!-- Container END -->
@@ -1069,16 +1047,16 @@ JS libraries, plugins and custom scripts -->
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
         <script>
-        $(function() {
-            // Owl Carousel
-            var owl = $(".owl-carousel");
-            owl.owlCarousel({
-                items: 4,
-                margin: 10,
-                loop: true,
-                nav: true
+            $(function() {
+                // Owl Carousel
+                var owl = $(".owl-carousel");
+                owl.owlCarousel({
+                    items: 4,
+                    margin: 10,
+                    loop: true,
+                    nav: true
+                });
             });
-        });
         </script>
     </body>
 
