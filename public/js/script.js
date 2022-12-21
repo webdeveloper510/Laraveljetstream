@@ -5,19 +5,22 @@ function subscribe (channel_id, flag) {
     newestOnTop: true,
     positionClass: 'toast-top-center',
   };
+
   $.ajax ({
     url: base_url + '/subscribe',
     type: 'post',
     data: {
       channel_id: channel_id,
-      count: 1,
       _token: '{{ csrf_token() }}',
       flag: flag,
     },
+
     success: function (data) {
-      console.log (data);
+      let subs_count = $('#subscribe').html();
+      let add = 1;
+      let total_count = (add-subs_count);
+      $('#subscribe').html(total_count);
       if (data.code) {
-        $ ('#subscribe').html (data.count);
         toastr.success (data.message);
       }
       if (data.code == 1) {
@@ -80,6 +83,7 @@ console.log(auth_name);
     data: form.serialize (),
     success: function (data) {
       console.log(data);
+
      var body = $('#body').val();
       $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/profile/S7Sd4lb5SbIZcFsjRoCM9rw9mKpDY4jdVyZhJ653.jpg' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
       "<b>"+auth_name+"</b>1 second ago</p><p class=''>"+body+"</p><div class='d-flex'>"+
@@ -105,8 +109,9 @@ $ ('#save_reply').submit (function (e) {
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
-      console.log(data);
-      $(".comment_reply_"+ data_id_value).append("<div class='reply'>gyuj</div>");
+    var body = $('.body1').val();
+
+      $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
     },
   });
 });

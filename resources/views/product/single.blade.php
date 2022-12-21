@@ -516,8 +516,8 @@ Header END -->
                                                 <div>
                                                     <h6 class="mb-0">{{ $videos[0]['user']['name'] }}</h6>
                                                     <nav class="nav nav-divider small">
-                                                        <span class="nav-item" id="subscribe">{{ $subscriber }}
-                                                            subscribers</span>
+                                                        <span class="nav-item" id="subscribe">{{ $subscriber }}</span>
+                                                        <span>subscribers</span>
                                                     </nav>
                                                 </div>
                                                 <div class="col-md-3 text-end">
@@ -828,7 +828,7 @@ Header END -->
                                                     <div class="col-md-12 common">
                                                         <form id="save_reply">
                                                         <div>
-                                                            <input type="text" class="form-control "name="body"
+                                                            <input type="text" class="form-control body1" name="body"
                                                                 class="body_reply" placeholder="Reply..."
                                                                 required>
                                                             <input type="hidden" name="post_id" class="post_id"
@@ -855,7 +855,7 @@ Header END -->
                                 <form id="comment">
                                     <div class="commentBox">
                                         <input type="text" class="form-control" autocomplete="off" name="body"
-                                            id="body" placeholder="Message..." required>
+                                            id="body" placeholder="Add a comment..." required>
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
                                     <div class="text-end mt-1">
@@ -1142,13 +1142,12 @@ JS libraries, plugins and custom scripts -->
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
-    {{-- ------------------send auth user detail script file-------------------------- --}}
+    {{-- ------------------send auth user detail in script file-------------------------- --}}
 <script>
     var Auth_user = {!! auth()->user()->toJson() !!};
-    
   </script>
 
-  {{-- ----------------star rating------------------ --}}
+  {{------------------star rating--------------------}}
     <script>
         $(document).ready(function() {
 
@@ -1203,7 +1202,6 @@ JS libraries, plugins and custom scripts -->
             $('.success-box').fadeIn(200);
             $('.success-box div.text-message').html("<span>" + msg + "</span>");
         }
-
 
 
         getStars({{ round($averageRating, 1) }}, {{ $videos[0]['id'] }})
