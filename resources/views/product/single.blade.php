@@ -19,6 +19,7 @@
                 max-width: 500px;
             }
 
+
             div#social-links ul {
                 display: flex;
                 padding: 3px;
@@ -796,7 +797,7 @@ Header END -->
                                     </div>
                                 </form>
                             </div> --}}
-                            <div class=" comments">
+                            <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
                                     <div>
                                         <div class="row mt-3">
@@ -814,7 +815,7 @@ Header END -->
                                                     </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                                 </p>
                                                 <p class="parag">{{ $commet['body'] }}</p>
-                                                <div class="comment_reply">
+                                                <div class="comment_reply_{{$videos[0]['id']}}">
                                                     @foreach ($commet['replies'] as $key => $reply)
                                                         <div class="reply">{{ $reply['body'] }}</div>
                                                     @endforeach
@@ -825,20 +826,20 @@ Header END -->
                                                 </div>
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
-
+                                                        <form id="save_reply">
                                                         <div>
                                                             <input type="text" class="form-control "name="body"
-                                                                id="exampleFormControlInput1" placeholder="Reply..."
+                                                                class="body_reply" placeholder="Reply..."
                                                                 required>
-                                                            <input type="hidden" name="post_id"
+                                                            <input type="hidden" name="post_id" class="post_id"
                                                                 value="{{ $videos[0]['id'] }}" />
-                                                            <input type="hidden" name="comment_id"
-                                                                value="{{ $commet['id'] }}" />
+                                                            <input type="hidden" name="comment_id" class="comment_id"
+                                                                value="{{ $commet['id'] }}"/>
                                                         </div>
                                                         <div class="text-end mt-3">
                                                             <button type="submit" class="btn btn-primary btn-sm"
-                                                                id="exampleFormControlInput1"
-                                                                style="width:110px;">COMMENT</button>
+                                                                data-id="{{$videos[0]['id']}}"
+                                                                style="width:110px;">REPLY</button>
                                                         </div>
                                                         </form>
                                                     </div>
@@ -854,7 +855,7 @@ Header END -->
                                 <form id="comment">
                                     <div class="commentBox">
                                         <input type="text" class="form-control" autocomplete="off" name="body"
-                                            id="exampleFormControlInput1" placeholder="Message..." required>
+                                            id="body" placeholder="Message..." required>
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
                                     <div class="text-end mt-1">
@@ -1141,6 +1142,13 @@ JS libraries, plugins and custom scripts -->
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
+    {{-- ------------------send auth user detail script file-------------------------- --}}
+<script>
+    var Auth_user = {!! auth()->user()->toJson() !!};
+    
+  </script>
+
+  {{-- ----------------star rating------------------ --}}
     <script>
         $(document).ready(function() {
 

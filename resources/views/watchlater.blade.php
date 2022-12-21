@@ -1,50 +1,62 @@
 <x-app-layout>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Social - Network, Community and Event Theme</title>
+    <!DOCTYPE html>
+    <html lang="en">
 
-	<!-- Meta Tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Webestica.com">
-	<meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
+    <head>
+        <title>Social - Network, Community and Event Theme</title>
 
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="assets/images/favicon.ico">
+        <!-- Meta Tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Webestica.com">
+        <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
 
-	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
-  <link rel="stylesheet" type="text/css" href="assets/vendor/dropzone/dist/dropzone.css" />
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
 
-  <!-- Theme CSS -->
-	{{-- <link id="style-switch" rel="stylesheet" type="text/css" href="assets/css/style.css"> --}}
-    <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
-</head>
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="assets/vendor/dropzone/dist/dropzone.css" />
 
-<body>
+        <!-- Theme CSS -->
+        {{-- <link id="style-switch" rel="stylesheet" type="text/css" href="assets/css/style.css"> --}}
+        <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
+        <style>
+            .moovie {
+                width: 150px !important;
+                height: 160px !important;
+            }
 
-<!-- =======================
+            p.small.text-center.mt-1 {
+                color: dimgrey;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- =======================
 Header START -->
-<!-- <header class="navbar-light fixed-top header-static bg-mode"> -->
+        <!-- <header class="navbar-light fixed-top header-static bg-mode"> -->
 
 
-	<!-- <nav class="navbar navbar-expand-lg">
-		<div class="container">
+        <!-- <nav class="navbar navbar-expand-lg">
+  <div class="container">
 
-			<a class="navbar-brand" href="index.html">
+   <a class="navbar-brand" href="index.html">
         <img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
-				<img class="dark-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
-			</a>
+    <img class="dark-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
+   </a>
 
 
 
-			<button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+   <button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-animation">
           <span></span>
           <span></span>
@@ -53,7 +65,7 @@ Header START -->
       </button>
 
 
-			<div class="collapse navbar-collapse" id="navbarCollapse">
+   <div class="collapse navbar-collapse" id="navbarCollapse">
 
 
         <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
@@ -66,89 +78,89 @@ Header START -->
         </div>
 
 
-				<ul class="navbar-nav navbar-nav-scroll ms-auto">
+    <ul class="navbar-nav navbar-nav-scroll ms-auto">
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo</a>
-						<ul class="dropdown-menu" aria-labelledby="homeMenu">
-							<li> <a class="dropdown-item" href="index.html">Home default</a></li>
-							<li> <a class="dropdown-item" href="index-classic.html">Home classic</a></li>
-							<li> <a class="dropdown-item" href="index-post.html">Home post</a></li>
-							<li> <a class="dropdown-item" href="index-video.html">Home video</a></li>
-							<li> <a class="dropdown-item" href="index-event.html">Home event</a></li>
-							<li> <a class="dropdown-item" href="landing.html">Landing page</a></li>
-							<li> <a class="dropdown-item" href="app-download.html">App download</a></li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo</a>
+      <ul class="dropdown-menu" aria-labelledby="homeMenu">
+       <li> <a class="dropdown-item" href="index.html">Home default</a></li>
+       <li> <a class="dropdown-item" href="index-classic.html">Home classic</a></li>
+       <li> <a class="dropdown-item" href="index-post.html">Home post</a></li>
+       <li> <a class="dropdown-item" href="index-video.html">Home video</a></li>
+       <li> <a class="dropdown-item" href="index-event.html">Home event</a></li>
+       <li> <a class="dropdown-item" href="landing.html">Landing page</a></li>
+       <li> <a class="dropdown-item" href="app-download.html">App download</a></li>
               <li class="dropdown-divider"></li>
-							<li>
-								<a class="dropdown-item" href="https://themes.getbootstrap.com/store/webestica/" target="_blank">
-									<i class="text-success fa-fw bi bi-cloud-download-fill me-2"></i>Buy Social!
-								</a>
-							</li>
-						</ul>
-					</li>
+       <li>
+        <a class="dropdown-item" href="https://themes.getbootstrap.com/store/webestica/" target="_blank">
+         <i class="text-success fa-fw bi bi-cloud-download-fill me-2"></i>Buy Social!
+        </a>
+       </li>
+      </ul>
+     </li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-							<li> <a class="dropdown-item" href="albums.html">Albums</a></li>
-							<li> <a class="dropdown-item" href="celebration.html">Celebration</a></li>
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+      <ul class="dropdown-menu" aria-labelledby="pagesMenu">
+       <li> <a class="dropdown-item" href="albums.html">Albums</a></li>
+       <li> <a class="dropdown-item" href="celebration.html">Celebration</a></li>
               <li> <a class="dropdown-item" href="messaging.html">Messaging</a></li>
 
-							<li class="dropdown-submenu dropend">
+       <li class="dropdown-submenu dropend">
                 <a class="dropdown-item dropdown-toggle" href="#!">Profile</a>
-								<ul class="dropdown-menu" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="my-profile.html">Feed</a> </li>
-									<li> <a class="dropdown-item" href="my-profile-about.html">About</a> </li>
-									<li> <a class="dropdown-item" href="my-profile-connections.html">Connections</a> </li>
-									<li> <a class="dropdown-item" href="my-profile-media.html">Media</a> </li>
-									<li> <a class="dropdown-item" href="my-profile-videos.html">Videos</a> </li>
-									<li> <a class="dropdown-item" href="my-profile-events.html">Events</a> </li>
-									<li> <a class="dropdown-item" href="my-profile-activity.html">Activity</a> </li>
-								</ul>
-							</li>
-							<li> <a class="dropdown-item" href="events.html">Events</a></li>
-							<li> <a class="dropdown-item" href="events-2.html">Events 2</a></li>
-							<li> <a class="dropdown-item" href="event-details.html">Event details</a></li>
-							<li> <a class="dropdown-item" href="event-details-2.html">Event details 2</a></li>
-							<li> <a class="dropdown-item" href="groups.html">Groups</a></li>
-							<li> <a class="dropdown-item" href="group-details.html">Group details</a></li>
-							<li> <a class="dropdown-item" href="post-videos.html">Post videos</a></li>
-							<li> <a class="dropdown-item" href="post-video-details.html">Post video details</a></li>
-							<li> <a class="dropdown-item" href="post-details.html">Post details</a></li>
-							<li> <a class="dropdown-item" href="video-details.html">Video details</a></li>
+        <ul class="dropdown-menu" data-bs-popper="none">
+         <li> <a class="dropdown-item" href="my-profile.html">Feed</a> </li>
+         <li> <a class="dropdown-item" href="my-profile-about.html">About</a> </li>
+         <li> <a class="dropdown-item" href="my-profile-connections.html">Connections</a> </li>
+         <li> <a class="dropdown-item" href="my-profile-media.html">Media</a> </li>
+         <li> <a class="dropdown-item" href="my-profile-videos.html">Videos</a> </li>
+         <li> <a class="dropdown-item" href="my-profile-events.html">Events</a> </li>
+         <li> <a class="dropdown-item" href="my-profile-activity.html">Activity</a> </li>
+        </ul>
+       </li>
+       <li> <a class="dropdown-item" href="events.html">Events</a></li>
+       <li> <a class="dropdown-item" href="events-2.html">Events 2</a></li>
+       <li> <a class="dropdown-item" href="event-details.html">Event details</a></li>
+       <li> <a class="dropdown-item" href="event-details-2.html">Event details 2</a></li>
+       <li> <a class="dropdown-item" href="groups.html">Groups</a></li>
+       <li> <a class="dropdown-item" href="group-details.html">Group details</a></li>
+       <li> <a class="dropdown-item" href="post-videos.html">Post videos</a></li>
+       <li> <a class="dropdown-item" href="post-video-details.html">Post video details</a></li>
+       <li> <a class="dropdown-item" href="post-details.html">Post details</a></li>
+       <li> <a class="dropdown-item" href="video-details.html">Video details</a></li>
               <li> <a class="dropdown-item" href="blog.html">Blog</a></li>
-							<li> <a class="dropdown-item" href="blog-details.html">Blog details</a></li>
+       <li> <a class="dropdown-item" href="blog-details.html">Blog details</a></li>
 
 
-							<li class="dropdown-divider"></li>
-							<li class="dropdown-submenu dropend">
-								<a class="dropdown-item dropdown-toggle" href="#">Dropdown levels</a>
-								<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
-									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+       <li class="dropdown-divider"></li>
+       <li class="dropdown-submenu dropend">
+        <a class="dropdown-item dropdown-toggle" href="#">Dropdown levels</a>
+        <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+         <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+         <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
 
-									<li class="dropdown-submenu dropstart">
-										<a class="dropdown-item dropdown-toggle" href="#">Dropdown (start)</a>
-										<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
-											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-										</ul>
-									</li>
-									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
-								</ul>
-							</li>
-						</ul>
-					</li>
+         <li class="dropdown-submenu dropstart">
+          <a class="dropdown-item dropdown-toggle" href="#">Dropdown (start)</a>
+          <ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+           <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+           <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+          </ul>
+         </li>
+         <li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
 
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account </a>
-						<ul class="dropdown-menu" aria-labelledby="postMenu">
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account </a>
+      <ul class="dropdown-menu" aria-labelledby="postMenu">
               <li> <a class="dropdown-item" href="create-page.html">Create a page</a></li>
-							<li> <a class="dropdown-item" href="settings.html">Settings</a> </li>
-							<li> <a class="dropdown-item" href="notifications.html">Notifications</a> </li>
-							<li> <a class="dropdown-item" href="help.html">Help center</a> </li>
-							<li> <a class="dropdown-item" href="help-details.html">Help details</a> </li>
+       <li> <a class="dropdown-item" href="settings.html">Settings</a> </li>
+       <li> <a class="dropdown-item" href="notifications.html">Notifications</a> </li>
+       <li> <a class="dropdown-item" href="help.html">Help center</a> </li>
+       <li> <a class="dropdown-item" href="help-details.html">Help details</a> </li>
 
               <li class="dropdown-submenu dropstart">
                 <a class="dropdown-item dropdown-toggle" href="#">Authentication</a>
@@ -165,34 +177,34 @@ Header START -->
               <li> <a class="dropdown-item" href="error-404.html">Error 404</a> </li>
               <li> <a class="dropdown-item" href="offline.html">Offline</a> </li>
               <li> <a class="dropdown-item" href="privacy-and-terms.html">Privacy & terms</a> </li>
-						</ul>
-					</li>
+      </ul>
+     </li>
 
 
-					<li class="nav-item">
-						<a class="nav-link" href="my-profile-connections.html">My network</a>
-					</li>
-				</ul>
-			</div>
+     <li class="nav-item">
+      <a class="nav-link" href="my-profile-connections.html">My network</a>
+     </li>
+    </ul>
+   </div>
 
 
 
-			<ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
-				<li class="nav-item ms-2">
-					<a class="nav-link icon-md btn btn-light p-0" href="messaging.html">
-						<i class="bi bi-chat-left-text-fill fs-6"> </i>
-					</a>
-				</li>
+   <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+    <li class="nav-item ms-2">
+     <a class="nav-link icon-md btn btn-light p-0" href="messaging.html">
+      <i class="bi bi-chat-left-text-fill fs-6"> </i>
+     </a>
+    </li>
         <li class="nav-item ms-2">
-					<a class="nav-link icon-md btn btn-light p-0" href="settings.html">
-						<i class="bi bi-gear-fill fs-6"> </i>
-					</a>
-				</li>
+     <a class="nav-link icon-md btn btn-light p-0" href="settings.html">
+      <i class="bi bi-gear-fill fs-6"> </i>
+     </a>
+    </li>
         <li class="nav-item dropdown ms-2">
-					<a class="nav-link icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+     <a class="nav-link icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
             <span class="badge-notif animation-blink"></span>
-						<i class="bi bi-bell-fill fs-6"> </i>
-					</a>
+      <i class="bi bi-bell-fill fs-6"> </i>
+     </a>
           <div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0" aria-labelledby="notifDropdown">
             <div class="card">
               <div class="card-header d-flex justify-content-between align-items-center">
@@ -267,13 +279,13 @@ Header START -->
               </div>
             </div>
           </div>
-				</li>
+    </li>
 
 
         <li class="nav-item ms-2 dropdown">
-					<a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-						<img class="avatar-img rounded-2" src="assets/images/avatar/07.jpg" alt="">
-					</a>
+     <a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+      <img class="avatar-img rounded-2" src="assets/images/avatar/07.jpg" alt="">
+     </a>
           <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3" aria-labelledby="profileDropdown">
 
             <li class="px-3">
@@ -315,97 +327,105 @@ Header START -->
             </li>
 
           </ul>
-				</li>
+    </li>
 
-			</ul>
+   </ul>
 
-		</div>
-	</nav> -->
+  </div>
+ </nav> -->
 
-<!-- </header> -->
-<!-- =======================
+        <!-- </header> -->
+        <!-- =======================
 Header END -->
 
-<!-- **************** MAIN CONTENT START **************** -->
-<main>
+        <!-- **************** MAIN CONTENT START **************** -->
+        <main>
 
-  <!-- Container START -->
-  <div class="container-fluid">
-    <div class="row g-4">
+            <!-- Container START -->
+            <div class="container-fluid">
+                <div class="row g-4">
 
-      <!-- Sidenav START -->
-      <div class="col-lg-3">
+                    <!-- Sidenav START -->
+                    <div class="col-lg-3">
 
-        <!-- Advanced filter responsive toggler START -->
-        <div class="d-flex align-items-center d-lg-none">
-          <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-            <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
-            <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
-          </button>
-        </div>
-        <!-- Advanced filter responsive toggler END -->
+                        <!-- Advanced filter responsive toggler START -->
+                        <div class="d-flex align-items-center d-lg-none">
+                            <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
+                                <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+                            </button>
+                        </div>
+                        <!-- Advanced filter responsive toggler END -->
 
-        <!-- Navbar START-->
-        <nav class="navbar navbar-expand-lg mx-0">
-          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-            <!-- Offcanvas header -->
-            <div class="offcanvas-header">
-              <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
+                        <!-- Navbar START-->
+                        <nav class="navbar navbar-expand-lg mx-0">
+                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
+                                <!-- Offcanvas header -->
+                                <div class="offcanvas-header">
+                                    <button type="button" class="btn-close text-reset ms-auto"
+                                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
 
-            <!-- Offcanvas body -->
-            <div class="offcanvas-body d-block px-2 px-lg-0">
-              <!-- Card START -->
-              <div class="card overflow-hidden">
-                <!-- Cover image -->
-                <div class="h-50px" style="background-image:url(assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
-                  <!-- Card body START -->
-                  <div class="card-body pt-0">
-                    <div class="text-center">
-                    <!-- Avatar -->
-                    <div class="avatar avatar-lg mb-3">
+                                <!-- Offcanvas body -->
+                                <div class="offcanvas-body d-block px-2 px-lg-0">
+                                    <!-- Card START -->
+                                    <div class="card overflow-hidden">
+                                        <!-- Cover image -->
+                                        <div class="h-50px"
+                                            style="background-image:url(assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                                        </div>
+                                        <!-- Card body START -->
+                                        <div class="card-body pt-0">
+                                            <div class="text-center">
+                                                <!-- Avatar -->
+                                                <div class="avatar avatar-lg mb-3">
 
-                                    <img
-                                        class="avatar-img rounded-circle border border-white border-3"
-                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt="">
-                            </div>
-                    <!-- Info -->
-                    <a href="<?php echo URL::to('/'); ?>/channel/Mg=="><h5 class="mb-0"> {{auth()->user()->name}} </h5></a>
-                    <small style="color: black">1 Subscribers</small>
+                                                    <img class="avatar-img rounded-circle border border-white border-3"
+                                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
+                                                        alt="">
+                                                </div>
+                                                <!-- Info -->
+                                                <a href="<?php echo URL::to('/'); ?>/channel/Mg==">
+                                                    <h5 class="mb-0"> {{ auth()->user()->name }} </h5>
+                                                </a>
+                                                <small style="color: black">1 Subscribers</small>
 
 
-                  </div>
+                                            </div>
 
-                  <!-- Divider -->
-                  <hr>
+                                            <!-- Divider -->
+                                            <hr>
 
-                  <!-- Side Nav START -->
-                  <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                    <li class="nav-item">
-                        <a class="nav-link"
-                            href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
-                            <img class="me-2 h-20px fa-fw"
-                                src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
-                                alt=""><span>Home
-                            </span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
-                                src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
-                                alt=""><span>Upload Video </span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/jetstream/channel/Mg=="> <img class="me-2 h-20px fa-fw"
-                                src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
-                                alt=""><span>Your Channel </span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/jetstream/watchlater">
-                            <img class="me-2 h-20px fa-fw"
-                                src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
-                                alt=""><span>Watch Later </span></a>
-                    </li>
-                    {{-- <li class="nav-item">
+                                            <!-- Side Nav START -->
+                                            <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                                                <li class="nav-item">
+                                                    <a class="nav-link"
+                                                        href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+                                                        <img class="me-2 h-20px fa-fw"
+                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
+                                                            alt=""><span>Home
+                                                        </span></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/jetstream/uploadpage"> <img
+                                                            class="me-2 h-20px fa-fw"
+                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
+                                                            alt=""><span>Upload Video </span></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/jetstream/channel/Mg=="> <img
+                                                            class="me-2 h-20px fa-fw"
+                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
+                                                            alt=""><span>Your Channel </span></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/jetstream/watchlater">
+                                                        <img class="me-2 h-20px fa-fw"
+                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
+                                                            alt=""><span>Watch Later </span></a>
+                                                </li>
+                                                {{-- <li class="nav-item">
                     <li class="nav-item">
                         <a class="nav-link"
                             href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html">
@@ -428,111 +448,143 @@ Header END -->
                                 src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
                                 alt=""><span>Logout </span></a>
                     </li> --}}
-                </ul>
-                  <!-- Side Nav END -->
-                </div>
-                <!-- Card body END -->
-                <!-- Card footer -->
-                <div class="card-footer text-center py-2">
-                  <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
-                </div>
-              </div>
-              <!-- Card END -->
+                                            </ul>
+                                            <!-- Side Nav END -->
+                                        </div>
+                                        <!-- Card body END -->
+                                        <!-- Card footer -->
+                                        <div class="card-footer text-center py-2">
+                                            <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
+                                        </div>
+                                    </div>
+                                    <!-- Card END -->
 
-              <!-- Helper link START -->
-              <ul class="nav small mt-4 justify-content-center lh-1">
-                <li class="nav-item">
-                  <a class="nav-link" href="my-profile-about.html">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="settings.html">Settings</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" target="_blank" href="https://support.webestica.com/login">Support </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" target="_blank" href="docs/index.html">Docs </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="help.html">Help</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="privacy-and-terms.html">Privacy & terms</a>
-                </li>
-              </ul>
-              <!-- Helper link END -->
-              <!-- Copyright -->
-              <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" href="https://www.webestica.com/"> Webestica </a></p>
-            </div>
-          </div>
-        </nav>
-        <!-- Navbar END-->
-      </div>
-      <!-- Sidenav END -->
-
-      <!-- Main content START -->
-      <div class="col-md-8 col-lg-6 vstack gap-4">
-        <!-- Card START -->
-        <div class="card">
-          <!-- Card header START -->
-          <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
-            <h1 class="h4 card-title">Videos</h1>
-            <!-- Button modal -->
-            <a class="btn btn-primary-soft" href="#" data-bs-toggle="modal" data-bs-target="#modalCreateVideo"> <i class="fa-solid fa-plus pe-1"></i> Add video</a>
-          </div>
-          <!-- Card header START -->
-          <!-- Card body START -->
-          <div class="card-body">
-
-            <!-- Tab nav line -->
-            <ul class="nav nav-tabs nav-bottom-line">
-              <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab-1"> Home </a> </li>
-              <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2"> Live </a> </li>
-              <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-3"> Show </a> </li>
-              <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-4"> Saved video </a> </li>
-            </ul>
-            <div class="tab-content mb-0 pb-0">
-              <!-- Home tab START -->
-              <div class="tab-pane fade show active" id="tab-1">
-                <div class="row g-3">
-                  <div class="col-sm-6 col-lg-4">
-                    <!-- Video START -->
-                    @foreach ($product as $data)
-                    <div class="card p-0 shadow-none border-0 position-relative">
-                      <!-- Video image -->
-                      <div class="position-relative">
-                        <img class="rounded" src="assets/images/post/16by9/large/11.jpg" alt="">
-                        <!-- Play icon -->
-                        <div class="position-absolute top-0 end-0 p-3">
-                          <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i class="bi bi-play-fill fs-5"> </i> </a>
-                        </div>
-                        <!-- Duration -->
-                        <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">1 min ago</span>
-                        </div>
-                      </div>
-                      <!-- Video info -->
-                      <div class="card-body px-0">
-                        <div class="d-flex align-items-center mb-3">
-                          <!-- Avatar -->
-                          <video width="400" height="400" class="example1" id="example1_{{$data['id']}}"
-                          poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' .  $data['thumbnail']}}">
-                          <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['file'] }}"
-                              type="video/mp4">
-                      </video>
-                          <!-- Avatar name -->
-                          <h6 class="mb-0"> <a href="#!"> Frances Guerrero </a> </h6>
-                          <span class="ms-auto small"> 156.9K views</span>
-                        </div>
-                        <!-- Video title  -->
-                        <h6 class="mb-0"> <a class="stretched-link" href="post-video-details.html"> New movie trailers (2021 - 2022) September </a> </h6>
-                      </div>
+                                    <!-- Helper link START -->
+                                    <ul class="nav small mt-4 justify-content-center lh-1">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="my-profile-about.html">About</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="settings.html">Settings</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" target="_blank"
+                                                href="https://support.webestica.com/login">Support </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" target="_blank" href="docs/index.html">Docs </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="help.html">Help</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="privacy-and-terms.html">Privacy & terms</a>
+                                        </li>
+                                    </ul>
+                                    <!-- Helper link END -->
+                                    <!-- Copyright -->
+                                    <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank"
+                                            href="https://www.webestica.com/"> Webestica </a></p>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- Navbar END-->
                     </div>
-                    @endforeach
-                    <!-- Video END -->
-                  </div>
-                  {{-- <div class="col-sm-6 col-lg-4">
+                    <!-- Sidenav END -->
+
+                    <!-- Main content START -->
+                    <div class="col-md-8 col-lg-6 vstack gap-4">
+                        <!-- Card START -->
+                        <div class="card">
+                            <!-- Card header START -->
+                            <div
+                                class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
+                                <h1 class="h4 card-title">Videos</h1>
+                                <!-- Button modal -->
+                                <a class="btn btn-primary-soft" href="#" data-bs-toggle="modal"
+                                    data-bs-target="#modalCreateVideo"> <i class="fa-solid fa-plus pe-1"></i> Add
+                                    video</a>
+                            </div>
+                            <!-- Card header START -->
+                            <!-- Card body START -->
+                            <div class="card-body">
+
+                                <!-- Tab nav line -->
+                                <ul class="nav nav-tabs nav-bottom-line">
+                                    <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab"
+                                            href="#tab-1"> Home </a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                                            Live </a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                                            Show </a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+                                            Saved video </a> </li>
+                                </ul>
+                                <div class="tab-content mb-0 pb-0">
+                                    <!-- Home tab START -->
+                                    <div class="tab-pane fade show active" id="tab-1">
+                                        <div class="row g-3">
+                                            <div class="col-sm-6 col-lg-4">
+                                                <!-- Video START -->
+                                                @foreach ($product as $data)
+                                                    <div class="card p-0 shadow-none border-0 position-relative ">
+                                                        <!-- Video image -->
+                                                        <div class="position-relative">
+                                                            <img class="rounded"
+                                                                src="assets/images/post/16by9/large/11.jpg"
+                                                                alt="">
+                                                            <!-- Play icon -->
+                                                            <div class="position-absolute top-0 end-0 p-3">
+                                                                <a class="icon-md bg-danger text-white rounded-circle"
+                                                                    href="#"> <i class="bi bi-play-fill fs-5">
+                                                                    </i> </a>
+                                                            </div>
+                                                            <!-- Duration -->
+                                                            <div
+                                                                class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                                                <span
+                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
+                                                                <span
+                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">1
+                                                                    min ago</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Video info -->
+                                                        <div class=" card-body px-0">
+                                                            <div class="row d-flex align-items-center mb-3">
+                                                                <!-- Avatar -->
+                                                                <div class="col-md-4">
+                                                                    <video width="400" height="400"
+                                                                        class="example1"
+                                                                        id="example1_{{ $data['id'] }}"
+                                                                        poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['thumbnail'] }}">
+                                                                        <source
+                                                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['file'] }}"
+                                                                            type="video/mp4">
+                                                                    </video>
+                                                                </div>
+                                                                <div class="col-md-8 d-flex">
+                                                                    <h6 class="mb-0"> <a href="#!">Frances
+                                                                            Guerrero </a> </h6>
+                                                                    <span class="ms-auto "> 156.9K views</span>
+                                                                    <h6 class="mb-3"> <a class="stretched-link"
+                                                                            href="post-video-details.html"> New movie
+                                                                            trailers
+                                                                            (2021 - 2022)
+                                                                            September </a> </h6>
+                                                                </div>
+
+                                                                <!-- Avatar name -->
+
+                                                            </div>
+                                                            <!-- Video title  -->
+
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                                <!-- Video END -->
+                                            </div>
+                                            {{-- <div class="col-sm-6 col-lg-4">
                     <!-- Video START -->
                     <div class="card p-0 shadow-none border-0 position-relative">
                       <!-- Video image -->
@@ -632,200 +684,223 @@ Header END -->
                     <!-- Video END -->
                   </div>
                   <div class="col-sm-6 col-lg-4"> --}}
-                    <!-- Video START -->
-                    <div class="card p-0 shadow-none border-0 position-relative">
-                      <!-- Video image -->
-                      <div class="position-relative">
-                        <img class="rounded" src="assets/images/post/16by9/large/15.jpg" alt="">
-                        <!-- Play icon -->
-                        <div class="position-absolute top-0 end-0 p-3">
-                          <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                            <!-- Video START -->
+                                            <div class="card p-0 shadow-none border-0 position-relative">
+                                                <!-- Video image -->
+                                                <div class="position-relative">
+                                                    <img class="rounded" src="assets/images/post/16by9/large/15.jpg"
+                                                        alt="">
+                                                    <!-- Play icon -->
+                                                    <div class="position-absolute top-0 end-0 p-3">
+                                                        <a class="icon-md bg-danger text-white rounded-circle"
+                                                            href="#"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                                    </div>
+                                                    <!-- Duration -->
+                                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                                        <span
+                                                            class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:45</span>
+                                                        <span
+                                                            class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">2
+                                                            week ago</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Video info -->
+                                                <div class="card-body px-0">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <!-- Avatar -->
+                                                        <div class="avatar avatar-xxs me-2">
+                                                            <img class="avatar-img rounded-circle"
+                                                                src="assets/images/avatar/05.jpg" alt="">
+                                                        </div>
+                                                        <!-- Avatar name -->
+                                                        <h6 class="mb-0"> <a href="#!"> Joan Wallace </a> </h6>
+                                                        <span class="ms-auto small"> 156.9K views</span>
+                                                    </div>
+                                                    <!-- Video title  -->
+                                                    <h6 class="mb-0"> <a class="stretched-link"
+                                                            href="post-video-details.html"> A trading platform - an
+                                                            easy start in trading </a> </h6>
+                                                </div>
+                                            </div>
+                                            <!-- Video END -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Home tab END -->
+
+                                <!-- Live tab START -->
+                                <div class="tab-pane fade" id="tab-2">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6 col-lg-4">
+                                            <!-- Video START -->
+                                            <div class="card p-0 shadow-none border-0 position-relative">
+                                                <!-- Video image -->
+                                                <div class="position-relative">
+                                                    <img class="rounded" src="assets/images/post/16by9/large/14.jpg"
+                                                        alt="">
+                                                    <!-- Play icon -->
+                                                    <div class="position-absolute top-0 end-0 p-3">
+                                                        <a class="icon-md bg-danger text-white rounded-circle"
+                                                            href="#"> <i class="bi bi-play-fill fs-5"> </i> </a>
+                                                    </div>
+                                                    <!-- Duration -->
+                                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                                        <span
+                                                            class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
+                                                        <span
+                                                            class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">1
+                                                            min ago</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Video info -->
+                                                <div class="card-body px-0">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <!-- Avatar -->
+                                                        <div class="avatar avatar-xxs me-2">
+                                                            <img class="avatar-img rounded-circle"
+                                                                src="assets/images/avatar/01.jpg" alt="">
+                                                        </div>
+                                                        <!-- Avatar name -->
+                                                        <h6 class="mb-0"> <a href="#!"> Frances Guerrero <i
+                                                                    class="bi bi-patch-check-fill text-success small"></i>
+                                                            </a> </h6>
+                                                        <span class="ms-auto small"> 156.9K views</span>
+                                                    </div>
+                                                    <!-- Video title  -->
+                                                    <h6 class="mb-0"> <a class="stretched-link"
+                                                            href="post-video-details.html"> 8 shocking bitcoin crypto
+                                                            predictions for 2022 </a> </h6>
+                                                </div>
+                                            </div>
+                                            <!-- Video END -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Live tab END -->
+
+                                <!-- Show tab START -->
+                                <div class="tab-pane fade" id="tab-3">
+                                    <!-- Add Video -->
+                                    <div class="my-sm-5 py-sm-5 text-center">
+                                        <i class="display-1 text-muted bi bi-camera-reels"> </i>
+                                        <h4 class="mt-2 mb-3 text-body">No video founds</h4>
+                                        <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#modalCreateVideo"> Click here to add </button>
+                                    </div>
+                                </div>
+                                <!-- Show tab END -->
+
+                                <!-- Saved video START -->
+                                <div class="tab-pane fade" id="tab-4">
+                                    <!-- Add Video -->
+                                    <div class="my-sm-5 py-sm-5 text-center">
+                                        <i class="display-1 text-muted bi bi-camera-reels"> </i>
+                                        <h4 class="mt-2 mb-3 text-body">No video founds</h4>
+                                        <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#modalCreateVideo"> Click here to add </button>
+                                    </div>
+                                </div>
+                                <!-- Saved video END -->
+
+                            </div>
                         </div>
-                        <!-- Duration -->
-                        <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:45</span>
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">2 week ago</span>
-                        </div>
-                      </div>
-                      <!-- Video info -->
-                      <div class="card-body px-0">
-                        <div class="d-flex align-items-center mb-3">
-                          <!-- Avatar -->
-                          <div class="avatar avatar-xxs me-2">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="">
-                          </div>
-                          <!-- Avatar name -->
-                          <h6 class="mb-0"> <a href="#!"> Joan Wallace </a> </h6>
-                          <span class="ms-auto small"> 156.9K views</span>
-                        </div>
-                        <!-- Video title  -->
-                        <h6 class="mb-0"> <a class="stretched-link" href="post-video-details.html"> A trading platform - an easy start in trading </a> </h6>
-                      </div>
+                        <!-- Card body END -->
                     </div>
-                    <!-- Video END -->
-                  </div>
+                    <!-- Card END -->
                 </div>
-              </div>
-              <!-- Home tab END -->
+                <!-- Main content END -->
 
-              <!-- Live tab START -->
-              <div class="tab-pane fade" id="tab-2">
-                <div class="row g-3">
-                  <div class="col-sm-6 col-lg-4">
-                    <!-- Video START -->
-                    <div class="card p-0 shadow-none border-0 position-relative">
-                      <!-- Video image -->
-                      <div class="position-relative">
-                        <img class="rounded" src="assets/images/post/16by9/large/14.jpg" alt="">
-                        <!-- Play icon -->
-                        <div class="position-absolute top-0 end-0 p-3">
-                          <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i class="bi bi-play-fill fs-5"> </i> </a>
-                        </div>
-                        <!-- Duration -->
-                        <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">1 min ago</span>
-                        </div>
-                      </div>
-                      <!-- Video info -->
-                      <div class="card-body px-0">
-                        <div class="d-flex align-items-center mb-3">
-                          <!-- Avatar -->
-                          <div class="avatar avatar-xxs me-2">
-                            <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
-                          </div>
-                          <!-- Avatar name -->
-                          <h6 class="mb-0"> <a href="#!"> Frances Guerrero <i class="bi bi-patch-check-fill text-success small"></i> </a> </h6>
-                          <span class="ms-auto small"> 156.9K views</span>
-                        </div>
-                        <!-- Video title  -->
-                        <h6 class="mb-0"> <a class="stretched-link" href="post-video-details.html"> 8 shocking bitcoin crypto predictions for 2022 </a> </h6>
-                      </div>
-                    </div>
-                    <!-- Video END -->
-                  </div>
-                </div>
-              </div>
-              <!-- Live tab END -->
-
-              <!-- Show tab START -->
-              <div class="tab-pane fade" id="tab-3">
-                <!-- Add Video -->
-                <div class="my-sm-5 py-sm-5 text-center">
-                  <i class="display-1 text-muted bi bi-camera-reels"> </i>
-                  <h4 class="mt-2 mb-3 text-body">No video founds</h4>
-                  <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreateVideo"> Click here to add </button>
-                </div>
-              </div>
-              <!-- Show tab END -->
-
-              <!-- Saved video START -->
-              <div class="tab-pane fade" id="tab-4">
-                <!-- Add Video -->
-                <div class="my-sm-5 py-sm-5 text-center">
-                  <i class="display-1 text-muted bi bi-camera-reels"> </i>
-                  <h4 class="mt-2 mb-3 text-body">No video founds</h4>
-                  <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreateVideo"> Click here to add </button>
-                </div>
-              </div>
-              <!-- Saved video END -->
-
+            </div> <!-- Row END -->
             </div>
-          </div>
-          <!-- Card body END -->
+            <!-- Container END -->
+
+        </main>
+        <!-- **************** MAIN CONTENT END **************** -->
+
+        <!-- Modal add video START -->
+        <div class="modal fade" id="modalCreateVideo" tabindex="-1" aria-labelledby="modalLabelCreateVideo"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Title -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabelCreateVideo">Create video</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form START -->
+                        <form>
+                            <!-- Title -->
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" class="form-control" placeholder="Add title here">
+                            </div>
+                            <!-- Description -->
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" rows="3" placeholder="Add description here"></textarea>
+                            </div>
+                            <!-- Dropzone photo START -->
+                            <div class="mb-3">
+                                <label class="form-label">Upload videos</label>
+                                <div class="dropzone dropzone-default card shadow-none"
+                                    data-dropzone='{"maxFiles":2}'>
+                                    <div class="dz-message">
+                                        <i class="bi bi-camera-reels display-3"></i>
+                                        <p>Drag here or click to upload video.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Dropzone photo END -->
+                        </form>
+                        <!-- Form END -->
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success-soft">Post video</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Card END -->
-      </div>
-      <!-- Main content END -->
+        <!-- Modal add video END -->
 
-    </div> <!-- Row END -->
-  </div>
-  <!-- Container END -->
-
-</main>
-<!-- **************** MAIN CONTENT END **************** -->
-
-<!-- Modal add video START -->
-<div class="modal fade" id="modalCreateVideo" tabindex="-1" aria-labelledby="modalLabelCreateVideo" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <!-- Modal Title -->
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabelCreateVideo">Create video</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Form START -->
-        <form>
-          <!-- Title -->
-          <div class="mb-3">
-            <label class="form-label">Title</label>
-            <input type="text" class="form-control" placeholder="Add title here">
-          </div>
-          <!-- Description -->
-          <div class="mb-3">
-            <label class="form-label">Description</label>
-            <textarea class="form-control" rows="3" placeholder="Add description here"></textarea>
-          </div>
-          <!-- Dropzone photo START -->
-          <div class="mb-3">
-            <label class="form-label">Upload videos</label>
-            <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":2}'>
-              <div class="dz-message">
-                <i class="bi bi-camera-reels display-3"></i>
-                <p>Drag here or click to upload video.</p>
-              </div>
-            </div>
-          </div>
-         <!-- Dropzone photo END -->
-        </form>
-        <!-- Form END -->
-      </div>
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success-soft">Post video</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal add video END -->
-
-<!-- =======================
+        <!-- =======================
 JS libraries, plugins and custom scripts -->
 
-<!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Vendors -->
-<script src="assets/vendor/dropzone/dist/dropzone.js"></script>
+        <!-- Vendors -->
+        <script src="assets/vendor/dropzone/dist/dropzone.js"></script>
 
-<!-- Template Functions -->
-<script >
-$(".example1").each(function(){
-    let id = $(this).attr('id');
-    console.log(id)
-        document.addEventListener("DOMContentLoaded", function() {
-            video1 = new Moovie({
-                selector: "#"+id,
-                config: {
-                    controls: {
-                        playtime: true,
-                        mute: true,
-                        volume: true,
-                        subtitles: true,
-                        config: true,
-                        fullscreen: true,
-                        submenuCaptions: true,
-                        submenuOffset: true,
-                        submenuSpeed: true,
-                        allowLocalSubtitles: true
-                    }
-                }
+        <!-- Template Functions -->
+        <script>
+            $(".example1").each(function() {
+                let id = $(this).attr('id');
+                console.log(id)
+                document.addEventListener("DOMContentLoaded", function() {
+                    video1 = new Moovie({
+                        selector: "#" + id,
+                        config: {
+                            controls: {
+                                playtime: true,
+                                mute: true,
+                                volume: true,
+                                subtitles: true,
+                                config: true,
+                                fullscreen: true,
+                                submenuCaptions: true,
+                                submenuOffset: true,
+                                submenuSpeed: true,
+                                allowLocalSubtitles: true
+                            }
+                        }
+                    });
+                });
             });
-        });
-});
+        </script>
+    </body>
 
-</script>
-</body>
-</html>
+    </html>
 </x-app-layout>
