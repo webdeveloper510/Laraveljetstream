@@ -724,7 +724,7 @@ Header END -->
                                                                                 <h5>Timestamp selected *</h5>
                                                                             </label>
                                                                             <input type="time" class="form-control"
-                                                                                id="validationCustom01" required>
+                                                                                id="validationCustom01">
                                                                         </div>
                                                                         <textarea class="form-control" id="message-text" rows="5"></textarea>
                                                                         <p class="my-2">Flagged videos and users are

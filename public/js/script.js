@@ -46,7 +46,7 @@ function printErrorMsg (msg) {
 
 $ ('#submitt_report').submit (function (e) {
   e.preventDefault ();
-  console.log ('testing');
+  // console.log ('testing');
   var form = $ (this);
   var actionUrl = base_url + '/report';
   $.ajax ({
