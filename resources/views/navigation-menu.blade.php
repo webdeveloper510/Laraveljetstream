@@ -1,6 +1,6 @@
 @include('header')
 
-<nav x-data="{ open: false }" class=" border-b border-gray-100">
+<nav x-data="{ open: false }" class=" border-b border-gray-100" style="background:#babec9">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -84,14 +84,11 @@
                                             {{ __('Create New Team') }}
                                         </x-jet-dropdown-link>
                                     @endcan
-
                                     <div class="border-t border-gray-100"></div>
-
                                     <!-- Team Switcher -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
                                         {{ __('Switch Teams') }}
                                     </div>
-
                                     @foreach (Auth::user()->allTeams() as $team)
                                         <x-jet-switchable-team :team="$team" />
                                     @endforeach

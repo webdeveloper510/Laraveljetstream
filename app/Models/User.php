@@ -83,9 +83,4 @@ class User extends Authenticatable
 }
 
 
-
-    // public function likes()
-    // {
-    //     return $this->hasMany(product::class,LikeDislike::class);
-    // }
 }

@@ -50,6 +50,7 @@ class Controller extends BaseController
     }
 
     public function unlikePost(Request $request)
+
     {
         $id = auth()->user()->id;
         $likeExist = LikeDislike::where(['user_id' => $id, 'product_id' => $request->contentId])->get();
@@ -90,7 +91,7 @@ class Controller extends BaseController
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
             $socialshare = \Share::page(
-                'http://localhost/jetstream/channel/' . base64_encode($id)
+                'http://localhost/jetstream/channel/' . $id
             )
                 ->facebook()
                 ->twitter()
@@ -100,9 +101,10 @@ class Controller extends BaseController
                 ->whatsapp()->getRawLinks();
         }
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
+        $id = base64_encode($id);
         // echo "<pre>";
         // print_r($subscriber);die;
-        return view('channel', compact('videos', 'count', 'socialshare', 'subscriber'));
+        return view('channel', compact('videos', 'count', 'socialshare', 'subscriber','id'));
     }
 
     public function setting()
@@ -123,8 +125,9 @@ class Controller extends BaseController
     {
         $auth_id = auth()->user()->id;
         $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->get()->toArray();
-
-       $total_comment = count($videos[0]['comments']);
+        // echo "<pre>";
+        // print_r($videos);die;
+        $total_comment = count($videos[0]['comments']);
 
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
@@ -207,7 +210,7 @@ class Controller extends BaseController
         }
     }
 
-    //---->->-->--->-->->->->->->------>->-->-Generate Random String-->-->-->->->->->->->->->--->--//
+    //-----------------------------------Generate Random String-------------------------//
 
     function generateRandomString($length = 10)
     {
@@ -364,8 +367,6 @@ class Controller extends BaseController
 
     public function report(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
         $id = auth()->user()->id;
         // print_r($id);die;
         $report_data = $request->all();

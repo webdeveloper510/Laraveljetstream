@@ -1,9 +1,11 @@
 var base_url = 'http://localhost/jetstream';
+
 function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
     newestOnTop: true,
     positionClass: 'toast-top-center',
+
   };
 
   $.ajax ({
@@ -50,12 +52,12 @@ function printErrorMsg (msg) {
 $ ('#submitt_report').submit (function (e) {
   e.preventDefault ();
   console.log ('testing');
-  var form = $ (this);
+  var form = $(this);
   var actionUrl = base_url + '/report';
   $.ajax ({
     type: 'POST',
     url: actionUrl,
-    data: form.serialize (),
+    data: form.serialize(),
     success: function (data) {
       console.log (data);
       if (data.code === 1) {
@@ -74,7 +76,9 @@ $ ('#submitt_report').submit (function (e) {
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
 var auth_name = Auth_user.name;
-console.log(auth_name);
+var currentTime= moment().format('MMMM Do YYYY, h:mm:ss a');
+console.log(currentTime);
+
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
@@ -83,10 +87,9 @@ console.log(auth_name);
     data: form.serialize (),
     success: function (data) {
       console.log(data);
-
      var body = $('#body').val();
       $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/profile/S7Sd4lb5SbIZcFsjRoCM9rw9mKpDY4jdVyZhJ653.jpg' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
-      "<b>"+auth_name+"</b>1 second ago</p><p class=''>"+body+"</p><div class='d-flex'>"+
+      "<b>"+auth_name+"</b>"+currentTime+"</p><p class=''>"+body+"</p><div class='d-flex'>"+
       "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
         "<div class='col-md-12 common'><form><div>"+
       "<input type='text' class='form-control' name='body' id='exampleFormControlInput1' placeholder='Add a comment' required>"+
@@ -107,10 +110,9 @@ $ ('#save_reply').submit (function (e) {
   $.ajax ({
     type: 'POST',
     url: actionUrl,
-    data: form.serialize (),
+    data: form.serialize(),
     success: function (data) {
     var body = $('.body1').val();
-
       $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
     },
   });
@@ -288,7 +290,7 @@ $ ('form#msform').submit (function (e) {
         'progress',
         function (element) {
           if (element.lengthComputable) {
-            var percentComplete = element.loaded / element.total * 100;
+            var percentComplete = element.loaded / element.total * 10;
             $ ('#progress-bar').width (percentComplete + '%');
             $ ('#progress-bar').html (percentComplete + '%');
           }

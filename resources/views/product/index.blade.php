@@ -317,7 +317,7 @@
                             <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+                                        href="<?php echo URL::to('/'); ?>/dashboard">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
                                             alt=""><span>Home

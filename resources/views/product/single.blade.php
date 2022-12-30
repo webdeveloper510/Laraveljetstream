@@ -375,8 +375,8 @@ Header END -->
                             <!-- Avatar -->
                             <div class="avatar avatar-lg mb-3">
                                 <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html"><img
-                                        class="avatar-img rounded-circle border border-white border-3"
+                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+                                    <img class="avatar-img rounded-circle border border-white border-3"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
                                 </a>
                             </div>
@@ -724,9 +724,9 @@ Header END -->
                                                                                 <h5>Timestamp selected *</h5>
                                                                             </label>
                                                                             <input type="time" class="form-control"
-                                                                                id="validationCustom01" required>
+                                                                                id="validationCustom01" name="timestamp" required>
                                                                         </div>
-                                                                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                                                                        <textarea class="form-control" id="message-text" name="description" rows="5" required></textarea>
                                                                         <p class="my-2">Flagged videos and users are
                                                                             reviewed by YouTube staff 24 hours a day,
                                                                             7 days a week to determine whether they
@@ -916,7 +916,7 @@ Header END -->
                                     type="video/mp4">
                                 <track kind="captions" label="English" srclang="en"
                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                Your browser does not support the video tag.
+
                             </video>
                             <!-- Video END -->
                         </div>
@@ -1120,7 +1120,7 @@ JS libraries, plugins and custom scripts -->
             }
         }
     </script>
-    {{-- ------------------------translator------------------------ --}}
+    {{-- ------------------------translator--------------------------}}
 
     <script type="text/javascript">
         function setCookie(key, value, expiry) {
@@ -1146,7 +1146,7 @@ JS libraries, plugins and custom scripts -->
 <script>
     var Auth_user = {!! auth()->user()->toJson() !!};
   </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
   {{------------------star rating--------------------}}
     <script>
         $(document).ready(function() {

@@ -27,7 +27,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    
+
     Route::get('/dashboard', function () {
         $videos = User::with(['posts','Report_video'])->get()->toArray();
         // echo "<pre>";
@@ -111,6 +111,6 @@ Route::post('/rate', [Controller::class, 'rate']);
 Route::get('/time', [Controller::class, 'time']);
 Route::post('/report', [Controller::class, 'report']);
 Route::get('/search', [Controller::class, 'search']);
-Route::get('/share ', [Controller::class, 'share']);
+Route::get('/share', [Controller::class, 'share']);
 
 //});
