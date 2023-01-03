@@ -168,6 +168,22 @@
     body.font-sans.antialiased{
         background-color: whitesmoke !important;
     }
+
+    div.container-fluid{
+        margin-top: 5%;
+    }
+
+    div.col-lg-3{
+        position: fixed !important;
+        padding: 0 !important;
+}
+
+
+    .px-5 {
+    padding-right: 3rem !important;
+    padding-left: 22rem !important;
+    }
+
   </style>
 </head>
 
@@ -525,79 +541,52 @@ Header END -->
                 <div class="card overflow-hidden">
                   <!-- Cover image -->
                   <div class="h-50px"
-                    style="background-image:url(<?php echo URL::to('/')?>/public/assets/images/bg/01.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                    style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                   </div>
                   <!-- Card body START -->
                   <div class="card-body pt-0">
                     <div class="text-center">
                       <!-- Avatar -->
-                      <div class="avatar avatar-lg mt-n5 mb-3 ">
-                        <a href="#!"><img class="avatar-img rounded border border-white border-3"
-                            src="<?php echo URL::to('/')?>/public/assets/images/avatar/07.jpg" alt=""></a>
-                      </div>
-                      <!-- Info -->
-                      <h5 class="mb-0"> <a href="#!">Sam Lanson </a> </h5>
-
-                      <small>Web Developer at Webestica</small>
-                      <p class="mt-3">I'd love to change the world, but they won’t give me the source code.</p>
-
-                      <!-- User stat START -->
-                      <div class="hstack gap-2 gap-xl-3 justify-content-center">
-                        <!-- User stat item -->
-                        <div>
-                          <h6 class="mb-0">256</h6>
-                          <small>Post</small>
-                        </div>
-                        <!-- Divider -->
-                        <div class="vr"></div>
-                        <!-- User stat item -->
-                        <div>
-                          <h6 class="mb-0">2.5K</h6>
-                          <small>Followers</small>
-                        </div>
-                        <!-- Divider -->
-                        <div class="vr"></div>
-                        <!-- User stat item -->
-                        <div>
-                          <h6 class="mb-0">365</h6>
-                          <small>Following</small>
-                        </div>
-                      </div>
-                      <!-- User stat END -->
+                      <div class="avatar avatar-lg mb-3">
+                       <img class="avatar-img rounded-circle border border-white border-3"
+                                src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
+                                alt="">
                     </div>
-
+                      <!-- Info -->
+                      <h5 class="mb-0">{{auth()->user()->name}}</h5>
+                      {{-- <small>Web Developer at Webestica</small> --}}
+                    </div>
                     <!-- Divider -->
                     <hr>
-
                     <!-- Side Nav START -->
                     <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                       <li class="nav-item">
-                        <a class="nav-link d-flex" href="index-video.html"> <img class="me-2 h-20px fa-fw"
+                        <a class="nav-link d-flex" href="<?php echo URL::to('/')?>/dashboard"> <img class="me-2 h-20px fa-fw"
                             src="<?php echo URL::to('/')?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
                           </span></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link d-flex"
-                          href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/post-video-details.html">
+                          href="<?php echo URL::to('/')?>/uploadpage">
                           <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/medal-outline-filled.svg"
                             alt=""><span>Upload Video </span></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link d-flex"
-                          href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-videos.html">
+                          href="{{URL::to('/channel/'. base64_encode(auth()->user()->id))}}">
                           <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/clock-outline-filled.svg"
                             alt=""><span>Your Channel </span></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link d-flex"
-                          href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/post-videos.html">
+                          href="<?php echo URL::to('/')?>/watchlater">
                           <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/like-outline-filled.svg"
                             alt=""><span>Watch Later </span></a>
                       </li>
                       <!-- <li class="nav-item">
                       <a class="nav-link" href="groups.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/chat-outline-filled.svg" alt=""><span>Groups </span></a>
                     </li> -->
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                         <a class="nav-link d-flex" href="notifications.html"> <img class="me-2 h-20px fa-fw"
                             src="<?php echo URL::to('/')?>/public/assets/images/icon/notification-outlined-filled.svg" alt=""><span>Notifications
                           </span></a>
@@ -606,10 +595,12 @@ Header END -->
                         <a class="nav-link d-flex" href="settings.html"> <img class="me-2 h-20px fa-fw"
                             src="<?php echo URL::to('/')?>/public/assets/images/icon/cog-outline-filled.svg" alt=""><span>Settings </span></a>
                       </li>
+                      <li>
                       <a class="nav-link d-flex"
                         href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/sign-in-advance.html">
                         <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
                           alt=""><span>Logout </span></a>
+                      </li> --}}
                     </ul>
                     <!-- Side Nav END -->
                   </div>
@@ -654,7 +645,7 @@ Header END -->
         <!-- Sidenav END -->
 
         <!-- Main content START -->
-        <div class="col-md-8 col-lg-6 vstack gap-4">
+        <div class="col-md-8 col-lg-6 vstack gap-4 px-5">
           <!-- Card START -->
           <div class="card">
             <!-- Card header START -->
@@ -711,7 +702,7 @@ Header END -->
                                 <img class="avatar-img rounded-circle" src="<?php echo URL::to('/');?>/public/assets/images/avatar/01.jpg" alt="">
                               </div>
                             <!-- Avatar name -->
-                            <h6 class="mb-0"> <a href="#!"> Frances Guerrero </a> </h6>
+                            <h6 class="mb-0"> <a href="#!">{{$product[0]['title']}}</a> </h6>
                             <span class="ms-auto small"> 156.9K views</span>
                           </div>
                           <!-- Video title  -->

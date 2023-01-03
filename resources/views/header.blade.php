@@ -370,8 +370,26 @@ nav.navbar.navbar-expand-lg.bg-light a {
         color: orange;
     }
 
+    body.font-sans.antialiased {
+    margin: 0px !important;
+    }
+
+
+
+    nav.border-b.border-gray-100{
+        position: fixed !important;
+        background: #babec9 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1 !important;
+}
+
+
     /* Navbar CSS End */
+
+
     </style>
 </head>
         <body style="background-color: #0b0c2a; color: white; font-family: 'Mulish', sans-serif;">
+
 

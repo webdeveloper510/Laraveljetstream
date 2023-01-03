@@ -115,8 +115,8 @@ class Controller extends BaseController
     public function watchlater()
     {
         $product = product::join('save_video', 'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
-        //    echo "<pre>";
-        //    print_r($product);die;
+            // echo "<pre>";
+            // print_r($product);die;
         $name = auth()->user()->name;
         return view('watchlater', compact('product', 'name'));
     }
@@ -168,10 +168,10 @@ class Controller extends BaseController
         $averageRating = DB::table('ratings')
             ->where('product_id', $videos[0]['id'])
             ->avg('rating');
-
+            $id = base64_encode($id);
         // echo "<pre>";
         // print_r($averageRating);
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment'));
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id'));
     }
 
     public function store(Request $request)

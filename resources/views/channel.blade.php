@@ -27,12 +27,31 @@
   <!-- Theme CSS -->
   <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
   <style>
-     nav.navbar.navbar-expand-lg{
+     /* nav.navbar.navbar-expand-lg{
   margin-left: 126px !important;
  }
- div.navbar.navbar-vertical.navbar-light {
-    position: absolute !important;
+
+
+div.col-md-6.my-5.gap-0{
+    padding-top: 2%;
 }
+
+.navbar-vertical {
+    max-width: 360px !important;
+    top: 51px !important;
+}
+
+.col-sm-6.col-lg-12{
+    margin-top: 23% !important;
+}
+
+div.navbar.navbar-vertical.navbar-light {
+    position: sticky;
+}
+ { */
+
+
+
     </style>
 </head>
 
@@ -257,20 +276,18 @@ Header END -->
         <div class="col-lg-3 g-0">
           <!-- Sidenav START -->
           <div class="navbar navbar-vertical navbar-light">
-            <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3" tabindex="-1"
+            <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0" tabindex="-1"
               id="navbarVerticaloffcanvas">
-              <div class="offcanvas-body pt-5 pt-lg-0 ">
+              <div class="offcanvas-body pt-0 pt-lg-0 ">
                 <!-- Avatar -->
                 <div class="avatar avatar-lg mb-3">
-                    <a
-                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+
                     <img class="avatar-img rounded-circle border border-white border-3"
                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
-                </a>
+
                 </div>
                 <!-- Info -->
-                <h5 class="mb-0"> <a
-                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">{{auth()->user()->name}}</a> </h5>
+                <h5 class="mb-0">{{auth()->user()->name}} </h5>
                 <!-- <small>Web Developer at Webestica</small> -->
                 <!-- User stat START -->
               <div>
@@ -283,7 +300,7 @@ Header END -->
 
                 <!-- Side Nav START -->
                 <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                  <li class="nav-item ">
+                  <li class="nav-item">
                     <a class="nav-link d-flex"
                       href="<?php echo URL::to('/'); ?>/dashboard"> <img
                         class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
@@ -307,24 +324,24 @@ Header END -->
                         class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch
                         Later </span></a>
                   </li>
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                     <a class="nav-link d-flex"
                       href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html"> <img
                         class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/notification-outlined-filled.svg"
                         alt=""><span>Notifications </span></a>
-                  </li>
-                  <li class="nav-item">
+                  </li> --}}
+                  {{-- <li class="nav-item">
                     <a class="nav-link d-flex"
                       href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/settings.html"> <img
                         class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/cog-outline-filled.svg" alt=""><span>Settings
                       </span></a>
-                  </li>
-                  <li class="nav-item">
+                  </li> --}}
+                  {{-- <li class="nav-item">
                     <a class="nav-link d-flex"
                       href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/sign-in-advance.html">
                       <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
                         alt=""><span>Logout</span></a>
-                  </li>
+                  </li> --}}
                 </ul>
                 <!-- Side Nav END -->
               </div>
@@ -332,11 +349,11 @@ Header END -->
           </div>
 		 </div>
           <!-- Sidenav END -->
-        <div class="col-md-6 my-3 gap-0">
+        <div class="col-md-6 my-5 px-5 gap-0">
           <!-- Card START -->
           <div class="card">
             <div class="h-200px rounded-top"
-              style="background-image:url(<?php echo URL::to('/'); ?>/public/assets/images/bg/05.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
+              style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
             </div>
             <!-- Card body START -->
             <div class="card-body py-0">
@@ -344,11 +361,10 @@ Header END -->
                 <div>
                   <!-- Avatar -->
                   <div class="avatar avatar-xxl mt-n5 mb-3">
-                    <a
-                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+
                     <img class="avatar-img rounded-circle border border-white border-3"
                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
-                </a>
+
                   </div>
                 </div>
                 <div class="ms-sm-4 mt-sm-3">
@@ -469,27 +485,26 @@ Header END -->
         <!-- Main content END -->
 
         <!-- Right sidebar START -->
-        <div class="col-md-3 g-0 my-3">
+        <div class="col-md-3 g-0 ">
 
           <div class="row g-4">
 
             <!-- Card START -->
-            <div class="col-sm-6 col-lg-12">
-              <div class="card">
+            <div class="col-sm-6 col-lg-12 ">
+              <div class="card  ">
                 <div class="card-header border-0 pb-0">October
                   <h5 class="card-title">About</h5>
                   <!-- Button modal -->
                 </div>
                 <!-- Card body START -->
                 <div class="card-body position-relative pt-0"  style="color: black">
-                  <p>He moonlights difficult engrossed it, sportsmen. Interested has all Devonshire difficulty gay
-                    assistance joy.</p>
+                  <p>{{$videos[0]['description']}}</p>
                   <!-- Date time -->
                   <ul class="list-unstyled mt-3 mb-0">
-                    <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> October 20, 1990
+                    <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> {{$videos[0]['user']['date_of_birth']}}
                       </strong> </li>
-                    <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li>
-                    <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong> webestica@gmail.com </strong> </li>
+                    {{-- <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li> --}}
+                    <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos[0]['user']['email']}}</strong> </li>
                   </ul>
                 </div>
                 <!-- Card body END -->
@@ -498,7 +513,7 @@ Header END -->
             <!-- Card END -->
 
             <!-- Card START -->
-            <div class="col-sm-6 col-lg-12">
+            {{-- <div class="col-sm-6 col-lg-12">
               <div class="card">
                 <!-- Card header START -->
                 <div class="card-header d-flex justify-content-between border-0">
@@ -556,11 +571,11 @@ Header END -->
                 </div>
                 <!-- Card body END -->
               </div>
-            </div>
+            </div> --}}
             <!-- Card END -->
 
             <!-- Card START -->
-            <div class="col-sm-6 col-lg-12">
+            {{-- <div class="col-sm-6 col-lg-12">
               <div class="card">
                 <!-- Card header START -->
                 <div class="card-header d-sm-flex justify-content-between border-0">
@@ -606,11 +621,11 @@ Header END -->
                 </div>
                 <!-- Card body END -->
               </div>
-            </div>
+            </div> --}}
             <!-- Card END -->
 
             <!-- Card START -->
-            <div class="col-sm-6 col-lg-12">
+            {{-- <div class="col-sm-6 col-lg-12">
               <div class="card">
                 <!-- Card header START -->
                 <div class="card-header d-sm-flex justify-content-between align-items-center border-0">
@@ -718,7 +733,7 @@ Header END -->
                 </div>
                 <!-- Card body END -->
               </div>
-            </div>
+            </div> --}}
             <!-- Card END -->
 
           </div>

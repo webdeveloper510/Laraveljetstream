@@ -45,16 +45,20 @@
                 bottom: 0;
                 display: block;
                 max-width: 300px;
-                position: fixed;
-                z-index: 9;
-                height: 100vh;
+                height: 99vh;
                 top: 42px !important;
-                width: 100%;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                flex-direction: column;
+                width: 100% !important;
+
             }
+
+            video{
+                border-top-left-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+            }
+
+            nav.border-b.border-gray-100 {
+                z-index: 2 !important;
+              }
         </style>
     </head>
 
@@ -269,21 +273,25 @@
             <div class="container-fluid">
                 <!-- Sidenav START -->
                 <div class="navbar navbar-vertical navbar-light">
-                    <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3" tabindex="-1"
+                    <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3 mt-2" tabindex="-1"
                         id="navbarVerticaloffcanvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
                             <!-- Card START -->
 
+                            <!-- Cover image -->
+                            <div class="h-50px"
+                                    style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                            </div>
                             <!-- Avatar -->
                             <div class="avatar avatar-lg mb-3">
                                 <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html"><img
+                                    href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}"><img
                                         class="avatar-img rounded-circle border border-white border-3"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
                                         alt=""></a>
                             </div>
                             <!-- Info -->
-                            <h5 class="mb-0">{{ auth()->user()->name }} </h5>
+                            <h5 class="mb-0"><a href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">{{ auth()->user()->name }} </a></h5>
                             <small>Web Developer at Webestica</small>
                             <div></div>
                             <!-- User stat START -->
@@ -324,17 +332,17 @@
                                         </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
                                             alt=""><span>Upload Video </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/channel/Mg=="> <img class="me-2 h-20px fa-fw"
+                                    <a class="nav-link" href="{{URL::to('/channel/'. base64_encode(auth()->user()->id))}}"> <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
                                             alt=""><span>Your Channel </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/watchlater">
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
                                             alt=""><span>Watch Later </span></a>
@@ -373,18 +381,14 @@
                     </div>
 
                 </div>
-
-
-
                 <!-- Sidenav END -->
 
                 <!-- Main content START -->
                 <div class="page-content">
-                    <div class="row mb-4">
-
-                        <div class="col-12">
+                    <div class="row mb-4 ">
+                        <div class="col-12 my-5">
                             <!-- Video main feed -->
-                            <div class="owl-carousel owl-theme">
+                            <div class="owl-carousel owl-theme mt-4">
                                 @foreach ($videos as $video)
                                     @foreach ($video['posts'] as $posts)
                                         @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
@@ -419,12 +423,11 @@
                                                 </div>
                                             </div>
                                         @endif
-
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    @endforeach
+                        @endforeach
+                        @endforeach
                 </div>
                 {{-- <div class="rounded py-4 py-sm-5 overflow-hidden position-relative"
                                 style="background-image:url(assets/images/post/16by9/big/02.jpg); background-position: center center; background-size: cover; background-repeat: no-repeat;">
@@ -453,7 +456,7 @@
             </div>
             </div>
             <div class="row g-3 mb-4">
-                <div class="col-12 mt-4">
+                <div class="col-12 mt-0">
                     <div class="d-sm-flex justify-content-between align-items-center">
                         <h5 class="mb-md-0">Trending </h5>
                         <a class="btn btn-sm btn-primary" href="#!">View more video</a>

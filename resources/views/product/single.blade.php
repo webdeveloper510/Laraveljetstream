@@ -373,16 +373,17 @@ Header END -->
                         id="navbarVerticaloffcanvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
                             <!-- Avatar -->
+                            {{auth()->user()}}
                             <div class="avatar avatar-lg mb-3">
                                 <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+                                    href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">
                                     <img class="avatar-img rounded-circle border border-white border-3"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
                                 </a>
                             </div>
                             <!-- Info -->
                             <h5 class="mb-0"> <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">{{ auth()->user()->name }}
+                                    href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">{{ auth()->user()->name }}
                                 </a> </h5>
                             {{-- <small>Web Developer at Webestica</small> --}}
                             <!-- User stat START -->
