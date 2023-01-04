@@ -6042,10 +6042,13 @@ textarea.form-control-lg {
   max-width: 100%;
   pointer-events: none;
 }
+
 .toast-container > :not(:last-child) {
   margin-bottom: 0.75rem;
 }
-
+.toast-success {
+    background-color: #0cbc87 !important;
+}
 .toast-header {
   display: -webkit-box;
   display: -ms-flexbox;

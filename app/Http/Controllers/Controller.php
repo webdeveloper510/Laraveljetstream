@@ -77,6 +77,7 @@ class Controller extends BaseController
 
     public function uploadpage()
     {
+
         return view('product');
     }
 

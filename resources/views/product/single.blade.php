@@ -128,13 +128,18 @@
             margin-left: 10px;
 
         }
-
+        .card-image.video {
+    z-index: 0;
+}
         .moovie {
             height: 350px !important;
         }
         .form-control{
             /* width: 328px; */
 
+        }
+        .ml-auto {
+            margin-left: auto;
         }
     </style>
 
@@ -484,7 +489,7 @@ Header END -->
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
-                                <div class="card-image ">
+                                <div class="card-image video">
                                     <div class="overflow-hidden fullscreen-video w-100">
                                         <!-- HTML video START -->
                                         <div class="player-wrapper card-img-top overflow-hidden">
@@ -509,7 +514,7 @@ Header END -->
                                             <h4> {{ $videos[0]['title'] }} </h4>
                                             <div class="d-flex mt-3 align-items-center">
                                                 <!-- Avatar -->
-                                                <div class="avatar me-2">
+                                                <div class=" me-2">
                                                     <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
                                                         height="60px" width="60px" />
                                                 </div>
@@ -521,7 +526,7 @@ Header END -->
                                                         <span>subscribers</span>
                                                     </nav>
                                                 </div>
-                                                <div class="col-md-3 text-end">
+                                                <div class="col-md-3 ml-auto">
                                                     <button class="btn btn-danger subscribe"
                                                         style="{{ $count <= 0 && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
                                                         onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>

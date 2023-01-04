@@ -4,7 +4,7 @@ function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
     newestOnTop: true,
-    positionClass: 'toast-top-center',
+    positionClass: 'toast-top-right',
 
   };
 

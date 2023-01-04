@@ -15,7 +15,9 @@
     padding-right: 13px;
     color: #8f8f8f;
 }
-
+.toast-success {
+    background-color: #0cbc87 !important;
+}
 .views ul {
     padding: 0px;
 }
@@ -35,8 +37,8 @@ ul.dropdown-menu1 {
 }
 
 .card {
-    background-color: transparent; 
-    border: 1px solid rgba(0, 0, 0, 0); 
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0);
 
 }
 
