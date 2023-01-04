@@ -818,7 +818,7 @@ Header END -->
                                                 <p class="parag">{{ $commet['body'] }}</p>
                                                 <div class="comment_reply_{{$videos[0]['id']}}">
                                                     @foreach ($commet['replies'] as $key => $reply)
-                                                        <div class="reply">{{ $reply['body'] }}</div>
+                                                        <div class="reply" style="color: black">{{ $reply['body'] }}</div>
                                                     @endforeach
                                                 </div>
                                                 <div class="d-flex">

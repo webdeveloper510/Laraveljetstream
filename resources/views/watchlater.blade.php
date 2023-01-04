@@ -709,8 +709,8 @@ Header END -->
                             <span class="ms-auto small"> 156.9K views</span>
                           </div>
                           <!-- Video title  -->
-                          <h6 class="mb-0">  New movie trailers
-                              (2021 - 2022) September </h6>
+                          {{-- <h6 class="mb-0">  New movie trailers
+                              (2021 - 2022) September </h6> --}}
                         </div>
                       </div>
                       <!-- Video END -->

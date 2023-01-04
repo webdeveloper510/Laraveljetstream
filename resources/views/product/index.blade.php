@@ -459,7 +459,7 @@
                 <div class="col-12 mt-0">
                     <div class="d-sm-flex justify-content-between align-items-center">
                         <h5 class="mb-md-0">Trending </h5>
-                        <a class="btn btn-sm btn-primary" href="#!">View more video</a>
+                        {{-- <a class="btn btn-sm btn-primary" href="#!">View more video</a> --}}
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
