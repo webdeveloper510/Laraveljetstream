@@ -27,30 +27,26 @@
   <!-- Theme CSS -->
   <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
   <style>
-     /* nav.navbar.navbar-expand-lg{
-  margin-left: 126px !important;
- }
 
 
-div.col-md-6.my-5.gap-0{
-    padding-top: 2%;
+/* side navbar */
+    .navbar.navbar-vertical.navbar-light{
+        top: 50px !important;
+        max-width: 342px !important;
+    }
+/* -------------- */
+
+/* main content */
+    .col-md-6.my-5.px-5.gap-0{
+        padding-right: 0rem !important;
+        padding-left: 1rem !important;
+    }
+
+/* video title */
+.title_color
+{
+    color: black !important;
 }
-
-.navbar-vertical {
-    max-width: 360px !important;
-    top: 51px !important;
-}
-
-.col-sm-6.col-lg-12{
-    margin-top: 23% !important;
-}
-
-div.navbar.navbar-vertical.navbar-light {
-    position: sticky;
-}
- { */
-
-
 
     </style>
 </head>
@@ -349,7 +345,7 @@ Header END -->
           </div>
 		 </div>
           <!-- Sidenav END -->
-        <div class="col-md-6 my-5 px-5 gap-0">
+        <div class="col-md-6 my-5 px-5 pt-4 gap-0">
           <!-- Card START -->
           <div class="card">
             <div class="h-200px rounded-top"
@@ -375,7 +371,7 @@ Header END -->
                 </div>
                 <!-- Button -->
                 <div class="d-flex mt-3 justify-content-center ms-sm-auto">
-                  <a class="btn btn-danger-soft me-2" href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/Edit-profile.html?" type="button"> <i class="bi bi-pencil-fill pe-1"></i> Edit
+                  <a class="btn btn-danger-soft me-2" href="<?php echo URL::to('/'); ?>/user/profile"></i> Edit
                     profile </a>
                   <div class="dropdown">
                     <!-- Card share action menu -->
@@ -400,11 +396,11 @@ Header END -->
                 </div>
               </div>
               <!-- List profile -->
-              <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
+              {{-- <ul class="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0">
                 <li class="list-inline-item" ><a href="leaddeveloper"><i class="bi bi-briefcase me-1"></i> Lead Developer</a></li>
                 <li class="list-inline-item"><a href="New Hampshire"><i class="bi bi-geo-alt me-1"></i> New Hampshire</a></li>
                 <li class="list-inline-item"><a href=" Joined on Nov 26, 2019"><i class="bi bi-calendar2-plus me-1"></i> Joined on Nov 26, 2019</li>
-              </ul>
+              </ul> --}}
             </div>
 
           </div>
@@ -457,14 +453,7 @@ Header END -->
                     </div>
                     <!-- Video info -->
                     <div class="card-body px-0 pb-0 pt-2">
-                      <ul class="nav nav-stack small">
-                        <li class="nav-item">
-                          <a class="nav-link" href="#!"> <i class="bi bi-heart-fill text-danger pe-1"></i>22k </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#!"> <i class="bi bi-chat-left-text-fill pe-1"></i>3k </a>
-                        </li>
-                      </ul>
+                    <p class="title_color">{{$videos[0]['title']}}</p>
                     </div>
                   </div>
                   <!-- Video END -->
@@ -485,7 +474,7 @@ Header END -->
         <!-- Main content END -->
 
         <!-- Right sidebar START -->
-        <div class="col-md-3 g-0 ">
+        <div class="col-md-3 g-4 my-5 pt-4">
 
           <div class="row g-4">
 

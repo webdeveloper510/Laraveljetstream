@@ -347,9 +347,9 @@
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
                                             alt=""><span>Watch Later </span></a>
                                 </li>
-                                <div class="card-footer text-center py-2">
+                                {{-- <div class="card-footer text-center py-2">
                                     <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
-                                </div>
+                                </div> --}}
 
                                 <!-- <li class="nav-item">
                                 <li class="nav-item">
@@ -703,7 +703,7 @@
             </div>
 
             <!-- Official trailer START -->
-            <div class="row g-3 mb-4">
+            {{-- <div class="row g-3 mb-4">
                 <div class="col-12 mt-4">
                     <div class="d-sm-flex justify-content-between align-items-center">
                         <h5 class="mb-md-0">Official Trailer </h5>
@@ -811,10 +811,10 @@
                     </div>
                     <!-- Video END -->
                 </div>
-            </div>
+            </div> --}}
             <!-- Official trailer END -->
 
-            <div class="row g-3 mb-4">
+            {{-- <div class="row g-3 mb-4">
                 <div class="col-12 mt-4">
                     <h5>Music </h5>
                 </div>
@@ -1025,7 +1025,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             </div>
             <!-- Main content END -->
 

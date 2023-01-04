@@ -606,14 +606,17 @@ Header END -->
                   </div>
                   <!-- Card body END -->
                   <!-- Card footer -->
-                  <div class="card-footer text-center py-2">
+                  {{-- <div class="card-footer text-center py-2">
                     <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
-                  </div>
+                  </div> --}}
+                  {{-- <div class="card-footer text-center py-2">
+                    <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
+                  </div> --}}
                 </div>
                 <!-- Card END -->
 
                 <!-- Helper link START -->
-                <ul class="nav small mt-4 justify-content-center lh-1">
+                {{-- <ul class="nav small mt-4 justify-content-center lh-1">
                   <li class="nav-item">
                     <a class="nav-link" href="my-profile-about.html">About</a>
                   </li>
@@ -632,10 +635,10 @@ Header END -->
                   <li class="nav-item">
                     <a class="nav-link" href="privacy-and-terms.html">Privacy & terms</a>
                   </li>
-                </ul>
+                </ul> --}}
                 <!-- Helper link END -->
                 <!-- Copyright -->
-                <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank"
+                {{-- <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" --}}
                     href="https://www.webestica.com/"> Webestica </a></p>
               </div>
             </div>
