@@ -2,11 +2,11 @@
     <!DOCTYPE html>
     <html lang="en">
 
-    {{-- old code  header --}}
+
     @include('header')
 
     <head>
-        {{-- old code style tag --}}
+
         <style>
             .goog-te-gadget img {
                 vertical-align: middle;
@@ -19,7 +19,9 @@
                 max-width: 500px;
             }
 
-
+.description{
+    color: black;
+}
             div#social-links ul {
                 display: flex;
                 padding: 3px;
@@ -72,27 +74,10 @@
                 /* border: 1px solid #ccc; */
             }
         </style>
-        {{-- old code link --}}
-        {{-- Removeable content ------->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+
         <title>Social - Network, Community and Event Theme</title>
 
         <!-- Meta Tags -->
-        {{-- -- Removeable content -------><meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="author" content="Webestica.com">
-        <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme"> --}}
-
-        <!-- Favicon -->
-        {{-- Removeable content -------> <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.ico"> --}}
-
-        <!-- Google Font -->
-        {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
 
         <!-- Plugins CSS -->
         <link rel="stylesheet" type="text/css"
@@ -400,17 +385,11 @@ Header END -->
                                 <!-- Divider -->
                                 <div class="vr"></div>
                                 <!-- User stat item -->
-                                {{-- <div>
-                                    <h6 class="mb-0">2.5K</h6>
-                                    <small>Followers</small>
-                                </div> --}}
+
                                 <!-- Divider -->
                                 <div class="vr"></div>
                                 <!-- User stat item -->
-                                {{-- <div>
-                                    <h6 class="mb-0">365</h6>
-                                    <small>Following</small>
-                                </div> --}}
+
                             </div>
                             <!-- User stat END -->
 
@@ -552,64 +531,7 @@ Header END -->
                                                                 </span> SAVE
                                                             </button>
                                                         </a>
-                                                        {{-- <ul class="dropdown-menu dropdown-menu-end "
-                                                            aria-labelledby="cardShareAction">
-                                                            <li><a class="dropdown-item d-flex" href="#!">
-                                                                    <div class="form-check ">
-                                                                        <input class="form-check-input "
-                                                                            type="checkbox" value=""
-                                                                            id="flexCheckChecked" checked>
-                                                                        <label class="form-check-label mx-3"
-                                                                            for="flexCheckChecked  ">
-                                                                            Watch later
-                                                                        </label>
-                                                                    </div><span class="material-symbols-outlined mx-3">
-                                                                        lock
-                                                                    </span><button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </a></li>
-                                                            <li><a class="dropdown-item d-flex "
-                                                                    href="Create New Playlist"> <span
-                                                                        class="material-symbols-outlined me-3">
-                                                                        add</span>Create New Playlist</a></li>
-                                                            <Form>
-                                                                <div class="mb-3 p-3">
-                                                                    <label for="exampleFormControlInput1"
-                                                                        class="form-label">Name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Enter playlist">
-                                                                    <label for="validationCustom04"
-                                                                        class="form-label">State</label>
-                                                                    <select class="form-select"
-                                                                        id="validationCustom04" required>
-                                                                        <option selected disabled value="">
-                                                                            Privacy</option>
-                                                                        <option><span
-                                                                                class="material-symbols-outlined">
-                                                                                public
-                                                                            </span>Anyone can search for and view.
-                                                                            Channel creation required.</option>
-                                                                        <option><span
-                                                                                class="material-symbols-outlined">
-                                                                                public
-                                                                            </span>Anyone
 
-                                                                    </select>
-                                                                    <div class="mt-3">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <a href='/create'
-                                                                            class='rounded-pill btn btn-primary '>Create</a>
-                                                                    </div>
-                                                                    <div class="invalid-feedback">
-                                                                        Please select a valid state.
-                                                                    </div>
-                                                                </div>
-                                                            </Form>
-                                                        </ul> --}}
                                                     </div>
                                                 </div>
                                                 <div class="report">
@@ -775,14 +697,15 @@ Header END -->
                                             </div>
                                             <!-- Interested button -->
                                         </div>
-                                        <div id="main">
-                                            This is Description
-                                        </div>
-                                        <p>{{ $videos[0]['description'] }}<span id="dots">...</span><span
-                                                id="more">{{ $videos[0]['description'] }}</span></p>
-                                        <button onclick="myFunction()" id="myBtn"
-                                            style="color: rgb(8, 239, 38)">Read
-                                            more</button>
+                                        <h6 class="description">
+                                            Description
+                                        </h6>
+                                        <p class="disp-cont">
+                                        </p>
+                                        <p class="more-cont" style="display:none;">
+                                          {{$videos[0]['description']}}
+                                        </p>
+                                        <a href="#" class="Read more">Read more</a>
                                     </div>
                                 </div>
                             </div>
@@ -790,19 +713,6 @@ Header END -->
                         </div>
                         <div class="col-md-4 g-3 ">
                             <h4>{{ $total_comment }} Comments</h4>
-                            {{-- <div class=" mt-3">
-                                <form id="comment">
-                                    <div class="commentBox">
-                                        <input type="text" class="form-control" autocomplete="off" name="body"
-                                            id="exampleFormControlInput1" placeholder="Add a comment" required>
-                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
-                                    </div>
-                                    <div class="text-end mt-3">
-                                        <button type="submit" class="btn btn-primary btn-sm"
-                                            style="width:110px;">COMMENT</button>
-                                    </div>
-                                </form>
-                            </div> --}}
                             <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
                                     <div>

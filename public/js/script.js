@@ -270,7 +270,15 @@ function save_video (product_id) {
     },
   });
 }
+// ------------------------------------------Read more/Read less-----------------------//
+$('.more').click(function(e) {
+  e.preventDefault();
+  $(this).text(function(i, t) {
+    return t == 'Read less' ? 'Read more' : 'Read less';
+  }).prev('.more-cont').slideToggle()
+});
 
+// ----------------------------------------Upload Product------------------------//
 $ ('form#msform').submit (function (e) {
   toastr.options = {
     closeButton: true,

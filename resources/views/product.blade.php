@@ -361,63 +361,15 @@
                             <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/like-outline-filled.svg"
                               alt=""><span>Watch Later </span></a>
                         </li>
-                        <!-- <li class="nav-item">
-                        <a class="nav-link" href="groups.html"> <img class="me-2 h-20px fa-fw" src="assets/images/icon/chat-outline-filled.svg" alt=""><span>Groups </span></a>
-                      </li> -->
-                        {{-- <li class="nav-item">
-                          <a class="nav-link d-flex" href="notifications.html"> <img class="me-2 h-20px fa-fw"
-                              src="<?php echo URL::to('/')?>/public/assets/images/icon/notification-outlined-filled.svg" alt=""><span>Notifications
-                            </span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link d-flex" href="settings.html"> <img class="me-2 h-20px fa-fw"
-                              src="<?php echo URL::to('/')?>/public/assets/images/icon/cog-outline-filled.svg" alt=""><span>Settings </span></a>
-                        </li>
-                        <li>
-                        <a class="nav-link d-flex"
-                          href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/sign-in-advance.html">
-                          <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
-                            alt=""><span>Logout </span></a>
-                        </li> --}}
                       </ul>
                       <!-- Side Nav END -->
                     </div>
                     <!-- Card body END -->
                     <!-- Card footer -->
-                    {{-- <div class="card-footer text-center py-2">
-                      <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
-                    </div> --}}
-                    {{-- <div class="card-footer text-center py-2">
-                      <a class="btn btn-link btn-sm" href="my-profile.html">View Profile </a>
-                    </div> --}}
                   </div>
                   <!-- Card END -->
 
                   <!-- Helper link START -->
-                  {{-- <ul class="nav small mt-4 justify-content-center lh-1">
-                    <li class="nav-item">
-                      <a class="nav-link" href="my-profile-about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="settings.html">Settings</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" target="_blank" href="https://support.webestica.com/login">Support </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" target="_blank" href="docs/index.html">Docs </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="help.html">Help</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="privacy-and-terms.html">Privacy & terms</a>
-                    </li>
-                  </ul> --}}
-                  <!-- Helper link END -->
-                  <!-- Copyright -->
-                  {{-- <p class="small text-center mt-1">©2022 <a class="text-body" target="_blank" --}}
-                      {{-- href="https://www.webestica.com/"> Webestica </a></p> --}}
                 </div>
               </div>
             </nav>
@@ -497,11 +449,6 @@
                                             controls autoplay>
                                     Your browser does not support the video tag.
                                     </video>
-                        {{-- <video width="400" height="240" class="mx-auto" controls>
-                            <source src="" type="video/mp4">
-                            <source src="" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video> --}}
                     </div>
                     <div class="my-3">
                         <label>Video Link</label> <br />
@@ -582,16 +529,9 @@
 
                 </fieldset>
             </form>
-            <!-- link to designify.me code snippets -->
 
-            <!-- /.link to designify.me code snippets -->
         </div>
     </div>
-
-    {{-- <div class="loader1" width="100%" style="display:none;">
-        <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
-    </div> --}}
-    <!-- /.MultiStep Form -->
     <script>
         var current_fs, next_fs, previous_fs; //fieldsets
         var left, opacity, scale; //fieldset properties which we will animate
