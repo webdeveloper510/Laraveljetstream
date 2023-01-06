@@ -523,13 +523,10 @@
                                 </div>
                             </li>
                         </ul>
-
                     </div>
                     <button type="submit"  value="Next">Submit</button>
-
                 </fieldset>
             </form>
-
         </div>
     </div>
     <script>
@@ -620,7 +617,6 @@
                 easing: 'easeInOutBack'
             });
         });
-
         $(".submit").click(function() {
             return false;
         })
@@ -636,7 +632,6 @@
             var videoUpload = e.target.files[0].name;
             console.log(videoUpload);
             $(".filename").text(videoUpload);
-
         });
     });
 </script>

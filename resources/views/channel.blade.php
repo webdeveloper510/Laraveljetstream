@@ -439,7 +439,6 @@ Header END -->
                             <track kind="captions" label="English" srclang="en"
                                 src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                         </video>
-
                       <!-- Duration -->
                       <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
                         <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">02:20</span>
@@ -463,15 +462,11 @@ Header END -->
             <!-- Card footer END -->
           </div>
           <!-- Video item END -->
-
         </div>
         <!-- Main content END -->
-
         <!-- Right sidebar START -->
         <div class="col-md-3 g-4 my-5 pt-4">
-
           <div class="row g-4">
-
             <!-- Card START -->
             <div class="col-sm-6 col-lg-12 ">
               <div class="card  ">
@@ -494,16 +489,12 @@ Header END -->
               </div>
             </div>
             <!-- Card END -->
-
           </div>
-
         </div>
         <!-- Right sidebar END -->
-
       </div> <!-- Row END -->
     </div>
     <!-- Container END -->
-
   </main>
   <!-- **************** MAIN CONTENT END **************** -->
 
@@ -512,7 +503,6 @@ JS libraries, plugins and custom scripts -->
 
   <!-- Bootstrap JS -->
   <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
   <!-- Vendors -->
   <script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
 
