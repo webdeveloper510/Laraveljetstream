@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\Product;
-use App\models\Comment;
+use App\Models\product;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {

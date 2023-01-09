@@ -29,6 +29,7 @@
         <link rel="stylesheet" type="text/css"
             href="<?php echo URL::to('/'); ?>/public/assets/vendor/tiny-slider/dist/tiny-slider.css">
         <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.css" />
+		<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
