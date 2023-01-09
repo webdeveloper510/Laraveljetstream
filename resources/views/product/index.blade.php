@@ -432,12 +432,12 @@
         <!-- =======================
 JS libraries, plugins and custom scripts -->
         <!-- Bootstrap JS -->
-        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Vendors -->
-        <script src="assets/vendor/tiny-slider/dist/tiny-slider.js"></script>
-        <script src="assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
-        <script src="assets/vendor/plyr/plyr.js"></script>
-        <script src="assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/tiny-slider/dist/tiny-slider.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
