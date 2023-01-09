@@ -1,12 +1,8 @@
 <x-app-layout>
     <!DOCTYPE html>
     <html lang="en">
-
-
     @include('header')
-
     <head>
-
         <style>
             .goog-te-gadget img {
                 vertical-align: middle;
