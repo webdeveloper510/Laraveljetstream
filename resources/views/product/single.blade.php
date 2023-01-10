@@ -359,7 +359,7 @@ Header END -->
                         id="navbarVerticaloffcanvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
                             <!-- Avatar -->
-                            {{auth()->user()}}
+                           
                             <div class="avatar avatar-lg mb-3">
                                 <a
                                     href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">
@@ -403,19 +403,19 @@ Header END -->
                                         </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
                                             alt=""><span>Uploade Video </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}"> <img
+                                        href="<?php echo URL::to('/'); ?>/channel/{{ base64_encode(auth()->user()->id) }}"> <img
                                             class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
                                             alt=""><span>Your Channel </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/watchlater">
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
                                             alt=""><span>Watch Later </span></a>
@@ -680,7 +680,7 @@ Header END -->
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             <button class="btn btn-light "><i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
-                                                                (3)</button>
+                                                                </button>
                                                         </a>
                                                         <!-- Dropdown menu -->
                                                         <ul class="dropdown-menu dropdown-menu-end"

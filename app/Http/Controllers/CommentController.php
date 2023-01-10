@@ -14,7 +14,7 @@ class CommentController extends Controller
         // echo "<pre>";
         // print_r($request->all());die;
         $comment = new Comment;
-       $body = $comment->body = $request->get('body');
+        $body = $comment->body = $request->get('body');
         $id = auth()->user()->id;
         $comment->parent_id = 0;
         $comment->product_id = $request->get('post_id');
