@@ -27,10 +27,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'surname',
-        'date_of_birth',
-        'profile_photo_path',
-        'cover_img'
     ];
 
     /**
@@ -59,7 +55,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = [
+     protected $appends = [
         'profile_photo_url',
     ];
 
@@ -81,6 +77,4 @@ class User extends Authenticatable
 {
     return $this->hasMany('App\Models\product_rating'::class);
 }
-
-
 }

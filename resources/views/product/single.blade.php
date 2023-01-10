@@ -86,9 +86,7 @@
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
-
-    </head>
-    <style>
+<style>
         p {
             color: black !important;
         }
@@ -123,7 +121,8 @@
             margin-left: auto;
         }
     </style>
-
+	@livewireStyles
+    </head>
     <body>
 
         <!-- **************** MAIN CONTENT START **************** -->
@@ -980,7 +979,7 @@ JS libraries, plugins and custom scripts -->
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
-
+@livewireScripts
     </body>
     <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 

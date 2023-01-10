@@ -398,7 +398,7 @@ Header END -->
               <!-- List profile -->
             </div>
           </div>
-          <!-- Card END -->
+          <!-- Card END Details -->
 
           <!-- Video START -->
           <div class="col-md-3">
