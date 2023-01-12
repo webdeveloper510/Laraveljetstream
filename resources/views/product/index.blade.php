@@ -8,6 +8,9 @@
     .owl-dots{
         display:none !important;
     }
+    .row{
+        --bs-gutter-x: auto !important;
+    }
 </style>
 <x-app-layout>
     <!DOCTYPE html>
