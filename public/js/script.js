@@ -114,6 +114,7 @@ $ ('#save_reply').submit (function (e) {
     success: function (data) {
     var body = $('.body1').val();
       $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
+      $("#reset").reset();
     },
   });
 });

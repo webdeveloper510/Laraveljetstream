@@ -130,7 +130,7 @@
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
                                             alt=""><span>Watch Later </span></a>
                                 </li>
-                                <!-- Side Nav END -->
+                              <!-- Side Nav END -->
                         </div>
                     </div>
                 </div>

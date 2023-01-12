@@ -27,7 +27,7 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link href="<?php echo URL::to('/'); ?>/watchlater">
                         {{ __('Save Video') }} --}}
-<x-jet-nav-link>
+        <x-jet-nav-link>
             <div id="google_translate_element">Translate</div>
         </x-jet-nav-link>
                 </div>

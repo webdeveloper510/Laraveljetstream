@@ -738,7 +738,7 @@ Header END -->
                                                 </div>
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
-                                                        <form id="save_reply">
+                                                        <form id="save_reply" id="reset">
                                                         <div>
                                                             <input type="text" class="form-control body1" name="body"
                                                                 class="body_reply" placeholder="Reply..."
@@ -1052,6 +1052,7 @@ JS libraries, plugins and custom scripts -->
             $('.goog-te-gadget').html($('.goog-te-gadget').children());
         })
     </script>
+      
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
     {{-- ------------------send auth user detail in script file-------------------------- --}}
