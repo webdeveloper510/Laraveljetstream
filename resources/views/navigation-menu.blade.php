@@ -1,4 +1,10 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<style>
+ nav.bg-white.border-b.border-gray-100.w-full {
+      position: fixed !important;
+  }
+</style>
+
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 w-full">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -15,9 +21,23 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+					<x-jet-nav-link>
+            <div id="google_translate_element">Translate</div>
+        </x-jet-nav-link>
                 </div>
             </div>
-
+			<div class="">
+                <form method="GET" action="{{ url('/search') }}" class="d-flex">
+                    <div class="mt-3 bg-white mx-4">
+                        <label for="search" class="hidden">Search</label>
+                        <input id="search" ref="search" v-model="search"
+                            class="transition h-10 w-full bg-gray-100 border border-gray-500 focus:border-purple-400 outline-none cursor-pointer text-gray-700 px-4 pb-0 pt-px"
+                            :class="{ 'transition-border': search }" autocomplete="off" name="search"
+                            placeholder="Search" type="search" />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm mt-3 px-4">Search</button>
+                </form>
+            </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
