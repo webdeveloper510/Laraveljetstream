@@ -1,4 +1,14 @@
-
+<style>
+    /* .owl-item.active{
+        width: 180.453px !important;
+    } */
+    .owl-nav{
+        display:none !important;
+    }
+    .owl-dots{
+        display:none !important;
+    }
+</style>
 <x-app-layout>
     <!DOCTYPE html>
     <html lang="en">
@@ -108,7 +118,7 @@
                             <h5 class="mb-0"><a
                                     href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
                                 </a></h5>
-                            <small class="test" >Web Developer at Webestica</small>
+                        
                             <div></div>
                             <!-- Divider -->
                             <hr>
@@ -166,17 +176,16 @@
                                                         </video>
                                                         <div class="card-body">
                                                             <div class="row">
+                                                                <div class="col-12">
+                                                                {{ $posts['title'] }}
+                                                               </div>
                                                                 <div class="col-2">
                                                                     <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
                                                                         class="thump">
                                                                 </div>
-															</div>
-														</div>
-													</div>
-                                                </a>
-                                                <div class="col-12">
+                                                                <div class="col-10">
                                                     <div class="detail">
-                                                        {{ $posts['title'] }}<br />
+                                                      
                                                         {{-- {{url('/channel/'.$video['id'])}} --}}
                                                         {{ Auth::user()->name }}
                                                         <ul class="Views">
@@ -186,13 +195,19 @@
                                                         </ul>
                                                     </div>
                                                 </div>
+															</div>
+														</div>
+													</div>
+                                                </a>
+                                                
                                             </div>
                                         @endif
+                                        @endforeach
+                    @endforeach
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                    @endforeach
+                   
                 </div>
         </main>
         <!-- **************** MAIN CONTENT END **************** -->

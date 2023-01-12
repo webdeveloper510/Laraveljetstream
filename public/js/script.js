@@ -20,7 +20,7 @@ function subscribe (channel_id, flag) {
     success: function (data) {
       let subs_count = $('#subscribe').html();
       let add = 1;
-      let total_count = (add-subs_count);
+      let total_count = flag==1 ? (parseInt(subs_count)+parseInt(add)) : (parseInt(subs_count)-parseInt(add));
       $('#subscribe').html(total_count);
       if (data.code) {
         toastr.success (data.message);
@@ -102,7 +102,7 @@ console.log(currentTime);
 
 //----------------------------------------Reply of comment--------------------------------//
 
-$ ('#save_reply').submit (function (e) {
+$('.save_reply').submit (function (e) {
   e.preventDefault ();
   var form = $ (this);
   var data_id_value = $(this).find('[type="submit"]').attr("data-id");
@@ -112,8 +112,9 @@ $ ('#save_reply').submit (function (e) {
     url: actionUrl,
     data: form.serialize(),
     success: function (data) {
-    var body = $('.body1').val();
+    var body = $(form).find('.body1').val();
       $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
+	  $("#refresh")[0].reset();
     },
   });
 });

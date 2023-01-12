@@ -680,7 +680,7 @@ Header END -->
                                                             <button class="btn btn-light "><i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
                                                                 </button>
-                                                        </a>
+                                                      
                                                         <!-- Dropdown menu -->
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="cardShareAction">
@@ -726,7 +726,7 @@ Header END -->
                                                     </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                                 </p>
                                                 <p class="parag">{{ $commet['body'] }}</p>
-                                                <div class="comment_reply_{{$videos[0]['id']}}">
+                                                <div class="comment_reply_{{$commet['id']}}">
                                                     @foreach ($commet['replies'] as $key => $reply)
                                                         <div class="reply" style="color: black">{{ $reply['body'] }}</div>
                                                     @endforeach
@@ -737,7 +737,7 @@ Header END -->
                                                 </div>
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
-                                                        <form id="save_reply">
+                                                        <form class="save_reply">
                                                         <div>
                                                             <input type="text" class="form-control body1" name="body"
                                                                 class="body_reply" placeholder="Reply..."
@@ -749,7 +749,7 @@ Header END -->
                                                         </div>
                                                         <div class="text-end mt-3">
                                                             <button type="submit" class="btn btn-primary btn-sm"
-                                                                data-id="{{$videos[0]['id']}}"
+                                                                data-id="{{$commet['id']}}"
                                                                 style="width:110px;">REPLY</button>
                                                         </div>
                                                         </form>
