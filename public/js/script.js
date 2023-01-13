@@ -96,6 +96,7 @@ console.log(currentTime);
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
     },
+	$(this).reset();
   });
 });
 

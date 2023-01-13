@@ -186,6 +186,15 @@
                 padding-right: 3rem !important;
                 padding-left: 22rem !important;
             }
+
+            body{
+                margin:0 !important;
+            }
+
+            nav.bg-white.border-b.border-gray-100.w-full {
+                position: fixed !important;
+                z-index: 1 !important;
+            }
         </style>
 
     </head>

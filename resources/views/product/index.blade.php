@@ -91,17 +91,28 @@
                 text-align: center;
             }
 
-            .mb-3 {
+            /* .mb-3 {
             width: 60% !important;
             height: 30% !important; 
-        }
+        } */
+
         p {
-    
-    font-size: small !important;
+            font-size: small !important;
+        }
+
+        a {
+            text-transform: capitalize;
+        }
+
+.avatar-img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover !important;
 }
-a {
-    text-transform: capitalize;
-}
+
+        .mx-4 {
+            margin-left: 2.5rem !important;
+        }
         </style>
     </head>
 
@@ -131,7 +142,7 @@ a {
                                 style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                             </div>
                             <!-- Avatar -->
-                            <div class="mb-3 mx-5">
+                            <div class="mb-0 mx-5">
                                 <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
                                         class="avatar-img rounded-circle border border-white border-3 "
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
