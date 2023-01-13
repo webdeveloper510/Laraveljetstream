@@ -1,17 +1,4 @@
-<style>
-    /* .owl-item.active{
-        width: 180.453px !important;
-    } */
-    .owl-nav{
-        display:none !important;
-    }
-    .owl-dots{
-        display:none !important;
-    }
-    .row{
-        --bs-gutter-x: auto !important;
-    }
-</style>
+
 <x-app-layout>
     <!DOCTYPE html>
     <html lang="en">
@@ -45,7 +32,7 @@
             href="<?php echo URL::to('/'); ?>/public/assets/vendor/tiny-slider/dist/tiny-slider.css">
         <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.css" />
 	
-
+         <link rel="stylesheet" type="css/text" href="<?php echo URL::to('/'); ?>/public/css/style_custom.css"/>
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
 		<link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.carousel.min.css">
@@ -73,8 +60,9 @@
                 width: 100% !important;
 
             }
-
-            video {
+            video.video_autoplay {
+                height: 135px !important;
+                object-fit: cover;
                 border-top-left-radius: 4px !important;
                 border-top-right-radius: 4px !important;
             }
@@ -82,6 +70,49 @@
             nav.border-b.border-gray-100 {
                 z-index: 2 !important;
             }
+
+            .owl-nav{
+            display:none !important;
+             }
+            .owl-dots{
+                display:none !important;
+            }
+            .row{
+                --bs-gutter-x: auto !important;
+            }
+            ol,ul {
+            padding-left: 0px !important;
+            }
+                p.view{
+                    font-size: small !important;
+            }
+
+            h5.mb-0 {
+                text-align: center;
+            }
+
+            /* .mb-3 {
+            width: 60% !important;
+            height: 30% !important; 
+        } */
+
+        p {
+            font-size: small !important;
+        }
+
+        a {
+            text-transform: capitalize;
+        }
+
+.avatar-img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover !important;
+}
+
+        .mx-4 {
+            margin-left: 2.5rem !important;
+        }
         </style>
     </head>
 
@@ -103,7 +134,7 @@
                 <!-- Sidenav START -->
                 <div class="navbar navbar-vertical navbar-light">
                     <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3 mt-2" tabindex="-1"
-                        id="navbarVerticaloffcanvas">
+                        id="navbarVerticaloffca nvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
                             <!-- Card START -->
                             <!-- Cover image -->
@@ -111,9 +142,9 @@
                                 style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                             </div>
                             <!-- Avatar -->
-                            <div class="avatar avatar-lg mb-3">
+                            <div class="mb-0 mx-5">
                                 <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
-                                        class="avatar-img rounded-circle border border-white border-3"
+                                        class="avatar-img rounded-circle border border-white border-3 "
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
                                         alt=""></a>
                             </div>
@@ -121,7 +152,7 @@
                             <h5 class="mb-0"><a
                                     href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
                                 </a></h5>
-                        
+                            <small class="mx-4">Web Developer at Webestica</small>
                             <div></div>
                             <!-- Divider -->
                             <hr>
@@ -159,9 +190,9 @@
                 </div>
                 <!-- Sidenav END -->
                 <!-- Main content START -->
-                <div class="page-content">
-                    <div class="row mb-4 ">
-                        <div class="col-12 my-2">
+                <div class="page-content ">
+                    <div class="row mb-4 p-3">
+                        <div class="col-12 mt-5">
                             <!-- Video main feed -->
                             <div class=" owl-carousel owl-theme mt-4">
                                 @foreach ($videos as $video)
@@ -172,16 +203,18 @@
                                                     <div class="card">
                                                         <video width="100%" height="100%" autoplay
                                                             onmouseover="this.play()"
-                                                            onmouseout="this.pause();this.currentTime=0;">
+                                                            onmouseout="this.pause();this.currentTime=0;"
+                                                            class="video_autoplay">
                                                             <source
                                                                 src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
                                                                 type="video/mp4">
                                                         </video>
-                                                        <div class="card-body">
+                                                        <div class="card-body p-2">
+                                                            <h5>  
+                                                            {{strlen($posts['title']) > 15 ? substr($posts['title'],0,20)."..." : $posts['title']}}
+                                                            </h5>
+                                                        
                                                             <div class="row">
-                                                                <div class="col-12">
-                                                                {{ $posts['title'] }}
-                                                               </div>
                                                                 <div class="col-2">
                                                                     <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
                                                                         class="thump">
@@ -191,11 +224,12 @@
                                                       
                                                         {{-- {{url('/channel/'.$video['id'])}} --}}
                                                         {{ Auth::user()->name }}
-                                                        <ul class="Views">
+                                                        <p> View:{{ $posts['views'] }}</p>
+                                                        <!-- <ul class="Views">
                                                             <li>
-                                                                View:{{ $posts['views'] }}
+                                                               
                                                             </li>
-                                                        </ul>
+                                                        </ul> -->
                                                     </div>
                                                 </div>
 															</div>
@@ -210,7 +244,48 @@
                             </div>
                         </div>
                     </div>
-                   
+
+
+                    <div class="row ">
+                    <div class="col-md-3 p-2">
+
+                        <video controls width="250">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                        </video>
+
+                        
+                    </div>
+                    <div class="col-md-3 g-2">
+                    <video controls width="250">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="col-md-3 g-2">
+                        <video controls width="250">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="col-md-3 g-2">
+                        <video controls width="250">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                            type="video/mp4">
+                        </video>
+                    </div>
+
+                   </div>
                 </div>
         </main>
         <!-- **************** MAIN CONTENT END **************** -->

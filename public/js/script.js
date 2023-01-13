@@ -76,9 +76,8 @@ $ ('#submitt_report').submit (function (e) {
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
 var auth_name = Auth_user.name;
-var currentTime= moment().format('MMMM Do YYYY, h:mm:ss a');
+var currentTime= moment(new Date).fromNow();
 console.log(currentTime);
-
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
@@ -97,6 +96,7 @@ console.log(currentTime);
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
     },
+	$(this).reset();
   });
 });
 
