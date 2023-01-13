@@ -715,7 +715,7 @@ Header END -->
                                             <div class="col-2 text-end">
                                                 <div class="profile-image">
                                                     <a
-                                                        href="{{ URL::to('/channel/' . base64_encode($videos[0]['user_id'])) }}"><img
+                                                        href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
                                                             src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . auth()->user()->profile_photo_path }}"
                                                             width="40px" /></a>
                                                 </div>
@@ -723,7 +723,7 @@ Header END -->
                                             <div class="col-md-10">
                                                 <p class="m-0"> <b class="nam">
                                                         {{ $videos[0]['user']['id'] == $commet['user_id'] ? $videos[0]['user']['name'] : Auth::user()->name }}
-                                                    </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
+                                                    </b>{{ \Carbon\Carbon::parse($commet['created_at'])->diffForHumans() }}
                                                 </p>
                                                 <p class="parag">{{ $commet['body'] }}</p>
                                                 <div class="comment_reply_{{$commet['id']}}">
@@ -771,7 +771,7 @@ Header END -->
                                     </div>
                                     <div class="text-end mt-1">
                                         <button type="submit" class="btn btn-primary btn-sm"
-                                            style="width:110px;">COMMENT</button>
+                                            style="width:110px;" onclick="scrollToTop()">COMMENT</button>
                                     </div>
                                 </form>
                             </div>
@@ -1117,6 +1117,10 @@ JS libraries, plugins and custom scripts -->
 
         getStars({{ round($averageRating, 1) }}, {{ $videos[0]['id'] }})
     </script>
-
+<script>
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+        }
+    </script>
     </html>
 </x-app-layout>

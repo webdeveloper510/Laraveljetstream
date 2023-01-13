@@ -76,9 +76,8 @@ $ ('#submitt_report').submit (function (e) {
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
 var auth_name = Auth_user.name;
-var currentTime= moment().format('MMMM Do YYYY, h:mm:ss a');
+var currentTime= moment(new Date).fromNow();
 console.log(currentTime);
-
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
