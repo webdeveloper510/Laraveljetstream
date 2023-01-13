@@ -280,7 +280,7 @@
                             <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
                                 <h1 class="h4 card-title">Videos</h1>
                                 <!-- Button modal -->
-                                <a class="btn btn-primary-soft" href="#" data-bs-toggle="modal"
+                                <a class="btn btn-primary-soft" href="<?php echo URL::to('/');?>/uploadpage" data-bs-toggle="modal"
                                     data-bs-target="#modalCreateVideo"> <i class="fa-solid fa-plus pe-1"></i> Add
                                     video</a>
                             </div>

@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/Laraveljetstream/'),
+    'url' => env('APP_URL', 'https://provlog.tv/product/Laraveljetstream/'),
 
     'asset_url' => env('ASSET_URL', null),
 

@@ -86,9 +86,7 @@
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
-
-    </head>
-    <style>
+<style>
         p {
             color: black !important;
         }
@@ -123,7 +121,8 @@
             margin-left: auto;
         }
     </style>
-
+	@livewireStyles
+    </head>
     <body>
 
         <!-- **************** MAIN CONTENT START **************** -->
@@ -359,7 +358,7 @@ Header END -->
                         id="navbarVerticaloffcanvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
                             <!-- Avatar -->
-                            {{auth()->user()}}
+
                             <div class="avatar avatar-lg mb-3">
                                 <a
                                     href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">
@@ -403,19 +402,19 @@ Header END -->
                                         </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
                                             alt=""><span>Uploade Video </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}"> <img
+                                        href="<?php echo URL::to('/'); ?>/channel/{{ base64_encode(auth()->user()->id) }}"> <img
                                             class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
                                             alt=""><span>Your Channel </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/watchlater">
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
                                             alt=""><span>Watch Later </span></a>
@@ -680,8 +679,8 @@ Header END -->
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             <button class="btn btn-light "><i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
-                                                                (3)</button>
-                                                        </a>
+                                                                </button>
+
                                                         <!-- Dropdown menu -->
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="cardShareAction">
@@ -727,7 +726,7 @@ Header END -->
                                                     </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
                                                 </p>
                                                 <p class="parag">{{ $commet['body'] }}</p>
-                                                <div class="comment_reply_{{$videos[0]['id']}}">
+                                                <div class="comment_reply_{{$commet['id']}}">
                                                     @foreach ($commet['replies'] as $key => $reply)
                                                         <div class="reply" style="color: black">{{ $reply['body'] }}</div>
                                                     @endforeach
@@ -738,7 +737,8 @@ Header END -->
                                                 </div>
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
-                                                        <form id="save_reply" id="reset">
+
+                                                        <form class="save_reply">
                                                         <div>
                                                             <input type="text" class="form-control body1" name="body"
                                                                 class="body_reply" placeholder="Reply..."
@@ -750,7 +750,7 @@ Header END -->
                                                         </div>
                                                         <div class="text-end mt-3">
                                                             <button type="submit" class="btn btn-primary btn-sm"
-                                                                data-id="{{$videos[0]['id']}}"
+                                                                data-id="{{$commet['id']}}"
                                                                 style="width:110px;">REPLY</button>
                                                         </div>
                                                         </form>
@@ -980,7 +980,7 @@ JS libraries, plugins and custom scripts -->
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
-
+@livewireScripts
     </body>
     <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
@@ -1052,7 +1052,7 @@ JS libraries, plugins and custom scripts -->
             $('.goog-te-gadget').html($('.goog-te-gadget').children());
         })
     </script>
-      
+
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
     {{-- ------------------send auth user detail in script file-------------------------- --}}
