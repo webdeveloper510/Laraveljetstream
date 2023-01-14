@@ -1,10 +1,9 @@
-
 <x-app-layout>
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
-	@include('custom')
+        @include('custom')
         <title>Social - Network, Community and Event Theme</title>
 
         <!-- Meta Tags -->
@@ -31,18 +30,17 @@
         <link rel="stylesheet" type="text/css"
             href="<?php echo URL::to('/'); ?>/public/assets/vendor/tiny-slider/dist/tiny-slider.css">
         <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.css" />
-	
-         <link rel="stylesheet" type="css/text" href="<?php echo URL::to('/'); ?>/public/css/style_custom.css"/>
+
+        <link rel="stylesheet" type="css/text" href="<?php echo URL::to('/'); ?>/public/css/style_custom.css" />
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
-		<link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.theme.default.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-		<script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
-		<script src="<?php echo URL::to('/'); ?>/public/js/owl.carousel.min.js"></script>
-		
-        <style>
+        <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.theme.default.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/js/owl.carousel.min.js"></script>
 
+        <style>
             ul li a {
                 display: flex !important;
             }
@@ -60,6 +58,7 @@
                 width: 100% !important;
 
             }
+
             video.video_autoplay {
                 height: 135px !important;
                 object-fit: cover;
@@ -71,20 +70,25 @@
                 z-index: 2 !important;
             }
 
-            .owl-nav{
-            display:none !important;
-             }
-            .owl-dots{
-                display:none !important;
+            .owl-nav {
+                display: none !important;
             }
-            .row{
+
+            .owl-dots {
+                display: none !important;
+            }
+
+            .row {
                 --bs-gutter-x: auto !important;
             }
-            ol,ul {
-            padding-left: 0px !important;
+
+            ol,
+            ul {
+                padding-left: 0px !important;
             }
-                p.view{
-                    font-size: small !important;
+
+            p.view {
+                font-size: small !important;
             }
 
             h5.mb-0 {
@@ -93,26 +97,26 @@
 
             /* .mb-3 {
             width: 60% !important;
-            height: 30% !important; 
+            height: 30% !important;
         } */
 
-        p {
-            font-size: small !important;
-        }
+            p {
+                font-size: small !important;
+            }
 
-        a {
-            text-transform: capitalize;
-        }
+            a {
+                text-transform: capitalize;
+            }
 
-.avatar-img {
-    width: 100%;
-    height: 50%;
-    object-fit: cover !important;
-}
+            .avatar-img {
+                width: 100%;
+                height: 50%;
+                object-fit: cover !important;
+            }
 
-        .mx-4 {
-            margin-left: 2.5rem !important;
-        }
+            .mx-4 {
+                margin-left: 2.5rem !important;
+            }
         </style>
     </head>
 
@@ -184,7 +188,7 @@
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
                                             alt=""><span>Watch Later </span></a>
                                 </li>
-                              <!-- Side Nav END -->
+                                <!-- Side Nav END -->
                         </div>
                     </div>
                 </div>
@@ -201,7 +205,7 @@
                                             <div class="item_{{ $posts['id'] }}">
                                                 <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
                                                     <div class="card">
-                                                        <video width="100%" height="100%" autoplay
+                                                        <video width="100%" height="100%"
                                                             onmouseover="this.play()"
                                                             onmouseout="this.pause();this.currentTime=0;"
                                                             class="video_autoplay">
@@ -210,103 +214,106 @@
                                                                 type="video/mp4">
                                                         </video>
                                                         <div class="card-body p-2">
-                                                            <h5>  
-                                                            {{strlen($posts['title']) > 15 ? substr($posts['title'],0,20)."..." : $posts['title']}}
+                                                            <h5>
+                                                                {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }}
                                                             </h5>
-                                                        
+
                                                             <div class="row">
                                                                 <div class="col-2">
                                                                     <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
                                                                         class="thump">
                                                                 </div>
                                                                 <div class="col-10">
-                                                    <div class="detail">
-                                                      
-                                                        {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                        {{ Auth::user()->name }}
-                                                        <p> View:{{ $posts['views'] }}</p>
-                                                        <!-- <ul class="Views">
+                                                                    <div class="detail">
+                                                                        {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                                        {{ Auth::user()->name }}
+                                                                        <p> View:{{ $posts['views'] }}</p>
+                                                               <!-- <ul class="Views">
                                                             <li>
-                                                               
                                                             </li>
                                                         </ul> -->
+                                                                  </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-															</div>
-														</div>
-													</div>
                                                 </a>
-                                                
                                             </div>
                                         @endif
-                                        @endforeach
-                    @endforeach
+                                    @endforeach
+                                @endforeach
                             </div>
                         </div>
                     </div>
-
-
                     <div class="row ">
-                    <div class="col-md-3 p-2">
+                        <div class="col-md-3 p-2">
 
-                        <video controls width="250">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                        </video>
+                            <video controls width="250">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                            </video>
 
-                        
+
+                        </div>
+                        <div class="col-md-3 g-2">
+                            <video controls width="250">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="col-md-3 g-2">
+                            <video controls width="250">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="col-md-3 g-2">
+                            <video controls width="250">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+
                     </div>
-                    <div class="col-md-3 g-2">
-                    <video controls width="250">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                        </video>
-                    </div>
-
-                    <div class="col-md-3 g-2">
-                        <video controls width="250">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                        </video>
-                    </div>
-
-                    <div class="col-md-3 g-2">
-                        <video controls width="250">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                        </video>
-                    </div>
-
-                   </div>
                 </div>
         </main>
         <!-- **************** MAIN CONTENT END **************** -->
         <!-- =======================
 JS libraries, plugins and custom scripts -->
         <!-- Bootstrap JS -->
-		
+
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Vendors -->
-       
+
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.js"></script>
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
-		
+
         <!-- Template Functions -->
-  <script src="assets/js/functions.js"></script>
+        <script src="assets/js/functions.js"></script>
         <script>
             $(function() {
                 // Owl Carousel
                 var owl = $(".owl-carousel");
-				console.log(owl)
+                console.log(owl)
                 owl.owlCarousel({
                     items: 4,
                     margin: 10,

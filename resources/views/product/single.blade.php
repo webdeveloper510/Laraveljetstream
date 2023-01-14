@@ -777,7 +777,6 @@ Header END -->
                                 </form>
                             </div>
                         </div>
-
                     </div>
                     <!-- Official trailer END -->
 
@@ -786,9 +785,9 @@ Header END -->
                         <div class="col-12 mt-4">
                             <h5>More related video </h5>
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        {{-- <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2"> --}}
                             <!-- Video START -->
-                            <div class="card p-0 position-relative h-100">
+                            {{-- <div class="card p-0 position-relative h-100">
                                 <!-- Video image -->
                                 <div class="card-image">
                                     <img class="card-img-top"
@@ -815,23 +814,44 @@ Header END -->
                                         </a> </h6>
                                     <span class="small"> 665.1K views</span>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- Video END -->
-                        </div>
+                        {{-- </div> --}}
+
+                            @foreach ($multi_video as $video)
+                            @foreach ($video['posts'] as $posts)
                         <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                             <!-- Video START -->
-                            <video width="200" height="150" class="example1"
-                                id="example1_{{ $videos[0]['id'] }}"
-                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
+                            <video width="320" height="240"
+                            onmouseover="this.play()"
+                            onmouseout="this.pause();this.currentTime=0;"
+                            class="video_autoplay">
                                 <source
-                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
+                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
+                                    type="video/mp4">
+
+                              </video>
+                            {{-- <video width="200" height="150" class="example1"
+                                id="example1_{{ $posts['id'] }}"
+                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
+                                <source
+                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
                                     type="video/mp4">
                                 <track kind="captions" label="English" srclang="en"
                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-
-                            </video>
+                            </video> --}}
+                            <div class="card-body">
+                                <!-- Video title  -->
+                                <h6>
+                                    {{strlen($posts['title']) > 15 ? substr($posts['title'],0,20)."..." : $posts['title']}}
+                                </h6>
+                                <span class="small"> views: {{ $posts['views'] }}</span>
+                            </div>
+                            <p>{{strlen($posts['description']) > 15 ? substr($posts['description'],0,20)."..." : $posts['description']}}</p>
                             <!-- Video END -->
                         </div>
+                        @endforeach
+                        @endforeach
                         <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                             <!-- Video START -->
                             {{-- <div class="card p-0 position-relative h-100">

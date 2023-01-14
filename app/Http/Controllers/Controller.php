@@ -129,7 +129,6 @@ class Controller extends BaseController
         // echo "<pre>";
         // print_r($videos);die;
         $total_comment = count($videos[0]['comments']);
-
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
@@ -170,11 +169,11 @@ class Controller extends BaseController
             ->where('product_id', $videos[0]['id'])
             ->avg('rating');
             $id = base64_encode($id);
+        $multi_video = User::with(['posts','Report_video'])->get()->toArray();
         // echo "<pre>";
         // print_r($averageRating);
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id'));
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id','multi_video'));
     }
-
     public function store(Request $request)
     {
         $id = auth()->user()->id;

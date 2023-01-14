@@ -1,5 +1,4 @@
-var base_url = 'https://provlog.tv/product/Laraveljetstream/';
-
+var base_url = 'http://localhost/jetstream';
 function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
@@ -76,6 +75,8 @@ $ ('#submitt_report').submit (function (e) {
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
 var auth_name = Auth_user.name;
+var auth_image = Auth_user.profile_photo_path;
+// console.log(auth_image);return false;
 var currentTime= moment(new Date).fromNow();
 console.log(currentTime);
   var form = $ (this);
@@ -85,9 +86,9 @@ console.log(currentTime);
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
-      console.log(data);
+    console.log(data);
      var body = $('#body').val();
-      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/profile/S7Sd4lb5SbIZcFsjRoCM9rw9mKpDY4jdVyZhJ653.jpg' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
+      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/"+auth_image+"' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
       "<b>"+auth_name+"</b>"+currentTime+"</p><p class=''>"+body+"</p><div class='d-flex'>"+
       "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
         "<div class='col-md-12 common'><form><div>"+
@@ -96,8 +97,9 @@ console.log(currentTime);
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
     },
-	$(this).reset();
+
   });
+  e.preventDefault();
 });
 
 //----------------------------------------Reply of comment--------------------------------//
