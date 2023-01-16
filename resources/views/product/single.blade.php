@@ -748,13 +748,13 @@ Header END -->
                                                 <div class="profile-image">
                                                     <a
                                                         href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
-                                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . auth()->user()->profile_photo_path }}"
+                                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $commet['user']['profile_photo_path'] }}"
                                                             width="40px" /></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <p class="m-0"> <b class="nam">
-                                                        {{ $videos[0]['user']['id'] == $commet['user_id'] ? $videos[0]['user']['name'] : Auth::user()->name }}
+                                                        {{$commet['user']['name'] }}
                                                     </b>{{ \Carbon\Carbon::parse($commet['created_at'])->diffForHumans() }}
                                                 </p>
                                                 <p class="parag">{{ $commet['body'] }}</p>
@@ -803,7 +803,7 @@ Header END -->
                                     </div>
                                     <div class="text-end ">
                                         <button type="submit" class="btn btn-primary btn-sm"
-                                            style="width:110px;" onclick="scrollToTop()"><span class="material-symbols-outlined">
+                                            style="width:110px;"><span class="material-symbols-outlined">
 send
 </span></button>
                                     </div>
@@ -1016,10 +1016,6 @@ JS libraries, plugins and custom scripts -->
 
         getStars({{ round($averageRating, 1) }}, {{ $videos[0]['id'] }})
     </script>
-<script>
-        function scrollToTop() {
-            window.scrollTo(0, 0);
-        }
-    </script>
+
     </html>
 </x-app-layout>
