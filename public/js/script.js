@@ -96,7 +96,7 @@ console.log(currentTime);
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
     },
-	$(this).reset();
+	
   });
 });
 
@@ -114,7 +114,7 @@ $('.save_reply').submit (function (e) {
     success: function (data) {
     var body = $(form).find('.body1').val();
       $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
-	  $("#refresh")[0].reset();
+	  //$("#refresh")[0].reset();
     },
   });
 });

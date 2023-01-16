@@ -60,14 +60,45 @@
                 top: 41px !important;
             }
 
-            .comments {
-                /* background: #4CAF50; */
+            .comments {   
                 color: white;
                 padding: 15px;
-                width: 100%;
+                
                 max-height: 400px;
-                overflow: scroll;
-                /* border: 1px solid #ccc; */
+                overflow: scroll;   
+            }
+
+            .commentBox {
+                width: auto !important;
+                position: absolute !important;
+            }
+            
+            button.btn.btn-primary.btn-sm {
+                width: 92px !important;
+                height: 39px !important;
+            }
+            .modal-content {
+                background: white !important;
+            }
+
+            label.form-check-label {
+                color: black !important;
+            }
+
+            /* .comments {   
+                width: auto !important;   
+            }
+
+            .moovie {
+                width: 100% !important;
+                height: 135px !important;
+            } */
+            .mb-0 {
+                margin-bottom: 0 !important;
+                text-align: center !important;
+            }
+            .gap-xl-3 {
+                margin-left: 12px !important;
             }
         </style>
 
@@ -83,6 +114,8 @@
         <link rel="stylesheet" type="text/css"
             href="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
@@ -110,9 +143,7 @@
         .card-image.video {
     z-index: 0;
 }
-        .moovie {
-            height: 350px !important;
-        }
+        
         .form-control{
             /* width: 328px; */
 
@@ -357,12 +388,13 @@ Header END -->
                     <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3" tabindex="-1"
                         id="navbarVerticaloffcanvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
+                            
                             <!-- Avatar -->
                            
-                            <div class="avatar avatar-lg mb-3">
+                            <div class="avatar avatar-lg mb-3 mx-5">
                                 <a
                                     href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">
-                                    <img class="avatar-img rounded-circle border border-white border-3"
+                                    <img class="avatar-img rounded-circle border border-white border-3 mx-5"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
                                 </a>
                             </div>
@@ -372,9 +404,9 @@ Header END -->
                                 </a> </h5>
                             {{-- <small>Web Developer at Webestica</small> --}}
                             <!-- User stat START -->
-                            <div class="hstack gap-2 gap-xl-3 mt-3">
+                            <div class="hstack gap-2 gap-xl-3 mt-3 ">
                                 <!-- User stat item -->
-                                <div style="color: #222;">
+                                <div class="sub mx-5 p-2" style="color: #222;">
                                     {{ $subscriber }} Subscribers
                                 </div>
                                 <!-- Divider -->
@@ -458,8 +490,8 @@ Header END -->
                 <!-- Main content START -->
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row gx-4 mb-4">
-                        <div class="col-xl-8 col-xxl-9 my-5 pt-4">
+                    <div class="row gx-4 my-4 pt-4">
+                        <div class="col-xl-8 col-xxl-9 my-5 ">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
@@ -706,7 +738,7 @@ Header END -->
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-md-4 g-3 ">
+                        <div class="col-md-4 g-3 mt-5">
                             <h4>{{ $total_comment }} Comments</h4>
                             <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
@@ -769,9 +801,11 @@ Header END -->
                                             id="body" placeholder="Add a comment..." required>
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
-                                    <div class="text-end mt-1">
+                                    <div class="text-end ">
                                         <button type="submit" class="btn btn-primary btn-sm"
-                                            style="width:110px;" onclick="scrollToTop()">COMMENT</button>
+                                            style="width:110px;" onclick="scrollToTop()"><span class="material-symbols-outlined">
+send
+</span></button>
                                     </div>
                                 </form>
                             </div>
@@ -781,179 +815,44 @@ Header END -->
                     <!-- Official trailer END -->
 
                     <!-- More related video START -->
-                    <div class="row g-3 mb-4">
+                    <div class="row g-3 mb-4">white-space:nowrap
                         <div class="col-12 mt-4">
                             <h5>More related video </h5>
                         </div>
+                        @foreach ($multi_video as $video)
+                            @foreach ($video['posts'] as $posts)
                         <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                             <!-- Video START -->
-                            <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/06.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html">
-                                            {{ $videos[0]['title'] }}
-                                        </a> </h6>
-                                    <span class="small"> 665.1K views</span>
-                                </div>
-                            </div>
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            <video width="200" height="150" class="example1"
-                                id="example1_{{ $videos[0]['id'] }}"
-                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
+                            <video width="320" height="240"
+                            onmouseover="this.play()"
+                            onmouseout="this.pause();this.currentTime=0;"
+                            class="video_autoplay" poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
+                                <source 
+                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
+                                    type="video/mp4">
+
+                              </video>
+                            <!-- {{-- <video width="200" height="150" class="example1"
+                                id="example1_{{ $posts['id'] }}"
+                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
                                 <source
-                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
+                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
                                     type="video/mp4">
                                 <track kind="captions" label="English" srclang="en"
                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-
-                            </video>
+                            </video> --}} -->
+                            <div class="card-body">
+                                <!-- Video title  -->
+                                <h6>
+                                    {{strlen($posts['title']) > 15 ? substr($posts['title'],0,20)."..." : $posts['title']}}
+                                </h6>
+                                <span class="small"> views: {{ $posts['views'] }}</span>
+                            </div>
+                            <!-- <p>{{strlen($posts['description']) > 15 ? substr($posts['description'],0,20)."..." : $posts['description']}}</p> -->
                             <!-- Video END -->
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/09.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:40</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> How does the stock
-                                            market work? </a> </h6>
-                                    <span class="small"> 985.1K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/10.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">06:12</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> How to create a app for
-                                            your e-commerce
-                                            website </a> </h6>
-                                    <span class="small"> 658.2K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/07.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:45</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> Dilen - When I See You
-                                            (Official Music) </a>
-                                    </h6>
-                                    <span class="small"> 325.1K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/08.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> Complete cryptocurrency
-                                            course - start
-                                            learning </a> </h6>
-                                    <span class="small"> 785.9K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
+                        @endforeach
+                        @endforeach
                     </div>
                     <!-- More related video END -->
 

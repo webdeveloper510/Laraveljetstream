@@ -220,18 +220,12 @@
                                                                         class="thump">
                                                                 </div>
                                                                 <div class="col-10">
-                                                    <div class="detail">
-                                                      
-                                                        {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                        {{ Auth::user()->name }}
-                                                        <p> View:{{ $posts['views'] }}</p>
-                                                        <!-- <ul class="Views">
-                                                            <li>
-                                                               
-                                                            </li>
-                                                        </ul> -->
-                                                    </div>
-                                                </div>
+                                                                  <div class="detail">
+                                                                    {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                                    {{ Auth::user()->name }}
+                                                                    <p> View:{{ $posts['views'] }}</p>
+                                                                  </div>
+                                                                </div>
 															</div>
 														</div>
 													</div>
@@ -240,7 +234,7 @@
                                             </div>
                                         @endif
                                         @endforeach
-                    @endforeach
+                                        @endforeach
                             </div>
                         </div>
                     </div>
@@ -249,12 +243,35 @@
                     <div class="row ">
                     <div class="col-md-3 p-2">
 
-                        <video controls width="250">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                            type="video/mp4">
-                        </video>
+                    <div class="card">
+                                                        <video width="100%" height="100%" autoplay
+                                                            onmouseover="this.play()"
+                                                            onmouseout="this.pause();this.currentTime=0;"
+                                                            class="video_autoplay">
+                                                            <source
+                                                                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                                                type="video/mp4">
+                                                        </video>
+                                                        <div class="card-body p-2">
+                                                            <h5>  
+                                                            {{strlen($posts['title']) > 15 ? substr($posts['title'],0,20)."..." : $posts['title']}}
+                                                            </h5>
+                                                        
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                    <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                                        class="thump">
+                                                                </div>
+                                                                <div class="col-10">
+                                                                  <div class="detail">
+                                                                    {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                                    {{ Auth::user()->name }}
+                                                                    <p> View:{{ $posts['views'] }}</p>
+                                                                  </div>
+                                                                </div>
+															</div>
+														</div>
+													</div>
 
                         
                     </div>

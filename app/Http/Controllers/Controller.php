@@ -84,7 +84,10 @@ class Controller extends BaseController
     public function channel($id)
     {
         $id = base64_decode($id);
-
+         $videos=array();
+		 $subscriber=0;
+		 $count=0;
+		 $socialshare='';
         $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
         // echo "<pre>";
         // print_r($videos);die;
@@ -101,7 +104,6 @@ class Controller extends BaseController
                 ->reddit()
                 ->whatsapp()->getRawLinks();
         }
-        $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
         $id = base64_encode($id);
         // echo "<pre>";
         // print_r($subscriber);die;
@@ -172,8 +174,10 @@ class Controller extends BaseController
             $id = base64_encode($id);
         // echo "<pre>";
         // print_r($averageRating);
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id'));
+        $multi_video = User::with(['posts','Report_video'])->get()->toArray();
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id','multi_video'));
     }
+
 
     public function store(Request $request)
     {
