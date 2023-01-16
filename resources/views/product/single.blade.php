@@ -680,12 +680,10 @@ Header END -->
                                                             <button class="btn btn-light "><i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
                                                                 </button>
-
                                                         <!-- Dropdown menu -->
                                                         <ul class="dropdown-menu dropdown-menu-end"
                                                             aria-labelledby="cardShareAction">
                                                             <li> {!! $socialshare !!}</li>
-
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -822,6 +820,7 @@ Header END -->
                             @foreach ($video['posts'] as $posts)
                         <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                             <!-- Video START -->
+                            <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
                             <video width="320" height="240"
                             onmouseover="this.play()"
                             onmouseout="this.pause();this.currentTime=0;"
@@ -848,6 +847,7 @@ Header END -->
                                 <span class="small"> views: {{ $posts['views'] }}</span>
                             </div>
                             <p>{{strlen($posts['description']) > 15 ? substr($posts['description'],0,20)."..." : $posts['description']}}</p>
+                        </a>
                             <!-- Video END -->
                         </div>
                         @endforeach
