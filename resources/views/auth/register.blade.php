@@ -6,22 +6,12 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div>
-                <x-jet-label for="surname" value="{{ __('Surname') }}" />
-                <x-jet-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div>
-                <x-jet-label for="date" value="{{ __('Date of Birth') }}" />
-                <x-jet-input id="date" class="block mt-1 w-full" type="date" name="date" :value="old('date')" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
@@ -37,16 +27,6 @@
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="profile_photo_path" value="{{ __('Profile') }}" />
-                <x-jet-input id="profile" class="form-control" type="file" name="profile_photo_path" required autocomplete="profile_photo_path" />
-            </div>
-
-            <div class="mt-3">
-                <x-jet-label for="cover_img" value="{{ __('Cover Image') }}" />
-                <x-jet-input id="coverimg" class="form-control" type="file" name="cover_img" required autocomplete="cover_img" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

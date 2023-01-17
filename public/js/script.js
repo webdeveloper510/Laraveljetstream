@@ -1,5 +1,4 @@
-var base_url = 'http://localhost/Laraveljetstream';
-
+var base_url = 'http://localhost/jetstream';
 function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
@@ -20,7 +19,7 @@ function subscribe (channel_id, flag) {
     success: function (data) {
       let subs_count = $('#subscribe').html();
       let add = 1;
-      let total_count = (add-subs_count);
+      let total_count = flag==1 ? (parseInt(subs_count)+parseInt(add)) : (parseInt(subs_count)-parseInt(add));
       $('#subscribe').html(total_count);
       if (data.code) {
         toastr.success (data.message);
@@ -76,9 +75,10 @@ $ ('#submitt_report').submit (function (e) {
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
 var auth_name = Auth_user.name;
-var currentTime= moment().format('MMMM Do YYYY, h:mm:ss a');
+var auth_image = Auth_user.profile_photo_path;
+// console.log(auth_image);return false;
+var currentTime= moment(new Date).fromNow();
 console.log(currentTime);
-
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
@@ -86,9 +86,10 @@ console.log(currentTime);
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
-      console.log(data);
+
+    console.log(data);
      var body = $('#body').val();
-      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/profile/S7Sd4lb5SbIZcFsjRoCM9rw9mKpDY4jdVyZhJ653.jpg' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
+      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/"+auth_image+"' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
       "<b>"+auth_name+"</b>"+currentTime+"</p><p class=''>"+body+"</p><div class='d-flex'>"+
       "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
         "<div class='col-md-12 common'><form><div>"+
@@ -96,13 +97,16 @@ console.log(currentTime);
        "<input type='hidden' name='post_id' value='1'><input type='hidden' name='comment_id' value='1'>"+
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
+      $('.blank').val('');
     },
+
+
   });
 });
 
 //----------------------------------------Reply of comment--------------------------------//
 
-$ ('#save_reply').submit (function (e) {
+$('.save_reply').submit (function (e) {
   e.preventDefault ();
   var form = $ (this);
   var data_id_value = $(this).find('[type="submit"]').attr("data-id");
@@ -112,8 +116,9 @@ $ ('#save_reply').submit (function (e) {
     url: actionUrl,
     data: form.serialize(),
     success: function (data) {
-    var body = $('.body1').val();
+    var body = $(form).find('.body1').val();
       $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
+      $('.reset').val('');
     },
   });
 });

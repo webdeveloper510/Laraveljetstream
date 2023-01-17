@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => 'http://bsntwrk.com/jetstream/public',
+    'asset_url' => null,
 
     /*
     |--------------------------------------------------------------------------

@@ -14,7 +14,7 @@
         skiptranslate goog-te-gadget {
             display: none
         }
-
+  
         body {
             top: 0px !important;
             position: static !important;
