@@ -348,9 +348,11 @@ Header END -->
         <div class="col-md-6 my-5 px-5 pt-4 gap-0">
           <!-- Card START -->
           <div class="card">
+			@if($videos)
             <div class="h-200px rounded-top"
               style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
             </div>
+			@endif
             <!-- Card body START -->
             <div class="card-body py-0">
               <div class="d-sm-flex align-items-start text-center text-sm-start">
@@ -476,13 +478,13 @@ Header END -->
                 </div>
                 <!-- Card body START -->
                 <div class="card-body position-relative pt-0"  style="color: black">
-                  <p>{{$videos[0]['description']}}</p>
+                  <p>{{$videos ? $videos[0]['description'] : ''}}</p>
                   <!-- Date time -->
                   <ul class="list-unstyled mt-3 mb-0">
-                    <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> {{$videos[0]['user']['date_of_birth']}}
+                    <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> {{$videos ? $videos[0]['user']['date_of_birth']: ''}}
                       </strong> </li>
                     {{-- <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li> --}}
-                    <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos[0]['user']['email']}}</strong> </li>
+                    <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos ? $videos[0]['user']['email']: ''}}</strong> </li>
                   </ul>
                 </div>
                 <!-- Card body END -->

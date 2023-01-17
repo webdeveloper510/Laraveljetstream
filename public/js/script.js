@@ -86,6 +86,7 @@ console.log(currentTime);
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
+
     console.log(data);
      var body = $('#body').val();
       $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/"+auth_image+"' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
@@ -96,10 +97,11 @@ console.log(currentTime);
        "<input type='hidden' name='post_id' value='1'><input type='hidden' name='comment_id' value='1'>"+
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
+      $('.blank').val('');
     },
 
+
   });
-  e.preventDefault();
 });
 
 //----------------------------------------Reply of comment--------------------------------//
@@ -116,7 +118,7 @@ $('.save_reply').submit (function (e) {
     success: function (data) {
     var body = $(form).find('.body1').val();
       $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
-      $("#reset").reset();
+      $('.reset').val('');
     },
   });
 });

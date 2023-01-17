@@ -298,15 +298,16 @@
                             <div class="card-body">
                                 <!-- Tab nav line -->
                                 <ul class="nav nav-tabs nav-bottom-line">
-                                    <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab"
+                                    <li class="nav-item"> <a class="nav-link " data-bs-toggle="tab"
                                             href="#tab-1"> WATCH LATER </a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-                                            PLAYLIST </a> </li>
+                                    <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab-2">
+                                            PLAYLIST </a> 
+                                    </li>
                                 </ul>
                                 <div class="tab-content mb-0 pb-0">
                                     <!-- Home tab START -->
-                                    <div class="tab-pane fade show active" id="tab-1">
+                                    <div class="tab-pane fade " id="tab-1">
                                         <div class="row g-3">
                                             @foreach ($product as $data)
                                                 <div class="col-sm-6 col-lg-4">
@@ -349,7 +350,7 @@
                                                             </div>
                                                             <!-- Video title  -->
                                                             {{-- <h6 class="mb-0">  New movie trailers
-                              (2021 - 2022) September </h6> --}}
+                                                           (2021 - 2022) September </h6> --}}
                                                         </div>
                                                     </div>
                                                     <!-- Video END -->
@@ -363,7 +364,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="tab-2">
+                                    <div class="tab-pane fade show active" id="tab-2">
                                         <div class="row g-3">
                                             <div class="col-md-4">
                                                 <div class="card p-0 shadow-none border-0 position-relative">
@@ -487,11 +488,11 @@
         <!-- =======================
 JS libraries, plugins and custom scripts -->
         <!-- Bootstrap JS -->
-        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Vendors -->
-        <script src="assets/vendor/dropzone/dist/dropzone.js"></script>
+        <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/dropzone.js"></script> -->
         <!-- Template Functions -->
-        <script src="assets/js/functions.js"></script>
+        <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> -->
     </body>
 
     </html>
