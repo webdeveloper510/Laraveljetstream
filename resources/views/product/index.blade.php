@@ -45,11 +45,10 @@
                 bottom: 0;
                 display: block;
                 max-width: 300px;
-                height: 99vh;
+                height: 85vh !important;
                 top: 42px !important;
                 width: 100% !important;
-
-            }
+}
 
             video {
                 border-top-left-radius: 4px !important;
@@ -58,6 +57,10 @@
 
             nav.border-b.border-gray-100 {
                 z-index: 2 !important;
+            }
+
+            .mb-0{
+                text-align: center;
             }
         </style>
     </head>
@@ -88,14 +91,14 @@
                                 style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                             </div>
                             <!-- Avatar -->
-                            <div class="avatar avatar-lg mb-3">
+                            <div class="avatar avatar-lg mb-3 mx-5">
                                 <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
-                                        class="avatar-img rounded-circle border border-white border-3"
+                                        class="avatar-img rounded-circle border border-white border-2 mx-5"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
                                         alt=""></a>
                             </div>
                             <!-- Info -->
-                            <h5 class="mb-0"><a
+                            <h5 class="mb-0 "><a
                                     href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
                                 </a></h5>
                             <small>Web Developer at Webestica</small>

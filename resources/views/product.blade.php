@@ -286,11 +286,24 @@
         background: #C5C5F1;
         text-decoration: none;
     }
+
+    
+ .col-lg-3 {
+    position: fixed !important;
+}
+
+.col-md-9 {
+    margin-inline-start: auto !important;
+}
+
+.row.pt-20.bg-whitesmoke {
+    background-color: whitesmoke;
+}
 </style>
 
 <body class="bg-white">
     <!-- MultiStep Form -->
-    <div class="row pt-20 bg-white">
+    <div class="row pt-20 bg-whitesmoke">
          <!-- Sidenav START -->
          <div class="col-lg-3">
 

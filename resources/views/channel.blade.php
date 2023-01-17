@@ -32,7 +32,11 @@
 /* side navbar */
     .navbar.navbar-vertical.navbar-light{
         top: 50px !important;
-        max-width: 342px !important;
+        max-width: 392px !important;
+        height: 74vh !important;
+    }
+    .col-lg-3.g-0{
+      width: 21% !important;
     }
 /* -------------- */
 
@@ -40,7 +44,16 @@
     .col-md-6.my-5.px-5.gap-0{
         padding-right: 0rem !important;
         padding-left: 1rem !important;
+       
+
     }
+
+     /* .h-200px.rounded-top{
+      height: 350px !important;
+    } */
+   /* .card{
+    height: 53% !important;
+   }  */
 
 /* video title */
 .title_color
@@ -266,7 +279,7 @@ Header END -->
     <div class="container-fluid">
 
 
-      <div class="row ">
+      <div class="row container-fluid">
 
         <!-- Main content START -->
         <div class="col-lg-3 g-0">
@@ -367,7 +380,7 @@ Header END -->
                   <!-- Info -->
 
                   <h1 class="mb-0 h5">{{auth()->user()->name}}<i class="bi bi-patch-check-fill text-success small"></i></h1>
-                  <p>250 connections</p>
+                  <p class="text-black">250 connections</p>
                 </div>
                 <!-- Button -->
                 <div class="d-flex mt-3 justify-content-center ms-sm-auto">

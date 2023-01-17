@@ -92,7 +92,7 @@ class Controller extends BaseController
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
             $socialshare = \Share::page(
-                'http://localhost/jetstream/channel/' . $id
+                'http://localhost/Laraveljetstream/channel/' . $id
             )
                 ->facebook()
                 ->twitter()

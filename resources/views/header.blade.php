@@ -387,6 +387,11 @@ nav.navbar.navbar-expand-lg.bg-light a {
 
     /* Navbar CSS End */
 
+    a.inline-flex.items-center{
+        font-size: 20px !important;
+    }
+
+
 
     </style>
 </head>
