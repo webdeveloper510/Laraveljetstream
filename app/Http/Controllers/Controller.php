@@ -150,7 +150,7 @@ class Controller extends BaseController
         }
 
         $socialshare = \Share::page(
-            'http://localhost/jetstream/watch/'.$videos[0]['encripted_video_url'],
+            'http://localhost/Laraveljetstream/watch/'.$videos[0]['encripted_video_url'],
             'Share URL',
         )
         ->facebook()
@@ -181,6 +181,8 @@ class Controller extends BaseController
 
     public function store(Request $request)
     {
+        echo "<pre>";
+        print_r($request->all());
         $id = auth()->user()->id;
         $data = $request->all();
         $folder = "video";

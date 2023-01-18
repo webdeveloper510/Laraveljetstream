@@ -1,4 +1,4 @@
-var base_url = 'http://localhost/jetstream';
+var base_url = 'http://localhost/Laraveljetstream';
 function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
@@ -89,7 +89,7 @@ console.log(currentTime);
 
     console.log(data);
      var body = $('#body').val();
-      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/"+auth_image+"' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
+      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/Laraveljetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/"+auth_image+"' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
       "<b class='nam'>"+auth_name+"</b><p>"+currentTime+"</p></p><p class='parag'>"+body+"</p><div class='comment_reply_1'><div class='reply' style='color: black'></div></div><div class='d-flex'>"+
       "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
         "<div class='col-md-12 common'><form><div>"+

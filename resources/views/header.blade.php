@@ -16,7 +16,7 @@
     {{-- Removable link ------->    <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111"> --}}
     <link rel="canonical" href="https://codepen.io/pen?template=bKeqpr">
     <script src="https://cdn.jsdelivr.net/gh/SH20RAJ/Sopplayer/mooviejs/js/moovie.min.js"></script>
-    <script src="star-rating"></script>
+    
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SH20RAJ/Sopplayer/mooviejs/css/moovie.min.css">
 
 
@@ -45,17 +45,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 <style>
-
-
-
-
-
-
-
-
-
-
-
 
     body {
         background-color: #0b0c2a !important; color: white; font-family: 'Mulish', sans-serif;
