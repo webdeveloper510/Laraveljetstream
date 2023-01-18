@@ -3,15 +3,18 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
-
         <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
             @csrf
 
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="surname" value="{{ __('Surname') }}" />
+                <x-jet-input id="surname" class="block mt-1 w-full" type="text" name="surname" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
@@ -27,6 +30,21 @@
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="date_of_birth" value="{{ __('Date of Birth') }}" />
+                <x-jet-input id="date_of_birth" class="block mt-1 w-full" type="date" name="	date_of_birth" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="profile_photo_path" value="{{ __('Profile Photo') }}" />
+                <x-jet-input id="profile_photo_path" class="block mt-1 w-full" type="file" name="profile_photo_path" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="cover_img" value="{{ __('Cover Image') }}" />
+                <x-jet-input id="cover_img" class="block mt-1 w-full" type="file" name="	cover_img" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
