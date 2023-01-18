@@ -239,7 +239,7 @@
                                                                 <div class="col-10 g-2">
                                                                     <div class="detail">
                                                                         {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                                        {{ Auth::user()->name }}
+                                                                        {{ $video['name'] }}
                                                                         <p> View:{{ $posts['views'] }}</p>
                                                                <!-- <ul class="Views">
                                                             <li>

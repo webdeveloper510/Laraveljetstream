@@ -65,7 +65,7 @@ class User extends Authenticatable
     }
 
     public function posts() {
-        return $this->hasMany('App\Models\product','user_id');
+        return $this->hasMany('App\Models\product','user_id')->where('security',3);
     }
 
     public function Report_video() {

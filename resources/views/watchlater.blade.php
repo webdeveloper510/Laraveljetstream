@@ -289,19 +289,33 @@
                             <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
                                 <h1 class="h4 card-title">Videos</h1>
                                 <!-- Button modal -->
+<<<<<<< HEAD
                                 <a class="btn btn-primary-soft" href="<?php echo URL::to('/');?>/uploadpage"> <i class="fa-solid fa-plus pe-1"></i> Add
+=======
+                                <a class="btn btn-primary-soft" href="<?php echo URL::to('/'); ?>/uploadpage"
+                                    > <i class="fa-solid fa-plus pe-1"></i> Add
+>>>>>>> 1d72b09d0aeb46bbc3bb88db4bde77f6f77acf41
                                     video</a>
                             </div>
                             <!-- Card header START -->
                             <!-- Card body START -->
                             <div class="card-body">
                                 <!-- Tab nav line -->
+<<<<<<< HEAD
                                 <ul class="nav nav-tabs nav-bottom-line ">
                                     <li class="nav-item active"> <a class="nav-link active" data-bs-toggle="tab"
                                             href="#tab-1"> WATCH LATER </a>
                                     </li>
                                     <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
                                             PLAYLIST </a> 
+=======
+                                <ul class="nav nav-tabs nav-bottom-line">
+                                    <li class="nav-item "> <a class="nav-link active" data-bs-toggle="tab"
+                                            href="#tab-1"> WATCH LATER </a>
+                                    </li>
+                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                                            PLAYLIST </a>
+>>>>>>> 1d72b09d0aeb46bbc3bb88db4bde77f6f77acf41
                                     </li>
                                 </ul>
                                 <div class="tab-content mb-0 pb-0">
@@ -343,9 +357,9 @@
                                                                 </div>
                                                                 <!-- Avatar name -->
                                                                 <h6 class="mb-0"> <a
-                                                                        href="#!">{{ $product[0]['title'] }}</a>
+                                                                        href="#!">{{$data['title'] }}</a>
                                                                 </h6>
-                                                                <span class="ms-auto small"> 156.9K views</span>
+                                                                <span class="ms-auto small">{{$data['views']}}</span>
                                                             </div>
                                                             <!-- Video title  -->
                                                             {{-- <h6 class="mb-0">  New movie trailers
@@ -363,7 +377,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade " id="tab-2">
+                                    <div class="tab-pane fade" id="tab-2">
                                         <div class="row g-3">
                                             <div class="col-md-4">
                                                 <div class="card p-0 shadow-none border-0 position-relative">
@@ -399,7 +413,7 @@
                                                             <h6 class="mb-0"> <a href="#!"> Frances Guerrero <i
                                                                         class="bi bi-patch-check-fill text-success small"></i>
                                                                 </a> </h6>
-                                                            <span class="ms-auto small"> 156.9K views</span>
+                                                            <span class="ms-auto small">{{$product[0]['views']}}</span>
                                                         </div>
                                                         <!-- Video title  -->
                                                         <h6 class="mb-0"> <a class="stretched-link"
@@ -438,7 +452,6 @@
         </main>
         <!-- **************** MAIN CONTENT END **************** -->
         <!-- Modal add video START -->
-       
         <!-- Modal add video END -->
         <!-- =======================
 JS libraries, plugins and custom scripts -->
