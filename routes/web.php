@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CommentController;
 use App\Models\User;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,10 +30,11 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/dashboard', function () {
+
         $videos = User::with(['posts','Report_video'])->get()->toArray();
         // echo "<pre>";
         // print_r($videos);die;
-        return view('product.index', compact('videos'));
+         return view('product.index', compact('videos'));
     })->name('dashboard');
 });
 Route::middleware([

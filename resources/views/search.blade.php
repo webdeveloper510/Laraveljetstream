@@ -57,7 +57,6 @@
                                 onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;">
                                 <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
                                 <source src="https://www.w3schools.com/tags/movie.ogg" type="video/ogg">
-
                             </video></a>
                     </div>
                     <div class="col-md-8">
@@ -74,7 +73,6 @@
                                 height="40px" width="40px" />
                             <p class="pt-2 ps-2"> {{ $post['user']['name'] }}</p>
                         </div>
-
                     </div>
                 </div>
             @endforeach

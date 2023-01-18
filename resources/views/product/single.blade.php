@@ -11,6 +11,14 @@
                 display: none;
             }
 
+            .parag {
+             margin-left: 28px !important;
+            }
+
+            p.m-0 {
+              margin-left: 11px !important;
+           }
+
             div#social-links {
                 margin: 0 auto;
                 max-width: 500px;
