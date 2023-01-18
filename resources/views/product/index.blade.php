@@ -261,18 +261,19 @@
                     <div class="row ">
                         <div class="col-md-3 p-2">
                             <div class="card">
+                                <a href="http://localhost/Laraveljetstream/single.php">
                                     <video controls width="250">
                                         <source
                                             src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
                                             type="video/mp4">
                                         <source
                                             src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                            type="video/mp4">
-                                    </video>
+                                            type="video/mp4">                            
+                                        </video></a>
+                                   
                                 <div class="card-body">
                                     <h5>
-                                        <b>Johan</b>
-                                         <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                        <b>Jhon</b>    
                                     </h5>
 
                                     <div class="row">
@@ -282,9 +283,8 @@
                                     </div>
                                     <div class="col-10 g-2">
                                         <div class="detail">
-                                        {{-- {{url('/channel/'.$video['id'])}} --}}
-                                            {{ Auth::user()->name }}
-                                             <p> View:{{ $posts['views'] }}</p>
+                                            <h5>Jhon</h5>
+                                            <p>Views 0</p>
                                         </div>
                                     </div>
                                     </div>
@@ -304,8 +304,7 @@
                                         </video>
                                     <div class="card-body">
                                         <h5>
-                                        <b>Micaly</b>
-                                            <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                            <b>Micaly</b>          
                                         </h5>
                                         <div class="row">
                                         <div class="col-2">
@@ -314,9 +313,8 @@
                                         </div>
                                         <div class="col-10 g-2">
                                             <div class="detail">
-                                            {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                {{ Auth::user()->name }}
-                                                <p> View:{{ $posts['views'] }}</p>
+                                                <h5>Micaly</h5>
+                                                <p>Views 0</p>
                                             </div>
                                         </div>
                                         </div>
@@ -336,8 +334,7 @@
                                             </video>
                                         <div class="card-body">
                                             <h5>
-                                            <b>Mathew</b>
-                                            <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                            <b>Mathew</b>            
                                             </h5>
                                             <div class="row">
                                             <div class="col-2">
@@ -346,9 +343,8 @@
                                             </div>
                                             <div class="col-10 g-2">
                                                 <div class="detail">
-                                                {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                    {{ Auth::user()->name }}
-                                                    <p> View:{{ $posts['views'] }}</p>
+                                                    <h5>Mathew</h5>
+                                                    <p>Views 0</p>
                                                 </div>
                                             </div>
                                             </div>
@@ -369,7 +365,7 @@
                                         <div class="card-body">
                                             <h5>
                                             <b>Sumith</b>
-                                            <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                            
                                             </h5>
                                             <div class="row">
                                             <div class="col-2">
@@ -378,9 +374,8 @@
                                             </div>
                                             <div class="col-10 g-2">
                                                 <div class="detail">
-                                                {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                    {{ Auth::user()->name }}
-                                                    <p> View:{{ $posts['views'] }}</p>
+                                                    <h5>Sumith</h5>
+                                                    <p>Views 0</p>
                                                 </div>
                                             </div>
                                             </div>
