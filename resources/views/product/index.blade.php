@@ -52,8 +52,8 @@
             .navbar-vertical {
                 bottom: 0;
                 display: block;
-                max-width: 300px;
-                height: 99vh;
+                max-width: 310px;
+                height: 75vh !important;
                 top: 42px !important;
                 width: 100% !important;
 
@@ -116,6 +116,19 @@
 
             .mx-4 {
                 margin-left: 2.5rem !important;
+            }
+
+        /* main background-color */
+                    main {
+                background-color: white !important;
+            }
+
+            .page-content { 
+                height: 700px !important;         
+            }
+           /* main col height */
+            .col-12.mt-5 {
+                margin-top: 0rem !important;
             }
         </style>
     </head>
@@ -195,8 +208,8 @@
                 <!-- Sidenav END -->
                 <!-- Main content START -->
                 <div class="page-content ">
-                    <div class="row mb-4 p-3">
-                        <div class="col-12 mt-5">
+                    <div class="row mb-4 p-0">
+                        <div class="col-12 mb-4  mt-5">
                             <!-- Video main feed -->
                             <div class=" owl-carousel owl-theme mt-4">
                                 @foreach ($videos as $video)
@@ -223,7 +236,7 @@
                                                                     <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
                                                                         class="thump">
                                                                 </div>
-                                                                <div class="col-10">
+                                                                <div class="col-10 g-2">
                                                                     <div class="detail">
                                                                         {{-- {{url('/channel/'.$video['id'])}} --}}
                                                                         {{ Auth::user()->name }}
@@ -247,51 +260,133 @@
                     </div>
                     <div class="row ">
                         <div class="col-md-3 p-2">
+                            <div class="card">
+                                    <video controls width="250">
+                                        <source
+                                            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                            type="video/mp4">
+                                        <source
+                                            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                            type="video/mp4">
+                                    </video>
+                                <div class="card-body">
+                                    <h5>
+                                        <b>Johan</b>
+                                         <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                    </h5>
 
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
-
-
+                                    <div class="row">
+                                    <div class="col-2">
+                                        <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                class="thump">
+                                    </div>
+                                    <div class="col-10 g-2">
+                                        <div class="detail">
+                                        {{-- {{url('/channel/'.$video['id'])}} --}}
+                                            {{ Auth::user()->name }}
+                                             <p> View:{{ $posts['views'] }}</p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>                   
                         </div>
+                        
+                        <div class="col-md-3 g-2">          
+                                <div class="card">
+                                        <video controls width="250">
+                                            <source
+                                                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                                type="video/mp4">
+                                            <source
+                                                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    <div class="card-body">
+                                        <h5>
+                                        <b>Micaly</b>
+                                            <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                        </h5>
+                                        <div class="row">
+                                        <div class="col-2">
+                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                    class="thump">
+                                        </div>
+                                        <div class="col-10 g-2">
+                                            <div class="detail">
+                                            {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                {{ Auth::user()->name }}
+                                                <p> View:{{ $posts['views'] }}</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>                   
+                        </div>
+
                         <div class="col-md-3 g-2">
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
+                                <div class="card">
+                                            <video controls width="250">
+                                                <source
+                                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                                    type="video/mp4">
+                                                <source
+                                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        <div class="card-body">
+                                            <h5>
+                                            <b>Mathew</b>
+                                            <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                            </h5>
+                                            <div class="row">
+                                            <div class="col-2">
+                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                        class="thump">
+                                            </div>
+                                            <div class="col-10 g-2">
+                                                <div class="detail">
+                                                {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                    {{ Auth::user()->name }}
+                                                    <p> View:{{ $posts['views'] }}</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                </div>                   
                         </div>
 
                         <div class="col-md-3 g-2">
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
+                                <div class="card">
+                                            <video controls width="250">
+                                                <source
+                                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                                    type="video/mp4">
+                                                <source
+                                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        <div class="card-body">
+                                            <h5>
+                                            <b>Sumith</b>
+                                            <!-- {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }} -->
+                                            </h5>
+                                            <div class="row">
+                                            <div class="col-2">
+                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                        class="thump">
+                                            </div>
+                                            <div class="col-10 g-2">
+                                                <div class="detail">
+                                                {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                    {{ Auth::user()->name }}
+                                                    <p> View:{{ $posts['views'] }}</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                </div>                   
                         </div>
-
-                        <div class="col-md-3 g-2">
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
-                        </div>
-
                     </div>
                 </div>
         </main>

@@ -33,7 +33,16 @@
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
+<style>
 
+.col-xxl-8 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 64% !important;
+}
+
+</style>
     </head>
 
 <body>
@@ -349,7 +358,7 @@ Header END -->
 
         <!-- Official trailer START -->
         <div class="row g-0 mb-4">
-          <div class="col-xl-8 col-xxl-9">
+          <div class="col-xl-8 col-xxl-9 w-60">
             <!-- Video START -->
             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
               <!-- Video image -->

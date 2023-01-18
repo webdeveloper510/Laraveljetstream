@@ -32,34 +32,42 @@
 /* side navbar */
     .navbar.navbar-vertical.navbar-light{
         top: 50px !important;
-        max-width: 392px !important;
-        height: 74vh !important;
+        max-width: 396px !important;
+        height: 85vh !important;
     }
     .col-lg-3.g-0{
-      width: 21% !important;
+      width: 22% !important;
     }
 /* -------------- */
 
 /* main content */
-    .col-md-6.my-5.px-5.gap-0{
-        padding-right: 0rem !important;
-        padding-left: 1rem !important;
-       
-
-    }
-
-     /* .h-200px.rounded-top{
-      height: 350px !important;
-    } */
-   /* .card{
-    height: 53% !important;
+.col-md-6.my-2.px-5.pt-0.gap-0 {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+    width: 50% !important;
+}
+     .h-200px.rounded-top{
+      height: 300px !important;
+      }
+    /* .card{
+    height: 50% !important;
    }  */
+
+
+/* about section */
+.col-md-3.g-4.my-5.pt-4 {
+    margin-top: -1rem !important;
+}
+
 
 /* video title */
 .title_color
 {
     color: black !important;
 }
+
+
+  
 
     </style>
 </head>
@@ -358,7 +366,7 @@ Header END -->
           </div>
 		 </div>
           <!-- Sidenav END -->
-        <div class="col-md-6 my-5 px-5 pt-4 gap-0">
+        <div class="col-md-6 my-2 px-5 pt-0 gap-0">
           <!-- Card START -->
           <div class="card">
 			@if($videos)

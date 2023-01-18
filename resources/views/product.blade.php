@@ -296,14 +296,14 @@
     margin-inline-start: auto !important;
 }
 
-.row.pt-20.bg-whitesmoke {
+/* .row.pt-20.bg-whitesmoke {
     background-color: whitesmoke;
-}
+} */
 </style>
 
 <body class="bg-white">
     <!-- MultiStep Form -->
-    <div class="row pt-20 bg-whitesmoke">
+    <div class="row pt-20 bg-white">
          <!-- Sidenav START -->
          <div class="col-lg-3">
 
