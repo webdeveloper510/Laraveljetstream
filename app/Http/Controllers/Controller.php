@@ -286,7 +286,7 @@ class Controller extends BaseController
     }
 
 
-    /*--------------------------------------subscribe system---------------------------------------*/
+    /*---------------------------subscribe system--------------------------------*/
 
     function subscribe(Request $request)
     {
@@ -337,7 +337,7 @@ class Controller extends BaseController
         return 2;
     }
 
-    /**-----------------------------------------Rating System--------------------------------------- */
+    /**-------------------------------Rating System----------------------------- */
 
     public function rate(Request $request)
     {
@@ -368,7 +368,7 @@ class Controller extends BaseController
         }
     }
 
-    /*---------------------------------------------Report system--------------------------------------------*/
+    /*-------------------------------Report system---------------------------------*/
 
     public function report(Request $request)
     {
@@ -398,7 +398,7 @@ class Controller extends BaseController
     }
 
 
-    /*--------------------------------------search system------------------------------------------*/
+    /*-----------------------------search system-----------------------------------*/
 
     public function search(Request $request)
     {
