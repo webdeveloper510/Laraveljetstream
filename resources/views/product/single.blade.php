@@ -112,6 +112,11 @@
             .gap-xl-3 {
                 margin-left: 12px !important;
             }
+            
+            .col-md-4.g-3.mt-5 {
+                /* width: 20.333333%; */
+            width: auto !important;
+            }
         </style>
 
         <title>Social - Network, Community and Event Theme</title>
@@ -158,14 +163,21 @@
                 z-index: 0;
             }
 
-            .form-control {
-                /* width: 328px; */
+            /* .form-control {
+                width: 328px;
 
-            }
+            } */
 
-            .ml-auto {
+             .ml-auto {
                 margin-left: auto;
             }
+
+            .col-md-4.g-3.mt-5 {
+                width: 24.333333% !important;
+                /* width:auto !important; */
+            } 
+
+
         </style>
         @livewireStyles
     </head>
@@ -797,7 +809,7 @@ Header END -->
                                                                     class="comment_id" value="{{ $commet['id'] }}" />
                                                             </div>
                                                             <div class="text-end mt-3">
-                                                                <button type="submit" class="btn btn-primary btn-sm"
+                                                                <button type="submit" class="btn btn-primary btn-sm mx-5"
                                                                     data-id="{{ $commet['id'] }}"
                                                                     style="width:110px;">REPLY</button>
                                                             </div>
@@ -819,7 +831,7 @@ Header END -->
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
                                     <div class="text-end ">
-                                        <button type="submit" class="btn btn-primary btn-sm"
+                                        <button type="submit" class="btn btn-primary btn-sm  mx-5 "
                                             style="width:110px;"><span class="material-symbols-outlined">
                                                 send
                                             </span></button>
@@ -832,7 +844,7 @@ Header END -->
                     <!-- Official trailer END -->
 
                     <!-- More related video START -->
-                    <div class="row g-3 mb-4">white-space:nowrap
+                    <div class="row g-3 mb-4">
                         <div class="col-12 mt-4">
                             <h5>More related video </h5>
                         </div>

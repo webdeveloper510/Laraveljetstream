@@ -95,7 +95,7 @@ class Controller extends BaseController
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
             $socialshare = \Share::page(
-                'http://localhost/Laraveljetstream/channel/' . $id
+                'http://localhost/jetstream/channel/' . $id
             )
                 ->facebook()
                 ->twitter()
@@ -181,8 +181,8 @@ class Controller extends BaseController
 
     public function store(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all());
+        // echo "<pre>";
+        // print_r($request->all());
         $id = auth()->user()->id;
         $data = $request->all();
         $folder = "video";
@@ -403,12 +403,14 @@ class Controller extends BaseController
     /*--------------------------------------search system------------------------------------------*/
 
     public function search(Request $request)
-    {
+    {       
         $search = $request->input('search');
         $posts = product::with(['comments.replies', 'user', 'like'])
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get()->toArray();
+            // echo "<pre>";
+            // print_r($posts);die;
         return view('search', compact('posts'));
     }
 }

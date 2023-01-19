@@ -1,4 +1,5 @@
 <x-app-layout>
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,37 +28,27 @@
   <!-- Theme CSS -->
   <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
   <style>
+.goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+  
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
 
+        .goog-te-banner-frame {
+            display: none !important
+        }
 
-/* side navbar */
-    .navbar.navbar-vertical.navbar-light{
-        top: 50px !important;
-        max-width: 396px !important;
-        height: 85vh !important;
-    }
-    .col-lg-3.g-0{
-      width: 22% !important;
-    }
-/* -------------- */
-
-/* main content */
-.col-md-6.my-2.px-5.pt-0.gap-0 {
-    padding-right: 0rem !important;
-    padding-left: 0rem !important;
-    width: 50% !important;
-}
-     .h-200px.rounded-top{
-      height: 300px !important;
-      }
-    /* .card{
-    height: 50% !important;
-   }  */
-
-
-/* about section */
-.col-md-3.g-4.my-5.pt-4 {
-    margin-top: -1rem !important;
-}
+        .goog-logo-link {
+            display: none
+        }
 
 
 /* video title */
@@ -66,8 +57,13 @@
     color: black !important;
 }
 
+/* cover image height */
+.cover_img {
+    
+    height: 250px !important;
+}
 
-  
+
 
     </style>
 </head>
@@ -285,26 +281,35 @@ Header END -->
 
     <!-- Container START -->
     <div class="container-fluid">
-
-
-      <div class="row container-fluid">
-
+      <div class="row ">
         <!-- Main content START -->
-        <div class="col-lg-3 g-0">
+        <div class="col-lg-3  g-0">
+           <!-- Advanced filter responsive toggler START -->
+           <div class="d-flex align-items-center d-lg-none">
+                            <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
+                                <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+                            </button>
+                        </div>
           <!-- Sidenav START -->
-          <div class="navbar navbar-vertical navbar-light">
+          
+          <div class="navbar  navbar-vertical navbar-light">
             <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0" tabindex="-1"
               id="navbarVerticaloffcanvas">
-              <div class="offcanvas-body pt-0 pt-lg-0 ">
+              <div class="offcanvas-body pt-0 pt-lg-0  ">
+              <div class="h-20 "
+                      style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
+                    </div>
                 <!-- Avatar -->
-                <div class="avatar avatar-lg mb-3">
+                <div class="avatar avatar-lg mb-3 mx-5 ">
 
-                    <img class="avatar-img rounded-circle border border-white border-3"
+                    <img class="avatar-img rounded-circle border border-white border-3 mx-5 "
                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
 
                 </div>
                 <!-- Info -->
-                <h5 class="mb-0">{{auth()->user()->name}} </h5>
+                <h5 class="mb-0 text-center">{{auth()->user()->name}} </h5>
                 <!-- <small>Web Developer at Webestica</small> -->
                 <!-- User stat START -->
               <div>
@@ -366,14 +371,14 @@ Header END -->
           </div>
 		 </div>
           <!-- Sidenav END -->
-        <div class="col-md-6 my-2 px-5 pt-0 gap-0">
+        <div class="col-md-6 my-2  pt-0 gap-0 ">
           <!-- Card START -->
-          <div class="card">
-			@if($videos)
-            <div class="h-200px rounded-top"
-              style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
-            </div>
-			@endif
+          <div class="card ">
+              <div class="cover_img"
+                  style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
+              </div>
+           
+		
             <!-- Card body START -->
             <div class="card-body py-0">
               <div class="d-sm-flex align-items-start text-center text-sm-start">
@@ -424,10 +429,10 @@ Header END -->
           <!-- Card END Details -->
 
           <!-- Video START -->
-          <div class="col-md-3">
+          <div class="col-md-3 ">
 
           </div>
-          <div class="card">
+          <div class="card ">
             <!-- Card header START -->
             <div class="card-header border-0 pb-0">
               <h5 class="card-title">Videos</h5>
@@ -528,9 +533,12 @@ JS libraries, plugins and custom scripts -->
   <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Vendors -->
   <script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
   <!-- Template Functions -->
   <script src="assets/js/functions.js"></script>
+  <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+
 
 </body>
 </html>

@@ -41,6 +41,28 @@
         <script src="<?php echo URL::to('/'); ?>/public/js/owl.carousel.min.js"></script>
 
         <style>
+
+.goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+  
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important
+        }
+
+        .goog-logo-link {
+            display: none
+        }
             ul li a {
                 display: flex !important;
             }
@@ -78,9 +100,9 @@
                 display: none !important;
             }
 
-            .row {
+            /* .row {
                 --bs-gutter-x: auto !important;
-            }
+            } */
 
             ol,
             ul {
@@ -109,8 +131,8 @@
             }
 
             .avatar-img {
-                width: 100%;
-                height: 50%;
+                width: 50% !important;
+                height: 50% !important;
                 object-fit: cover !important;
             }
 
@@ -161,7 +183,7 @@
                             <!-- Avatar -->
                             <div class="mb-0 mx-5">
                                 <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
-                                        class="avatar-img rounded-circle border border-white border-3 "
+                                        class="avatar-img rounded-circle border border-white border-1 mx-4"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
                                         alt=""></a>
                             </div>
@@ -232,9 +254,9 @@
                                                             </h5>
 
                                                             <div class="row">
-                                                                <div class="col-2">
+                                                                <div class="col-2 ">
                                                                     <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
-                                                                        class="thump">
+                                                                        class="thumb">
                                                                 </div>
                                                                 <div class="col-10 g-2">
                                                                     <div class="detail">
@@ -318,6 +340,7 @@ JS libraries, plugins and custom scripts -->
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.js"></script>
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
@@ -330,7 +353,23 @@ JS libraries, plugins and custom scripts -->
                     items: 4,
                     margin: 10,
                     loop: true,
-                    nav: true
+                    nav: true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:5,
+            nav:true,
+            loop:true
+        }
+    }
+                    
                 });
             });
         </script>
