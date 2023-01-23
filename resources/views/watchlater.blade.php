@@ -297,17 +297,17 @@
                             <!-- Card body START -->
                             <div class="card-body">
                                 <!-- Tab nav line -->
-                                <ul class="nav nav-tabs nav-bottom-line">
-                                    <li class="nav-item"> <a class="nav-link " data-bs-toggle="tab"
+                                 <ul class="nav nav-tabs nav-bottom-line">
+                                    <li class="nav-item "> <a class="nav-link active" data-bs-toggle="tab"
                                             href="#tab-1"> WATCH LATER </a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#tab-2">
-                                            PLAYLIST </a> 
+                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                                            PLAYLIST </a>
                                     </li>
                                 </ul>
                                 <div class="tab-content mb-0 pb-0">
                                     <!-- Home tab START -->
-                                    <div class="tab-pane fade " id="tab-1">
+                                    <div class="tab-pane fade show active" id="tab-1">
                                         <div class="row g-3">
                                             @foreach ($product as $data)
                                                 <div class="col-sm-6 col-lg-4">
