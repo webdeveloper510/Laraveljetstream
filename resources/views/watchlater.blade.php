@@ -199,10 +199,7 @@
             div.container-fluid {
                 margin-top: 2%;
             }
-
-
-
-            
+  
 
             body{
                 margin:0 !important;
@@ -210,12 +207,17 @@
 
             nav.bg-white.border-b.border-gray-100.w-full {
                 position: fixed !important;
-                z-index: 1 !important;
+                z-index: 1 ;
             }
             .card.overflow-hidden{
                 height: 605px !important;
             }
 
+
+            .sidbar {
+                position: fixed !important;
+                top: 81px !important;
+            }
             /* nav.navbar.navbar-expand-lg.mx-0 {
     height: 390px !important;
 } */
@@ -228,25 +230,26 @@
         <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-                <div class="row g-4">
+                <div class="row g-0">
                     <!-- Sidenav START -->
-                    <div class="col-md-3 col-lg-3 gap-4 m-0">
+                    <div class="col-md-3 col-lg-3  gap-4 m-0 ">
+                        <div class="sidbar">
                         <!-- Advanced filter responsive toggler START -->
-                        <div class="d-flex align-items-center d-lg-none">
+                        <div class="d-flex align-items-center  d-lg-none ">
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
-                                <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                              
                             </button>
                         </div>
                         <!-- Navbar START-->
                         <nav class="navbar navbar-expand-lg mx-0">
                             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
                                 <!-- Offcanvas header -->
-                                <!-- <div class="offcanvas-header">
+                                <div class="offcanvas-header">
                                     <button type="button" class="btn-close text-reset ms-auto"
                                         data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div> -->
+                                </div>
                                 <!-- Offcanvas body -->
                                 <div class="offcanvas-body d-block px-2 px-lg-0">
                                     <!-- Card START -->
@@ -304,11 +307,12 @@
                             </div>
                         </nav>
                         <!-- Navbar END-->
+                        </div>
                     </div>
                     <!-- Main content START -->
-                    <div class="col-md-9 col-lg-9  gap-4   m-0">
+                    <div class="col-md-9 col-lg-9 man  gap-4  ">
                         <!-- Card START -->
-                        <div class="card px-5">
+                        <div class="card md:px-5 hit h-100">
                             <!-- Card header START -->
                             <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
                                 <h1 class="h4 card-title">Videos</h1>

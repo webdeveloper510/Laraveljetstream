@@ -517,8 +517,8 @@ Header END -->
                 <!-- Main content START -->
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row gx-4 my-4 pt-4">
-                        <div class="col-xl-8 col-xxl-9 my-5 ">
+                    <div class="row gx-4">
+                        <div class="col-xl-8 col-xxl-9 mt-2 ">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->

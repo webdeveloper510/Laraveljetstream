@@ -289,7 +289,7 @@ Header END -->
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                                 <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
-                                <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+                               
                             </button>
                         </div>
           <!-- Sidenav START -->
