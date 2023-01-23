@@ -1,12 +1,8 @@
 <x-app-layout>
     <!DOCTYPE html>
     <html lang="en">
-
-    {{-- old code  header --}}
     @include('header')
-
     <head>
-        {{-- old code style tag --}}
         <style>
             .goog-te-gadget img {
                 vertical-align: middle;
@@ -14,9 +10,21 @@
                 display: none;
             }
 
+            .parag {
+             margin-left: 28px !important;
+            }
+
+            p.m-0 {
+              margin-left: 11px !important;
+           }
+
             div#social-links {
                 margin: 0 auto;
                 max-width: 500px;
+            }
+
+            .description {
+                color: black;
             }
 
             div#social-links ul {
@@ -62,36 +70,52 @@
             }
 
             .comments {
-                /* background: #4CAF50; */
                 color: white;
                 padding: 15px;
-                width: 100%;
+
                 max-height: 400px;
                 overflow: scroll;
-                /* border: 1px solid #ccc; */
+            }
+
+            .commentBox {
+                width: auto !important;
+                position: absolute !important;
+            }
+
+            button.btn.btn-primary.btn-sm {
+                width: 92px !important;
+                height: 39px !important;
+            }
+
+            .modal-content {
+                background: white !important;
+            }
+
+            label.form-check-label {
+                color: black !important;
+            }
+
+            /* .comments {
+                width: auto !important;
+            }
+
+            .moovie {
+                width: 100% !important;
+                height: 135px !important;
+            } */
+            .mb-0 {
+                margin-bottom: 0 !important;
+                text-align: center !important;
+            }
+
+            .gap-xl-3 {
+                margin-left: 12px !important;
             }
         </style>
-        {{-- old code link --}}
-        {{-- Removeable content ------->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+
         <title>Social - Network, Community and Event Theme</title>
 
         <!-- Meta Tags -->
-        {{-- -- Removeable content -------><meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="author" content="Webestica.com">
-        <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme"> --}}
-
-        <!-- Favicon -->
-        {{-- Removeable content -------> <link rel="shortcut icon" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.ico"> --}}
-
-        <!-- Google Font -->
-        {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
 
         <!-- Plugins CSS -->
         <link rel="stylesheet" type="text/css"
@@ -101,41 +125,49 @@
         <link rel="stylesheet" type="text/css"
             href="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.css" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
+        <style>
+            p {
+                color: black !important;
+            }
 
+            span {
+                color: black !important;
+            }
+
+            small {
+                color: black !important;
+            }
+
+            .parag {
+                margin-left: 10px;
+            }
+
+            .nam {
+                margin-left: 10px;
+
+            }
+
+            .card-image.video {
+                z-index: 0;
+            }
+
+            .form-control {
+                /* width: 328px; */
+
+            }
+
+            .ml-auto {
+                margin-left: auto;
+            }
+        </style>
+        @livewireStyles
     </head>
-    <style>
-        p {
-            color: black !important;
-        }
-
-        span {
-            color: black !important;
-        }
-
-        small {
-            color: black !important;
-        }
-
-        .parag {
-            margin-left: 10px;
-        }
-
-        .nam {
-            margin-left: 10px;
-
-        }
-
-        .moovie {
-            height: 350px !important;
-        }
-        .form-control{
-            /* width: 328px; */
-
-        }
-    </style>
 
     <body>
 
@@ -367,43 +399,38 @@ Header END -->
             <div class="container-fluid">
 
                 <!-- Sidenav START -->
-                <div class="navbar navbar-vertical  navbar-light">
+                <div class="navbar navbar-vertical  navbar-light mt-2">
                     <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3" tabindex="-1"
                         id="navbarVerticaloffcanvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
+
                             <!-- Avatar -->
-                            <div class="avatar avatar-lg mb-3">
-                                <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html"><img
-                                        class="avatar-img rounded-circle border border-white border-3"
+
+                            <div class="avatar avatar-lg mb-3 mx-5">
+                                <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">
+                                    <img class="avatar-img rounded-circle border border-white border-3 mx-5"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
                                 </a>
                             </div>
                             <!-- Info -->
                             <h5 class="mb-0"> <a
-                                    href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">{{ auth()->user()->name }}
+                                    href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
                                 </a> </h5>
                             {{-- <small>Web Developer at Webestica</small> --}}
                             <!-- User stat START -->
-                            <div class="hstack gap-2 gap-xl-3 mt-3">
+                            <div class="hstack gap-2 gap-xl-3 mt-3 ">
                                 <!-- User stat item -->
-                                <div style="color: #222;">
+                                <div class="sub mx-5 p-2" style="color: #222;">
                                     {{ $subscriber }} Subscribers
                                 </div>
                                 <!-- Divider -->
                                 <div class="vr"></div>
                                 <!-- User stat item -->
-                                {{-- <div>
-                                    <h6 class="mb-0">2.5K</h6>
-                                    <small>Followers</small>
-                                </div> --}}
+
                                 <!-- Divider -->
                                 <div class="vr"></div>
                                 <!-- User stat item -->
-                                {{-- <div>
-                                    <h6 class="mb-0">365</h6>
-                                    <small>Following</small>
-                                </div> --}}
+
                             </div>
                             <!-- User stat END -->
 
@@ -413,31 +440,30 @@ Header END -->
                             <!-- Side Nav START -->
                             <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/my-profile-about.html">
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
                                             alt=""><span>Home
                                         </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/uploadpage"> <img class="me-2 h-20px fa-fw"
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img
+                                            class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
                                             alt=""><span>Uploade Video </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="/jetstream/channel/{{ base64_encode(auth()->user()->id) }}"> <img
-                                            class="me-2 h-20px fa-fw"
+                                        href="<?php echo URL::to('/'); ?>/channel/{{ base64_encode(auth()->user()->id) }}">
+                                        <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
                                             alt=""><span>Your Channel </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/jetstream/watchlater">
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
-                                            alt=""><span>Save
-                                            Video </span></a>
+                                            alt=""><span>Watch Later </span></a>
                                 </li>
                                 <!-- <li class="nav-item">
                 <a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/My favorites"> <img class="me-2 h-20px fa-fw"
@@ -447,7 +473,7 @@ Header END -->
                 <a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/Wishlist"> <img class="me-2 h-20px fa-fw"
                     src="assets/images/icon/task-done-outline-filled.svg" alt=""><span>Wishlist </span></a>
               </li> -->
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link"
                                         href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html">
                                         <img class="me-2 h-20px fa-fw"
@@ -467,7 +493,7 @@ Header END -->
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
                                             alt=""><span>Logout </span></a>
-                                </li>
+                                </li> --}}
                             </ul>
                             <!-- Side Nav END -->
                         </div>
@@ -478,12 +504,12 @@ Header END -->
                 <!-- Main content START -->
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row gx-4 mb-4">
-                        <div class="col-xl-8 col-xxl-9">
+                    <div class="row gx-4 my-4 pt-4">
+                        <div class="col-xl-8 col-xxl-9 my-5 ">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
-                                <div class="card-image ">
+                                <div class="card-image video">
                                     <div class="overflow-hidden fullscreen-video w-100">
                                         <!-- HTML video START -->
                                         <div class="player-wrapper card-img-top overflow-hidden">
@@ -508,7 +534,7 @@ Header END -->
                                             <h4> {{ $videos[0]['title'] }} </h4>
                                             <div class="d-flex mt-3 align-items-center">
                                                 <!-- Avatar -->
-                                                <div class="avatar me-2">
+                                                <div class=" me-2">
                                                     <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
                                                         height="60px" width="60px" />
                                                 </div>
@@ -516,11 +542,12 @@ Header END -->
                                                 <div>
                                                     <h6 class="mb-0">{{ $videos[0]['user']['name'] }}</h6>
                                                     <nav class="nav nav-divider small">
-                                                        <span class="nav-item" id="subscribe">{{ $subscriber }}
-                                                            subscribers</span>
+                                                        <span class="nav-item"
+                                                            id="subscribe">{{ $subscriber }}</span>
+                                                        <span>subscribers</span>
                                                     </nav>
                                                 </div>
-                                                <div class="col-md-3 text-end">
+                                                <div class="col-md-3 ml-auto">
                                                     <button class="btn btn-danger subscribe"
                                                         style="{{ $count <= 0 && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
                                                         onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>
@@ -546,64 +573,7 @@ Header END -->
                                                                 </span> SAVE
                                                             </button>
                                                         </a>
-                                                        {{-- <ul class="dropdown-menu dropdown-menu-end "
-                                                            aria-labelledby="cardShareAction">
-                                                            <li><a class="dropdown-item d-flex" href="#!">
-                                                                    <div class="form-check ">
-                                                                        <input class="form-check-input "
-                                                                            type="checkbox" value=""
-                                                                            id="flexCheckChecked" checked>
-                                                                        <label class="form-check-label mx-3"
-                                                                            for="flexCheckChecked  ">
-                                                                            Watch later
-                                                                        </label>
-                                                                    </div><span class="material-symbols-outlined mx-3">
-                                                                        lock
-                                                                    </span><button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                                </a></li>
-                                                            <li><a class="dropdown-item d-flex "
-                                                                    href="Create New Playlist"> <span
-                                                                        class="material-symbols-outlined me-3">
-                                                                        add</span>Create New Playlist</a></li>
-                                                            <Form>
-                                                                <div class="mb-3 p-3">
-                                                                    <label for="exampleFormControlInput1"
-                                                                        class="form-label">Name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="exampleFormControlInput1"
-                                                                        placeholder="Enter playlist">
-                                                                    <label for="validationCustom04"
-                                                                        class="form-label">State</label>
-                                                                    <select class="form-select"
-                                                                        id="validationCustom04" required>
-                                                                        <option selected disabled value="">
-                                                                            Privacy</option>
-                                                                        <option><span
-                                                                                class="material-symbols-outlined">
-                                                                                public
-                                                                            </span>Anyone can search for and view.
-                                                                            Channel creation required.</option>
-                                                                        <option><span
-                                                                                class="material-symbols-outlined">
-                                                                                public
-                                                                            </span>Anyone
 
-                                                                    </select>
-                                                                    <div class="mt-3">
-                                                                        <button type="button"
-                                                                            class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close</button>
-                                                                        <a href='/create'
-                                                                            class='rounded-pill btn btn-primary '>Create</a>
-                                                                    </div>
-                                                                    <div class="invalid-feedback">
-                                                                        Please select a valid state.
-                                                                    </div>
-                                                                </div>
-                                                            </Form>
-                                                        </ul> --}}
                                                     </div>
                                                 </div>
                                                 <div class="report">
@@ -724,9 +694,10 @@ Header END -->
                                                                                 <h5>Timestamp selected *</h5>
                                                                             </label>
                                                                             <input type="time" class="form-control"
-                                                                                id="validationCustom01">
+                                                                                id="validationCustom01"
+                                                                                name="timestamp" required>
                                                                         </div>
-                                                                        <textarea class="form-control" id="message-text" rows="5"></textarea>
+                                                                        <textarea class="form-control" id="message-text" name="description" rows="5" required></textarea>
                                                                         <p class="my-2">Flagged videos and users are
                                                                             reviewed by YouTube staff 24 hours a day,
                                                                             7 days a week to determine whether they
@@ -756,68 +727,56 @@ Header END -->
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             <button class="btn btn-light "><i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
-                                                                (3)</button>
-                                                        </a>
-                                                        <!-- Dropdown menu -->
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="cardShareAction">
-                                                            <li> {!! $socialshare !!}</li>
+                                                            </button>
 
-                                                        </ul>
+                                                            <!-- Dropdown menu -->
+                                                            <ul class="dropdown-menu dropdown-menu-end"
+                                                                aria-labelledby="cardShareAction">
+                                                                <li> {!! $socialshare !!}</li>
+                                                            </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Interested button -->
                                         </div>
-                                        <div id="main">
-                                            This is Description
-                                        </div>
-                                        <p>{{ $videos[0]['description'] }}<span id="dots">...</span><span
-                                                id="more">{{ $videos[0]['description'] }}</span></p>
-                                        <button onclick="myFunction()" id="myBtn"
-                                            style="color: rgb(8, 239, 38)">Read
-                                            more</button>
+                                        <h6 class="description">
+                                            Description
+                                        </h6>
+                                        <p class="disp-cont">
+                                        </p>
+                                        <p class="more-cont" style="display:none;">
+                                            {{ $videos[0]['description'] }}
+                                        </p>
+                                        <a href="#" class="Read more">Read more</a>
                                     </div>
                                 </div>
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-md-4 g-3 ">
+                        <div class="col-md-4 g-3 mt-5">
                             <h4>{{ $total_comment }} Comments</h4>
-                            {{-- <div class=" mt-3">
-                                <form id="comment">
-                                    <div class="commentBox">
-                                        <input type="text" class="form-control" autocomplete="off" name="body"
-                                            id="exampleFormControlInput1" placeholder="Add a comment" required>
-                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
-                                    </div>
-                                    <div class="text-end mt-3">
-                                        <button type="submit" class="btn btn-primary btn-sm"
-                                            style="width:110px;">COMMENT</button>
-                                    </div>
-                                </form>
-                            </div> --}}
-                            <div class=" comments">
+                            <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
                                     <div>
                                         <div class="row mt-3">
                                             <div class="col-2 text-end">
                                                 <div class="profile-image">
                                                     <a
-                                                        href="{{ URL::to('/channel/' . base64_encode($videos[0]['user_id'])) }}"><img
-                                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . auth()->user()->profile_photo_path }}"
+                                                        href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
+                                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $commet['user']['profile_photo_path'] }}"
                                                             width="40px" /></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-10">
                                                 <p class="m-0"> <b class="nam">
-                                                        {{ $videos[0]['user']['id'] == $commet['user_id'] ? $videos[0]['user']['name'] : Auth::user()->name }}
-                                                    </b>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
+                                                        {{ $commet['user']['name'] }}
+                                                    </b>{{ \Carbon\Carbon::parse($commet['created_at'])->diffForHumans() }}
                                                 </p>
                                                 <p class="parag">{{ $commet['body'] }}</p>
-                                                <div class="comment_reply">
+                                                <div class="comment_reply_{{ $commet['id'] }}">
                                                     @foreach ($commet['replies'] as $key => $reply)
-                                                        <div class="reply">{{ $reply['body'] }}</div>
+                                                        <div class="reply" style="color: black">{{ $reply['body'] }}
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                                 <div class="d-flex">
@@ -826,21 +785,21 @@ Header END -->
                                                 </div>
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
-
-                                                        <div>
-                                                            <input type="text" class="form-control "name="body"
-                                                                id="exampleFormControlInput1" placeholder="Reply..."
-                                                                required>
-                                                            <input type="hidden" name="post_id"
-                                                                value="{{ $videos[0]['id'] }}" />
-                                                            <input type="hidden" name="comment_id"
-                                                                value="{{ $commet['id'] }}" />
-                                                        </div>
-                                                        <div class="text-end mt-3">
-                                                            <button type="submit" class="btn btn-primary btn-sm"
-                                                                id="exampleFormControlInput1"
-                                                                style="width:110px;">COMMENT</button>
-                                                        </div>
+                                                        <form class="save_reply">
+                                                            <div>
+                                                                <input type="text" class="form-control body1 reset"
+                                                                    name="body" class="body_reply"
+                                                                    placeholder="Reply..." required>
+                                                                <input type="hidden" name="post_id" class="post_id"
+                                                                    value="{{ $videos[0]['id'] }}" />
+                                                                <input type="hidden" name="comment_id"
+                                                                    class="comment_id" value="{{ $commet['id'] }}" />
+                                                            </div>
+                                                            <div class="text-end mt-3">
+                                                                <button type="submit" class="btn btn-primary btn-sm"
+                                                                    data-id="{{ $commet['id'] }}"
+                                                                    style="width:110px;">REPLY</button>
+                                                            </div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -854,13 +813,15 @@ Header END -->
                             <div class=" mt-3">
                                 <form id="comment">
                                     <div class="commentBox">
-                                        <input type="text" class="form-control" autocomplete="off" name="body"
-                                            id="exampleFormControlInput1" placeholder="Message..." required>
+                                        <input type="text" class="form-control blank" autocomplete="off"
+                                            name="body" id="body" placeholder="Add a comment..." required>
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
-                                    <div class="text-end mt-1">
+                                    <div class="text-end ">
                                         <button type="submit" class="btn btn-primary btn-sm"
-                                            style="width:110px;">COMMENT</button>
+                                            style="width:110px;"><span class="material-symbols-outlined">
+                                                send
+                                            </span></button>
                                     </div>
                                 </form>
                             </div>
@@ -868,181 +829,46 @@ Header END -->
 
                     </div>
                     <!-- Official trailer END -->
-
                     <!-- More related video START -->
                     <div class="row g-3 mb-4">
                         <div class="col-12 mt-4">
                             <h5>More related video </h5>
                         </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top"
-                                        src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/06.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html">
-                                            {{ $videos[0]['title'] }}
-                                        </a> </h6>
-                                    <span class="small"> 665.1K views</span>
-                                </div>
-                            </div>
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            <video width="200" height="150" class="example1"
-                                id="example1_{{ $videos[0]['id'] }}"
-                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}">
+                        @foreach ($multi_video as $video)
+                            @foreach ($video['posts'] as $posts)
+                                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                                    <!-- Video START -->
+                                    <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
+                                        <video width="320" height="240" onmouseover="this.play()"
+                                            onmouseout="this.pause();this.currentTime=0;" class="video_autoplay"
+                                            poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
+                                            <source
+                                                src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
+                                                type="video/mp4">
+
+                                        </video>
+                                        <!-- {{-- <video width="200" height="150" class="example1"
+                                id="example1_{{ $posts['id'] }}"
+                                poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
                                 <source
-                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file'] }}"
+                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
                                     type="video/mp4">
                                 <track kind="captions" label="English" srclang="en"
                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                Your browser does not support the video tag.
-                            </video>
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/09.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:40</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
+                            </video> --}} -->
+                                        <div class="card-body">
+                                            <!-- Video title  -->
+                                            <h6>
+                                                {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }}
+                                            </h6>
+                                            <span class="small"> views: {{ $posts['views'] }}</span>
+                                        </div>
+                                        {{-- <p>{{strlen($posts['description']) > 15 ? substr($posts['description'],0,20)."..." : $posts['description']}}</p> --}}
+                                    </a>
+                                    <!-- Video END -->
                                 </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> How does the stock
-                                            market work? </a> </h6>
-                                    <span class="small"> 985.1K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/10.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">06:12</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> How to create a app for
-                                            your e-commerce
-                                            website </a> </h6>
-                                    <span class="small"> 658.2K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/07.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">03:45</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> Dilen - When I See You
-                                            (Official Music) </a>
-                                    </h6>
-                                    <span class="small"> 325.1K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            {{-- <div class="card p-0 position-relative h-100">
-                                <!-- Video image -->
-                                <div class="card-image">
-                                    <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/08.jpg"
-                                        alt="">
-                                    <!-- Play icon -->
-                                    <div class="position-absolute top-50 start-50 translate-middle">
-                                        <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i
-                                                class="bi bi-play-fill fs-5"> </i>
-                                        </a>
-                                    </div>
-                                    <!-- Duration -->
-                                    <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto"><i
-                                                class="fa-solid fa-heart"></i></span>
-                                    </div>
-                                </div>
-                                <!-- Video info -->
-                                <div class="card-body">
-                                    <!-- Video title  -->
-                                    <h6> <a class="stretched-link" href="video-details.html"> Complete cryptocurrency
-                                            course - start
-                                            learning </a> </h6>
-                                    <span class="small"> 785.9K views</span>
-                                </div>
-                            </div> --}}
-                            <!-- Video END -->
-                        </div>
+                            @endforeach
+                        @endforeach
                     </div>
                     <!-- More related video END -->
 
@@ -1068,7 +894,7 @@ JS libraries, plugins and custom scripts -->
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
-
+        @livewireScripts
     </body>
     <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
@@ -1142,6 +968,12 @@ JS libraries, plugins and custom scripts -->
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
+    {{-- ------------------send auth user detail in script file-------------------------- --}}
+    <script>
+        var Auth_user = {!! auth()->user()->toJson() !!};
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    {{-- ----------------star rating------------------ --}}
     <script>
         $(document).ready(function() {
 
@@ -1196,7 +1028,6 @@ JS libraries, plugins and custom scripts -->
             $('.success-box').fadeIn(200);
             $('.success-box div.text-message').html("<span>" + msg + "</span>");
         }
-
 
 
         getStars({{ round($averageRating, 1) }}, {{ $videos[0]['id'] }})

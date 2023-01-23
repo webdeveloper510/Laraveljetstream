@@ -27,10 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'surname',
         'date_of_birth',
         'profile_photo_path',
-        'cover_img'
+        'cover_img',
+        'surname',
     ];
 
     /**
@@ -59,7 +59,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = [
+     protected $appends = [
         'profile_photo_url',
     ];
 
@@ -69,7 +69,7 @@ class User extends Authenticatable
     }
 
     public function posts() {
-        return $this->hasMany('App\Models\product','user_id');
+        return $this->hasMany('App\Models\product','user_id')->where('security',3);
     }
 
     public function Report_video() {
@@ -81,11 +81,4 @@ class User extends Authenticatable
 {
     return $this->hasMany('App\Models\product_rating'::class);
 }
-
-
-
-    // public function likes()
-    // {
-    //     return $this->hasMany(product::class,LikeDislike::class);
-    // }
 }

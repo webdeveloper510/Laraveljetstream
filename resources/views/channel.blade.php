@@ -1,1165 +1,516 @@
 <x-app-layout>
-    @include('header')
-    <style>
-        .goog-te-gadget img {
-            vertical-align: middle;
-            border: none;
-            display: none;
-        }
-        skiptranslate goog-te-gadget {
-            display: none
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        body {
-            top: 0px !important;
-            position: static !important;
-        }
+<head>
 
-        .goog-te-banner-frame {
-            display: none !important
-        }
+  <title>Social - Network, Community and Event Theme</title>
 
-        .goog-logo-link {
-            display: none
-        }
-        </style>
-    <div class="mains">
-        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="560px" width="1380px"
-            poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['thumbnail'] }}/>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Webestica.com">
+  <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
 
-    {{-- <video width="320" height="200" id="example1">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['file']}}"
-            type="video/mp4">
-        <track kind="captions" label="English" srclang="en"
-            src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-    </video> --}}
-    <div class="container-fluid">
-        <div class="text-banner">
-            <div class="row">
-                <div class="col-md-4 d-flex">
-                    <div class="username">
-                        <h4 class="m-0">Varicent</h4>
-                        <p class="m-0">190 Subscriber</p>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="text-sm-end p-4">
-                        <button class="btn btn-outline-primary" style="color: rgb(4, 4, 246)"
-                            type="button">Join</button>
-                        <button class="btn btn-danger subscribe"
-                            style="{{ $count <= 0  && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
-                            onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>
-                        <button class="btn btn-outline-success subscribes"
-                            style="{{ $count > 0 ? 'display:block' : 'display:none' }}"
-                            onclick="subscribe('{{ $videos[0]['user_id'] }}',0)">SUBSCRIBED</button>
-                    </div>
-                </div>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/glightbox-master/dist/css/glightbox.min.css">
+
+  <!-- Theme CSS -->
+  <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
+  <style>
+
+
+/* side navbar */
+    .navbar.navbar-vertical.navbar-light{
+        top: 50px !important;
+        max-width: 342px !important;
+    }
+/* -------------- */
+
+/* main content */
+    .col-md-6.my-5.px-5.gap-0{
+        padding-right: 0rem !important;
+        padding-left: 1rem !important;
+    }
+
+/* video title */
+.title_color
+{
+    color: black !important;
+}
+
+    </style>
+</head>
+
+<body>
+
+  <!-- =======================
+Header START -->
+  {{-- <header class="navbar-light fixed-top header-static bg-mode">
+
+    <!-- Logo Nav START -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+          <img class="light-mode-item navbar-brand-item" src="<?php echo URL::to('/'); ?>/public/assets/images/logo.svg" alt="logo">
+          <img class="dark-mode-item navbar-brand-item" src="<?php echo URL::to('/'); ?>/public/assets/images/logo.svg" alt="logo">
+        </a>
+
+
+        <button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0 w-100">
+            <div class="nav-item w-100">
+              <form class="rounded position-relative">
+                <input class="form-control ps-5 bg-light" type="search" placeholder="Search..." aria-label="Search">
+                <button class="btn bg-transparent px-2 py-0 position-absolute top-50 start-0 translate-middle-y"
+                  type="submit"><i class="bi bi-search fs-5"> </i></button>
+              </form>
             </div>
+          </div>
+
+
+          <ul class="navbar-nav navbar-nav-scroll ms-auto">
+          </ul>
         </div>
-    </div>
-    </div>
 
-    <!------------------------------------------Tabs list section------------------------------------------------>
 
-    <div class="py-3 mb-4 pills-color">
-        <div class="container-fluid">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">HOME</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false">VIDEOS</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                        aria-selected="false">PLAYLISTS</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-community-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-community" type="button" role="tab" aria-controls="pills-community"
-                        aria-selected="false">COMMUNITY</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-channel-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-channel" type="button" role="tab" aria-controls="pills-channel"
-                        aria-selected="false">CHANNELS</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">ABOUT</button>
-                </li>
-            </ul>
-        </div>
-    </div>
 
-    <!------------------------------------------Tabs Content section ------------------------------------------------>
-
-    <div class="container-fluid">
-
-        <div class="tab-content" id="pills-tabContent">
-            <!-- ------------------------------Home section tab ----------------------->
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="Video-setion">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div hidden="" id="sprite-plyr">
-                                <!--?xml version="1.0" encoding="UTF-8"?--><svg xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <symbol id="plyr-airplay" viewBox="0 0 18 18">
-                                        <path
-                                            d="M16 1H2a1 1 0 00-1 1v10a1 1 0 001 1h3v-2H3V3h12v8h-2v2h3a1 1 0 001-1V2a1 1 0 00-1-1z">
-                                        </path>
-                                        <path d="M4 17h10l-5-6z"></path>
-                                    </symbol>
-                                    <symbol id="plyr-captions-off" viewBox="0 0 18 18">
-                                        <path
-                                            d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z"
-                                            fill-rule="evenodd" fill-opacity=".5"></path>
-                                    </symbol>
-                                    <symbol id="plyr-captions-on" viewBox="0 0 18 18">
-                                        <path
-                                            d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z"
-                                            fill-rule="evenodd"></path>
-                                    </symbol>
-                                    <symbol id="plyr-download" viewBox="0 0 18 18">
-                                        <path
-                                            d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-enter-fullscreen" viewBox="0 0 18 18">
-                                        <path d="M10 3h3.6l-4 4L11 8.4l4-4V8h2V1h-7zM7 9.6l-4 4V10H1v7h7v-2H4.4l4-4z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-exit-fullscreen" viewBox="0 0 18 18">
-                                        <path d="M1 12h3.6l-4 4L2 17.4l4-4V17h2v-7H1zM16 .6l-4 4V1h-2v7h7V6h-3.6l4-4z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-fast-forward" viewBox="0 0 18 18">
-                                        <path d="M7.875 7.171L0 1v16l7.875-6.171V17L18 9 7.875 1z"></path>
-                                    </symbol>
-                                    <symbol id="plyr-logo-vimeo" viewBox="0 0 18 18">
-                                        <path
-                                            d="M17 5.3c-.1 1.6-1.2 3.7-3.3 6.4-2.2 2.8-4 4.2-5.5 4.2-.9 0-1.7-.9-2.4-2.6C5 10.9 4.4 6 3 6c-.1 0-.5.3-1.2.8l-.8-1c.8-.7 3.5-3.4 4.7-3.5 1.2-.1 2 .7 2.3 2.5.3 2 .8 6.1 1.8 6.1.9 0 2.5-3.4 2.6-4 .1-.9-.3-1.9-2.3-1.1.8-2.6 2.3-3.8 4.5-3.8 1.7.1 2.5 1.2 2.4 3.3z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-logo-youtube" viewBox="0 0 18 18">
-                                        <path
-                                            d="M16.8 5.8c-.2-1.3-.8-2.2-2.2-2.4C12.4 3 9 3 9 3s-3.4 0-5.6.4C2 3.6 1.3 4.5 1.2 5.8 1 7.1 1 9 1 9s0 1.9.2 3.2c.2 1.3.8 2.2 2.2 2.4C5.6 15 9 15 9 15s3.4 0 5.6-.4c1.4-.3 2-1.1 2.2-2.4.2-1.3.2-3.2.2-3.2s0-1.9-.2-3.2zM7 12V6l5 3-5 3z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-muted" viewBox="0 0 18 18">
-                                        <path
-                                            d="M12.4 12.5l2.1-2.1 2.1 2.1 1.4-1.4L15.9 9 18 6.9l-1.4-1.4-2.1 2.1-2.1-2.1L11 6.9 13.1 9 11 11.1zM3.786 6.008H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-pause" viewBox="0 0 18 18">
-                                        <path
-                                            d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zm6 0c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-pip" viewBox="0 0 18 18">
-                                        <path d="M13.293 3.293L7.022 9.564l1.414 1.414 6.271-6.271L17 7V1h-6z"></path>
-                                        <path d="M13 15H3V5h5V3H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1v-6h-2v5z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-play" viewBox="0 0 18 18">
-                                        <path
-                                            d="M15.562 8.1L3.87.225c-.818-.562-1.87 0-1.87.9v15.75c0 .9 1.052 1.462 1.87.9L15.563 9.9c.584-.45.584-1.35 0-1.8z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-restart" viewBox="0 0 18 18">
-                                        <path
-                                            d="M9.7 1.2l.7 6.4 2.1-2.1c1.9 1.9 1.9 5.1 0 7-.9 1-2.2 1.5-3.5 1.5-1.3 0-2.6-.5-3.5-1.5-1.9-1.9-1.9-5.1 0-7 .6-.6 1.4-1.1 2.3-1.3l-.6-1.9C6 2.6 4.9 3.2 4 4.1 1.3 6.8 1.3 11.2 4 14c1.3 1.3 3.1 2 4.9 2 1.9 0 3.6-.7 4.9-2 2.7-2.7 2.7-7.1 0-9.9L16 1.9l-6.3-.7z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-rewind" viewBox="0 0 18 18">
-                                        <path d="M10.125 1L0 9l10.125 8v-6.171L18 17V1l-7.875 6.171z"></path>
-                                    </symbol>
-                                    <symbol id="plyr-settings" viewBox="0 0 18 18">
-                                        <path
-                                            d="M16.135 7.784a2 2 0 01-1.23-2.969c.322-.536.225-.998-.094-1.316l-.31-.31c-.318-.318-.78-.415-1.316-.094a2 2 0 01-2.969-1.23C10.065 1.258 9.669 1 9.219 1h-.438c-.45 0-.845.258-.997.865a2 2 0 01-2.969 1.23c-.536-.322-.999-.225-1.317.093l-.31.31c-.318.318-.415.781-.093 1.317a2 2 0 01-1.23 2.969C1.26 7.935 1 8.33 1 8.781v.438c0 .45.258.845.865.997a2 2 0 011.23 2.969c-.322.536-.225.998.094 1.316l.31.31c.319.319.782.415 1.316.094a2 2 0 012.969 1.23c.151.607.547.865.997.865h.438c.45 0 .845-.258.997-.865a2 2 0 012.969-1.23c.535.321.997.225 1.316-.094l.31-.31c.318-.318.415-.781.094-1.316a2 2 0 011.23-2.969c.607-.151.865-.547.865-.997v-.438c0-.451-.26-.846-.865-.997zM9 12a3 3 0 110-6 3 3 0 010 6z">
-                                        </path>
-                                    </symbol>
-                                    <symbol id="plyr-volume" viewBox="0 0 18 18">
-                                        <path
-                                            d="M15.6 3.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4C15.4 5.9 16 7.4 16 9c0 1.6-.6 3.1-1.8 4.3-.4.4-.4 1 0 1.4.2.2.5.3.7.3.3 0 .5-.1.7-.3C17.1 13.2 18 11.2 18 9s-.9-4.2-2.4-5.7z">
-                                        </path>
-                                        <path
-                                            d="M11.282 5.282a.909.909 0 000 1.316c.735.735.995 1.458.995 2.402 0 .936-.425 1.917-.995 2.487a.909.909 0 000 1.316c.145.145.636.262 1.018.156a.725.725 0 00.298-.156C13.773 11.733 14.13 10.16 14.13 9c0-.17-.002-.34-.011-.51-.053-.992-.319-2.005-1.522-3.208a.909.909 0 00-1.316 0zm-7.496.726H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z">
-                                        </path>
-                                    </symbol>
-                                </svg>
-                            </div>
-                            <div class="container">
-                                <div tabindex="0"
-                                    class="plyr plyr--full-ui plyr--video plyr--html5 plyr--fullscreen-enabled plyr--paused plyr--stopped plyr--pip-supported plyr--captions-active plyr--captions-enabled plyr__poster-enabled">
-                                    <div class="plyr__controls"><button class="plyr__controls__item plyr__control"
-                                            type="button" data-plyr="play" aria-label="Play"><svg
-                                                class="icon--pressed" aria-hidden="true" focusable="false">
-                                                <use xlink:href="#plyr-pause"></use>
-                                            </svg><svg class="icon--not-pressed" aria-hidden="true"
-                                                focusable="false">
-                                                <use xlink:href="#plyr-play"></use>
-                                            </svg><span class="label--pressed plyr__sr-only">Pause</span><span
-                                                class="label--not-pressed plyr__sr-only">Play</span></button>
-                                        <div class="plyr__controls__item plyr__progress__container">
-                                            <div class="plyr__progress"><input data-plyr="seek" type="range"
-                                                    min="0" max="100" step="0.01" value="0"
-                                                    autocomplete="off" role="slider" aria-label="Seek"
-                                                    aria-valuemin="0" aria-valuemax="183.126" aria-valuenow="0"
-                                                    id="plyr-seek-4319" aria-valuetext="00:00 of 03:03"
-                                                    style="--value:0%;"><progress class="plyr__progress__buffer"
-                                                    min="0" max="100" value="0" role="progressbar"
-                                                    aria-hidden="true">% buffered</progress><span
-                                                    class="plyr__tooltip">00:00</span></div>
-                                        </div>
-                                        <div class="plyr__controls__item plyr__time--current plyr__time"
-                                            aria-label="Current time">03:03</div>
-                                        <div class="plyr__controls__item plyr__volume"><button type="button"
-                                                class="plyr__control" data-plyr="mute"><svg class="icon--pressed"
-                                                    aria-hidden="true" focusable="false">
-                                                    <use xlink:href="#plyr-muted"></use>
-                                                </svg><svg class="icon--not-pressed" aria-hidden="true"
-                                                    focusable="false">
-                                                    <use xlink:href="#plyr-volume"></use>
-                                                </svg><span class="label--pressed plyr__sr-only">Unmute</span><span
-                                                    class="label--not-pressed plyr__sr-only">Mute</span></button><input
-                                                data-plyr="volume" type="range" min="0" max="1"
-                                                step="0.05" value="1" autocomplete="off" role="slider"
-                                                aria-label="Volume" aria-valuemin="0" aria-valuemax="100"
-                                                aria-valuenow="100" id="plyr-volume-4319" aria-valuetext="100.0%"
-                                                style="--value:100%;"></div><button
-                                            class="plyr__controls__item plyr__control plyr__control--pressed"
-                                            type="button" data-plyr="captions"><svg class="icon--pressed"
-                                                aria-hidden="true" focusable="false">
-                                                <use xlink:href="#plyr-captions-on"></use>
-                                            </svg><svg class="icon--not-pressed" aria-hidden="true"
-                                                focusable="false">
-                                                <use xlink:href="#plyr-captions-off"></use>
-                                            </svg><span class="label--pressed plyr__sr-only">Disable
-                                                captions</span><span class="label--not-pressed plyr__sr-only">Enable
-                                                captions</span></button>
-                                        <div class="plyr__controls__item plyr__menu"><button aria-haspopup="true"
-                                                aria-controls="plyr-settings-4319" aria-expanded="false"
-                                                type="button" class="plyr__control" data-plyr="settings"><svg
-                                                    aria-hidden="true" focusable="false">
-                                                    <use xlink:href="#plyr-settings"></use>
-                                                </svg><span class="plyr__sr-only">Settings</span></button>
-                                            <div class="plyr__menu__container" id="plyr-settings-4319"
-                                                hidden="">
-                                                <div>
-                                                    <div id="plyr-settings-4319-home">
-                                                        <div role="menu"><button data-plyr="settings"
-                                                                type="button"
-                                                                class="plyr__control plyr__control--forward"
-                                                                role="menuitem"
-                                                                aria-haspopup="true"><span>Captions<span
-                                                                        class="plyr__menu__value">English</span></span></button><button
-                                                                data-plyr="settings" type="button"
-                                                                class="plyr__control plyr__control--forward"
-                                                                role="menuitem"
-                                                                aria-haspopup="true"><span>Quality<span
-                                                                        class="plyr__menu__value">576p</span></span></button><button
-                                                                data-plyr="settings" type="button"
-                                                                class="plyr__control plyr__control--forward"
-                                                                role="menuitem" aria-haspopup="true"><span>Speed<span
-                                                                        class="plyr__menu__value">Normal</span></span></button>
-                                                        </div>
-                                                    </div>
-                                                    <div id="plyr-settings-4319-captions" hidden=""><button
-                                                            type="button"
-                                                            class="plyr__control plyr__control--back"><span
-                                                                aria-hidden="true">Captions</span><span
-                                                                class="plyr__sr-only">Go back to previous
-                                                                menu</span></button>
-                                                        <div role="menu"><button data-plyr="language"
-                                                                type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="-1"><span>Disabled</span></button><button
-                                                                data-plyr="language" type="button"
-                                                                role="menuitemradio" class="plyr__control"
-                                                                aria-checked="true" value="0"><span>English<span
-                                                                        class="plyr__menu__value"><span
-                                                                            class="plyr__badge">EN</span></span></span></button><button
-                                                                data-plyr="language" type="button"
-                                                                role="menuitemradio" class="plyr__control"
-                                                                aria-checked="false"
-                                                                value="1"><span>Français<span
-                                                                        class="plyr__menu__value"><span
-                                                                            class="plyr__badge">FR</span></span></span></button>
-                                                        </div>
-                                                    </div>
-                                                    <div id="plyr-settings-4319-quality" hidden=""><button
-                                                            type="button"
-                                                            class="plyr__control plyr__control--back"><span
-                                                                aria-hidden="true">Quality</span><span
-                                                                class="plyr__sr-only">Go back to previous
-                                                                menu</span></button>
-                                                        <div role="menu"><button data-plyr="quality"
-                                                                type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="1080"><span>1080p<span
-                                                                        class="plyr__menu__value"><span
-                                                                            class="plyr__badge">HD</span></span></span></button><button
-                                                                data-plyr="quality" type="button"
-                                                                role="menuitemradio" class="plyr__control"
-                                                                aria-checked="false" value="720"><span>720p<span
-                                                                        class="plyr__menu__value"><span
-                                                                            class="plyr__badge">HD</span></span></span></button><button
-                                                                data-plyr="quality" type="button"
-                                                                role="menuitemradio" class="plyr__control"
-                                                                aria-checked="true" value="576"><span>576p<span
-                                                                        class="plyr__menu__value"><span
-                                                                            class="plyr__badge">SD</span></span></span></button>
-                                                        </div>
-                                                    </div>
-                                                    <div id="plyr-settings-4319-speed" hidden=""><button
-                                                            type="button"
-                                                            class="plyr__control plyr__control--back"><span
-                                                                aria-hidden="true">Speed</span><span
-                                                                class="plyr__sr-only">Go back to previous
-                                                                menu</span></button>
-                                                        <div role="menu"><button data-plyr="speed" type="button"
-                                                                role="menuitemradio" class="plyr__control"
-                                                                aria-checked="false"
-                                                                value="0.5"><span>0.5×</span></button><button
-                                                                data-plyr="speed" type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="0.75"><span>0.75×</span></button><button
-                                                                data-plyr="speed" type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="true"
-                                                                value="1"><span>Normal</span></button><button
-                                                                data-plyr="speed" type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="1.25"><span>1.25×</span></button><button
-                                                                data-plyr="speed" type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="1.5"><span>1.5×</span></button><button
-                                                                data-plyr="speed" type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="1.75"><span>1.75x</span></button><button
-                                                                data-plyr="speed" type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="2"><span>2x</span></button><button
-                                                                data-plyr="speed" type="button" role="menuitemradio"
-                                                                class="plyr__control" aria-checked="false"
-                                                                value="4"><span>4x</span></button></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><button class="plyr__controls__item plyr__control" type="button"
-                                            data-plyr="pip"><svg aria-hidden="true" focusable="false">
-                                                <use xlink:href="#plyr-pip"></use>
-                                            </svg><span class="plyr__sr-only">PIP</span></button><button
-                                            class="plyr__controls__item plyr__control" type="button"
-                                            data-plyr="fullscreen"><svg class="icon--pressed" aria-hidden="true"
-                                                focusable="false">
-                                                <use xlink:href="#plyr-exit-fullscreen"></use>
-                                            </svg><svg class="icon--not-pressed" aria-hidden="true"
-                                                focusable="false">
-                                                <use xlink:href="#plyr-enter-fullscreen"></use>
-                                            </svg><span class="label--pressed plyr__sr-only">Exit
-                                                fullscreen</span><span class="label--not-pressed plyr__sr-only">Enter
-                                                fullscreen</span></button>
-                                    </div>
-                                    <div class="plyr__video-wrapper">
-                                        <video crossorigin="" playsinline=""
-                                            poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"
-                                            data-poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"
-                                            controls muted>
-                                            <source
-                                                src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"
-                                                type="video/mp4" size="576">
-                                            <source
-                                                src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4"
-                                                type="video/mp4" size="720">
-                                            <source
-                                                src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4"
-                                                type="video/mp4" size="1080">
-
-                                            <!-- Caption files -->
-                                            <track kind="captions" label="English" srclang="en"
-                                                src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
-                                                default="">
-                                            <track kind="captions" label="Français" srclang="fr"
-                                                src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt">
-                                            <!-- Fallback for browsers that don't support the <video> element -->
-                                            <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"
-                                                download="">Download</a>
-                                        </video>
-
-                                        <div class="plyr__poster"
-                                            style="background-image: url(&quot;https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg&quot;);">
-                                        </div>
-                                    </div>
-                                    <div class="plyr__captions"></div><button type="button"
-                                        class="plyr__control plyr__control--overlaid" data-plyr="play"
-                                        aria-label="Play"><svg aria-hidden="true" focusable="false">
-                                            <use xlink:href="#plyr-play"></use>
-                                        </svg><span class="plyr__sr-only">Play</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <p class="m-0"><b>{{ $videos[0]['title'] }}</b></p>
-                            <div class="views">
-                                <p class="py-2 m-0">{{ $videos[0]['views'] }} views
-                                    {{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}</p>
-                                {{-- <p>{{ $videos[0]['description'] }}</p> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-12">
-                            <h3 class="d-flex">Uploads<button class="btn btn-sm btn-outline-primery d-flex"><span
-                                        class="material-symbols-outlined">
-                                        play_arrow
-                                    </span> <span class="btn-text">Play All</span></button></h3>
-                        </div>
-                        @foreach ($videos as $video)
-                            <div class="col-md-3">
-                                {{-- (for video run with mouseover)---->  onmouseover="this.play()"
-                onmouseout="this.pause();this.currentTime=0;" --}}
-                                <video width="320" height="200" id="example1" controls muted>
-                                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file'] }}"
-                                        type="video/mp4">
-                                    <track kind="captions" label="English" srclang="en"
-                                        src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                </video>
-                                <div class="card">
-                                    <div class="card-body">
-
-                                        <p class="m-0">
-                                            {{ $video['title'] }}
-                                        </p>
-                                        <div class="views">
-                                            <ul>
-                                                <li>{{ $video['views'] }} Views</li>
-                                                <li>{{ \Carbon\Carbon::parse($video['created_at'])->diffForHumans() }}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <a class="" href="#" role="button" id="dropdown1">
-                                            <span class="material-symbols-outlined">
-                                                more_vert
-                                            </span>
-                                        </a>
-                                        <div class="Queue">
-                                            <div class="dropdown">
-                                                <ul class="dropdown-menu1">
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_play
-                                                            </span>Add to Queue</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                schedule
-                                                            </span> Save to Watch later</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_add
-                                                            </span> Save to Playlist</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                    <hr />
-
-                    <!--------------------------------------- Shorts section start ------------------------------------->
-
-                    <div class="row">
-
-                        <div class="col-12">
-                            <h3 class="d-flex">
-                                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false"
-                                    class="style-scope yt-icon"
-                                    style="pointer-events: none; display: block; width: 30px; height: 30px;">
-                                    <g width="24" height="24" viewBox="0 0 24 24"
-                                        class="style-scope yt-icon">
-                                        <g class="style-scope yt-icon">
-                                            <path
-                                                d="M17.77,10.32l-1.2-.5L18,9.06a3.74,3.74,0,0,0-3.5-6.62L6,6.94a3.74,3.74,0,0,0,.23,6.74l1.2.49L6,14.93a3.75,3.75,0,0,0,3.5,6.63l8.5-4.5a3.74,3.74,0,0,0-.23-6.74Z"
-                                                fill="red" class="style-scope yt-icon"></path>
-                                            <polygon points="10 14.65 15 12 10 9.35 10 14.65" fill="#fff"
-                                                class="style-scope yt-icon"></polygon>
-                                        </g>
-                                    </g>
-                                </svg>
-                                Shorts <button class="btn btn-sm btn-outline-primery d-flex"><span
-                                        class="material-symbols-outlined">
-                                        play_arrow
-                                    </span> <span class="btn-text">Play All</span></button>
-                            </h3>
-
-                        </div>
-                        @foreach ($videos as $video)
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <video width="320" height="200" id="example1" controls muted>
-                                        <source
-                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file'] }}"
-                                            type="video/mp4">
-
-                                        <track kind="captions" label="English" srclang="en"
-                                            src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="m-0">
-                                            {{ $video['title'] }}
-                                        </p>
-                                        <div class=" views">
-                                            <ul>
-                                                <li>{{ $video['views'] }} Views</li>
-                                                <li>18 hours ago</li>
-                                            </ul>
-                                        </div>
-                                        <a class="" href="#" role="button" id="dropdown1">
-                                            <span class="material-symbols-outlined">
-                                                more_vert
-                                            </span>
-                                        </a>
-                                        <div class="Queue">
-                                            <div class="dropdown">
-                                                <ul class="dropdown-menu1">
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_play
-                                                            </span> Add to Queue</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                schedule
-                                                            </span> Save to Watch later</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_add
-                                                            </span> Save to Playlist</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        {{-- <div class="col-md-3">
-        <div class="card">
-        <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid"/>
-          <div class="card-body">
-            <p class="m-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
-            <div class=" views">
-                <ul>
-                  <li>47k views</li>
-                  <li>18 hours ago</li>
-                </ul>
-            </div>
-            <a class="" href="#" role="button" id="dropdown1" >
-              <span class="material-symbols-outlined">
-                more_vert
-                </span>
+        <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+          <li class="nav-item ms-2">
+            <a class="nav-link icon-md btn btn-light p-0" href="messaging.html">
+              <i class="bi bi-chat-left-text-fill fs-6"> </i>
             </a>
-            <div class="Queue">
-              <div class="dropdown">
-                <ul class="dropdown-menu1">
-                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
-                    playlist_play
-                    </span> Add to Queue</a></li>
-                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
-                    schedule
-                    </span>  Save to Watch later</a></li>
-                  <li><a class="dropdown-item d-flex" href="#"><span class="material-symbols-outlined mr-3">
-                    playlist_add
-                    </span> Save to Playlist</a></li>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="nav-link icon-md btn btn-light p-0" href="settings.html">
+              <i class="bi bi-gear-fill fs-6"> </i>
+            </a>
+          </li>
+          <li class="nav-item dropdown ms-2">
+            <a class="nav-link icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+              <span class="badge-notif animation-blink"></span>
+              <i class="bi bi-bell-fill fs-6"> </i>
+            </a>
+            <div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0"
+              aria-labelledby="notifDropdown">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h6 class="m-0">Notifications <span class="badge bg-danger bg-opacity-10 text-danger ms-2">4
+                      new</span></h6>
+                  <a class="small" href="#">Clear all</a>
+                </div>
+                <div class="card-body p-0">
+                  <ul class="list-group list-group-flush list-unstyled p-2">
+
+                    <li>
+                      <div class="list-group-item list-group-item-action rounded badge-unread d-flex border-0 mb-1 p-3">
+                        <div class="avatar text-center d-none d-sm-inline-block">
+                          <img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
+                        </div>
+                        <div class="ms-sm-3">
+                          <div class=" d-flex">
+                            <p class="small mb-2"><b>Judy Nguyen</b> sent you a friend request.</p>
+                            <p class="small ms-3 text-nowrap">Just now</p>
+                          </div>
+                          <div class="d-flex">
+                            <button class="btn btn-sm py-1 btn-primary me-2">Accept </button>
+                            <button class="btn btn-sm py-1 btn-danger-soft">Delete </button>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <div
+                        class="list-group-item list-group-item-action rounded badge-unread d-flex border-0 mb-1 p-3 position-relative">
+                        <div class="avatar text-center d-none d-sm-inline-block">
+                          <img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="">
+                        </div>
+                        <div class="ms-sm-3 d-flex">
+                          <div>
+                            <p class="small mb-2">Wish <b>Amanda Reed</b> a happy birthday (Nov 12)</p>
+                            <button class="btn btn-sm btn-outline-light py-1 me-2">Say happy birthday 🎂</button>
+                          </div>
+                          <p class="small ms-3">2min</p>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li>
+                      <a href="#" class="list-group-item list-group-item-action rounded d-flex border-0 mb-1 p-3">
+                        <div class="avatar text-center d-none d-sm-inline-block">
+                          <div class="avatar-img rounded-circle bg-success"><span
+                              class="text-white position-absolute top-50 start-50 translate-middle fw-bold">WB</span>
+                          </div>
+                        </div>
+                        <div class="ms-sm-3">
+                          <div class="d-flex">
+                            <p class="small mb-2">Webestica has 15 like and 1 new activity</p>
+                            <p class="small ms-3">1hr</p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#" class="list-group-item list-group-item-action rounded d-flex border-0 p-3 mb-1">
+                        <div class="avatar text-center d-none d-sm-inline-block">
+                          <img class="avatar-img rounded-circle" src="assets/images/logo/12.svg" alt="">
+                        </div>
+                        <div class="ms-sm-3 d-flex">
+                          <p class="small mb-2"><b>Bootstrap in the news:</b> The search giant’s parent company,
+                            Alphabet, just joined an exclusive club of tech stocks.</p>
+                          <p class="small ms-3">4hr</p>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="card-footer text-center">
+                  <a href="#" class="btn btn-sm btn-primary-soft">See all incoming activity</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+
+          <li class="nav-item ms-2 dropdown">
+            <a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside"
+              data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="avatar-img rounded-2" src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/07.jpg" alt="">
+            </a>
+            <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3"
+              aria-labelledby="profileDropdown">
+
+              <li class="px-3">
+                <div class="d-flex align-items-center position-relative">
+
+                  <div class="avatar me-3">
+                    <img class="avatar-img rounded-circle" src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/07.jpg" alt="avatar">
+                  </div>
+                  <div>
+                    <a class="h6 stretched-link" href="#">Lori Ferguson</a>
+                    <p class="small m-0">Web Developer</p>
+                  </div>
+                </div>
+                <a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="my-profile.html">View
+                  profile</a>
+              </li>
+
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear fa-fw me-2"></i>Settings &
+                  Privacy</a></li>
+              <li>
+                <a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
+                  <i class="fa-fw bi bi-life-preserver me-2"></i>Support
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="docs/index.html" target="_blank">
+                  <i class="fa-fw bi bi-card-text me-2"></i>Documentation
+                </a>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li><a class="dropdown-item bg-danger-soft-hover" href="sign-in-advance.html"><i
+                    class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <li>
+                <div class="modeswitch-wrap" id="darkModeSwitch">
+                  <div class="modeswitch-item">
+                    <div class="modeswitch-icon"></div>
+                  </div>
+                  <span>Dark mode</span>
+                </div>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+
+  </header> --}}
+  <!-- =======================
+Header END -->
+
+  <!-- **************** MAIN CONTENT START **************** -->
+  <main>
+
+    <!-- Container START -->
+    <div class="container-fluid">
+
+
+      <div class="row ">
+
+        <!-- Main content START -->
+        <div class="col-lg-3 g-0">
+          <!-- Sidenav START -->
+          <div class="navbar navbar-vertical navbar-light">
+            <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0" tabindex="-1"
+              id="navbarVerticaloffcanvas">
+              <div class="offcanvas-body pt-0 pt-lg-0 ">
+                <!-- Avatar -->
+                <div class="avatar avatar-lg mb-3">
+
+                    <img class="avatar-img rounded-circle border border-white border-3"
+                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
+
+                </div>
+                <!-- Info -->
+                <h5 class="mb-0">{{auth()->user()->name}} </h5>
+                <!-- <small>Web Developer at Webestica</small> -->
+                <!-- User stat START -->
+              <div>
+
+            </div>
+                <!-- User stat END -->
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Side Nav START -->
+                <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                  <li class="nav-item">
+                    <a class="nav-link d-flex"
+                      href="<?php echo URL::to('/'); ?>/dashboard"> <img
+                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
+                      </span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex"
+                      href="<?php echo URL::to('/'); ?>/uploadpage">
+                      <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
+                        alt=""><span>Upload Video </span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex"
+                      href="{{URL::to('/channel/'.$id)}}">
+                      <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your
+                        Channel </span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex"
+                      href="<?php echo URL::to('/'); ?>/watchlater"> <img
+                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch
+                        Later </span></a>
+                  </li>
+                  {{-- <li class="nav-item">
+                    <a class="nav-link d-flex"
+                      href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html"> <img
+                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/notification-outlined-filled.svg"
+                        alt=""><span>Notifications </span></a>
+                  </li> --}}
+                  {{-- <li class="nav-item">
+                    <a class="nav-link d-flex"
+                      href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/settings.html"> <img
+                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/cog-outline-filled.svg" alt=""><span>Settings
+                      </span></a>
+                  </li> --}}
+                  {{-- <li class="nav-item">
+                    <a class="nav-link d-flex"
+                      href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/sign-in-advance.html">
+                      <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
+                        alt=""><span>Logout</span></a>
+                  </li> --}}
                 </ul>
+                <!-- Side Nav END -->
               </div>
             </div>
           </div>
+		 </div>
+          <!-- Sidenav END -->
+        <div class="col-md-6 my-5 px-5 pt-4 gap-0">
+          <!-- Card START -->
+          <div class="card">
+			@if($videos)
+            <div class="h-200px rounded-top"
+              style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+            </div>
+			@endif
+            <!-- Card body START -->
+            <div class="card-body py-0">
+              <div class="d-sm-flex align-items-start text-center text-sm-start">
+                <div>
+                  <!-- Avatar -->
+                  <div class="avatar avatar-xxl mt-n5 mb-3">
+
+                    <img class="avatar-img rounded-circle border border-white border-3"
+                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
+
+                  </div>
+                </div>
+                <div class="ms-sm-4 mt-sm-3">
+                  <!-- Info -->
+
+                  <h1 class="mb-0 h5">{{auth()->user()->name}}<i class="bi bi-patch-check-fill text-success small"></i></h1>
+                  <p>250 connections</p>
+                </div>
+                <!-- Button -->
+                <div class="d-flex mt-3 justify-content-center ms-sm-auto">
+                  <a class="btn btn-danger-soft me-2" href="<?php echo URL::to('/'); ?>/user/profile"></i> Edit
+                    profile </a>
+                  <div class="dropdown">
+                    <!-- Card share action menu -->
+                    <button class="icon-md btn btn-light" type="button" id="profileAction2" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                    <!-- Card share action dropdown menu -->
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileAction2">
+                      <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share profile in a
+                          message</a></li>
+                      <li><a class="dropdown-item" href="#"> <i class="bi bi-file-earmark-pdf fa-fw pe-2"></i>Save your
+                          profile to PDF</a></li>
+                      <li><a class="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>Lock profile</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Profile settings</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- List profile -->
+            </div>
+          </div>
+          <!-- Card END Details -->
+
+          <!-- Video START -->
+          <div class="col-md-3">
+
+          </div>
+          <div class="card">
+            <!-- Card header START -->
+            <div class="card-header border-0 pb-0">
+              <h5 class="card-title">Videos</h5>
+              <!-- Button modal -->
+            </div>
+            <!-- Card header END -->
+            <!-- Card body START -->
+            <div class="card-body">
+              <!-- Video of you tab START -->
+              <div class="row g-3">
+
+                <!-- Add Video START -->
+                <div class="col-sm-6 col-md-4">
+                  <div
+                    class="border border-2 py-5 border-dashed h-100 rounded text-center d-flex align-items-center justify-content-center position-relative">
+                    <a class="stretched-link" href="#!">
+                      <i class="fa-solid fa-camera-retro fs-1"></i>
+                      <h6 class="mt-2">Add Video</h6>
+                    </a>
+                  </div>
+                </div>
+                <!-- Add Video END -->
+                @foreach ($videos as $video)
+                <div class="col-sm-6 col-md-4">
+                  <!-- Video START -->
+                  <div class="card p-0 shadow-none border-0 position-relative">
+                    <!-- Video image -->
+                    <div class="position-relative">
+                        <video width="320" height="200" id="example1" controls muted>
+                            <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file'] }}"
+                                type="video/mp4">
+                            <track kind="captions" label="English" srclang="en"
+                                src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+                        </video>
+                      <!-- Duration -->
+                      <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">02:20</span>
+                      </div>
+                    </div>
+                    <!-- Video info -->
+                    <div class="card-body px-0 pb-0 pt-2">
+                    <p class="title_color">{{$videos[0]['title']}}</p>
+                    </div>
+                  </div>
+                  <!-- Video END -->
+                </div>
+                @endforeach
+              </div>
+              <!-- Video of you tab END -->
+            </div>
+            <!-- Card body END -->
+            <!-- Card footer START -->
+            <div class="card-footer border-0 pt-0">
+            </div>
+            <!-- Card footer END -->
+          </div>
+          <!-- Video item END -->
         </div>
-      </div> --}}
-
-
-
-                    </div>
-                    <!--------------------------------------- Funny section start ------------------------------------->
-                    <hr />
-                    <div class="row">
-                        <div class="col-12">
-                            <h3 class="d-flex">
-                                Fun <button class="btn btn-sm btn-outline-primery d-flex"><span
-                                        class="material-symbols-outlined">
-                                        play_arrow
-                                    </span> <span class="btn-text">Play All</span></button></h3>
-                        </div>
-                        @foreach ($videos as $video)
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <video width="320" height="200" id="example1" controls muted>
-                                        <source
-                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file'] }}"
-                                            type="video/mp4">
-
-                                        <track kind="captions" label="English" srclang="en"
-                                            src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="m-0">
-                                            {{ $video['title'] }}
-                                        </p>
-                                        <div class=" views">
-                                            <ul>
-                                                <li>{{ $video['views'] }} Views</li>
-                                                <li>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <a class="" href="#" role="button" id="dropdown1">
-                                            <span class="material-symbols-outlined">
-                                                more_vert
-                                            </span>
-                                        </a>
-                                        <div class="Queue">
-                                            <div class="dropdown">
-                                                <ul class="dropdown-menu1">
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_play
-                                                            </span> Add to Queue</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                schedule
-                                                            </span> Save to Watch later</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_add
-                                                            </span> Save to Playlist</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
+        <!-- Main content END -->
+        <!-- Right sidebar START -->
+        <div class="col-md-3 g-4 my-5 pt-4">
+          <div class="row g-4">
+            <!-- Card START -->
+            <div class="col-sm-6 col-lg-12 ">
+              <div class="card  ">
+                <div class="card-header border-0 pb-0">October
+                  <h5 class="card-title">About</h5>
+                  <!-- Button modal -->
                 </div>
+                <!-- Card body START -->
+                <div class="card-body position-relative pt-0"  style="color: black">
+                  <p>{{$videos ? $videos[0]['description'] : ''}}</p>
+                  <!-- Date time -->
+                  <ul class="list-unstyled mt-3 mb-0">
+                    <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> {{$videos ? $videos[0]['user']['date_of_birth']: ''}}
+                      </strong> </li>
+                    {{-- <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li> --}}
+                    <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos ? $videos[0]['user']['email']: ''}}</strong> </li>
+                  </ul>
+                </div>
+                <!-- Card body END -->
+              </div>
             </div>
-
-
-            <!-- ------------------------------Videos section tab ----------------------->
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <div class="row">
-                    <div class="col-md-3">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected> Upload</option>
-                            <option value="1">All videos</option>
-                            <option value="2">Upcoming live streams</option>
-                            <option value="3">Past live streams</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="video-setion my-3">
-                    <div class="row">
-                        <!-- ------------------------------ist row ----------------------->
-
-                        <!-- ------------------------------2nd row ----------------------->
-                        @foreach ($videos as $video)
-                            <div class="col-md-3 mb-3">
-                                <div class="card">
-                                    <video width="320" height="200" id="example1" controls muted>
-                                        <source
-                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['file'] }}"
-                                            type="video/mp4">
-
-                                        <track kind="captions" label="English" srclang="en"
-                                            src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                    </video>
-                                    <div class="card-body">
-                                        <p class="m-0">
-                                            {{ $video['title'] }}
-                                        </p>
-                                        <div class=" views">
-                                            <ul>
-                                                <li>{{ $video['views'] }} Views</li>
-                                                <li>{{ \Carbon\Carbon::parse($videos[0]['created_at'])->diffForHumans() }}
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <a class="" href="#" role="button" id="dropdown1">
-                                            <span class="material-symbols-outlined">
-                                                more_vert
-                                            </span>
-                                        </a>
-                                        <div class="Queue">
-                                            <div class="dropdown">
-                                                <ul class="dropdown-menu1">
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_play
-                                                            </span> Add to Queue</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                schedule
-                                                            </span> Save to Watch later</a></li>
-                                                    <li><a class="dropdown-item d-flex" href="#"><span
-                                                                class="material-symbols-outlined mr-3">
-                                                                playlist_add
-                                                            </span> Save to Playlist</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <!-- ------------------------------3rd row ----------------------->
-                    </div>
-                </div>
-            </div>
-            <!-- ------------------------------Playlist section tab ----------------------->
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <div class="playlist-data">
-                    <!-- ------------------------------Created playlists section  ----------------------->
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5>Created playlists</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-
-                    </div>
-                    <hr />
-
-                    <!-- ------------------------------Multiple playlists section  ----------------------->
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5>Multiple playlists</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card ">
-                                <div class="imagess">
-                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                                    <div class="thumb-icons">
-                                        <p class="mb-0">7</p>
-                                        <p><span class="material-symbols-outlined">
-                                                playlist_play
-                                            </span></p>
-                                    </div>
-                                </div>
-                                <p class="pt-3">Title rounting</p>
-                                <small>VIEW FULL PLAYLIST</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ------------------------------community section tab ----------------------->
-            <div class="tab-pane fade" id="pills-community" role="tabpanel" aria-labelledby="pills-community-tab">
-                <div class="communitys">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="col-md-2 text-end">
-                                        <div class="communit-img">
-                                            <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="80px"
-                                                width="80px" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h6>{{ $videos[0]['user']['name'] }} <small> 10 days ago</small></h6>
-                                        <p>Thank you V. This is an honour for me ❤️❤️❤️
-                                        </p>
-                                        <img src="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=600"
-                                            class="img-fluid" />
-
-                                        <div class=" react">
-                                            <p> <span class="material-symbols-outlined">
-                                                    thumb_up
-                                                </span> 12</p>
-                                            <p><span class="material-symbols-outlined">
-                                                    thumb_down
-                                                </span> </p>
-                                            <p><span class="material-symbols-outlined">
-                                                    chat
-                                                </span> 23</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="cont text-end">
-                                            <span class="material-symbols-outlined">
-                                                more_vert
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ------------------------------Channels section tab----------------------->
-            <div class="tab-pane fade" id="pills-channel" role="tabpanel" aria-labelledby="pills-channel-tab">
-                <div class="subs">
-                    <h6>Subscriptions</h6>
-                    <div class="row">
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                    width="60px" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                    width="60px" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" height="60px"
-                                    width="60px" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm">SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                        <div class="col-md-2 card text-center">
-                            <div class="cover">
-                                <img src="./hq720.webp" class="img-fluid" />
-                            </div>
-                            <h5>Channel Name</h5>
-                            <p>1 Subscriber</p>
-                            <button class="btn btn-secondary btn-sm"> SUBSCRIBE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ------------------------------About section tab ----------------------->
-            <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
-                <div class="about-data">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <p>Description </p>
-                            <p>{{ $videos[0]['description'] }}</p>
-                            <p>Instagram : code.steps</p>
-                            <!-----Details css------>
-                            <hr />
-                            <div class="Details">
-                                <p>Details</p>
-                                <div class="d-flex align-items-sm-baseline">
-                                    <p class="left">For business inquiries: </p>
-                                    <button class="btn btn-primery" type="button">VIEW EMAIL ADDRESS</button>
-                                </div>
-                                <div class="d-flex align-items-sm-baseline">
-                                    <p class="left">Location: </p>
-                                    <p class="ps-3">United States
-                                    </p>
-                                </div>
-                            </div>
-                            <hr />
-                            <!-- Links start -->
-                            <p>Links</p>
-                            <div class="d-flex align-items-sm-baseline">
-                                <a href="{{ $socialshare['twitter'] }}" class="left">Twiter</a>
-                                <a href="{{ $socialshare['telegram'] }}">Telegram</a>
-                            </div>
-                            <a href="{{ $socialshare['whatsapp'] }}">Whatsapp</a>
-                            <hr />
-                        </div>
-                        <div class="col-md-4">
-                            <div class="stats">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><b> Status </b></li>
-                                    <li class="list-group-item">Joined Aug 29, 2015</li>
-                                    <li class="list-group-item">28,390,763 views</li>
-                                    <li class="list-group-item"><span class="material-symbols-outlined">
-                                            flag
-                                        </span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Card END -->
+          </div>
         </div>
+        <!-- Right sidebar END -->
+      </div> <!-- Row END -->
     </div>
+    <!-- Container END -->
+  </main>
+  <!-- **************** MAIN CONTENT END **************** -->
 
-    </div>
-    </div>
-    </body>
-    {{-- ------------------------------------ video player------------------------------------- --}}
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            video1 = new Moovie({
-                selector: "#example1",
-                config: {
-                    controls: {
-                        playtime: true,
-                        muted: true,
-                        volume: true,
-                        subtitles: true,
-                        config: true,
-                        fullscreen: true,
-                        submenuCaptions: true,
-                        submenuOffset: true,
-                        submenuSpeed: true,
-                        allowLocalSubtitles: true,
+  <!-- =======================
+JS libraries, plugins and custom scripts -->
 
-                    }
-                }
-            });
-        });
-    </script>
-    {{-- ------------------------------------------subscribe-------------------------------------- --}}
-    <script>
-        var base_url = 'http://localhost/jetstream';
+  <!-- Bootstrap JS -->
+  <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Vendors -->
+  <script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
 
-        function subscribe(channel_id, flag) {
-            toastr.options = {
-                closeButton: true,
-                newestOnTop: true,
-                positionClass: 'toast-top-center',
-            };
-            $.ajax({
-                url: base_url + '/subscribe',
-                type: 'post',
-                data: {
-                    channel_id: channel_id,
-                    count: 1,
-                    _token: '{{ csrf_token() }}',
-                    flag: flag,
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.code) {
-                        toastr.success(data.message);
-                    }
-                    if (data.code == 1) {
-                        // show like button
-                        $('.subscribe').hide();
-                        $('.subscribes').show();
-                    } else {
-                        $('.subscribe').show();
-                        $('.subscribes').hide();
-                    }
-                },
-            });
-        }
-    </script>
-    <script src="https://unpkg.com/plyr@3"></script>
-    <script
-        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js">
-    </script>
-    <script
-        src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL">
-    </script>
+  <!-- Template Functions -->
+  <script src="assets/js/functions.js"></script>
 
-    {{-- ------------------------------------Translator------------------------------------- --}}
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en'
-            }, 'google_translate_element');
-        }
-        $(window).load(function() {
-            $(".goog-logo-link").empty();
-            $('.goog-te-gadget').html($('.goog-te-gadget').children());
-        })
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-    </script>
-    <!-- <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-acd9aae4-bc97-a8ad-40ce-c9e5378cc58d" crossorigin="">
-    </script> -->
-
-    </html>
+</body>
+</html>
 </x-app-layout>

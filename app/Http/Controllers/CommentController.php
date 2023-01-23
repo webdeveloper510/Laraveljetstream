@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\Product;
-use App\models\Comment;
+use App\Models\product;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -13,7 +13,7 @@ class CommentController extends Controller
     {
         
         $comment = new Comment;
-        $comment->body = $request->get('body');
+        $body = $comment->body = $request->get('body');
         $id = auth()->user()->id;
         $comment->parent_id = 0;
         $comment->product_id = $request->get('post_id');
@@ -24,7 +24,7 @@ class CommentController extends Controller
 
         return response()->json([
             'message' => 'comment save successfully !!',
-            'comment' => $comment
+            'comment' => $comment,
         ]);
     }
 

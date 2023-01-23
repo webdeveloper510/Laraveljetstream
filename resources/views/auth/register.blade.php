@@ -3,9 +3,7 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
-
         <x-jet-validation-errors class="mb-4" />
-
         <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
             @csrf
 
@@ -14,14 +12,9 @@
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
-            <div>
+            <div class="mt-4">
                 <x-jet-label for="surname" value="{{ __('Surname') }}" />
-                <x-jet-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div>
-                <x-jet-label for="date" value="{{ __('Date of Birth') }}" />
-                <x-jet-input id="date" class="block mt-1 w-full" type="date" name="date" :value="old('date')" required autofocus autocomplete="name" />
+                <x-jet-input id="surname" class="block mt-1 w-full" type="text" name="surname" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
@@ -40,13 +33,18 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="profile_photo_path" value="{{ __('Profile') }}" />
-                <x-jet-input id="profile" class="form-control" type="file" name="profile_photo_path" required autocomplete="profile_photo_path" />
+                <x-jet-label for="date_of_birth" value="{{ __('Date of Birth') }}" />
+                <x-jet-input id="date_of_birth" class="block mt-1 w-full" type="date" name="	date_of_birth" required autocomplete="new-password" />
             </div>
 
-            <div class="mt-3">
+            <div class="mt-4">
+                <x-jet-label for="profile_photo_path" value="{{ __('Profile Photo') }}" />
+                <x-jet-input id="profile_photo_path" class="block mt-1 w-full" type="file" name="profile_photo_path" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="cover_img" value="{{ __('Cover Image') }}" />
-                <x-jet-input id="coverimg" class="form-control" type="file" name="cover_img" required autocomplete="cover_img" />
+                <x-jet-input id="cover_img" class="block mt-1 w-full" type="file" name="	cover_img" required autocomplete="new-password" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

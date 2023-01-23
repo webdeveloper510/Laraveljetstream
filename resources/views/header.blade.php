@@ -45,6 +45,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 <style>
+
+
+
+
+
+
+
+
+
+
+
+
     body {
         background-color: #0b0c2a !important; color: white; font-family: 'Mulish', sans-serif;
     }
@@ -351,7 +363,7 @@ a.title {
 }
 
 /* Navbar CSS Start */
-nav.navbar.navbar-expand-lg.bg-light a {
+    nav.navbar.navbar-expand-lg.bg-light a {
     color: white;
   }
 
@@ -370,8 +382,16 @@ nav.navbar.navbar-expand-lg.bg-light a {
         color: orange;
     }
 
+    body.font-sans.antialiased {
+    margin: 0px !important;
+    }
+
+  
     /* Navbar CSS End */
+
+
     </style>
 </head>
         <body style="background-color: #0b0c2a; color: white; font-family: 'Mulish', sans-serif;">
+
 

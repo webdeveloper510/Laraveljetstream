@@ -14,7 +14,7 @@
         skiptranslate goog-te-gadget {
             display: none
         }
-
+  
         body {
             top: 0px !important;
             position: static !important;
@@ -201,7 +201,7 @@
 
     #progressbar li {
         list-style-type: none;
-        color: white;
+        color: black;
         text-transform: uppercase;
         font-size: 9px;
         width: 33.33%;
@@ -288,14 +288,98 @@
     }
 </style>
 
-<body>
+<body class="bg-white">
     <!-- MultiStep Form -->
-    <div class="row">
-        <div class="col"></div>
+    <div class="row pt-20 bg-white">
+         <!-- Sidenav START -->
+         <div class="col-lg-3">
+
+            <!-- Advanced filter responsive toggler START -->
+            <div class="d-flex align-items-center d-lg-none">
+              <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
+                <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+              </button>
+            </div>
+            <!-- Advanced filter responsive toggler END -->
+
+            <!-- Navbar START-->
+            <nav class="navbar navbar-expand-lg mx-0 z-0">
+              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
+                <!-- Offcanvas header -->
+                <div class="offcanvas-header">
+                  <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+                </div>
+
+                <!-- Offcanvas body -->
+                <div class="offcanvas-body d-block px-2 px-lg-0">
+                  <!-- Card START -->
+                  <div class="card overflow-hidden">
+                    <!-- Cover image -->
+                    <div class="h-20"
+                      style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
+                    </div>
+                    <!-- Card body START -->
+                    <div class="card-body pt-0">
+                      <div class="text-center">
+                        <!-- Avatar -->
+                        <div class="mb-3">
+                         <img class="avatar-img rounded-circle border border-white border-3 h-20 w-20 mx-auto"
+                                  src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
+                                  alt="" style="z-index:0;">
+                      </div>
+                        <!-- Info -->
+                        <h5 class="mb-0">{{auth()->user()->name}}</h5>
+                        {{-- <small>Web Developer at Webestica</small> --}}
+                      </div>
+                      <!-- Divider -->
+                      <hr>
+                      <!-- Side Nav START -->
+                      <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                        <li class="nav-item">
+                          <a class="nav-link d-flex" href="<?php echo URL::to('/')?>/dashboard"> <img class="me-2 h-20px fa-fw"
+                              src="<?php echo URL::to('/')?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
+                            </span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link d-flex"
+                            href="<?php echo URL::to('/')?>/uploadpage">
+                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/medal-outline-filled.svg"
+                              alt=""><span>Upload Video </span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link d-flex"
+                            href="{{URL::to('/channel/'. base64_encode(auth()->user()->id))}}">
+                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/clock-outline-filled.svg"
+                              alt=""><span>Your Channel </span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link d-flex"
+                            href="<?php echo URL::to('/')?>/watchlater">
+                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/like-outline-filled.svg"
+                              alt=""><span>Watch Later </span></a>
+                        </li>
+                      </ul>
+                      <!-- Side Nav END -->
+                    </div>
+                    <!-- Card body END -->
+                    <!-- Card footer -->
+                  </div>
+                  <!-- Card END -->
+
+                  <!-- Helper link START -->
+                </div>
+              </div>
+            </nav>
+            <!-- Navbar END-->
+          </div>
+          <!-- Sidenav END -->
         {{-- <div>
         <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
         </div> --}}
-        <div class="col-md-8">
+        <div class="col-md-9">
             <form id="msform" method="POST">
                 <!-- progressbar -->
 
@@ -365,11 +449,6 @@
                                             controls autoplay>
                                     Your browser does not support the video tag.
                                     </video>
-                        {{-- <video width="400" height="240" class="mx-auto" controls>
-                            <source src="" type="video/mp4">
-                            <source src="" type="video/ogg">
-                            Your browser does not support the video tag.
-                        </video> --}}
                     </div>
                     <div class="my-3">
                         <label>Video Link</label> <br />
@@ -445,23 +524,12 @@
                                 </div>
                             </li>
                         </ul>
-
                     </div>
                     <button type="submit"  value="Next">Submit</button>
-
                 </fieldset>
             </form>
-            <!-- link to designify.me code snippets -->
-
-            <!-- /.link to designify.me code snippets -->
         </div>
-        <div class="col"></div>
     </div>
-
-    {{-- <div class="loader1" width="100%" style="display:none;">
-        <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
-    </div> --}}
-    <!-- /.MultiStep Form -->
     <script>
         var current_fs, next_fs, previous_fs; //fieldsets
         var left, opacity, scale; //fieldset properties which we will animate
@@ -550,7 +618,6 @@
                 easing: 'easeInOutBack'
             });
         });
-
         $(".submit").click(function() {
             return false;
         })
@@ -566,7 +633,6 @@
             var videoUpload = e.target.files[0].name;
             console.log(videoUpload);
             $(".filename").text(videoUpload);
-
         });
     });
 </script>

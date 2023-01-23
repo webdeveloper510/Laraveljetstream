@@ -37,7 +37,7 @@ class product extends Model
     }
    public function comments()
     {
-        return $this->hasMany(Comment::class)->where('parent_id', '=', 0);
+        return $this->hasMany(Comment::class)->where('parent_id', '=', 0)->orderBy('created_at','desc');
     }
 
     public function getCommentsCount()

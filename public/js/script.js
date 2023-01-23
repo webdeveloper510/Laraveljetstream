@@ -3,21 +3,25 @@ function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
     newestOnTop: true,
-    positionClass: 'toast-top-center',
+    positionClass: 'toast-top-right',
+
   };
+
   $.ajax ({
     url: base_url + '/subscribe',
     type: 'post',
     data: {
       channel_id: channel_id,
-      count: 1,
       _token: '{{ csrf_token() }}',
       flag: flag,
     },
+
     success: function (data) {
-      console.log (data);
+      let subs_count = $('#subscribe').html();
+      let add = 1;
+      let total_count = flag==1 ? (parseInt(subs_count)+parseInt(add)) : (parseInt(subs_count)-parseInt(add));
+      $('#subscribe').html(total_count);
       if (data.code) {
-        $ ('#subscribe').html (data.count);
         toastr.success (data.message);
       }
       if (data.code == 1) {
@@ -46,13 +50,13 @@ function printErrorMsg (msg) {
 
 $ ('#submitt_report').submit (function (e) {
   e.preventDefault ();
-  // console.log ('testing');
-  var form = $ (this);
+  console.log ('testing');
+  var form = $(this);
   var actionUrl = base_url + '/report';
   $.ajax ({
     type: 'POST',
     url: actionUrl,
-    data: form.serialize (),
+    data: form.serialize(),
     success: function (data) {
       console.log (data);
       if (data.code === 1) {
@@ -70,7 +74,11 @@ $ ('#submitt_report').submit (function (e) {
 
 $ ('#comment').submit (function (e) {
   e.preventDefault ();
-  console.log('hello');
+var auth_name = Auth_user.name;
+var auth_image = Auth_user.profile_photo_path;
+// console.log(auth_image);return false;
+var currentTime= moment(new Date).fromNow();
+console.log(currentTime);
   var form = $ (this);
   var actionUrl = base_url + '/comment/store';
   $.ajax ({
@@ -78,32 +86,39 @@ $ ('#comment').submit (function (e) {
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
-      console.log(data);
-      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/profile/S7Sd4lb5SbIZcFsjRoCM9rw9mKpDY4jdVyZhJ653.jpg' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
-      "<b>Braun</b>1 second ago</p><p class=''>fyujtyu</p><div class='d-flex'>"+
+
+    console.log(data);
+     var body = $('#body').val();
+      $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/"+auth_image+"' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
+      "<b class='nam'>"+auth_name+"</b><p>"+currentTime+"</p></p><p class='parag'>"+body+"</p><div class='comment_reply_1'><div class='reply' style='color: black'></div></div><div class='d-flex'>"+
       "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
         "<div class='col-md-12 common'><form><div>"+
       "<input type='text' class='form-control' name='body' id='exampleFormControlInput1' placeholder='Add a comment' required>"+
        "<input type='hidden' name='post_id' value='1'><input type='hidden' name='comment_id' value='1'>"+
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
+      $('.blank').val('');
     },
+
+
   });
 });
 
 //----------------------------------------Reply of comment--------------------------------//
 
-$ ('#save_reply').click (function (e) {
+$('.save_reply').submit (function (e) {
   e.preventDefault ();
-  alert('hello');
+  var form = $ (this);
+  var data_id_value = $(this).find('[type="submit"]').attr("data-id");
   var actionUrl = base_url + '/reply/store';
   $.ajax ({
     type: 'POST',
     url: actionUrl,
-    data: {'body':$('.body_reply').val(),'post_id':$('.post_id').val(),'comment_id':$('.comment_id').val()},
+    data: form.serialize(),
     success: function (data) {
-      console.log(data);
-    //   $('.comments').append(data.comment.body);
+    var body = $(form).find('.body1').val();
+      $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
+      $('.reset').val('');
     },
   });
 });
@@ -133,7 +148,6 @@ function rating (a, ratenum, product_id) {
 
 function getStars(rating, url_value) {
    // Round to nearest half
-
 
   rating = Math.round (rating * 2) / 2;
   let output = [];
@@ -260,7 +274,15 @@ function save_video (product_id) {
     },
   });
 }
+// ------------------------------------------Read more/Read less-----------------------//
+$('.more').click(function(e) {
+  e.preventDefault();
+  $(this).text(function(i, t) {
+    return t == 'Read less' ? 'Read more' : 'Read less';
+  }).prev('.more-cont').slideToggle()
+});
 
+// ----------------------------------------Upload Product------------------------//
 $ ('form#msform').submit (function (e) {
   toastr.options = {
     closeButton: true,
@@ -280,7 +302,7 @@ $ ('form#msform').submit (function (e) {
         'progress',
         function (element) {
           if (element.lengthComputable) {
-            var percentComplete = element.loaded / element.total * 100;
+            var percentComplete = element.loaded / element.total * 10;
             $ ('#progress-bar').width (percentComplete + '%');
             $ ('#progress-bar').html (percentComplete + '%');
           }

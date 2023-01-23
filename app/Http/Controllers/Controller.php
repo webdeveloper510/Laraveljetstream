@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\models\Product;
-use App\models\Subscribe;
-use App\models\User;
-use App\models\Rating;
-use App\models\Report;
-use App\models\Comment;
-use App\models\LikeDislike;
+use App\Models\product;
+use App\Models\Subscribe;
+use App\Models\User;
+use App\Models\Rating;
+use App\Models\Report;
+use App\Models\Comment;
+use App\Models\LikeDislike;
 use Toastr;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -50,6 +50,7 @@ class Controller extends BaseController
     }
 
     public function unlikePost(Request $request)
+
     {
         $id = auth()->user()->id;
         $likeExist = LikeDislike::where(['user_id' => $id, 'product_id' => $request->contentId])->get();
@@ -76,13 +77,17 @@ class Controller extends BaseController
 
     public function uploadpage()
     {
+
         return view('product');
     }
 
     public function channel($id)
     {
         $id = base64_decode($id);
-
+         $videos=array();
+		 $subscriber=0;
+		 $count=0;
+		 $socialshare='';
         $videos = Product::with(['comments.replies', 'user', 'like', 'ratings'])->where('user_id', $id)->get()->toArray();
         // echo "<pre>";
         // print_r($videos);die;
@@ -90,7 +95,7 @@ class Controller extends BaseController
             $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
             $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $id])->sum('count');
             $socialshare = \Share::page(
-                'http://localhost/jetstream/channel/' . base64_encode($id)
+                'http://localhost/jetstream/channel/' . $id
             )
                 ->facebook()
                 ->twitter()
@@ -99,10 +104,10 @@ class Controller extends BaseController
                 ->reddit()
                 ->whatsapp()->getRawLinks();
         }
-        $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
+        $id = base64_encode($id);
         // echo "<pre>";
         // print_r($subscriber);die;
-        return view('channel', compact('videos', 'count', 'socialshare', 'subscriber'));
+        return view('channel', compact('videos', 'count', 'socialshare', 'subscriber','id'));
     }
 
     public function setting()
@@ -113,19 +118,19 @@ class Controller extends BaseController
     public function watchlater()
     {
         $product = product::join('save_video', 'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
-        //    echo "<pre>";
-        //    print_r($product);die;
+            // echo "<pre>";
+            // print_r($product);die;
         $name = auth()->user()->name;
         return view('watchlater', compact('product', 'name'));
     }
 
     public function videodetail($id)
     {
-        $auth_id = auth()->user()->id;
-        $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->get()->toArray();
-
-       $total_comment = count($videos[0]['comments']);
-      
+		   $auth_id = auth()->user()->id;
+        $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->with('comments.user')->get()->toArray();
+    //    echo "<pre>";
+    //    print_r($videos);die;
+        $total_comment = count($videos[0]['comments']);
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
@@ -165,11 +170,14 @@ class Controller extends BaseController
         $averageRating = DB::table('ratings')
             ->where('product_id', $videos[0]['id'])
             ->avg('rating');
-
+            $id = base64_encode($id);
+        $multi_video = User::with(['posts','Report_video'])->get()->toArray();
         // echo "<pre>";
         // print_r($averageRating);
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment'));
+        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id','multi_video'));
+
     }
+
 
     public function store(Request $request)
     {
@@ -207,7 +215,7 @@ class Controller extends BaseController
         }
     }
 
-    //---->->-->--->-->->->->->->------>->-->-Generate Random String-->-->-->->->->->->->->->--->--//
+    //-----------------------------------Generate Random String-------------------------//
 
     function generateRandomString($length = 10)
     {
@@ -277,7 +285,8 @@ class Controller extends BaseController
         }
     }
 
-    /*--------------------------------------subscribe system---------------------------------------*/
+
+    /*---------------------------subscribe system--------------------------------*/
 
     function subscribe(Request $request)
     {
@@ -328,7 +337,7 @@ class Controller extends BaseController
         return 2;
     }
 
-    /**-----------------------------------------Rating System--------------------------------------- */
+    /**-------------------------------Rating System----------------------------- */
 
     public function rate(Request $request)
     {
@@ -359,12 +368,10 @@ class Controller extends BaseController
         }
     }
 
-    /*---------------------------------------------Report system--------------------------------------------*/
+    /*-------------------------------Report system---------------------------------*/
 
     public function report(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
         $id = auth()->user()->id;
         // print_r($id);die;
         $report_data = $request->all();
@@ -390,7 +397,8 @@ class Controller extends BaseController
         }
     }
 
-    /*--------------------------------------search system------------------------------------------*/
+
+    /*-----------------------------search system-----------------------------------*/
 
     public function search(Request $request)
     {
