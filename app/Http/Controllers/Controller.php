@@ -25,6 +25,8 @@ use Illuminate\Support\Carbon;
 use Notification;
 use App\Notifications\UserFollowNotification;
 use Share;
+use App\Mail\productmail;
+use Illuminate\Support\Facades\Mail;
 
 class Controller extends BaseController
 {
@@ -388,6 +390,7 @@ class Controller extends BaseController
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
             $data->save();
+            $this->email($data);
             return response()->json([
                 'Report' => $data,
                 'bool' => true,
@@ -408,5 +411,12 @@ class Controller extends BaseController
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get()->toArray();
         return view('search', compact('posts'));
+    }
+// ---->->->->->----->->->->->->->->->->->->->-->->email----------->---->->->->->->->->//
+    public function email($data)
+    {
+
+     Mail::to("ritesh@codenomad.net")->send(new productmail($data));
+     return "Email sent successfully !!";
     }
 }
