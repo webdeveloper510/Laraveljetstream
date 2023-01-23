@@ -1,4 +1,4 @@
-var base_url = 'https://provlog.tv/product/Laraveljetstream';
+var base_url = 'http://localhost/jetstream';
 function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,
@@ -86,18 +86,20 @@ console.log(currentTime);
     url: actionUrl,
     data: form.serialize (),
     success: function (data) {
+
     console.log(data);
      var body = $('#body').val();
       $('.comments').append("<div><div class='row mt-3'><div class='col-2 text-end'><div class='profile-image'><a href='http://localhost/jetstream/channel/MQ=='><img src='https://spaces3.nyc3.digitaloceanspaces.com/"+auth_image+"' width='40px'></a></div></div><div class='col-md-10'><p class='m-0'>"+
-      "<b>"+auth_name+"</b>"+currentTime+"</p><p class=''>"+body+"</p><div class='d-flex'>"+
+      "<b class='nam'>"+auth_name+"</b><p>"+currentTime+"</p></p><p class='parag'>"+body+"</p><div class='comment_reply_1'><div class='reply' style='color: black'></div></div><div class='d-flex'>"+
       "<a class='me-3 text-decoration-none' onclick='reply(this)'>REPLY</a><div class='row' id='replyBox' style='display: none'>"+
         "<div class='col-md-12 common'><form><div>"+
       "<input type='text' class='form-control' name='body' id='exampleFormControlInput1' placeholder='Add a comment' required>"+
        "<input type='hidden' name='post_id' value='1'><input type='hidden' name='comment_id' value='1'>"+
       "</div><div class='text-end mt-3'>"+
       "<button type='submit' class='btn btn-primary btn-sm' id='exampleFormControlInput1' style='width:110px;'>COMMENT</button></div></form></div></div><hr></div></div></div>");
+      $('.blank').val('');
     },
-	
+
 
   });
 });
@@ -116,6 +118,7 @@ $('.save_reply').submit (function (e) {
     success: function (data) {
     var body = $(form).find('.body1').val();
       $(".comment_reply_"+ data_id_value).append("<div class='reply'>"+body+"</div>");
+      $('.reset').val('');
     },
   });
 });
@@ -145,7 +148,6 @@ function rating (a, ratenum, product_id) {
 
 function getStars(rating, url_value) {
    // Round to nearest half
-
 
   rating = Math.round (rating * 2) / 2;
   let output = [];

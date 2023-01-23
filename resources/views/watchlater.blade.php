@@ -289,15 +289,16 @@
                             <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
                                 <h1 class="h4 card-title">Videos</h1>
                                 <!-- Button modal -->
-                                <a class="btn btn-primary-soft" href="<?php echo URL::to('/');?>/uploadpage" data-bs-toggle="modal"
-                                    data-bs-target="#modalCreateVideo"> <i class="fa-solid fa-plus pe-1"></i> Add
+                                <a class="btn btn-primary-soft" href="<?php echo URL::to('/'); ?>/uploadpage"
+                                    > <i class="fa-solid fa-plus pe-1"></i> Add
                                     video</a>
                             </div>
                             <!-- Card header START -->
                             <!-- Card body START -->
                             <div class="card-body">
                                 <!-- Tab nav line -->
-                                 <ul class="nav nav-tabs nav-bottom-line">
+
+                                <ul class="nav nav-tabs nav-bottom-line">
                                     <li class="nav-item "> <a class="nav-link active" data-bs-toggle="tab"
                                             href="#tab-1"> WATCH LATER </a>
                                     </li>
@@ -344,9 +345,9 @@
                                                                 </div>
                                                                 <!-- Avatar name -->
                                                                 <h6 class="mb-0"> <a
-                                                                        href="#!">{{ $product[0]['title'] }}</a>
+                                                                        href="#!">{{$data['title'] }}</a>
                                                                 </h6>
-                                                                <span class="ms-auto small"> 156.9K views</span>
+                                                                <span class="ms-auto small">{{$data['views']}}</span>
                                                             </div>
                                                             <!-- Video title  -->
                                                             {{-- <h6 class="mb-0">  New movie trailers
@@ -364,7 +365,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade show active" id="tab-2">
+                                    <div class="tab-pane fade" id="tab-2">
                                         <div class="row g-3">
                                             <div class="col-md-4">
                                                 <div class="card p-0 shadow-none border-0 position-relative">
@@ -400,7 +401,7 @@
                                                             <h6 class="mb-0"> <a href="#!"> Frances Guerrero <i
                                                                         class="bi bi-patch-check-fill text-success small"></i>
                                                                 </a> </h6>
-                                                            <span class="ms-auto small"> 156.9K views</span>
+                                                            <span class="ms-auto small">{{$product[0]['views']}}</span>
                                                         </div>
                                                         <!-- Video title  -->
                                                         <h6 class="mb-0"> <a class="stretched-link"
@@ -439,51 +440,7 @@
         </main>
         <!-- **************** MAIN CONTENT END **************** -->
         <!-- Modal add video START -->
-        <div class="modal fade" id="modalCreateVideo" tabindex="-1" aria-labelledby="modalLabelCreateVideo"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Title -->
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabelCreateVideo">Create video</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Form START -->
-                        <form>
-                            <!-- Title -->
-                            <div class="mb-3">
-                                <label class="form-label">Title</label>
-                                <input type="text" class="form-control" placeholder="Add title here">
-                            </div>
-                            <!-- Description -->
-                            <div class="mb-3">
-                                <label class="form-label">Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Add description here"></textarea>
-                            </div>
-                            <!-- Dropzone photo START -->
-                            <div class="mb-3">
-                                <label class="form-label">Upload videos</label>
-                                <div class="dropzone dropzone-default card shadow-none"
-                                    data-dropzone='{"maxFiles":2}'>
-                                    <div class="dz-message">
-                                        <i class="bi bi-camera-reels display-3"></i>
-                                        <p>Drag here or click to upload video.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Dropzone photo END -->
-                        </form>
-                        <!-- Form END -->
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success-soft">Post video</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!-- Modal add video END -->
         <!-- =======================
 JS libraries, plugins and custom scripts -->

@@ -198,7 +198,7 @@
                     <div class="row mb-4 p-3">
                         <div class="col-12 mt-5">
                             <!-- Video main feed -->
-                            <div class=" owl-carousel owl-theme mt-4">
+                            <div class="owl-carousel owl-theme mt-4">
                                 @foreach ($videos as $video)
                                     @foreach ($video['posts'] as $posts)
                                         @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
@@ -226,7 +226,7 @@
                                                                 <div class="col-10">
                                                                     <div class="detail">
                                                                         {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                                        {{ Auth::user()->name }}
+                                                                        {{ $video['name'] }}
                                                                         <p> View:{{ $posts['views'] }}</p>
                                                                <!-- <ul class="Views">
                                                             <li>
@@ -246,52 +246,51 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-md-3 p-2">
+                        <div class="owl-carousel owl-theme mt-4">
+                            @foreach ($videos as $video)
+                                @foreach ($video['posts'] as $posts)
+                                    @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
+                                        <div class="item_{{ $posts['id'] }}">
+                                            <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
+                                                <div class="card">
+                                                    <video width="100%" height="100%"
+                                                        onmouseover="this.play()"
+                                                        onmouseout="this.pause();this.currentTime=0;"
+                                                        class="video_autoplay">
+                                                        <source
+                                                            src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
+                                                            type="video/mp4">
+                                                    </video>
+                                                    <div class="card-body p-2">
+                                                        <h5>
+                                                            {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }}
+                                                        </h5>
 
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
-
-
+                                                        <div class="row">
+                                                            <div class="col-2">
+                                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}"
+                                                                    class="thump">
+                                                            </div>
+                                                            <div class="col-10">
+                                                                <div class="detail">
+                                                                    {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                                    {{ $video['name'] }}
+                                                                    <p> View:{{ $posts['views'] }}</p>
+                                                           <!-- <ul class="Views">
+                                                        <li>
+                                                        </li>
+                                                    </ul> -->
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endforeach
                         </div>
-                        <div class="col-md-3 g-2">
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="col-md-3 g-2">
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="col-md-3 g-2">
-                            <video controls width="250">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
-                                    type="video/mp4">
-                            </video>
-                        </div>
-
                     </div>
                 </div>
         </main>

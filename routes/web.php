@@ -29,10 +29,12 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/dashboard', function () {
+
         $videos = User::with(['posts','Report_video'])->get()->toArray();
+        // $user = auth()->user();
         // echo "<pre>";
         // print_r($videos);die;
-        return view('product.index', compact('videos'));
+         return view('product.index', compact('videos'));
     })->name('dashboard');
 });
 Route::middleware([
@@ -112,5 +114,5 @@ Route::get('/time', [Controller::class, 'time']);
 Route::post('/report', [Controller::class, 'report']);
 Route::get('/search', [Controller::class, 'search']);
 Route::get('/share', [Controller::class, 'share']);
-
+Route::post('/send-email', [Controller::class, 'email']);
 //});

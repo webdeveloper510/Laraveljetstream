@@ -2,6 +2,7 @@
     <!DOCTYPE html>
     <html lang="en">
     @include('header')
+
     <head>
         <style>
             .goog-te-gadget img {
@@ -10,14 +11,23 @@
                 display: none;
             }
 
+            .parag {
+             margin-left: 28px !important;
+            }
+
+            p.m-0 {
+              margin-left: 11px !important;
+           }
+
             div#social-links {
                 margin: 0 auto;
                 max-width: 500px;
             }
 
-.description{
-    color: black;
-}
+            .description {
+                color: black;
+            }
+
             div#social-links ul {
                 display: flex;
                 padding: 3px;
@@ -60,23 +70,24 @@
                 top: 41px !important;
             }
 
-            .comments {   
+            .comments {
                 color: white;
                 padding: 15px;
-                
+
                 max-height: 400px;
-                overflow: scroll;   
+                overflow: scroll;
             }
 
             .commentBox {
                 width: auto !important;
                 position: absolute !important;
             }
-            
+
             button.btn.btn-primary.btn-sm {
                 width: 92px !important;
                 height: 39px !important;
             }
+
             .modal-content {
                 background: white !important;
             }
@@ -85,8 +96,8 @@
                 color: black !important;
             }
 
-            /* .comments {   
-                width: auto !important;   
+            /* .comments {
+                width: auto !important;
             }
 
             .moovie {
@@ -97,6 +108,7 @@
                 margin-bottom: 0 !important;
                 text-align: center !important;
             }
+
             .gap-xl-3 {
                 margin-left: 12px !important;
             }
@@ -114,46 +126,50 @@
         <link rel="stylesheet" type="text/css"
             href="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
-<style>
-        p {
-            color: black !important;
-        }
+        <style>
+            p {
+                color: black !important;
+            }
 
-        span {
-            color: black !important;
-        }
+            span {
+                color: black !important;
+            }
 
-        small {
-            color: black !important;
-        }
+            small {
+                color: black !important;
+            }
 
-        .parag {
-            margin-left: 10px;
-        }
+            .parag {
+                margin-left: 10px;
+            }
 
-        .nam {
-            margin-left: 10px;
+            .nam {
+                margin-left: 10px;
 
-        }
-        .card-image.video {
-    z-index: 0;
-}
-        
-        .form-control{
-            /* width: 328px; */
+            }
 
-        }
-        .ml-auto {
-            margin-left: auto;
-        }
-    </style>
-	@livewireStyles
+            .card-image.video {
+                z-index: 0;
+            }
+
+            .form-control {
+                /* width: 328px; */
+
+            }
+
+            .ml-auto {
+                margin-left: auto;
+            }
+        </style>
+        @livewireStyles
     </head>
+
     <body>
 
         <!-- **************** MAIN CONTENT START **************** -->
@@ -388,19 +404,18 @@ Header END -->
                     <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3" tabindex="-1"
                         id="navbarVerticaloffcanvas">
                         <div class="offcanvas-body pt-5 pt-lg-0">
-                            
+
                             <!-- Avatar -->
-                           
+
                             <div class="avatar avatar-lg mb-3 mx-5">
-                                <a
-                                    href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">
+                                <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">
                                     <img class="avatar-img rounded-circle border border-white border-3 mx-5"
                                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
                                 </a>
                             </div>
                             <!-- Info -->
                             <h5 class="mb-0"> <a
-                                    href="{{URL::to('/channel/'.base64_encode(auth()->user()->id))}}">{{ auth()->user()->name }}
+                                    href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
                                 </a> </h5>
                             {{-- <small>Web Developer at Webestica</small> --}}
                             <!-- User stat START -->
@@ -426,22 +441,22 @@ Header END -->
                             <!-- Side Nav START -->
                             <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="<?php echo URL::to('/'); ?>/dashboard">
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
                                         <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
                                             alt=""><span>Home
                                         </span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw"
+                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img
+                                            class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
                                             alt=""><span>Uploade Video </span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link"
-                                        href="<?php echo URL::to('/'); ?>/channel/{{ base64_encode(auth()->user()->id) }}"> <img
-                                            class="me-2 h-20px fa-fw"
+                                        href="<?php echo URL::to('/'); ?>/channel/{{ base64_encode(auth()->user()->id) }}">
+                                        <img class="me-2 h-20px fa-fw"
                                             src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
                                             alt=""><span>Your Channel </span></a>
                                 </li>
@@ -528,7 +543,8 @@ Header END -->
                                                 <div>
                                                     <h6 class="mb-0">{{ $videos[0]['user']['name'] }}</h6>
                                                     <nav class="nav nav-divider small">
-                                                        <span class="nav-item" id="subscribe">{{ $subscriber }}</span>
+                                                        <span class="nav-item"
+                                                            id="subscribe">{{ $subscriber }}</span>
                                                         <span>subscribers</span>
                                                     </nav>
                                                 </div>
@@ -679,7 +695,8 @@ Header END -->
                                                                                 <h5>Timestamp selected *</h5>
                                                                             </label>
                                                                             <input type="time" class="form-control"
-                                                                                id="validationCustom01" name="timestamp" required>
+                                                                                id="validationCustom01"
+                                                                                name="timestamp" required>
                                                                         </div>
                                                                         <textarea class="form-control" id="message-text" name="description" rows="5" required></textarea>
                                                                         <p class="my-2">Flagged videos and users are
@@ -711,14 +728,13 @@ Header END -->
                                                             data-bs-toggle="dropdown" aria-expanded="false">
                                                             <button class="btn btn-light "><i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
-                                                                </button>
-                                                      
-                                                        <!-- Dropdown menu -->
-                                                        <ul class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="cardShareAction">
-                                                            <li> {!! $socialshare !!}</li>
+                                                            </button>
 
-                                                        </ul>
+                                                            <!-- Dropdown menu -->
+                                                            <ul class="dropdown-menu dropdown-menu-end"
+                                                                aria-labelledby="cardShareAction">
+                                                                <li> {!! $socialshare !!}</li>
+                                                            </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -730,7 +746,7 @@ Header END -->
                                         <p class="disp-cont">
                                         </p>
                                         <p class="more-cont" style="display:none;">
-                                          {{$videos[0]['description']}}
+                                            {{ $videos[0]['description'] }}
                                         </p>
                                         <a href="#" class="Read more">Read more</a>
                                     </div>
@@ -754,13 +770,14 @@ Header END -->
                                             </div>
                                             <div class="col-md-10">
                                                 <p class="m-0"> <b class="nam">
-                                                        {{$commet['user']['name'] }}
+                                                        {{ $commet['user']['name'] }}
                                                     </b>{{ \Carbon\Carbon::parse($commet['created_at'])->diffForHumans() }}
                                                 </p>
                                                 <p class="parag">{{ $commet['body'] }}</p>
-                                                <div class="comment_reply_{{$commet['id']}}">
+                                                <div class="comment_reply_{{ $commet['id'] }}">
                                                     @foreach ($commet['replies'] as $key => $reply)
-                                                        <div class="reply" style="color: black">{{ $reply['body'] }}</div>
+                                                        <div class="reply" style="color: black">{{ $reply['body'] }}
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                                 <div class="d-flex">
@@ -770,20 +787,20 @@ Header END -->
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
                                                         <form class="save_reply">
-                                                        <div>
-                                                            <input type="text" class="form-control body1" name="body"
-                                                                class="body_reply" placeholder="Reply..."
-                                                                required>
-                                                            <input type="hidden" name="post_id" class="post_id"
-                                                                value="{{ $videos[0]['id'] }}" />
-                                                            <input type="hidden" name="comment_id" class="comment_id"
-                                                                value="{{ $commet['id'] }}"/>
-                                                        </div>
-                                                        <div class="text-end mt-3">
-                                                            <button type="submit" class="btn btn-primary btn-sm"
-                                                                data-id="{{$commet['id']}}"
-                                                                style="width:110px;">REPLY</button>
-                                                        </div>
+                                                            <div>
+                                                                <input type="text" class="form-control body1 reset"
+                                                                    name="body" class="body_reply"
+                                                                    placeholder="Reply..." required>
+                                                                <input type="hidden" name="post_id" class="post_id"
+                                                                    value="{{ $videos[0]['id'] }}" />
+                                                                <input type="hidden" name="comment_id"
+                                                                    class="comment_id" value="{{ $commet['id'] }}" />
+                                                            </div>
+                                                            <div class="text-end mt-3">
+                                                                <button type="submit" class="btn btn-primary btn-sm"
+                                                                    data-id="{{ $commet['id'] }}"
+                                                                    style="width:110px;">REPLY</button>
+                                                            </div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -797,15 +814,15 @@ Header END -->
                             <div class=" mt-3">
                                 <form id="comment">
                                     <div class="commentBox">
-                                        <input type="text" class="form-control" autocomplete="off" name="body"
-                                            id="body" placeholder="Add a comment..." required>
+                                        <input type="text" class="form-control blank" autocomplete="off"
+                                            name="body" id="body" placeholder="Add a comment..." required>
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
                                     <div class="text-end ">
                                         <button type="submit" class="btn btn-primary btn-sm"
                                             style="width:110px;"><span class="material-symbols-outlined">
-send
-</span></button>
+                                                send
+                                            </span></button>
                                     </div>
                                 </form>
                             </div>
@@ -813,26 +830,25 @@ send
 
                     </div>
                     <!-- Official trailer END -->
-
                     <!-- More related video START -->
-                    <div class="row g-3 mb-4">white-space:nowrap
+                    <div class="row g-3 mb-4">
                         <div class="col-12 mt-4">
                             <h5>More related video </h5>
                         </div>
                         @foreach ($multi_video as $video)
                             @foreach ($video['posts'] as $posts)
-                        <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                            <!-- Video START -->
-                            <video width="320" height="240"
-                            onmouseover="this.play()"
-                            onmouseout="this.pause();this.currentTime=0;"
-                            class="video_autoplay" poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
-                                <source 
-                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
-                                    type="video/mp4">
+                                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                                    <!-- Video START -->
+                                    <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
+                                        <video width="320" height="240" onmouseover="this.play()"
+                                            onmouseout="this.pause();this.currentTime=0;" class="video_autoplay"
+                                            poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
+                                            <source
+                                                src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}"
+                                                type="video/mp4">
 
-                              </video>
-                            <!-- {{-- <video width="200" height="150" class="example1"
+                                        </video>
+                                        <!-- {{-- <video width="200" height="150" class="example1"
                                 id="example1_{{ $posts['id'] }}"
                                 poster="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['thumbnail'] }}">
                                 <source
@@ -841,17 +857,18 @@ send
                                 <track kind="captions" label="English" srclang="en"
                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                             </video> --}} -->
-                            <div class="card-body">
-                                <!-- Video title  -->
-                                <h6>
-                                    {{strlen($posts['title']) > 15 ? substr($posts['title'],0,20)."..." : $posts['title']}}
-                                </h6>
-                                <span class="small"> views: {{ $posts['views'] }}</span>
-                            </div>
-                            <!-- <p>{{strlen($posts['description']) > 15 ? substr($posts['description'],0,20)."..." : $posts['description']}}</p> -->
-                            <!-- Video END -->
-                        </div>
-                        @endforeach
+                                        <div class="card-body">
+                                            <!-- Video title  -->
+                                            <h6>
+                                                {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }}
+                                            </h6>
+                                            <span class="small"> views: {{ $posts['views'] }}</span>
+                                        </div>
+                                        {{-- <p>{{strlen($posts['description']) > 15 ? substr($posts['description'],0,20)."..." : $posts['description']}}</p> --}}
+                                    </a>
+                                    <!-- Video END -->
+                                </div>
+                            @endforeach
                         @endforeach
                     </div>
                     <!-- More related video END -->
@@ -878,7 +895,7 @@ JS libraries, plugins and custom scripts -->
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
-@livewireScripts
+        @livewireScripts
     </body>
     <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
@@ -930,7 +947,7 @@ JS libraries, plugins and custom scripts -->
             }
         }
     </script>
-    {{-- ------------------------translator--------------------------}}
+    {{-- ------------------------translator------------------------ --}}
 
     <script type="text/javascript">
         function setCookie(key, value, expiry) {
@@ -953,11 +970,11 @@ JS libraries, plugins and custom scripts -->
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
     {{-- ------------------send auth user detail in script file-------------------------- --}}
-<script>
-    var Auth_user = {!! auth()->user()->toJson() !!};
-  </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-  {{------------------star rating--------------------}}
+    <script>
+        var Auth_user = {!! auth()->user()->toJson() !!};
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    {{-- ----------------star rating------------------ --}}
     <script>
         $(document).ready(function() {
 

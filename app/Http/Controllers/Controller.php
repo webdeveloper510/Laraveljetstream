@@ -25,6 +25,8 @@ use Illuminate\Support\Carbon;
 use Notification;
 use App\Notifications\UserFollowNotification;
 use Share;
+use App\Mail\productmail;
+use Illuminate\Support\Facades\Mail;
 
 class Controller extends BaseController
 {
@@ -128,8 +130,8 @@ class Controller extends BaseController
     {
 		   $auth_id = auth()->user()->id;
         $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->with('comments.user')->get()->toArray();
-       // echo "<pre>";
-      //  print_r($videos);die;
+    //    echo "<pre>";
+    //    print_r($videos);die;
         $total_comment = count($videos[0]['comments']);
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
@@ -175,7 +177,7 @@ class Controller extends BaseController
         // echo "<pre>";
         // print_r($averageRating);
         return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id','multi_video'));
-       
+
     }
 
 
@@ -286,7 +288,7 @@ class Controller extends BaseController
     }
 
 
-    /*--------------------------------------subscribe system---------------------------------------*/
+    /*---------------------------subscribe system--------------------------------*/
 
     function subscribe(Request $request)
     {
@@ -337,7 +339,7 @@ class Controller extends BaseController
         return 2;
     }
 
-    /**-----------------------------------------Rating System--------------------------------------- */
+    /**-------------------------------Rating System----------------------------- */
 
     public function rate(Request $request)
     {
@@ -368,7 +370,7 @@ class Controller extends BaseController
         }
     }
 
-    /*---------------------------------------------Report system--------------------------------------------*/
+    /*-------------------------------Report system---------------------------------*/
 
     public function report(Request $request)
     {
@@ -388,6 +390,7 @@ class Controller extends BaseController
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
             $data->save();
+            $this->email($data);
             return response()->json([
                 'Report' => $data,
                 'bool' => true,
@@ -398,7 +401,7 @@ class Controller extends BaseController
     }
 
 
-    /*--------------------------------------search system------------------------------------------*/
+    /*-----------------------------search system-----------------------------------*/
 
     public function search(Request $request)
     {
@@ -408,5 +411,12 @@ class Controller extends BaseController
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get()->toArray();
         return view('search', compact('posts'));
+    }
+// ---->->->->->----->->->->->->->->->->->->->-->->email----------->---->->->->->->->->//
+    public function email($data)
+    {
+
+     Mail::to("ritesh@codenomad.net")->send(new productmail($data));
+     return "Email sent successfully !!";
     }
 }
