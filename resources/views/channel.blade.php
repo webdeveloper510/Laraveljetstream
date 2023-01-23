@@ -277,7 +277,6 @@ Header END -->
               <div class="offcanvas-body pt-0 pt-lg-0 ">
                 <!-- Avatar -->
                 <div class="avatar avatar-lg mb-3">
-
                     <img class="avatar-img rounded-circle border border-white border-3"
                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
 
