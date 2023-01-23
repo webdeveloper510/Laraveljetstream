@@ -25,6 +25,8 @@ use Illuminate\Support\Carbon;
 use Notification;
 use App\Notifications\UserFollowNotification;
 use Share;
+use App\Mail\productmail;
+use Illuminate\Support\Facades\Mail;
 
 class Controller extends BaseController
 {
@@ -288,7 +290,7 @@ class Controller extends BaseController
     }
 
 
-    /*--------------------------------------subscribe system---------------------------------------*/
+    /*---------------------------subscribe system--------------------------------*/
 
     function subscribe(Request $request)
     {
@@ -339,7 +341,7 @@ class Controller extends BaseController
         return 2;
     }
 
-    /**-----------------------------------------Rating System--------------------------------------- */
+    /**-------------------------------Rating System----------------------------- */
 
     public function rate(Request $request)
     {
@@ -370,7 +372,7 @@ class Controller extends BaseController
         }
     }
 
-    /*---------------------------------------------Report system--------------------------------------------*/
+    /*-------------------------------Report system---------------------------------*/
 
     public function report(Request $request)
     {
@@ -390,6 +392,7 @@ class Controller extends BaseController
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
             $data->save();
+            $this->email($data);
             return response()->json([
                 'Report' => $data,
                 'bool' => true,
@@ -400,7 +403,7 @@ class Controller extends BaseController
     }
 
 
-    /*--------------------------------------search system------------------------------------------*/
+    /*-----------------------------search system-----------------------------------*/
 
     public function search(Request $request)
     {       
@@ -412,5 +415,12 @@ class Controller extends BaseController
             // echo "<pre>";
             // print_r($posts);die;
         return view('search', compact('posts'));
+    }
+// ---->->->->->----->->->->->->->->->->->->->-->->email----------->---->->->->->->->->//
+    public function email($data)
+    {
+
+     Mail::to("ritesh@codenomad.net")->send(new productmail($data));
+     return "Email sent successfully !!";
     }
 }

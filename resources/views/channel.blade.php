@@ -302,9 +302,8 @@ Header END -->
                       style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
                     </div>
                 <!-- Avatar -->
-                <div class="avatar avatar-lg mb-3 mx-5 ">
-
-                    <img class="avatar-img rounded-circle border border-white border-3 mx-5 "
+                <div class="avatar avatar-lg mb-3">
+                    <img class="avatar-img rounded-circle border border-white border-3"
                         src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
 
                 </div>

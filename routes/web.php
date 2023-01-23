@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CommentController;
 use App\Models\User;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,5 +114,5 @@ Route::get('/time', [Controller::class, 'time']);
 Route::post('/report', [Controller::class, 'report']);
 Route::get('/search', [Controller::class, 'search']);
 Route::get('/share', [Controller::class, 'share']);
-
+Route::post('/send-email', [Controller::class, 'email']);
 //});

@@ -149,7 +149,6 @@ function rating (a, ratenum, product_id) {
 function getStars(rating, url_value) {
    // Round to nearest half
 
-
   rating = Math.round (rating * 2) / 2;
   let output = [];
   let j = 1;
