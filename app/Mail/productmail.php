@@ -18,6 +18,7 @@ class productmail extends Mailable
      */
     public function __construct($details)
     {
+        // print_r($details);die;
         $this->details = $details;
     }
 
@@ -28,7 +29,7 @@ class productmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('This is Reported mail')
+        return $this->subject('This is Reported content')
                     ->view('emails.testing');
     }
 }
