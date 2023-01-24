@@ -269,7 +269,7 @@
                                                 </div>
                                                 <!-- Info -->
                                                 <h5 class="mb-0">{{ auth()->user()->name }}</h5>
-                                                {{-- <small>Web Developer at Webestica</small> --}}
+                                                <!-- {{-- <small>Web Developer at Webestica</small> --}} -->
                                             </div>
                                             <hr>
                                             <!-- Side Nav START -->
@@ -312,7 +312,7 @@
                     <!-- Main content START -->
                     <div class="col-md-9 col-lg-9 man  gap-4  ">
                         <!-- Card START -->
-                        <div class="card md:px-5 hit h-100">
+                        <div class="card md:px-5  h-100">
                             <!-- Card header START -->
                             <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
                                 <h1 class="h4 card-title">Videos</h1>

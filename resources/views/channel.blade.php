@@ -283,37 +283,42 @@ Header END -->
     <div class="container-fluid">
       <div class="row ">
         <!-- Main content START -->
-        <div class="col-lg-3  g-0">
+        <div class="col-lg-3  g-0 ">
            <!-- Advanced filter responsive toggler START -->
-           <div class="d-flex align-items-center d-lg-none">
+           <div class="d-flex align-items-center  d-lg-none ml-2 mt-2">
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
-                               
+                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                              
                             </button>
                         </div>
-          <!-- Sidenav START -->
+                <!-- Sidenav START -->
           
-          <div class="navbar  navbar-vertical navbar-light">
-            <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0" tabindex="-1"
-              id="navbarVerticaloffcanvas">
-              <div class="offcanvas-body pt-0 pt-lg-0  ">
-              <div class="h-20 "
-                      style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
-                    </div>
-                <!-- Avatar -->
-                <div class="avatar avatar-lg mb-3">
-                    <img class="avatar-img rounded-circle border border-white border-3"
-                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
+                <div class="navbar  navbar-vertical hit navbar-light ">
+                  <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0" tabindex="-1"
+                    id="offcanvasSideNavbar">
+                    <!-- Offcanvas header -->
+                    <div class="offcanvas-header ">
+                             <button type="button" class="btn-close text-reset ms-auto d-md-none"
+                                  data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                    <div class="offcanvas-body pt-0 pt-lg-0  ">
+                    <div class="h-50px"
+                            style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
+                          </div>
+                      <!-- Avatar -->
+                      <div class=" mb-3">
+                          <img class="rounded-circle border border-white border-3 mx-auto"
+                              src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
 
-                </div>
-                <!-- Info -->
-                <h5 class="mb-0 text-center">{{auth()->user()->name}} </h5>
-                <!-- <small>Web Developer at Webestica</small> -->
-                <!-- User stat START -->
-              <div>
+                      </div>
+                      <!-- Info -->
+                      <h5 class="mb-0 text-center">{{auth()->user()->name}} </h5>
+                      <!-- <small>Web Developer at Webestica</small> -->
+                      <!-- User stat START -->
+                    <div>
 
-            </div>
+                  </div>
                 <!-- User stat END -->
 
                 <!-- Divider -->
@@ -370,7 +375,8 @@ Header END -->
           </div>
 		 </div>
           <!-- Sidenav END -->
-        <div class="col-md-6 my-2  pt-0 gap-0 ">
+        <div class="col-md-6 my-3   pt-0 gap-0 ">
+          <div class="height_up ">
           <!-- Card START -->
           <div class="card ">
               <div class="cover_img"
@@ -455,7 +461,7 @@ Header END -->
                 </div>
                 <!-- Add Video END -->
                 @foreach ($videos as $video)
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-4 ">
                   <!-- Video START -->
                   <div class="card p-0 shadow-none border-0 position-relative">
                     <!-- Video image -->
@@ -489,10 +495,12 @@ Header END -->
             <!-- Card footer END -->
           </div>
           <!-- Video item END -->
+          </div>
         </div>
         <!-- Main content END -->
         <!-- Right sidebar START -->
-        <div class="col-md-3 g-4 my-5 pt-4">
+        <div class="col-md-3 g-4 my-0 pt-3">
+          <div class="rightbar"> 
           <div class="row g-4">
             <!-- Card START -->
             <div class="col-sm-6 col-lg-12 ">
@@ -519,6 +527,7 @@ Header END -->
           </div>
         </div>
         <!-- Right sidebar END -->
+        </div>
       </div> <!-- Row END -->
     </div>
     <!-- Container END -->

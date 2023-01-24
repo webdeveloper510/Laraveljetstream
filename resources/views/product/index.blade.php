@@ -68,9 +68,12 @@
                 color: black !important;
             }
 
-            .navbar-vertical {
+            .navbar-vertical {                
                 bottom: 0;
                 display: block;
+
+                max-width: 20% !important;
+                height: 72vh !important;
                 top: 42px !important;
                 width: 100% !important;
 
@@ -122,7 +125,7 @@
             }
 
             .avatar-img {
-                width: 50% !important;
+                width: 20% !important;
                 height: 50% !important;
                 object-fit: cover !important;
             }
@@ -135,15 +138,18 @@
             .mx-4 {
                 margin-left: 2.5rem !important;
             }
+            /* .mx-4 {
+                margin-left: 7.7rem !important;
+            } */
 
             /* main background-color */
             main {
                 background-color: white !important;
             }
 
-            .page-content {
+            /* .page-content {
                 height: 700px !important;
-            }
+            } */
 
             /* main col height */
             .col-12.mt-5 {
@@ -173,15 +179,17 @@
             </div>
             <!-- Sidenav END -->
             <!-- Main content START -->
-            <div class="page-content ">
-                <div class="row mb-4 p-0">
-                    <div class="col-md-3">
-                    <div class="d-flex align-items-center d-lg-none">
-                    <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                        <i class="btn btn-primary fw-bold fa-solid fa-sliders-h mt-3"></i>
-
-                    </button>
-                </div>
+            <div class="page-content  ">
+                <div class="row mb-4  p-0 ">
+                    <div class="col-md-3 mx-2 mt-1">
+                     <!-- Advanced filter responsive toggler START -->
+                     <div class="d-flex align-items-center  d-lg-none ">
+                            <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                              
+                            </button>
+                        </div>
 
                 <nav class="navbar  navbar-vertical navbar-light">
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
@@ -192,13 +200,13 @@
                                 <div class="h-50px" style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                                 </div>
                                 <!-- Avatar -->
-                                <div class="mb-0 mx-5">
-                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1 mx-4" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
+                                <div class="mb-0">
+                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
                                 </div>
                                 <!-- Info -->
                                 <h5 class="mb-0"><a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
                                     </a></h5>
-                                <small class="mx-4">Web Developer at Webestica</small>
+                                
                                 <div></div>
                                 <!-- Divider -->
                                 <hr>
@@ -225,9 +233,12 @@
                     </div>
                 </nav>
                     </div>
-                    <div class="col-md-9 mb-4 mt-5">
+                    <div class="col-md-9 mb-4  mt-5">
+                        <div class="mann px-2">
                         <!-- Video main feed -->
-                        <div class="owl-carousel owl-theme">
+
+                        <div class="owl-carousel owl-theme  mt-0">
+
                             @foreach ($videos as $video)
                             @foreach ($video['posts'] as $posts)
                             @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
@@ -243,10 +254,12 @@
                                             </h5>
 
                                             <div class="row">
+
                                                 <div class="col-4 ">
                                                     <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="thumb">
                                                 </div>
                                                 <div class="col-8">
+
                                                     <div class="detail">
                                                         {{-- {{url('/channel/'.$video['id'])}} --}}
                                                         {{ $video['name'] }}
@@ -282,10 +295,12 @@
                                         </h5>
 
                                         <div class="row">
+
                                             <div class="col-4">
                                                 <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="thumb">
                                             </div>
                                             <div class="col-8">
+
                                                 <div class="detail">
                                                     {{-- {{url('/channel/'.$video['id'])}} --}}
                                                     {{ $video['name'] }}
@@ -304,6 +319,7 @@
                         @endif
                         @endforeach
                         @endforeach
+                    </div>
                     </div>
                     </div>
                 </div>
