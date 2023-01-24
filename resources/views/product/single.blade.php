@@ -67,6 +67,7 @@
 
             .navbar-vertical {
                 top: 41px !important;
+                max-width: 16% !important;
             }
 
             .comments {
@@ -95,14 +96,7 @@
                 color: black !important;
             }
 
-            /* .comments {
-                width: auto !important;
-            }
-
-            .moovie {
-                width: 100% !important;
-                height: 135px !important;
-            } */
+           
             .mb-0 {
                 margin-bottom: 0 !important;
                 text-align: center !important;
@@ -110,6 +104,11 @@
 
             .gap-xl-3 {
                 margin-left: 12px !important;
+            }
+            
+            .col-md-4.g-3.mt-5 {
+                /* width: 20.333333%; */
+            width: auto !important;
             }
         </style>
 
@@ -157,14 +156,21 @@
                 z-index: 0;
             }
 
-            .form-control {
-                /* width: 328px; */
+            /* .form-control {
+                width: 328px;
 
-            }
+            } */
 
-            .ml-auto {
+             .ml-auto {
                 margin-left: auto;
             }
+
+            .col-md-4.g-3.mt-5 {
+                width: 24.333333% !important;
+                /* width:auto !important; */
+            } 
+
+
         </style>
         @livewireStyles
     </head>
@@ -504,8 +510,8 @@ Header END -->
                 <!-- Main content START -->
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row gx-4 my-4 pt-4">
-                        <div class="col-xl-8 col-xxl-9 my-5 ">
+                    <div class="row gx-4">
+                        <div class="col-xl-8 col-xxl-9 mt-2 ">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
@@ -796,7 +802,7 @@ Header END -->
                                                                     class="comment_id" value="{{ $commet['id'] }}" />
                                                             </div>
                                                             <div class="text-end mt-3">
-                                                                <button type="submit" class="btn btn-primary btn-sm"
+                                                                <button type="submit" class="btn btn-primary btn-sm mx-5"
                                                                     data-id="{{ $commet['id'] }}"
                                                                     style="width:110px;">REPLY</button>
                                                             </div>
@@ -818,7 +824,7 @@ Header END -->
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
                                     <div class="text-end ">
-                                        <button type="submit" class="btn btn-primary btn-sm"
+                                        <button type="submit" class="btn btn-primary btn-sm  mx-5 "
                                             style="width:110px;"><span class="material-symbols-outlined">
                                                 send
                                             </span></button>

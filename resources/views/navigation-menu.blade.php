@@ -5,11 +5,9 @@
       top:0px;
   }
 </style>
-
-   <!-- nav.bg-white.border-b.border-gray-100.w-full {
-         position: fixed !important;
-     }
-   </style>-->
+<link rel="stylesheet" type="text/css"
+            href="<?php echo URL::to('/'); ?>/resources/css/custom.css">
+ 
 
    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 w-full">
        <!-- Primary Navigation Menu -->
@@ -259,9 +257,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
+
 					<x-jet-nav-link>
-            <div id="google_translate_element"></div>
-        </x-jet-nav-link>
+                        <div id="google_translate_element"></div>
+                    </x-jet-nav-link>
                 </div>
             </div>
 			<div class="">

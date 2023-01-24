@@ -28,9 +28,33 @@
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
+        <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+        
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <style>
+
+.goog-te-gadget img {
+            vertical-align: middle;
+            border: none;
+            display: none;
+        }
+        skiptranslate goog-te-gadget {
+            display: none
+        }
+  
+        body {
+            top: 0px !important;
+            position: static !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important
+        }
+
+        .goog-logo-link {
+            display: none
+        }
             input.form-control.ps-5.bg-light {
                 padding-right: 200px !important;
             }
@@ -173,19 +197,9 @@
             }
 
             div.container-fluid {
-                margin-top: 5%;
+                margin-top: 2%;
             }
-
-            div.col-lg-3 {
-                position: fixed !important;
-                padding: 0 !important;
-            }
-
-
-            .px-5 {
-                padding-right: 3rem !important;
-                padding-left: 22rem !important;
-            }
+  
 
             body{
                 margin:0 !important;
@@ -193,8 +207,20 @@
 
             nav.bg-white.border-b.border-gray-100.w-full {
                 position: fixed !important;
-                z-index: 1 !important;
+                z-index: 1 ;
             }
+            .card.overflow-hidden{
+                height: 605px !important;
+            }
+
+
+            .sidbar {
+                position: fixed !important;
+                top: 81px !important;
+            }
+            /* nav.navbar.navbar-expand-lg.mx-0 {
+    height: 390px !important;
+} */
         </style>
 
     </head>
@@ -204,15 +230,16 @@
         <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-                <div class="row g-4">
+                <div class="row g-0">
                     <!-- Sidenav START -->
-                    <div class="col-lg-3">
+                    <div class="col-md-3 col-lg-3  gap-4 m-0 ">
+                        <div class="sidbar">
                         <!-- Advanced filter responsive toggler START -->
-                        <div class="d-flex align-items-center d-lg-none">
+                        <div class="d-flex align-items-center  d-lg-none ">
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
-                                <span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                              
                             </button>
                         </div>
                         <!-- Navbar START-->
@@ -242,7 +269,7 @@
                                                 </div>
                                                 <!-- Info -->
                                                 <h5 class="mb-0">{{ auth()->user()->name }}</h5>
-                                                {{-- <small>Web Developer at Webestica</small> --}}
+                                                <!-- {{-- <small>Web Developer at Webestica</small> --}} -->
                                             </div>
                                             <hr>
                                             <!-- Side Nav START -->
@@ -280,29 +307,29 @@
                             </div>
                         </nav>
                         <!-- Navbar END-->
+                        </div>
                     </div>
                     <!-- Main content START -->
-                    <div class="col-md-8 col-lg-6 vstack gap-4 px-5">
+                    <div class="col-md-9 col-lg-9 man  gap-4  ">
                         <!-- Card START -->
-                        <div class="card">
+                        <div class="card md:px-5  h-100">
                             <!-- Card header START -->
                             <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
                                 <h1 class="h4 card-title">Videos</h1>
                                 <!-- Button modal -->
-                                <a class="btn btn-primary-soft" href="<?php echo URL::to('/'); ?>/uploadpage"
-                                    > <i class="fa-solid fa-plus pe-1"></i> Add
+                                <a class="btn btn-primary-soft" href="<?php echo URL::to('/');?>/uploadpage"> <i class="fa-solid fa-plus pe-1"></i> Add
                                     video</a>
                             </div>
                             <!-- Card header START -->
                             <!-- Card body START -->
                             <div class="card-body">
                                 <!-- Tab nav line -->
-                                <ul class="nav nav-tabs nav-bottom-line">
-                                    <li class="nav-item "> <a class="nav-link active" data-bs-toggle="tab"
+                                <ul class="nav nav-tabs nav-bottom-line ">
+                                    <li class="nav-item active"> <a class="nav-link active" data-bs-toggle="tab"
                                             href="#tab-1"> WATCH LATER </a>
                                     </li>
                                     <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-                                            PLAYLIST </a>
+                                            PLAYLIST </a> 
                                     </li>
                                 </ul>
                                 <div class="tab-content mb-0 pb-0">
@@ -439,16 +466,19 @@
         </main>
         <!-- **************** MAIN CONTENT END **************** -->
         <!-- Modal add video START -->
-
         <!-- Modal add video END -->
         <!-- =======================
 JS libraries, plugins and custom scripts -->
         <!-- Bootstrap JS -->
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Vendors -->
+
         <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/dropzone.js"></script> -->
         <!-- Template Functions -->
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
         <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> -->
+
     </body>
 
     </html>

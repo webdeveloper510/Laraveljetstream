@@ -282,6 +282,20 @@ $('.more').click(function(e) {
   }).prev('.more-cont').slideToggle()
 });
 
+
+// ----------------------------------------Translator-------------------//
+
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en'
+        }, 'google_translate_element');
+    }
+    $(window).load(function() {
+        $(".goog-logo-link").empty();
+        $('.goog-te-gadget').html($('.goog-te-gadget').children());
+    })
+
+
 // ----------------------------------------Upload Product------------------------//
 $ ('form#msform').submit (function (e) {
   toastr.options = {
