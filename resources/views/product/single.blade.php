@@ -68,6 +68,7 @@
 
             .navbar-vertical {
                 top: 41px !important;
+                max-width: 16% !important;
             }
 
             .comments {
@@ -96,14 +97,7 @@
                 color: black !important;
             }
 
-            /* .comments {
-                width: auto !important;
-            }
-
-            .moovie {
-                width: 100% !important;
-                height: 135px !important;
-            } */
+           
             .mb-0 {
                 margin-bottom: 0 !important;
                 text-align: center !important;

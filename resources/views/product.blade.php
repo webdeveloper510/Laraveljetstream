@@ -290,6 +290,7 @@
     
  .col-lg-3 {
     position: fixed !important;
+    z-index: 1 !important;
 }
 
 .col-md-9 {
@@ -302,23 +303,25 @@
 </style>
 
 <body class="bg-white">
+<main class="p-1">
+            <!-- Container START -->
+            <div class="container-fluid">
     <!-- MultiStep Form -->
-    <div class="row pt-20 bg-white">
+    <div class="row  bg-white">
          <!-- Sidenav START -->
-         <div class="col-lg-3">
-
-            <!-- Advanced filter responsive toggler START -->
-            <div class="d-flex align-items-center d-lg-none">
+          <div class="col-md-3  g-0 ">
+             <div class="sidbar">
+                        <!-- Advanced filter responsive toggler START -->
+             <div class="d-flex align-items-center  d-lg-none ">
               <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
-               
-              </button>
-            </div>
+               data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                 </button>
+               </div>
             <!-- Advanced filter responsive toggler END -->
 
             <!-- Navbar START-->
-            <nav class="navbar navbar-expand-lg mx-0 z-0">
+            <nav class="navbar navbar-expand-lg mx-0 ">
               <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
                 <!-- Offcanvas header -->
                 <div class="offcanvas-header">
@@ -329,7 +332,7 @@
                 <!-- Offcanvas body -->
                 <div class="offcanvas-body d-block px-2 px-lg-0">
                   <!-- Card START -->
-                  <div class="card overflow-hidden">
+                  <div class="card overflow-hidden ml-4">
                     <!-- Cover image -->
                     <div class="h-20"
                       style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
@@ -345,31 +348,31 @@
                       </div>
                         <!-- Info -->
                         <h5 class="mb-0">{{auth()->user()->name}}</h5>
-                        {{-- <small>Web Developer at Webestica</small> --}}
+                        <!-- {{-- <small>Web Developer at Webestica</small> --}} -->
                       </div>
                       <!-- Divider -->
                       <hr>
                       <!-- Side Nav START -->
                       <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                         <li class="nav-item">
-                          <a class="nav-link d-flex" href="<?php echo URL::to('/')?>/dashboard"> <img class="me-2 h-20px fa-fw"
+                          <a class="nav-link text-dark d-flex" href="<?php echo URL::to('/')?>/dashboard"> <img class="me-2 h-20px fa-fw"
                               src="<?php echo URL::to('/')?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
                             </span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link d-flex"
+                          <a class="nav-link text-dark d-flex"
                             href="<?php echo URL::to('/')?>/uploadpage">
                             <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/medal-outline-filled.svg"
                               alt=""><span>Upload Video </span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link d-flex"
+                          <a class="nav-link text-dark d-flex"
                             href="{{URL::to('/channel/'. base64_encode(auth()->user()->id))}}">
                             <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/clock-outline-filled.svg"
                               alt=""><span>Your Channel </span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link d-flex"
+                          <a class="nav-link text-dark d-flex"
                             href="<?php echo URL::to('/')?>/watchlater">
                             <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/like-outline-filled.svg"
                               alt=""><span>Watch Later </span></a>
@@ -388,11 +391,12 @@
             </nav>
             <!-- Navbar END-->
           </div>
+          </div>
           <!-- Sidenav END -->
         {{-- <div>
         <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
         </div> --}}
-        <div class="col-md-9">
+        <div class="col-md-9  man  gap-4">
             <form id="msform" method="POST">
                 <!-- progressbar -->
 
@@ -542,6 +546,8 @@
             </form>
         </div>
     </div>
+            </div>
+</main>
     <script>
         var current_fs, next_fs, previous_fs; //fieldsets
         var left, opacity, scale; //fieldset properties which we will animate
