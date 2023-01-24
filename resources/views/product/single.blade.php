@@ -11,13 +11,7 @@
                 display: none;
             }
 
-            .parag {
-             margin-left: 28px !important;
-            }
-
-            p.m-0 {
-              margin-left: 11px !important;
-           }
+         
 
             div#social-links {
                 margin: 0 auto;
@@ -112,11 +106,7 @@
             .gap-xl-3 {
                 margin-left: 12px !important;
             }
-            
-            .col-md-4.g-3.mt-5 {
-                /* width: 20.333333%; */
-            width: auto !important;
-            }
+          
         </style>
 
         <title>Social - Network, Community and Event Theme</title>
@@ -150,15 +140,6 @@
                 color: black !important;
             }
 
-            .parag {
-                margin-left: 10px;
-            }
-
-            .nam {
-                margin-left: 10px;
-
-            }
-
             .card-image.video {
                 z-index: 0;
             }
@@ -172,11 +153,7 @@
                 margin-left: auto;
             }
 
-            .col-md-4.g-3.mt-5 {
-                width: 24.333333% !important;
-                /* width:auto !important; */
-            } 
-
+         
 
         </style>
         @livewireStyles
@@ -518,7 +495,7 @@ Header END -->
                 <div class="page-content">
                     <!-- Official trailer START -->
                     <div class="row gx-4">
-                        <div class="col-xl-8 col-xxl-9 mt-2 ">
+                        <div class="col-md-8 mt-2 ">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
@@ -766,13 +743,13 @@ Header END -->
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-md-4 g-3 mt-5">
+                        <div class="col-md-4 g-3 mt-1">
                             <h4>{{ $total_comment }} Comments</h4>
                             <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
                                     <div>
                                         <div class="row mt-3">
-                                            <div class="col-2 text-end">
+                                            <div class="col-3">
                                                 <div class="profile-image">
                                                     <a
                                                         href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
@@ -780,12 +757,12 @@ Header END -->
                                                             width="40px" /></a>
                                                 </div>
                                             </div>
-                                            <div class="col-md-10">
-                                                <p class="m-0"> <b class="nam">
+                                            <div class="col-9">
+                                                <p class="m-0"> <b style="    text-transform: capitalize;">
                                                         {{ $commet['user']['name'] }}
                                                     </b>{{ \Carbon\Carbon::parse($commet['created_at'])->diffForHumans() }}
                                                 </p>
-                                                <p class="parag">{{ $commet['body'] }}</p>
+                                                <p class="para">{{ $commet['body'] }}</p>
                                                 <div class="comment_reply_{{ $commet['id'] }}">
                                                     @foreach ($commet['replies'] as $key => $reply)
                                                         <div class="reply" style="color: black">{{ $reply['body'] }}

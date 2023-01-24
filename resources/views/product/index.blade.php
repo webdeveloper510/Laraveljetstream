@@ -71,8 +71,6 @@
             .navbar-vertical {
                 bottom: 0;
                 display: block;
- 
-                height: 75vh !important;
                 top: 42px !important;
                 width: 100% !important;
 
@@ -96,10 +94,6 @@
             .owl-dots {
                 display: none !important;
             }
-
-            /* .row {
-                --bs-gutter-x: auto !important;
-            } */
 
             ol,
             ul {
@@ -132,7 +126,12 @@
                 height: 50% !important;
                 object-fit: cover !important;
             }
-
+            img.thumb {
+                height: 40px;
+                width: 40px !important;
+                border-radius: 50%;
+                margin:auto;
+            }
             .mx-4 {
                 margin-left: 2.5rem !important;
             }
@@ -228,7 +227,7 @@
                     </div>
                     <div class="col-md-9 mb-4 mt-5">
                         <!-- Video main feed -->
-                        <div class="owl-carousel owl-theme mt-4">
+                        <div class="owl-carousel owl-theme">
                             @foreach ($videos as $video)
                             @foreach ($video['posts'] as $posts)
                             @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
@@ -244,10 +243,10 @@
                                             </h5>
 
                                             <div class="row">
-                                                <div class="col-2 ">
+                                                <div class="col-4 ">
                                                     <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="thumb">
                                                 </div>
-                                                <div class="col-10 g-2">
+                                                <div class="col-8">
                                                     <div class="detail">
                                                         {{-- {{url('/channel/'.$video['id'])}} --}}
                                                         {{ $video['name'] }}
@@ -283,10 +282,10 @@
                                         </h5>
 
                                         <div class="row">
-                                            <div class="col-2">
-                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="thump">
+                                            <div class="col-4">
+                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="thumb">
                                             </div>
-                                            <div class="col-10">
+                                            <div class="col-8">
                                                 <div class="detail">
                                                     {{-- {{url('/channel/'.$video['id'])}} --}}
                                                     {{ $video['name'] }}
@@ -348,7 +347,7 @@ JS libraries, plugins and custom scripts -->
                             nav: false
                         },
                         1000: {
-                            items: 5,
+                            items: 4,
                             nav: true,
                             loop: true
                         }

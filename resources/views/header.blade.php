@@ -74,9 +74,9 @@
 
 .profile-image img {
     border-radius: 50%;
-    width: 60px;
-    max-width:60px;
-    height: 60px;
+    width: 50px;
+    max-width:50px;
+    height: 50px;
     margin: auto;
 }
         .text-banner {

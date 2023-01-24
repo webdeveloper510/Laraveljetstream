@@ -403,20 +403,29 @@ class Controller extends BaseController
     }
 
 
-    /*-----------------------------search system-----------------------------------*/
+    /*--------------------------------------------------search system---------------------------------------------*/
 
     public function search(Request $request)
     {       
         $search = $request->input('search');
-        $posts = product::with(['comments.replies', 'user', 'like'])
-            ->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('description', 'LIKE', "%{$search}%")
-            ->get()->toArray();
-            // echo "<pre>";
-            // print_r($posts);die;
+        // $posts = product::with(['comments.replies', 'like'])
+        //     ->where('title', 'LIKE', "%{$search}%")
+        //     ->orWhere('description', 'LIKE', "%{$search}%")
+        //       ->whereHas('user', function($query) use($search) {
+        //             $query -> where('user.name', '=', 'fernando');
+        //         })->get()->toArray();
+
+              $posts = product::whereHas('user', function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%");
+                })->with(['comments.replies', 'like','user'])
+               ->orWhere('title', 'LIKE', "%{$search}%")
+               ->orWhere('description', 'LIKE', "%{$search}%")
+              ->get()->toArray();
+
+          
         return view('search', compact('posts'));
     }
-// ---->->->->->----->->->->->->->->->->->->->-->->email----------->---->->->->->->->->//
+// ---->->->->->----->->->->->->-------->->->->->->->-->->email----------------------------->---->->->->->->->->//
     public function email($data)
     {
 
