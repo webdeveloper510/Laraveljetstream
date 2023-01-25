@@ -385,6 +385,7 @@ Header END -->
                         <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
                             <div class="offcanvas-body pt-5 pt-lg-0">
                                 <!-- Card START -->
+                               
                                 <!-- Avatar -->
                                 <div class="avatar avatar-lg mb-3">
                                     <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
