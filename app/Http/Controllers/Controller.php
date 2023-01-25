@@ -422,6 +422,6 @@ class Controller extends BaseController
     public function email($data)
     {
      Mail::to("amit@codenomad.net")->send(new productmail($data));
-     return "Email sent successfully !!";
+            return "Email sent successfully !!";
     }
 }

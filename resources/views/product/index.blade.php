@@ -142,7 +142,11 @@
             .col-12.mt-5 {
                 margin-top: 0rem !important;
             }
-        </style>
+
+            img {
+                max-width: 77% !important;
+            }
+                    </style>
     </head>
 
 
@@ -241,7 +245,7 @@
 
                                                     <div class="row">
                                                         <div class="col-3 ">
-                                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="h-12 thumb">
+                                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="rounded-circle h-12 thumb">
                                                         </div>
                                                         <div class="col-9 g-2">
                                                             <div class="detail">
@@ -280,7 +284,7 @@
 
                                                     <div class="row">
                                                         <div class="col-3">
-                                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="h-12 thump">
+                                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="rounded-circle h-12  thump">
                                                         </div>
                                                         <div class="col-9">
                                                             <div class="detail">

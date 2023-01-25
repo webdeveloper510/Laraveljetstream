@@ -43,6 +43,20 @@
                        <button type="submit" class="btn btn-primary btn-sm mt-3 px-4">Search</button>
                    </form>
                </div>
+              <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+              <li class="nav-item ms-2">
+					<a class="nav-link icon-md btn btn-light p-0" href="settings.html">
+						<i class="bi bi-gear-fill fs-6"> </i>
+					</a>
+				</li>
+                <li class="nav-item dropdown ms-2">
+					<a class="nav-link icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            <span class="badge-notif animation-blink"></span>
+						<i class="bi bi-bell-fill fs-6"> </i>
+					</a>
+				</li>
+                
+              </ul>
                <div class="hidden sm:flex sm:items-center sm:ml-6">
                    <!-- Teams Dropdown -->
                    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())

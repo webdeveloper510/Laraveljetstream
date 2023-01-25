@@ -49,3 +49,7 @@ body {
     min-height: 100vh;
     background: white !important;
 }
+
+.blank.form-control {
+    width: 94% ;
+}

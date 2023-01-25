@@ -156,11 +156,6 @@
                 z-index: 0;
             }
 
-            /* .form-control {
-                width: 328px;
-
-            } */
-
              .ml-auto {
                 margin-left: auto;
             }
@@ -534,7 +529,7 @@ Header END -->
                                 </div>
                                 <!-- Video info -->
                                 <div class="card-body">
-                                    <div class="d-xxl-flex justify-content-between mb-3">
+                                    <div class=" justify-content-between mb-3">
                                         <div class="mb-2 mb-xxl-0">
                                             <!-- Video title  -->
                                             <h4> {{ $videos[0]['title'] }} </h4>
@@ -816,21 +811,21 @@ Header END -->
                                     </div>
                                 @endforeach
                             </div>
-                            <div class=" mt-3">
-                                <form id="comment">
-                                    <div class="commentBox">
-                                        <input type="text" class="form-control blank" autocomplete="off"
-                                            name="body" id="body" placeholder="Add a comment..." required>
-                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
-                                    </div>
-                                    <div class="text-end ">
-                                        <button type="submit" class="btn btn-primary btn-sm  mx-5 "
-                                            style="width:110px;"><span class="material-symbols-outlined">
-                                                send
-                                            </span></button>
-                                    </div>
-                                </form>
+                            <form id="comment">
+                            <div class="row mt-3">
+                                        <div class="col-md-10  commentBox">
+                                            <input type="text" class="form-control blank " autocomplete="off"
+                                                name="body" id="body" placeholder="Add a comment..." required>
+                                            <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
+                                        </div>                              
+                                        <div class="col-md-2 mx-auto  text-end ">
+                                            <button type="submit" class="btn btn-primary btn-sm  mx-5"
+                                                style="width:110px;"><span class="material-symbols-outlined">
+                                                    send
+                                                </span></button>
+                                        </div>
                             </div>
+                            </form>
                         </div>
 
                     </div>
