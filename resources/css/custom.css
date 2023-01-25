@@ -31,7 +31,9 @@
         z-index: 2 !important;
     }
 }
-
+.card {
+    border:none !important;
+}
 
 img.border.border-3.border-white.mx-auto.rounded-circle {
     width: 80px !important;
@@ -45,11 +47,5 @@ img.border.border-3.border-white.mx-auto.rounded-circle {
 
 
 
-body {
-    min-height: 100vh;
-    background: white !important;
-}
 
-.blank.form-control {
-    width: 94% ;
-}
+

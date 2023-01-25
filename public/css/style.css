@@ -15229,7 +15229,7 @@ header {
   .navbar-vertical {
     bottom: 0;
     display: block;
-    max-width: 25%;
+    max-width:300px;
     position: fixed;
     z-index: 9;
     height: 100vh;

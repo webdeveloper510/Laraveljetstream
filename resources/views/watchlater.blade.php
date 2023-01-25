@@ -59,11 +59,8 @@
                 padding-right: 200px !important;
             }
 
-            body {
-                margin: 30px;
-                padding: 0;
-                background: #ddd;
-                font-family: Arial, Helvetica, sans-serif;
+            a.nav-link { 
+              display: flex;
             }
 
             .title {
@@ -230,87 +227,68 @@
         <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-                <div class="row g-0">
-                    <!-- Sidenav START -->
-                    <div class="col-md-3 col-lg-3  gap-4 m-0 ">
-                        <div class="sidbar">
-                        <!-- Advanced filter responsive toggler START -->
-                        <div class="d-flex align-items-center  d-lg-none ">
-                            <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
-                              
-                            </button>
-                        </div>
-                        <!-- Navbar START-->
-                        <nav class="navbar navbar-expand-lg mx-0">
-                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-                                <!-- Offcanvas header -->
-                                <div class="offcanvas-header">
-                                    <button type="button" class="btn-close text-reset ms-auto"
-                                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div class="d-flex align-items-center  d-lg-none ">
+                        <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                            <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                        </button>
+                    </div>
+                <!-- Sidenav START -->
+                <nav class="navbar  navbar-vertical navbar-light mt-4">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
+                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
+                            <div class="offcanvas-body pt-5 pt-lg-0">
+                                <!-- Card START -->
+                                <!-- Avatar -->
+                                <div class="avatar avatar-lg mb-3">
+                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
                                 </div>
-                                <!-- Offcanvas body -->
-                                <div class="offcanvas-body d-block px-2 px-lg-0">
-                                    <!-- Card START -->
-                                    <div class="card overflow-hidden">
-                                        <!-- Cover image -->
-                                        <div class="h-50px"
-                                            style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                                        </div>
-                                        <!-- Card body START -->
-                                        <div class="card-body pt-0">
-                                            <div class="text-center">
-                                                <!-- Avatar -->
-                                                <div class="avatar avatar-lg mb-3">
-                                                    <img class="avatar-img rounded-circle border border-white border-3"
-                                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
-                                                        alt="">
-                                                </div>
-                                                <!-- Info -->
-                                                <h5 class="mb-0">{{ auth()->user()->name }}</h5>
-                                                <!-- {{-- <small>Web Developer at Webestica</small> --}} -->
-                                            </div>
-                                            <hr>
-                                            <!-- Side Nav START -->
-                                            <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/dashboard">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
-                                                            alt=""><span>Home
-                                                        </span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/uploadpage">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
-                                                            alt=""><span>Upload Video </span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex"
-                                                        href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
-                                                            alt=""><span>Your Channel </span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/watchlater">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
-                                                            alt=""><span>Watch Later </span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                <!-- Info -->
+                                <h5 class="mb-0"><a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
+                                    </a></h5>
+
+                                    <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
+                                    <!-- User stat item -->
+                                    <div>
+                                        <h6 class="mb-0">256</h6>
+                                        <small>Videos</small>
                                     </div>
-                                </div>
+                                    <!-- Divider -->
+                                    <div class="vr"></div>
+                                    <!-- User stat item -->
+                                    <div>
+                                        <h6 class="mb-0">2.5K</h6>
+                                        <small>Subscriber</small>
+                                    </div>
+                                    
+                                    </div>
+                                <!-- Divider -->
+                                <hr>
+                                <!-- Side Nav START -->
+                                <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
+                                            </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your Channel </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch Later </span></a>
+                                    </li>
+                                    <!-- Side Nav END -->
                             </div>
-                        </nav>
-                        <!-- Navbar END-->
                         </div>
                     </div>
-                    <!-- Main content START -->
-                    <div class="col-md-9 col-lg-9 man  gap-4  ">
+                </nav>
+                <div class="page-content">
+                    <!-- Official trailer START -->
+                    <div class="row gx-4">
+                    <div class="col-md-12 col-lg-12 man  gap-4  ">
                         <!-- Card START -->
                         <div class="card md:px-5  h-100">
                             <!-- Card header START -->
