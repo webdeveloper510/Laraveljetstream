@@ -2,7 +2,6 @@
     <!DOCTYPE html>
     <html lang="en">
     @include('header')
-
     <head>
         <style>
             .goog-te-gadget img {
@@ -192,7 +191,7 @@ Header START -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
 
                         <!-- Nav Search START -->
-                        <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
+                        <!-- <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
                             <div class="nav-item w-100">
                                 <form class="rounded position-relative">
                                     <input class="form-control ps-5 bg-light" type="search" placeholder="Search..."
@@ -202,7 +201,7 @@ Header START -->
                                         type="submit"><i class="bi bi-search fs-5"> </i></button>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Main navbar END -->
 
@@ -512,7 +511,7 @@ Header END -->
                                 </div>
                                 <!-- Video info -->
                                 <div class="card-body">
-                                    <div class="d-xxl-flex justify-content-between mb-3">
+                                    <div class="justify-content-between mb-3">
                                         <div class="mb-2 mb-xxl-0">
                                             <!-- Video title  -->
                                             <h4> {{ $videos[0]['title'] }} </h4>
@@ -795,14 +794,14 @@ Header END -->
                                 @endforeach
                             </div>
                             <div class=" mt-3">
-                                <form id="comment">
+                                                <form id="comment">
                                     <div class="commentBox">
                                         <input type="text" class="form-control blank" autocomplete="off"
                                             name="body" id="body" placeholder="Add a comment..." required>
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
                                     </div>
                                     <div class="text-end ">
-                                        <button type="submit" class="btn btn-primary btn-sm  mx-5 "
+                                        <button type="submit" class="btn btn-primary btn-sm  mx-5 mx-lg-n4"
                                             style="width:110px;"><span class="material-symbols-outlined">
                                                 send
                                             </span></button>
@@ -1016,6 +1015,10 @@ JS libraries, plugins and custom scripts -->
 
         getStars({{ round($averageRating, 1) }}, {{ $videos[0]['id'] }})
     </script>
-
+<!-- <script>
+function resetform(){
+document.getElementById("submit_report").reset();
+}
+</script> -->
     </html>
 </x-app-layout>

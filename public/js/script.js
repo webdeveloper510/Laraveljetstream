@@ -1,4 +1,8 @@
+
 var base_url = 'https://provlog.tv/product/Laraveljetstream/';
+
+
+
 function subscribe (channel_id, flag) {
   toastr.options = {
     closeButton: true,

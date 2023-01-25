@@ -298,7 +298,7 @@ Header END -->
                   <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0" tabindex="-1"
                     id="offcanvasSideNavbar">
                     <!-- Offcanvas header -->
-                    <div class="offcanvas-header ">
+                    <div class="offcanvas-header-d-md-hidden ms-auto">
                              <button type="button" class="btn-close text-reset ms-auto d-md-none"
                                   data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>

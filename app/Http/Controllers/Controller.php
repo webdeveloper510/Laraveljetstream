@@ -392,6 +392,8 @@ class Controller extends BaseController
             $data->product_id  = $request->product_id;
             $data->description = $request->description;
             $data->save();
+            // echo "<pre>";
+            // print_r($data);die;
             $this->email($data);
             return response()->json([
                 'Report' => $data,
@@ -428,8 +430,7 @@ class Controller extends BaseController
 // ---->->->->->----->->->->->->-------->->->->->->->-->->email----------------------------->---->->->->->->->->//
     public function email($data)
     {
-
-     Mail::to("ritesh@codenomad.net")->send(new productmail($data));
+     Mail::to("aezka@bitsoftnetwork.com")->send(new productmail($data));
      return "Email sent successfully !!";
     }
 }

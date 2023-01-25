@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProductIdToRatingsTable extends Migration
+class AddFieldInUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddProductIdToRatingsTable extends Migration
      */
     public function up()
     {
-        Schema::table('ratings', function (Blueprint $table) {
-            $table->integer('product_id');
+        Schema::table('users', function (Blueprint $table) {
+            //
+            $table->string('cover_img');
         });
     }
 
@@ -25,7 +26,7 @@ class AddProductIdToRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::table('ratings', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

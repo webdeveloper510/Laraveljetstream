@@ -6,7 +6,7 @@
 
     .mann {
         position: relative !important;
-        top: -99% !important;
+       
     }
     .sidbar {  
         position: fixed !important;
@@ -14,15 +14,15 @@
         z-index: 1;   
     }
 
-    .height_up {
+    /* .height_up {
         position: relative !important;
         top: -46% !important;
-    }
+    } */
 
-    .rightbar {
+    /* .rightbar {
         position: absolute !important;
         top: 194% !important;
-    }
+    } */
     div#offcanvasSideNavbar {
         margin-top: 60px !important;
     }

@@ -1453,6 +1453,24 @@ select {
 .box-border {
   box-sizing: border-box;
 }
+.mt-16 {
+  margin-top: 4rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.mb-12 {
+  margin-bottom: 3rem;
+}
+.mt-0 {
+  margin-top: 0px;
+}
+.mb-16 {
+  margin-bottom: 4rem;
+}
+.box-border {
+  box-sizing: border-box;
+}
 .block {
   display: block;
 }
