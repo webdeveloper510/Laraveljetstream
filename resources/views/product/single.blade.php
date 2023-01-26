@@ -59,9 +59,7 @@
                 display: flex;
             }
 
-            .navbar-vertical {
-                top: 41px !important;
-            }
+          
 
             .comments {
                 color: white;
@@ -76,10 +74,7 @@
                 position: absolute !important;
             }
 
-            button.btn.btn-primary.btn-sm {
-                width: 92px !important;
-                height: 39px !important;
-            }
+         
 
             .modal-content {
                 background: white !important;
@@ -90,10 +85,7 @@
             }
 
            
-            .mb-0 {
-                margin-bottom: 0 !important;
-                text-align: center !important;
-            }
+           
 
             .gap-xl-3 {
                 margin-left: 12px !important;
@@ -127,7 +119,11 @@
             span {
                 color: black !important;
             }
-
+            video[poster] {
+                height: 230px;
+                width: 100%;
+                object-fit: cover;
+            }
             small {
                 color: black !important;
             }
@@ -374,7 +370,7 @@ Header END -->
 
             <!-- Container START -->
             <div class="container-fluid">
-                  <div class="d-flex align-items-center  d-lg-none ">
+                  <div class="d-flex align-items-center  d-lg-none mt-3">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
                         </button>
@@ -438,8 +434,8 @@ Header END -->
                 <!-- Main content START -->
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row gx-4">
-                        <div class="col-md-8 mt-2 ">
+                    <div class="row gx-4 mt-3 bg-white">
+                        <div class="col-md-8 ">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
@@ -466,7 +462,7 @@ Header END -->
                                         <div class="mb-2 mb-xxl-0">
                                             <!-- Video title  -->
                                             <h4> {{ $videos[0]['title'] }} </h4>
-                                            <div class="d-flex mt-3 align-items-center">
+                                            <div class="d-flex my-3 align-items-center">
                                                 <!-- Avatar -->
                                                 <div class="avatar me-2">
                                                         <img class="avatar-img rounded-circle" src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" alt="">
@@ -484,7 +480,7 @@ Header END -->
                                                         <span>subscribers</span>
                                                     </nav>
                                                 </div>
-                                                <div class="col-md-3 ml-auto">
+                                                <div class=" ml-auto">
                                                     <button class="btn btn-danger subscribe"
                                                         style="{{ $count <= 0 && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
                                                         onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>
@@ -691,7 +687,8 @@ Header END -->
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-md-4 g-3 mt-1">
+                        <div class="col-md-4 g-3 mt-3">
+                            <div class="bg-white">
                             <h4>{{ $total_comment }} Comments</h4>
                             <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
@@ -724,20 +721,21 @@ Header END -->
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
                                                         <form class="save_reply">
-                                                            <div>
-                                                                <input type="text" class="form-control body1 reset"
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control body1 reset"
                                                                     name="body" class="body_reply"
-                                                                    placeholder="Reply..." required>
+                                                                    placeholder="Reply..." required aria-describedby="button-addon2">
                                                                 <input type="hidden" name="post_id" class="post_id"
                                                                     value="{{ $videos[0]['id'] }}" />
                                                                 <input type="hidden" name="comment_id"
-                                                                    class="comment_id" value="{{ $commet['id'] }}" />
-                                                            </div>
-                                                            <div class="text-end mt-3">
-                                                                <button type="submit" class="btn btn-primary btn-sm mx-5"
+                                                                    class="comment_id" value="{{ $commet['id'] }}" /> 
+                                        
+                                                                    <button type="submit" class="btn btn-primary btn-sm"
                                                                     data-id="{{ $commet['id'] }}"
-                                                                    style="width:110px;">REPLY</button>
-                                                            </div>
+                                                                    >REPLY</button>
+                                                               </div>
+                                                           
+                                                               
                                                         </form>
                                                     </div>
                                                 </div>
@@ -749,22 +747,23 @@ Header END -->
                                 @endforeach
                             </div>
                             <div class=" mt-3">
-                                                <form id="comment">
-                                    <div class="commentBox">
-                                        <input type="text" class="form-control blank" autocomplete="off"
-                                            name="body" id="body" placeholder="Add a comment..." required>
-                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
-                                    </div>
-                                    <div class="text-end ">
-                                        <button type="submit" class="btn btn-primary btn-sm  mx-5 mx-lg-n4"
-                                            style="width:110px;"><span class="material-symbols-outlined">
+                                  <form id="comment">
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" autocomplete="off"
+                                            name="body" id="body" placeholder="Add a comment..." required aria-describedby="button-addon2">
+                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" /> 
+                                        <button type="submit" class="btn btn-primary btn-sm"
+                                        id="button-addon2"><span class="material-symbols-outlined">
                                                 send
-                                            </span></button>
+                                            </span>
+                                        </button>
                                     </div>
+                                   
                                 </form>
                             </div>
                             </form>
-                        </div>
+                           </div>
+                           </div>
 
                     </div>
                     <!-- Official trailer END -->
@@ -775,7 +774,7 @@ Header END -->
                         </div>
                         @foreach ($multi_video as $video)
                             @foreach ($video['posts'] as $posts)
-                                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                                <div class="col-sm-6 col-md-4 col-xl-3">
                                     <!-- Video START -->
                                     <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
                                         <video width="320" height="240" onmouseover="this.play()"

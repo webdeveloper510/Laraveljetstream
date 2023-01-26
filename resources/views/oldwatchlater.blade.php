@@ -349,7 +349,7 @@ Header END -->
                     <div class="col-lg-3">
 
                         <!-- Advanced filter responsive toggler START -->
-                        <div class="d-flex align-items-center d-lg-none">
+                        <div class="d-flex align-items-center d-lg-none mt-3">
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                                 <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>

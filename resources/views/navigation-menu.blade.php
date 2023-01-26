@@ -4,6 +4,9 @@
       z-index: 99 !important;
       top:0px;
   }
+  .moovie_currentime span {
+    color: white !important;
+}
   .show .offcanvas-start {
     transform: translateX(0%) !important;
   }
