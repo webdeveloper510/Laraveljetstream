@@ -42,7 +42,13 @@
         skiptranslate goog-te-gadget {
             display: none
         }
-  
+        .thumbn.position-absolute span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: black;
+    transform: translate(-50%, -50%);
+}
         body {
             top: 0px !important;
             position: static !important;
@@ -181,9 +187,7 @@
                 opacity: 0.5;
             }
 
-            .material-symbols-outlined {
-                margin: 56px 0px 0px 30px !important;
-            }
+           
 
             div.card-body.pt-0 {
                 color: black !important;
@@ -227,7 +231,7 @@
         <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-            <div class="d-flex align-items-center  d-lg-none ">
+            <div class="d-flex align-items-center  d-lg-none mt-3">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
                         </button>
@@ -306,9 +310,9 @@
                                     <li class="nav-item active"> <a class="nav-link active" data-bs-toggle="tab"
                                             href="#tab-1"> WATCH LATER </a>
                                     </li>
-                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                                    <!-- <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
                                             PLAYLIST </a> 
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <div class="tab-content mb-0 pb-0">
                                     <!-- Home tab START -->
@@ -372,14 +376,7 @@
                                                             src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/14.jpg"
                                                             alt="">
                                                         <!-- Duration -->
-                                                        <div
-                                                            class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                            <span
-                                                                class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                                            <span
-                                                                class="bg-dark bg-opacity-50 px-2 mx-3 rounded text-white small">1
-                                                                min ago</span>
-                                                        </div>
+                                                        
                                                         <div class="thumbn position-absolute">
                                                             <span class="material-symbols-outlined"><small>11</small>
                                                                 <br />playlist_play</span>
