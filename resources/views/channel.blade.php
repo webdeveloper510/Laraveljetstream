@@ -378,26 +378,7 @@ Header END -->
                 <div class="d-flex mt-3 justify-content-center ms-sm-auto">
                   <a class="btn btn-danger-soft me-2" href="<?php echo URL::to('/'); ?>/user/profile"></i> Edit
                     profile </a>
-                  <div class="dropdown">
-                    <!-- Card share action menu -->
-                    <button class="icon-md btn btn-light" type="button" id="profileAction2" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      <i class="bi bi-three-dots"></i>
-                    </button>
-                    <!-- Card share action dropdown menu -->
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileAction2">
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share profile in a
-                          message</a></li>
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-file-earmark-pdf fa-fw pe-2"></i>Save your
-                          profile to PDF</a></li>
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>Lock profile</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Profile settings</a>
-                      </li>
-                    </ul>
-                  </div>
+                
                 </div>
               </div>
               <!-- List profile -->
@@ -409,7 +390,7 @@ Header END -->
           <div class="col-md-3 ">
 
           </div>
-          <div class="card ">
+          <div class="card mt-3">
             <!-- Card header START -->
             <div class="card-header border-0 pb-0">
               <h5 class="card-title">Videos</h5>
@@ -445,9 +426,7 @@ Header END -->
                                 src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                         </video>
                       <!-- Duration -->
-                      <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">02:20</span>
-                      </div>
+                     
                     </div>
                     <!-- Video info -->
                     <div class="card-body px-0 pb-0 pt-2">
@@ -489,7 +468,7 @@ Header END -->
                     <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> {{$videos ? $videos[0]['user']['date_of_birth']: ''}}
                       </strong> </li>
                     {{-- <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li> --}}
-                    <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos ? $videos[0]['user']['email']: ''}}</strong> </li>
+                    <!-- <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos ? $videos[0]['user']['email']: ''}}</strong> </li> -->
                   </ul>
                 </div>
                 <!-- Card body END -->
@@ -512,11 +491,11 @@ JS libraries, plugins and custom scripts -->
   <!-- Bootstrap JS -->
   <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Vendors -->
-  <script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
+  <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
-  <!-- Template Functions -->
-  <script src="assets/js/functions.js"></script>
+  // <!-- Template Functions -->
+  <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script>
   <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
 

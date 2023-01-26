@@ -595,10 +595,7 @@ Header END -->
                           <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i class="bi bi-play-fill fs-5"> </i> </a>
                         </div>
                         <!-- Duration -->
-                        <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">05:10</span>
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">25 min ago</span>
-                        </div>
+                       
                       </div>
                       <!-- Video info -->
                       <div class="card-body px-0">

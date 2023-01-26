@@ -10,12 +10,11 @@
                 display: none;
             }
 
-         
-
-            div#social-links {
-                margin: 0 auto;
-                max-width: 500px;
+            .dropdown-menu {
+                min-width: auto !important;
             }
+
+          
 
             .description {
                 color: black;
@@ -59,8 +58,6 @@
                 display: flex;
             }
 
-          
-
             .comments {
                 color: white;
                 padding: 15px;
@@ -74,8 +71,6 @@
                 position: absolute !important;
             }
 
-         
-
             .modal-content {
                 background: white !important;
             }
@@ -83,9 +78,6 @@
             label.form-check-label {
                 color: black !important;
             }
-
-           
-           
 
             .gap-xl-3 {
                 margin-left: 12px !important;
@@ -115,7 +107,9 @@
             p {
                 color: black !important;
             }
-
+            div#social-links ul {
+                display: block;
+            }
             span {
                 color: black !important;
             }
@@ -655,19 +649,16 @@ Header END -->
 
                                                 </div>
                                                 <div class=" d-flex align-items-start">
-                                                    <div class="dropdown ">
-                                                        <a class="nav-link  " href="#" id="cardShareAction"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <button class="btn btn-light "><i
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
-                                                            </button>
-
-                                                            <!-- Dropdown menu -->
-                                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                                aria-labelledby="cardShareAction">
-                                                                <li> {!! $socialshare !!}</li>
-                                                            </ul>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    <li> {!! $socialshare !!}</li>
+                                                 </ul>
                                                     </div>
+                                                   
                                                 </div>
                                             </div>
                                             <!-- Interested button -->
@@ -689,7 +680,24 @@ Header END -->
                         </div>
                         <div class="col-md-4 g-3 mt-3">
                             <div class="bg-white">
-                            <h4>{{ $total_comment }} Comments</h4>
+                            <div class=" mt-3">
+                                  <form id="comment">
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" autocomplete="off"
+                                            name="body" id="body" placeholder="Add a comment..." required aria-describedby="button-addon2">
+                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" /> 
+                                        <button type="submit" class="btn btn-primary btn-sm"
+                                        id="button-addon2"><span class="material-symbols-outlined">
+                                                send
+                                            </span>
+                                        </button>
+                                    </div>
+                                   
+                                </form>
+                            </div>
+                            </form>
+                           </div>
+                            <h4 class="mt-3">{{ $total_comment }} Comments</h4>
                             <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
                                     <div>
@@ -746,23 +754,7 @@ Header END -->
                                     </div>
                                 @endforeach
                             </div>
-                            <div class=" mt-3">
-                                  <form id="comment">
-                                    <div class="input-group">
-                                      <input type="text" class="form-control" autocomplete="off"
-                                            name="body" id="body" placeholder="Add a comment..." required aria-describedby="button-addon2">
-                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" /> 
-                                        <button type="submit" class="btn btn-primary btn-sm"
-                                        id="button-addon2"><span class="material-symbols-outlined">
-                                                send
-                                            </span>
-                                        </button>
-                                    </div>
-                                   
-                                </form>
-                            </div>
-                            </form>
-                           </div>
+                           
                            </div>
 
                     </div>
@@ -824,11 +816,11 @@ Header END -->
 JS libraries, plugins and custom scripts -->
 
         <!-- Bootstrap JS -->
-        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Vendors -->
-        <script src="assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
-        <script src="assets/vendor/plyr/plyr.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.js"></script>
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
@@ -836,9 +828,7 @@ JS libraries, plugins and custom scripts -->
     </body>
     <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+  
 
     {!! Toastr::message() !!}
     <script>
