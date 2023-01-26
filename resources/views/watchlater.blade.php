@@ -329,14 +329,7 @@
                                                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                                                             </video>
                                                             <!-- Duration -->
-                                                            <div
-                                                                class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                                <span
-                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                                                <span
-                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">1
-                                                                    min ago</span>
-                                                            </div>
+                                                            
                                                         </div>
                                                         <!-- Video info -->
                                                         <div class="card-body px-0">
@@ -351,7 +344,7 @@
                                                                 <h6 class="mb-0"> <a
                                                                         href="#!">{{$data['title'] }}</a>
                                                                 </h6>
-                                                                <span class="ms-auto small">{{$data['views']}}</span>
+                                                                <span class="ms-auto small">{{$data['views']}} Views</span>
                                                             </div>
                                                             <!-- Video title  -->
                                                             {{-- <h6 class="mb-0">  New movie trailers

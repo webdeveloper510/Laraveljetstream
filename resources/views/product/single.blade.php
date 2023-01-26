@@ -721,20 +721,21 @@ Header END -->
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
                                                         <form class="save_reply">
-                                                            <div>
-                                                                <input type="text" class="form-control body1 reset"
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control body1 reset"
                                                                     name="body" class="body_reply"
-                                                                    placeholder="Reply..." required>
+                                                                    placeholder="Reply..." required aria-describedby="button-addon2">
                                                                 <input type="hidden" name="post_id" class="post_id"
                                                                     value="{{ $videos[0]['id'] }}" />
                                                                 <input type="hidden" name="comment_id"
-                                                                    class="comment_id" value="{{ $commet['id'] }}" />
-                                                            </div>
-                                                            <div class="text-end mt-3">
-                                                                <button type="submit" class="btn btn-primary btn-sm mx-5"
+                                                                    class="comment_id" value="{{ $commet['id'] }}" /> 
+                                        
+                                                                    <button type="submit" class="btn btn-primary btn-sm"
                                                                     data-id="{{ $commet['id'] }}"
-                                                                    style="width:110px;">REPLY</button>
-                                                            </div>
+                                                                    >REPLY</button>
+                                                               </div>
+                                                           
+                                                               
                                                         </form>
                                                     </div>
                                                 </div>
@@ -748,13 +749,14 @@ Header END -->
                             <div class=" mt-3">
                                   <form id="comment">
                                     <div class="input-group">
-                                    <input type="text" class="form-control" autocomplete="off"
+                                      <input type="text" class="form-control" autocomplete="off"
                                             name="body" id="body" placeholder="Add a comment..." required aria-describedby="button-addon2">
                                         <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" /> 
                                         <button type="submit" class="btn btn-primary btn-sm"
                                         id="button-addon2"><span class="material-symbols-outlined">
                                                 send
-                                            </span></button>
+                                            </span>
+                                        </button>
                                     </div>
                                    
                                 </form>
