@@ -128,6 +128,7 @@ class Controller extends BaseController
 
     public function videodetail($id)
     {
+        
 		   $auth_id = auth()->user()->id;
         $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->with('comments.user')->get()->toArray();
     //    echo "<pre>";

@@ -18,7 +18,7 @@ class productmail extends Mailable
      */
     public function __construct($details)
     {
-        // print_r($details);die;
+        //  print_r($details);die;
         $this->details = $details;
     }
 

@@ -611,9 +611,7 @@ Header END -->
                                                                                 Sexual Content
                                                                             </label>
                                                                         </div>
-                                                                        <input type="hidden" name="product_id"
-                                                                            id="product_id"
-                                                                            value="{{ $videos[0]['id'] }}">
+                                                                       
                                                                         <div class="form-check">
                                                                             <input class="form-check-input"
                                                                                 type="radio" name="flexRadioDefault"
@@ -714,6 +712,7 @@ Header END -->
                                                                             can lead to account termination. </p>
 
                                                                     </div>
+                                                                    <input type="hidden" name="product_id" id="product_id" value="{{request()->segment(2)}}">
                                                                     <div class="modal-footer">
                                                                         <button type="button"
                                                                             class="btn btn-secondary"

@@ -1,4 +1,4 @@
-<p>Description of report form:-{{$details['description']}}</p>
+<p>This is current time:- {{ \Carbon\Carbon::parse($details['created_at'])->diffForHumans();}}</p>
 <p>This is product id:-{{$details['product_id']}}</p>
-<p>This is user id:-{{$details['user_id']}}</p>
+
 
