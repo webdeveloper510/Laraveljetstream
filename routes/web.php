@@ -18,7 +18,8 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $videos = User::with(['posts','Report_video'])->get()->toArray();
+    return view('welcome',compact('videos'));
 });
 
 

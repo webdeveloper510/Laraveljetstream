@@ -30,6 +30,6 @@ class productmail extends Mailable
     public function build()
     {
         return $this->subject('This is Reported content')
-                    ->view('emails.testing');
+                    ->view('emails.testing')->with('data',$this->details);
     }
 }

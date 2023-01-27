@@ -349,7 +349,7 @@ Header END -->
                     <div class="col-lg-3">
 
                         <!-- Advanced filter responsive toggler START -->
-                        <div class="d-flex align-items-center d-lg-none">
+                        <div class="d-flex align-items-center d-lg-none mt-3">
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                                 <i class="btn btn-primary fw-bold fa-solid fa-sliders-h"></i>
@@ -595,10 +595,7 @@ Header END -->
                           <a class="icon-md bg-danger text-white rounded-circle" href="#"> <i class="bi bi-play-fill fs-5"> </i> </a>
                         </div>
                         <!-- Duration -->
-                        <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">05:10</span>
-                          <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">25 min ago</span>
-                        </div>
+                       
                       </div>
                       <!-- Video info -->
                       <div class="card-body px-0">

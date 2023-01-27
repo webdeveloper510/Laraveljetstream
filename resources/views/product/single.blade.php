@@ -10,18 +10,11 @@
                 display: none;
             }
 
-            .parag {
-             margin-left: 28px !important;
+            .dropdown-menu {
+                min-width: auto !important;
             }
 
-            p.m-0 {
-              margin-left: 11px !important;
-           }
-
-            div#social-links {
-                margin: 0 auto;
-                max-width: 500px;
-            }
+          
 
             .description {
                 color: black;
@@ -65,11 +58,6 @@
                 display: flex;
             }
 
-            .navbar-vertical {
-                top: 41px !important;
-                max-width: 16% !important;
-            }
-
             .comments {
                 color: white;
                 padding: 15px;
@@ -83,11 +71,6 @@
                 position: absolute !important;
             }
 
-            button.btn.btn-primary.btn-sm {
-                width: 92px !important;
-                height: 39px !important;
-            }
-
             .modal-content {
                 background: white !important;
             }
@@ -96,20 +79,10 @@
                 color: black !important;
             }
 
-           
-            .mb-0 {
-                margin-bottom: 0 !important;
-                text-align: center !important;
-            }
-
             .gap-xl-3 {
                 margin-left: 12px !important;
             }
-            
-            .col-md-4.g-3.mt-5 {
-                /* width: 20.333333%; */
-            width: auto !important;
-            }
+          
         </style>
 
         <title>Social - Network, Community and Event Theme</title>
@@ -134,42 +107,30 @@
             p {
                 color: black !important;
             }
-
+            div#social-links ul {
+                display: block;
+            }
             span {
                 color: black !important;
             }
-
+            video[poster] {
+                height: 230px;
+                width: 100%;
+                object-fit: cover;
+            }
             small {
                 color: black !important;
-            }
-
-            .parag {
-                margin-left: 10px;
-            }
-
-            .nam {
-                margin-left: 10px;
-
             }
 
             .card-image.video {
                 z-index: 0;
             }
 
-            /* .form-control {
-                width: 328px;
-
-            } */
-
              .ml-auto {
                 margin-left: auto;
             }
 
-            .col-md-4.g-3.mt-5 {
-                width: 24.333333% !important;
-                /* width:auto !important; */
-            } 
-
+         
 
         </style>
         @livewireStyles
@@ -403,115 +364,72 @@ Header END -->
 
             <!-- Container START -->
             <div class="container-fluid">
-
+                  <div class="d-flex align-items-center  d-lg-none mt-3">
+                        <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                            <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                        </button>
+                    </div>
                 <!-- Sidenav START -->
-                <div class="navbar navbar-vertical  navbar-light mt-2">
-                    <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3" tabindex="-1"
-                        id="navbarVerticaloffcanvas">
-                        <div class="offcanvas-body pt-5 pt-lg-0">
-
-                            <!-- Avatar -->
-
-                            <div class="avatar avatar-lg mb-3 mx-5">
-                                <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">
-                                    <img class="avatar-img rounded-circle border border-white border-3 mx-5"
-                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
-                                </a>
-                            </div>
-                            <!-- Info -->
-                            <h5 class="mb-0"> <a
-                                    href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
-                                </a> </h5>
-                            {{-- <small>Web Developer at Webestica</small> --}}
-                            <!-- User stat START -->
-                            <div class="hstack gap-2 gap-xl-3 mt-3 ">
-                                <!-- User stat item -->
-                                <div class="sub mx-5 p-2" style="color: #222;">
-                                    {{ $subscriber }} Subscribers
+                <nav class="navbar  navbar-vertical navbar-light">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
+                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
+                            <div class="offcanvas-body pt-5 pt-lg-0">
+                                <!-- Card START -->
+                               
+                                <!-- Avatar -->
+                                <div class="avatar avatar-lg mb-3">
+                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
                                 </div>
-                                <!-- Divider -->
-                                <div class="vr"></div>
-                                <!-- User stat item -->
+                                <!-- Info -->
+                                <h5 class="mb-0"><a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
+                                    </a></h5>
 
+                                    <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
+                                    <!-- User stat item -->
+                                    <div>
+                                        <h6 class="mb-0">256</h6>
+                                        <small>Videos</small>
+                                    </div>
+                                    <!-- Divider -->
+                                    <div class="vr"></div>
+                                    <!-- User stat item -->
+                                    <div>
+                                        <h6 class="mb-0">2.5K</h6>
+                                        <small>Subscriber</small>
+                                    </div>
+                                    
+                                    </div>
                                 <!-- Divider -->
-                                <div class="vr"></div>
-                                <!-- User stat item -->
-
+                                <hr>
+                                <!-- Side Nav START -->
+                                <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
+                                            </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your Channel </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch Later </span></a>
+                                    </li>
+                                    <!-- Side Nav END -->
                             </div>
-                            <!-- User stat END -->
-
-                            <!-- Divider -->
-                            <hr>
-
-                            <!-- Side Nav START -->
-                            <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
-                                        <img class="me-2 h-20px fa-fw"
-                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
-                                            alt=""><span>Home
-                                        </span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img
-                                            class="me-2 h-20px fa-fw"
-                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
-                                            alt=""><span>Uploade Video </span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="<?php echo URL::to('/'); ?>/channel/{{ base64_encode(auth()->user()->id) }}">
-                                        <img class="me-2 h-20px fa-fw"
-                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
-                                            alt=""><span>Your Channel </span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
-                                        <img class="me-2 h-20px fa-fw"
-                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
-                                            alt=""><span>Watch Later </span></a>
-                                </li>
-                                <!-- <li class="nav-item">
-                <a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/My favorites"> <img class="me-2 h-20px fa-fw"
-                    src="assets/images/icon/star-outline-filled.svg" alt=""><span>My favorites </span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="file:///C:/Users/Hp/Downloads/Farnando/video-details.html/Wishlist"> <img class="me-2 h-20px fa-fw"
-                    src="assets/images/icon/task-done-outline-filled.svg" alt=""><span>Wishlist </span></a>
-              </li> -->
-                                {{-- <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html">
-                                        <img class="me-2 h-20px fa-fw"
-                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/notification-outlined-filled.svg"
-                                            alt=""><span>Notifications </span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/settings.html">
-                                        <img class="me-2 h-20px fa-fw"
-                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/cog-outline-filled.svg"
-                                            alt=""><span>Settings
-                                        </span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo URL::to('/'); ?>/logout">
-                                        <img class="me-2 h-20px fa-fw"
-                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
-                                            alt=""><span>Logout </span></a>
-                                </li> --}}
-                            </ul>
-                            <!-- Side Nav END -->
                         </div>
                     </div>
-                </div>
+                </nav>
                 <!-- Sidenav END -->
 
                 <!-- Main content START -->
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row gx-4">
-                        <div class="col-xl-8 col-xxl-9 mt-2 ">
+                    <div class="row gx-4 mt-3 bg-white">
+                        <div class="col-md-8 ">
                             <!-- Video START -->
                             <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
                                 <!-- Video image -->
@@ -534,16 +452,19 @@ Header END -->
                                 </div>
                                 <!-- Video info -->
                                 <div class="card-body">
-                                    <div class="d-xxl-flex justify-content-between mb-3">
+                                    <div class=" justify-content-between mb-3">
                                         <div class="mb-2 mb-xxl-0">
                                             <!-- Video title  -->
                                             <h4> {{ $videos[0]['title'] }} </h4>
-                                            <div class="d-flex mt-3 align-items-center">
+                                            <div class="d-flex my-3 align-items-center">
                                                 <!-- Avatar -->
-                                                <div class=" me-2">
-                                                    <img src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp"
+                                                <div class="avatar me-2">
+                                                        <img class="avatar-img rounded-circle" src="<?php echo URL::to('/'); ?>/public/asstes/hq720.webp" alt="">
+                                                    </div>
+                                                <!-- <div class=" me-2">
+                                                    <img src=""
                                                         height="60px" width="60px" />
-                                                </div>
+                                                </div> -->
                                                 <!-- Avatar name -->
                                                 <div>
                                                     <h6 class="mb-0">{{ $videos[0]['user']['name'] }}</h6>
@@ -553,7 +474,7 @@ Header END -->
                                                         <span>subscribers</span>
                                                     </nav>
                                                 </div>
-                                                <div class="col-md-3 ml-auto">
+                                                <div class=" ml-auto">
                                                     <button class="btn btn-danger subscribe"
                                                         style="{{ $count <= 0 && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
                                                         onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>
@@ -727,19 +648,16 @@ Header END -->
 
                                                 </div>
                                                 <div class=" d-flex align-items-start">
-                                                    <div class="dropdown ">
-                                                        <a class="nav-link  " href="#" id="cardShareAction"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <button class="btn btn-light "><i
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i
                                                                     class="bi bi-reply-fill flip-horizontal"></i>Share
-                                                            </button>
-
-                                                            <!-- Dropdown menu -->
-                                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                                aria-labelledby="cardShareAction">
-                                                                <li> {!! $socialshare !!}</li>
-                                                            </ul>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    <li> {!! $socialshare !!}</li>
+                                                 </ul>
                                                     </div>
+                                                   
                                                 </div>
                                             </div>
                                             <!-- Interested button -->
@@ -748,9 +666,10 @@ Header END -->
                                             Description
                                         </h6>
                                         <p class="disp-cont">
+                                        {{ $videos[0]['description'] }}
                                         </p>
                                         <p class="more-cont" style="display:none;">
-                                            {{ $videos[0]['description'] }}
+                                            ....
                                         </p>
                                         <a href="#" class="Read more">Read more</a>
                                     </div>
@@ -758,13 +677,31 @@ Header END -->
                             </div>
                             <!-- Video END -->
                         </div>
-                        <div class="col-md-4 g-3 mt-5">
-                            <h4>{{ $total_comment }} Comments</h4>
+                        <div class="col-md-4 g-3 mt-3">
+                            <div class="bg-white">
+                            <div class=" mt-3">
+                                  <form id="comment">
+                                    <div class="input-group">
+                                      <input type="text" class="form-control" autocomplete="off"
+                                            name="body" id="body" placeholder="Add a comment..." required aria-describedby="button-addon2">
+                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" /> 
+                                        <button type="submit" class="btn btn-primary btn-sm"
+                                        id="button-addon2"><span class="material-symbols-outlined">
+                                                send
+                                            </span>
+                                        </button>
+                                    </div>
+                                   
+                                </form>
+                            </div>
+                            </form>
+                           </div>
+                            <h4 class="mt-3">{{ $total_comment }} Comments</h4>
                             <div class="comments">
                                 @foreach ($videos[0]['comments'] as $key => $commet)
                                     <div>
                                         <div class="row mt-3">
-                                            <div class="col-2 text-end">
+                                            <div class="col-3">
                                                 <div class="profile-image">
                                                     <a
                                                         href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
@@ -772,12 +709,12 @@ Header END -->
                                                             width="40px" /></a>
                                                 </div>
                                             </div>
-                                            <div class="col-md-10">
-                                                <p class="m-0"> <b class="nam">
+                                            <div class="col-9">
+                                                <p class="m-0"> <b style="    text-transform: capitalize;">
                                                         {{ $commet['user']['name'] }}
                                                     </b>{{ \Carbon\Carbon::parse($commet['created_at'])->diffForHumans() }}
                                                 </p>
-                                                <p class="parag">{{ $commet['body'] }}</p>
+                                                <p class="para">{{ $commet['body'] }}</p>
                                                 <div class="comment_reply_{{ $commet['id'] }}">
                                                     @foreach ($commet['replies'] as $key => $reply)
                                                         <div class="reply" style="color: black">{{ $reply['body'] }}
@@ -791,20 +728,21 @@ Header END -->
                                                 <div class="row" id="replyBox" style="display: none">
                                                     <div class="col-md-12 common">
                                                         <form class="save_reply">
-                                                            <div>
-                                                                <input type="text" class="form-control body1 reset"
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control body1 reset"
                                                                     name="body" class="body_reply"
-                                                                    placeholder="Reply..." required>
+                                                                    placeholder="Reply..." required aria-describedby="button-addon2">
                                                                 <input type="hidden" name="post_id" class="post_id"
                                                                     value="{{ $videos[0]['id'] }}" />
                                                                 <input type="hidden" name="comment_id"
-                                                                    class="comment_id" value="{{ $commet['id'] }}" />
-                                                            </div>
-                                                            <div class="text-end mt-3">
-                                                                <button type="submit" class="btn btn-primary btn-sm mx-5"
+                                                                    class="comment_id" value="{{ $commet['id'] }}" /> 
+                                        
+                                                                    <button type="submit" class="btn btn-primary btn-sm"
                                                                     data-id="{{ $commet['id'] }}"
-                                                                    style="width:110px;">REPLY</button>
-                                                            </div>
+                                                                    >REPLY</button>
+                                                               </div>
+                                                           
+                                                               
                                                         </form>
                                                     </div>
                                                 </div>
@@ -815,22 +753,8 @@ Header END -->
                                     </div>
                                 @endforeach
                             </div>
-                            <div class=" mt-3">
-                                <form id="comment">
-                                    <div class="commentBox">
-                                        <input type="text" class="form-control blank" autocomplete="off"
-                                            name="body" id="body" placeholder="Add a comment..." required>
-                                        <input type="hidden" name="post_id" value="{{ $videos[0]['id'] }}" />
-                                    </div>
-                                    <div class="text-end ">
-                                        <button type="submit" class="btn btn-primary btn-sm  mx-5 "
-                                            style="width:110px;"><span class="material-symbols-outlined">
-                                                send
-                                            </span></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                           
+                           </div>
 
                     </div>
                     <!-- Official trailer END -->
@@ -841,7 +765,7 @@ Header END -->
                         </div>
                         @foreach ($multi_video as $video)
                             @foreach ($video['posts'] as $posts)
-                                <div class="col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                                <div class="col-sm-6 col-md-4 col-xl-3">
                                     <!-- Video START -->
                                     <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
                                         <video width="320" height="240" onmouseover="this.play()"
@@ -891,11 +815,11 @@ Header END -->
 JS libraries, plugins and custom scripts -->
 
         <!-- Bootstrap JS -->
-        <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Vendors -->
-        <script src="assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
-        <script src="assets/vendor/plyr/plyr.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.js"></script>
 
         <!-- Template Functions -->
         <script src="assets/js/functions.js"></script>
@@ -903,9 +827,7 @@ JS libraries, plugins and custom scripts -->
     </body>
     <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+  
 
     {!! Toastr::message() !!}
     <script>

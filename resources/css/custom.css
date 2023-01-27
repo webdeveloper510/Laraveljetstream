@@ -6,7 +6,7 @@
 
     .mann {
         position: relative !important;
-        top: -99% !important;
+       
     }
     .sidbar {  
         position: fixed !important;
@@ -14,15 +14,15 @@
         z-index: 1;   
     }
 
-    .height_up {
+    /* .height_up {
         position: relative !important;
         top: -46% !important;
-    }
+    } */
 
-    .rightbar {
+    /* .rightbar {
         position: absolute !important;
         top: 194% !important;
-    }
+    } */
     div#offcanvasSideNavbar {
         margin-top: 60px !important;
     }
@@ -31,7 +31,9 @@
         z-index: 2 !important;
     }
 }
-
+.card {
+    border:none !important;
+}
 
 img.border.border-3.border-white.mx-auto.rounded-circle {
     width: 80px !important;
@@ -45,7 +47,5 @@ img.border.border-3.border-white.mx-auto.rounded-circle {
 
 
 
-body {
-    min-height: 100vh;
-    background: white !important;
-}
+
+
