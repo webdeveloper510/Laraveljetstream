@@ -1,5 +1,5 @@
 
-var base_url = 'http://localhost/jetstream';
+var base_url = 'http://localhost/Laraveljetstream';
 
 
 

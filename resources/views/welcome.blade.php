@@ -78,21 +78,22 @@
                                 <!-- Avatar -->
                               
                                 <!-- Info -->
-                                <h5 class="mb-0"><a href="{{URL::to('/login')}}">Login</h5>
+                                <h5 class="mb-0">
+                                    <a href="{{URL::to('/login')}}">Login</h5>
 
                                     <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
                       <!-- User stat item -->
-                      <div>
+                      <!-- <div>
                         <h6 class="mb-0">256</h6>
                         <small>Videos</small>
-                      </div>
+                      </div> -->
                       <!-- Divider -->
-                      <div class="vr"></div>
+                      <!-- <div class="vr"></div> -->
                       <!-- User stat item -->
-                      <div>
+                      <!-- <div>
                         <h6 class="mb-0">2.5K</h6>
                         <small>Subscriber</small>
-                      </div>
+                      </div> -->
                       
                     </div>
                                 <!-- Divider -->
@@ -100,18 +101,18 @@
                                 <!-- Side Nav START -->
                                 <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
+                                        <a class="nav-link" href="{{ Auth::user() ? URL::to('/dashboard/') : URL::to('/login') }}">
                                             <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
                                             </span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
+                                        <a class="nav-link" href="{{ Auth::user() ? URL::to('/uploadpage/') : URL::to('/login') }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ Auth::user() ? URL::to('/channel/' . base64_encode(auth()->user()->id)) : URL::to('/login') }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your Channel </span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
+                                        <a class="nav-link" href="{{ Auth::user() ? URL::to('/watchlater/') : URL::to('/login') }}">
                                             <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch Later </span></a>
                                     </li>
                                     <!-- Side Nav END -->
@@ -134,7 +135,7 @@
                                     @foreach ($video['posts'] as $posts)
                                     @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
                                     <div class="item_{{ $posts['id'] }}">
-                                        <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
+                                        <a href="{{ Auth::user() ? URL::to('/watch/' . $posts['encripted_video_url']) : URL::to('/login') }}">
                                             <div class="card">
                                                 <video width="100%" height="100%" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" class="video_autoplay">
                                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}" type="video/mp4">

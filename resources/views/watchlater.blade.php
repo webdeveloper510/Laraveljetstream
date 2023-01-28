@@ -253,14 +253,14 @@
                                     <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
                                     <!-- User stat item -->
                                     <div>
-                                        <h6 class="mb-0">256</h6>
+                                        <h6 class="mb-0">{{$total_videos}}</h6>
                                         <small>Videos</small>
                                     </div>
                                     <!-- Divider -->
                                     <div class="vr"></div>
                                     <!-- User stat item -->
                                     <div>
-                                        <h6 class="mb-0">2.5K</h6>
+                                        <h6 class="mb-0">{{$login_user_subscriber}}</h6>
                                         <small>Subscriber</small>
                                     </div>
                                     

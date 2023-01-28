@@ -27,13 +27,15 @@ use App\Notifications\UserFollowNotification;
 use Share;
 use App\Mail\productmail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except('login');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except('login');
+    // }
 
     public function sendNotification()
     {
@@ -79,8 +81,10 @@ class Controller extends BaseController
 
     public function uploadpage()
     {
-
-        return view('product');
+        $auth_id = auth()->user()->id;
+        $total_videos = product::where(['user_id' => $auth_id])->count();
+        $login_user_subscriber = Subscribe::where(['user_id' => $auth_id])->sum('count');
+        return view('product',compact('total_videos','login_user_subscriber'));
     }
 
     public function channel($id)
@@ -107,9 +111,12 @@ class Controller extends BaseController
                 ->whatsapp()->getRawLinks();
         }
         $id = base64_encode($id);
+        $auth_id = auth()->user()->id;
+        $total_videos = product::where(['user_id' => $auth_id])->count();
+        $login_user_subscriber = Subscribe::where(['user_id' => $auth_id])->sum('count');
         // echo "<pre>";
         // print_r($subscriber);die;
-        return view('channel', compact('videos', 'count', 'socialshare', 'subscriber','id'));
+        return view('channel', compact('videos', 'login_user_subscriber','count', 'socialshare', 'subscriber','id','total_videos'));
     }
 
     public function setting()
@@ -122,14 +129,17 @@ class Controller extends BaseController
         $product = product::join('save_video', 'save_video.product_id', '=', 'product.id')->with('user')->get()->toArray();
             // echo "<pre>";
             // print_r($product);die;
+        $auth_id = auth()->user()->id;
+        $total_videos = product::where(['user_id' => $auth_id])->count();
         $name = auth()->user()->name;
-        return view('watchlater', compact('product', 'name'));
+        $login_user_subscriber = Subscribe::where(['user_id' => $auth_id])->sum('count');
+        return view('watchlater', compact('product', 'name','total_videos','login_user_subscriber'));
     }
 
     public function videodetail($id)
     {
         
-		   $auth_id = auth()->user()->id;
+		$auth_id = auth()->user()->id;
         $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->with('comments.user')->get()->toArray();
     //    echo "<pre>";
     //    print_r($videos);die;
@@ -137,6 +147,8 @@ class Controller extends BaseController
         $username = auth()->user()->name;
         $Rating = Rating::where('product_id', $id)->avg('rating');
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
+        $login_user_subscriber = Subscribe::where(['user_id' => $auth_id])->sum('count');
+        $total_videos = product::where(['user_id' => $auth_id])->count();
         // echo "<pre>";
         // print_r($subscriber);die;
         $count = Subscribe::where(['channel_id' => $videos[0]['user_id'], 'user_id' => $auth_id])->sum('count');
@@ -177,7 +189,7 @@ class Controller extends BaseController
         $multi_video = User::with(['posts','Report_video'])->get()->toArray();
         // echo "<pre>";
         // print_r($averageRating);
-        return view('product.single', compact('videos', 'liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id','multi_video'));
+        return view('product.single', compact('videos','login_user_subscriber','liked', 'disliked', 'count', 'subscriber', 'Rating', 'username', 'socialshare', 'averageRating','total_comment','id','multi_video','total_videos'));
 
     }
 
@@ -212,7 +224,6 @@ class Controller extends BaseController
             $user['file'] = $video_name;
             $user['encripted_video_url'] = $this->generateRandomString();
             $insert = DB::table('product')->insert($user);
-
             return response()->json([
                 'status' => $insert ? 1 : 0,
                 'message' => $insert ? 'Content Upload Successfully!' : 'Some erorr occure'
