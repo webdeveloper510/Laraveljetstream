@@ -4,10 +4,21 @@
       z-index: 99 !important;
       top:0px;
   }
+  #google_translate_element {
+  color: transparent;
+}
+#google_translate_element a {
+  display: none;
+}
+select.google_translate_element {
+  color: black;
+}
+
+
 </style>
 <link rel="stylesheet" type="text/css"
             href="<?php echo URL::to('/'); ?>/resources/css/custom.css">
- 
+
 
    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 w-full">
        <!-- Primary Navigation Menu -->

@@ -29,7 +29,7 @@
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
         <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
-        
+
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <style>
@@ -42,7 +42,7 @@
         skiptranslate goog-te-gadget {
             display: none
         }
-  
+
         body {
             top: 0px !important;
             position: static !important;
@@ -199,7 +199,7 @@
             div.container-fluid {
                 margin-top: 2%;
             }
-  
+
 
             body{
                 margin:0 !important;
@@ -232,18 +232,18 @@
             <div class="container-fluid">
                 <div class="row g-0">
                     <!-- Sidenav START -->
-                    <div class="col-md-3 col-lg-3  gap-4 m-0 ">
-                        <div class="sidbar">
+                    <div class="col-md-3 col-lg-3  gap-4 ">
+                        <div class="sidbar  ">
                         <!-- Advanced filter responsive toggler START -->
                         <div class="d-flex align-items-center  d-lg-none ">
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                                 <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
-                              
+
                             </button>
                         </div>
                         <!-- Navbar START-->
-                        <nav class="navbar navbar-expand-lg mx-0">
+                        <nav class="navbar navbar-expand-lg w-75">
                             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
                                 <!-- Offcanvas header -->
                                 <div class="offcanvas-header">
@@ -310,7 +310,7 @@
                         </div>
                     </div>
                     <!-- Main content START -->
-                    <div class="col-md-9 col-lg-9 man  gap-4  ">
+                    <div class="col-md-9 col-lg-9 man  gap-4 ">
                         <!-- Card START -->
                         <div class="card md:px-5  h-100">
                             <!-- Card header START -->
@@ -329,7 +329,7 @@
                                             href="#tab-1"> WATCH LATER </a>
                                     </li>
                                     <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-                                            PLAYLIST </a> 
+                                            PLAYLIST </a>
                                     </li>
                                 </ul>
                                 <div class="tab-content mb-0 pb-0">

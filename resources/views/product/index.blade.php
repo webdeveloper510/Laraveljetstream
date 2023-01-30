@@ -71,7 +71,7 @@
 
 
             video.video_autoplay {
-                height: 135px !important;
+                height: 250px !important;
                 object-fit: cover;
                 border-top-left-radius: 4px !important;
                 border-top-right-radius: 4px !important;
@@ -106,10 +106,6 @@
                 text-align: center;
             }
 
-            /* .mb-3 {
-            width: 60% !important;
-            height: 30% !important;
-        } */
 
             p {
                 font-size: small !important;
@@ -120,8 +116,8 @@
             }
 
             .avatar-img {
-                width: 20% !important;
-                height: 50% !important;
+                width: 22% !important;
+                height: 110% !important;
                 object-fit: cover !important;
             }
 
@@ -131,7 +127,7 @@
 
             /* main background-color */
             main {
-                background-color: white !important;
+                background-color: smokewhite !important;
             }
 
             /* .page-content {
@@ -142,6 +138,20 @@
             .col-12.mt-5 {
                 margin-top: 0rem !important;
             }
+
+            img.rounded-circle.thumb {
+                width: 25px !important;
+                height: 25px !important;
+            }
+
+            img {
+                max-width: 200% !important;
+                height: auto;
+            }
+            /* .card.overflow-hidden.p-4 {
+                    width: 100% !important;
+                    height: 540px !important;
+                } */
         </style>
     </head>
 
@@ -167,24 +177,55 @@
                 <!-- Sidenav END -->
                 <!-- Main content START -->
                 <div class="page-content  ">
-                    <div class="row mb-4 p-0 ">
-                        <div class="col-md-3  mt-1">
-                            <div >
-                            <!-- Advanced filter responsive toggler START -->
-                            <div class="d-flex align-items-center  d-lg-none ">
-                                <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                                    <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+                    <div class="row mb-4 p-0">
+                        <div class="col-md-3  mt-1 ">
 
-                                </button>
-                            </div>
+                                <div class="d-flex align-items-center  d-lg-none ">
+                                    <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                                        <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
 
+                                    </button>
+                                </div>
+                            <!-- Navbar START-->
                             <nav class="navbar  navbar-vertical navbar-light">
-                                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-                                    <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-3 mt-2" tabindex="-1" id="navbarVerticaloffca nvas">
-                                        <div class="offcanvas-body pt-5 pt-lg-0">
+                                {{-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar"> --}}
+                                    <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0 mt-0 " tabindex="-1" id="offcanvasSideNavbar">
+                                        <!-- Offcanvas header -->
+                                            <div class="offcanvas-header d-md-none">
+                                                <button type="button" class="btn-close text-reset ms-auto"
+                                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            </div>
+                                            <!-- Offcanvas body -->
+                                        <div class="offcanvas-body d-block px-2 px-lg-0">
+                                            <!-- Card START -->
+                                            <div class="px-4 pt-2">
+                                             <!-- Avatar -->
+                                            <div class="mb-3">
+                                                <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  " src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
+                                            </div>
+                                             <!-- Info -->
+                                            <h5 class="">
+                                                <a href="http://localhost/jetstream/channel/Ng==">Rahul</a>
+                                           </h5>
+                                            <div class="d-flex gap-3 mt-3 mb-1">
+                                                <div>
+                                                    <h6 class="mb-0">256</h6>
+                                                    <small>Videos</small>
+                                                </div>
+                                                <div class="vr"></div>
+                                                <div>
+                                                    <h6 class="mb-0">2.5k</h6>
+                                                    <small>Subsriber</small>
+                                                </div>
+                                            </div>
+
+                                            <div></div>
+                                            <!-- Divider -->
+                                            <hr>
                                             <!-- Card START -->
                                             <!-- Cover image -->
-                                            <div class="h-50px" style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                                            {{-- <div class="h-50px" style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                                             </div>
                                             <!-- Avatar -->
                                             <div class="mb-0">
@@ -196,7 +237,7 @@
 
                                             <div></div>
                                             <!-- Divider -->
-                                            <hr>
+                                            <hr> --}}
                                             <!-- Side Nav START -->
                                             <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                                 <li class="nav-item">
@@ -217,77 +258,48 @@
                                                 <!-- Side Nav END -->
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
+                                {{-- </div> --}}
                             </nav>
-                        </div>
-                        </div>
-                        <div class="col-md-9 mb-4 mt-5">
-                            <div class="mann px-2">
+
+                    </div>
+                    <div class="col-md-9 ">
+                        <div class="mann ">
+                            <div class="row px-4 mt-3">
+                                <div class="col-md-12">
+                                    <div class="card p-4 ">
                                 <!-- Video main feed -->
                                 <div class="owl-carousel owl-theme  mt-0">
                                     @foreach ($videos as $video)
                                     @foreach ($video['posts'] as $posts)
                                     @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
-                                    <div class="item_{{ $posts['id'] }}">
+                                    <div class="  item_{{ $posts['id'] }}">
                                         <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
-                                            <div class="card">
+                                            {{-- <div class="card"> --}}
                                                 <video width="100%" height="100%" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" class="video_autoplay">
                                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}" type="video/mp4">
                                                 </video>
-                                                <div class="card-body p-2">
-                                                    <h5>
-                                                        {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }}
-                                                    </h5>
-
-                                                    <div class="row">
-                                                        <div class="col-3 ">
-                                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class="h-12 thumb">
+                                                <div class="card-body p-3">
+                                                        <h6 class="mb-3">
+                                                            {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 14) . '...' : $posts['title'] }}
+                                                        </h6>
+                                                    <div class="row ">
+                                                        <div class="col-md-2 ">
+                                                            <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class=" rounded-circle thumb">
                                                         </div>
-                                                        <div class="col-9 g-2">
-                                                            <div class="detail">
-                                                                {{-- {{url('/channel/'.$video['id'])}} --}}
-                                                                {{ $video['name'] }}
-                                                                <p> View:{{ $posts['views'] }}</p>
-                                                                <!-- <ul class="Views">
-                                                            <li>
-                                                            </li>
-                                                        </ul> -->
+                                                        <div class="col-md-10 ">
+                                                            <div class="detail d-flex">
+                                                                <h6 class="">
+                                                                    {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                                    {{ $video['name'] }}
+                                                                </h6>
+                                                                <p class="ms-auto"> views</p>
+                                                                {{-- <p class="ms-auto"> View:{{ $posts['views'] }}</p> --}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    @endif
-                                    @endforeach
-                                    @endforeach
-                                </div>
-                                <div class="row mt-4">
-                                    @foreach ($videos as $video)
-                                    @foreach ($video['posts'] as $posts)
-                                    @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
-                                    <div class=" col-sm-6 col-md-4 col-xl-3 col-xxl-2 mb-3 item_{{ $posts['id'] }}">
-                                        <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
-                                            <div class="card">
-                                                <video width="100%" height="100%" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" class="video_autoplay">
-                                                    <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}" type="video/mp4">
-                                                </video>
-                                                <div class="card-body">
-                                                <div class="d-flex align-items-center mb-3">
-                                                    <!-- Avatar -->
-                                                    <div class="avatar avatar-xxs me-2">
-                                                    <img class="avatar-img rounded-circle" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" alt="">
-                                                    </div>
-                                                    <!-- Avatar name -->
-                                                    <h6 class="mb-0"> <a href="#!">  {{ $video['name'] }} </a> </h6>
-                                                    <span class="ms-auto small"> {{ $posts['views'] }} views</span>
-                                                </div>
-                                                <!-- Video title  -->
-                                                <h6 class="mb-0">  {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }}
-                                                                            </h6>
-                                                </div>                                                
-                                            </div>
+                                            {{-- </div> --}}
                                         </a>
                                     </div>
                                     @endif
@@ -295,12 +307,74 @@
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row ">
+                            </div>
+                            </div>
+                                <div class="row px-4 mt-4">
+                                    <div class="col-md-12 my-4">
+                                        <div class="">
+                                            <h5 class="mb-md-0">Trending</h5>
+                                        </div>
+                                    </div>
+                                        @foreach ($videos as $video)
+                                        @foreach ($video['posts'] as $posts)
+                                        @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
+                                        <div class=" col-sm-6 col-md-4 col-xl-3 col-xxl-2 mb-3 item_{{ $posts['id'] }}">
+                                            <div class="card">
+                                            <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
+                                                    <video width="100%" height="100%" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" class="video_autoplay">
+                                                        <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}" type="video/mp4">
+                                                    </video>
+                                                    <div class="card-body p-3">
+                                                        <h6 class="mb-3">
+                                                            {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 14) . '...' : $posts['title'] }}
+                                                        </h6>
 
-                    </div>
+                                                        <div class="row ">
+                                                            <div class="col-md-2 ">
+                                                                <img src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" class=" rounded-circle thumb">
+                                                            </div>
+                                                            <div class="col-md-10 ">
+                                                                <div class="detail d-flex">
+                                                                <h6>
+                                                                    {{-- {{url('/channel/'.$video['id'])}} --}}
+                                                                    {{ $video['name'] }}
+                                                                </h6>
+                                                                    <p class="ms-auto"> views</p>
+                                                                    <!-- <ul class="Views">
+                                                                <li>
+                                                                </li>
+                                                            </ul> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="card-body">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <!-- Avatar -->
+                                                        <div class="avatar avatar-xxs me-2">
+                                                        <img class="avatar-img rounded-circle" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $video['profile_photo_path'] }}" alt="">
+                                                        </div>
+                                                        <!-- Avatar name -->
+                                                        <h6 class="mb-0"> <a href="#!">  {{ $video['name'] }} </a> </h6>
+                                                        <span class="ms-auto small"> {{ $posts['views'] }} views</span>
+                                                    </div>
+                                                    <!-- Video title  -->
+                                                    <h6 class="mb-0">  {{ strlen($posts['title']) > 15 ? substr($posts['title'], 0, 20) . '...' : $posts['title'] }}
+                                                                                </h6>
+                                                    </div> --}}
+                                            </a>
+                                        </div>
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                        @endforeach
+
+                                </div>
+                            </div>
+                        </div>
                 </div>
+
+            </div>
         </main>
         <!-- **************** MAIN CONTENT END **************** -->
         <!-- =======================
@@ -314,7 +388,7 @@ JS libraries, plugins and custom scripts -->
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/plyr/plyr.js"></script>
         <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-            <!-- Template Functions 
+            <!-- Template Functions
             -->
         <script src="assets/js/functions.js"></script>
         <script>
