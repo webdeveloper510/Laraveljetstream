@@ -3,7 +3,7 @@
     <html lang="en">
 
     <head>
-        <title>Social - Network, Community and Event Theme</title>
+        {{-- <title>Social - Network, Community and Event Theme</title> --}}
         <!-- Meta Tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -233,7 +233,7 @@
                 <div class="row g-0">
                     <!-- Sidenav START -->
                     <div class="col-md-3 col-lg-3  gap-4 ">
-                        <div class="sidbar  ">
+                        <div class="sidbar">
                         <!-- Advanced filter responsive toggler START -->
                         <div class="d-flex align-items-center  d-lg-none ">
                             <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
@@ -356,8 +356,7 @@
                                                                 <span
                                                                     class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
                                                                 <span
-                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">1
-                                                                    min ago</span>
+                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</span>
                                                             </div>
                                                         </div>
                                                         <!-- Video info -->
@@ -365,15 +364,12 @@
                                                             <div class="d-flex align-items-center mb-3">
                                                                 <!-- Avatar -->
                                                                 <div class="avatar avatar-xxs me-2">
-                                                                    <img class="avatar-img rounded-circle"
-                                                                        src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/01.jpg"
-                                                                        alt="">
+                                                                    <img class="avatar-img rounded-circle" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['user']['profile_photo_path'] }}" alt="">
                                                                 </div>
                                                                 <!-- Avatar name -->
-                                                                <h6 class="mb-0"> <a
-                                                                        href="#!">{{$data['title'] }}</a>
+                                                                <h6 class="mb-0">{{$data['title'] }}
                                                                 </h6>
-                                                                <span class="ms-auto small">{{$data['views']}}</span>
+                                                                <span class="ms-auto small">views:{{$data['views']}}</span>
                                                             </div>
                                                             <!-- Video title  -->
                                                             {{-- <h6 class="mb-0">  New movie trailers

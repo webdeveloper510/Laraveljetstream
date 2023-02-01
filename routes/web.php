@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CommentController;
 use App\Models\User;
+use App\Models\product;
+use App\Models\Subscribe;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,8 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $videos = User::with(['posts','Report_video'])->get()->toArray();
+    return view('welcome',compact('videos'));
 });
 
 
@@ -31,10 +34,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
 
         $videos = User::with(['posts','Report_video'])->get()->toArray();
+        $auth_id = auth()->user()->id;
+        $total_videos = product::where(['user_id' => $auth_id])->count();
+        $login_user_subscriber = Subscribe::where(['user_id' => $auth_id])->sum('count');
         // $user = auth()->user();
         // echo "<pre>";
         // print_r($videos);die;
-         return view('product.index', compact('videos'));
+         return view('product.index', compact('videos','total_videos','login_user_subscriber'));
     })->name('dashboard');
 });
 Route::middleware([

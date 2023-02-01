@@ -1,5 +1,34 @@
 <x-app-layout>
 @include('header')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {{-- <title>Social - Network, Community and Event Theme</title> --}}
+
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Webestica.com">
+  <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/glightbox-master/dist/css/glightbox.min.css">
+
+  <!-- Theme CSS -->
+  <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous">
@@ -14,7 +43,10 @@
         skiptranslate goog-te-gadget {
             display: none
         }
-  
+        a.nav-link {
+              display: flex;
+            }
+
         body {
             top: 0px !important;
             position: static !important;
@@ -287,7 +319,7 @@
         text-decoration: none;
     }
 
-    
+
  .col-lg-3 {
     position: fixed !important;
     z-index: 1 !important;
@@ -306,100 +338,75 @@
 <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-    <!-- MultiStep Form -->
-    <div class="row  bg-white">
-         <!-- Sidenav START -->
-          <div class="col-md-3  g-0 ">
-             <div class="sidbar">
-                        <!-- Advanced filter responsive toggler START -->
-             <div class="d-flex align-items-center  d-lg-none ">
-              <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
-               data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
-                 </button>
-               </div>
-            <!-- Advanced filter responsive toggler END -->
+            <div class="d-flex align-items-center  d-lg-none mt-3 ">
+                        <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                            <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
 
-            <!-- Navbar START-->
-            <nav class="navbar navbar-expand-lg mx-0 ">
-              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-                <!-- Offcanvas header -->
-                <div class="offcanvas-header">
-                  <button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-                </div>
-
-                <!-- Offcanvas body -->
-                <div class="offcanvas-body d-block px-2 px-lg-0">
-                  <!-- Card START -->
-                  <div class="card overflow-hidden ml-4">
-                    <!-- Cover image -->
-                    <div class="h-20"
-                      style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
+                        </button>
                     </div>
-                    <!-- Card body START -->
-                    <div class="card-body pt-0">
-                      <div class="text-center">
-                        <!-- Avatar -->
-                        <div class="mb-3">
-                         <img class="avatar-img rounded-circle border border-white border-3 h-20 w-20 mx-auto"
-                                  src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
-                                  alt="" style="z-index:0;">
-                      </div>
-                        <!-- Info -->
-                        <h5 class="mb-0">{{auth()->user()->name}}</h5>
-                        <!-- {{-- <small>Web Developer at Webestica</small> --}} -->
-                      </div>
-                      <!-- Divider -->
-                      <hr>
-                      <!-- Side Nav START -->
-                      <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                        <li class="nav-item">
-                          <a class="nav-link text-dark d-flex" href="<?php echo URL::to('/')?>/dashboard"> <img class="me-2 h-20px fa-fw"
-                              src="<?php echo URL::to('/')?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
-                            </span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-dark d-flex"
-                            href="<?php echo URL::to('/')?>/uploadpage">
-                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/medal-outline-filled.svg"
-                              alt=""><span>Upload Video </span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-dark d-flex"
-                            href="{{URL::to('/channel/'. base64_encode(auth()->user()->id))}}">
-                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/clock-outline-filled.svg"
-                              alt=""><span>Your Channel </span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-dark d-flex"
-                            href="<?php echo URL::to('/')?>/watchlater">
-                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/')?>/public/assets/images/icon/like-outline-filled.svg"
-                              alt=""><span>Watch Later </span></a>
-                        </li>
-                      </ul>
-                      <!-- Side Nav END -->
-                    </div>
-                    <!-- Card body END -->
-                    <!-- Card footer -->
-                  </div>
-                  <!-- Card END -->
+                <!-- Sidenav START -->
+                <nav class="navbar  navbar-vertical navbar-light">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
+                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
+                            <div class="offcanvas-body pt-5 pt-lg-0">
+                                <!-- Card START -->
 
-                  <!-- Helper link START -->
-                </div>
-              </div>
-            </nav>
-            <!-- Navbar END-->
-          </div>
-          </div>
-          <!-- Sidenav END -->
+                                <!-- Avatar -->
+                                <div class="avatar avatar-lg mb-3">
+                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
+                                </div>
+                                <!-- Info -->
+                                <h5 class="mb-0"><a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
+                                    </a></h5>
+
+                                    <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
+                                    <!-- User stat item -->
+                                    <div>
+                                        <h6 class="mb-0">{{$total_videos}}</h6>
+                                        <small>Videos</small>
+                                    </div>
+                                    <!-- Divider -->
+                                    <div class="vr"></div>
+                                    <!-- User stat item -->
+                                    <div>
+                                        <h6 class="mb-0">{{$login_user_subscriber}}</h6>
+                                        <small>Subscriber</small>
+                                    </div>
+
+                                    </div>
+                                <!-- Divider -->
+                                <hr>
+                                <!-- Side Nav START -->
+                                <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
+                                            </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your Channel </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch Later </span></a>
+                                    </li>
+                                    <!-- Side Nav END -->
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="page-content">
+                    <!-- Official trailer START -->
+                    <div class="row gx-4">
         {{-- <div>
         <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
         </div> --}}
-        <div class="col-md-9  man  gap-4">
+        <div class="col-md-12  man  gap-4">
             <form id="msform" method="POST">
                 <!-- progressbar -->
-
                 <div class="row">
                     <div id="progress-bar" class="progress_bar" style="display: none">0%</div>
                 </div>
@@ -407,11 +414,10 @@
                     <li class="active">Details</li>
                     <li>Video elements</li>
                     <li>Checks</li>
-
                 </ul>
                 <!-- fieldsets -->
                 <fieldset>
-                    <h2 class="fs-title"> Details</h2>
+                    <h2 class="fs-title">Details</h2>
                     <div class="mb-3">
                         <label>Title</label>
                         <input type="text" name="title" class="form-control" />
@@ -476,7 +482,7 @@
                         <p class="filename"></p>
                     </div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    
+
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset>
@@ -644,7 +650,7 @@
 </body>
 <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
-{{--------------------------------- Get selected input type file name ---------------------------------}}
+{{------------Get selected input type file name------------------}}
 
 <script>
     $(document).ready(function() {
@@ -655,7 +661,7 @@
         });
     });
 </script>
-{{-------------------------Preview of video file, selecting from input type='file'---------------------}}
+{{---------Preview of video file, selecting from input type='file'-----------}}
 <script>
     document.getElementById("videoUpload").onchange = function(event) {
       let file = event.target.files[0];
@@ -665,7 +671,7 @@
     }
     </script>
 
-{{-- ------------------------------------Translator---------------------------------------}}
+{{-- --------------------------Translator----------------------}}
 <script type="text/javascript">
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({

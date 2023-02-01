@@ -1,5 +1,5 @@
 <x-app-layout>
-  
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +36,7 @@
         skiptranslate goog-te-gadget {
             display: none
         }
-  
+
         body {
             top: 0px !important;
             position: static !important;
@@ -59,10 +59,12 @@
 
 /* cover image height */
 .cover_img {
-    
+
     height: 250px !important;
 }
-
+a.nav-link {
+              display: flex;
+            }
 
 
     </style>
@@ -281,109 +283,76 @@ Header END -->
 
     <!-- Container START -->
     <div class="container-fluid">
-      <div class="row ">
-        <!-- Main content START -->
-        <div class="col-lg-3  g-0 ">
-           <!-- Advanced filter responsive toggler START -->
-           <div class="d-flex align-items-center  d-lg-none ml-2 mt-2">
-                            <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
-                              
-                            </button>
-                        </div>
+    <div class="d-flex align-items-center  d-lg-none mt-3">
+                        <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                            <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+
+                        </button>
+                    </div>
                 <!-- Sidenav START -->
-          
-                <div class="navbar  navbar-vertical hit navbar-light ">
-                  <div class="offcanvas offcanvas-start custom-scrollbar rounded pt-0" tabindex="-1"
-                    id="offcanvasSideNavbar">
-                    <!-- Offcanvas header -->
-                    <div class="offcanvas-header-d-md-hidden ms-auto">
-                             <button type="button" class="btn-close text-reset ms-auto d-md-none"
-                                  data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <nav class="navbar  navbar-vertical navbar-light">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
+                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
+                            <div class="offcanvas-body pt-5 pt-lg-0">
+                                <!-- Card START -->
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-lg mb-3">
+                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
                                 </div>
-                    <div class="offcanvas-body pt-0 pt-lg-0  ">
-                    <div class="h-50px"
-                            style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
-                          </div>
-                      <!-- Avatar -->
-                      <div class=" mb-3">
-                          <img class="rounded-circle border border-white border-3 mx-auto"
-                              src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}">
+                                <!-- Info -->
+                                <h5 class="mb-0"><a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
+                                    </a></h5>
 
+                                    <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
+                      <!-- User stat item -->
+                      <div>
+                        <h6 class="mb-0">{{$total_videos}}</h6>
+                        <small>Videos</small>
                       </div>
-                      <!-- Info -->
-                      <h5 class="mb-0 text-center">{{auth()->user()->name}} </h5>
-                      <!-- <small>Web Developer at Webestica</small> -->
-                      <!-- User stat START -->
-                    <div>
-
-                  </div>
-                <!-- User stat END -->
-
-                <!-- Divider -->
-                <hr>
-
-                <!-- Side Nav START -->
-                <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                  <li class="nav-item">
-                    <a class="nav-link d-flex"
-                      href="<?php echo URL::to('/'); ?>/dashboard"> <img
-                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
-                      </span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link d-flex"
-                      href="<?php echo URL::to('/'); ?>/uploadpage">
-                      <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
-                        alt=""><span>Upload Video </span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link d-flex"
-                      href="{{URL::to('/channel/'.$id)}}">
-                      <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your
-                        Channel </span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link d-flex"
-                      href="<?php echo URL::to('/'); ?>/watchlater"> <img
-                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch
-                        Later </span></a>
-                  </li>
-                  {{-- <li class="nav-item">
-                    <a class="nav-link d-flex"
-                      href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/notifications.html"> <img
-                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/notification-outlined-filled.svg"
-                        alt=""><span>Notifications </span></a>
-                  </li> --}}
-                  {{-- <li class="nav-item">
-                    <a class="nav-link d-flex"
-                      href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/settings.html"> <img
-                        class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/cog-outline-filled.svg" alt=""><span>Settings
-                      </span></a>
-                  </li> --}}
-                  {{-- <li class="nav-item">
-                    <a class="nav-link d-flex"
-                      href="file:///C:/Users/Hp/Downloads/social_v1.0.0/social_v1.0.0/template/sign-in-advance.html">
-                      <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/arrow-boxed-outline-filled.svg"
-                        alt=""><span>Logout</span></a>
-                  </li> --}}
-                </ul>
-                <!-- Side Nav END -->
-              </div>
-            </div>
-          </div>
-		 </div>
+                      <!-- Divider -->
+                      <div class="vr"></div>
+                      <!-- User stat item -->
+                      <div>
+                        <h6 class="mb-0">{{$login_user_subscriber}}</h6>
+                        <small>Subscriber</small>
+                      </div>
+                    </div>
+                        <!-- Divider -->
+                                <hr>
+                                <!-- Side Nav START -->
+                                <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/dashboard">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
+                                            </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your Channel </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch Later </span></a>
+                                    </li>
+                                    <!-- Side Nav END -->
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="page-content">
+                    <!-- Official trailer START -->
+                    <div class="row gx-4">
           <!-- Sidenav END -->
-        <div class="col-md-6 my-3   pt-0 gap-0 ">
+        <div class="col-md-9 my-3   pt-0 gap-0 ">
           <div class="height_up ">
           <!-- Card START -->
           <div class="card ">
               <div class="cover_img"
                   style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
               </div>
-           
-		
             <!-- Card body START -->
             <div class="card-body py-0">
               <div class="d-sm-flex align-items-start text-center text-sm-start">
@@ -398,34 +367,14 @@ Header END -->
                 </div>
                 <div class="ms-sm-4 mt-sm-3">
                   <!-- Info -->
-
                   <h1 class="mb-0 h5">{{auth()->user()->name}}<i class="bi bi-patch-check-fill text-success small"></i></h1>
-                  <p class="text-black">250 connections</p>
+                  <p class="text-black">{{$login_user_subscriber}}  connections</p>
                 </div>
                 <!-- Button -->
                 <div class="d-flex mt-3 justify-content-center ms-sm-auto">
                   <a class="btn btn-danger-soft me-2" href="<?php echo URL::to('/'); ?>/user/profile"></i> Edit
                     profile </a>
-                  <div class="dropdown">
-                    <!-- Card share action menu -->
-                    <button class="icon-md btn btn-light" type="button" id="profileAction2" data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                      <i class="bi bi-three-dots"></i>
-                    </button>
-                    <!-- Card share action dropdown menu -->
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileAction2">
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-bookmark fa-fw pe-2"></i>Share profile in a
-                          message</a></li>
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-file-earmark-pdf fa-fw pe-2"></i>Save your
-                          profile to PDF</a></li>
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>Lock profile</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Profile settings</a>
-                      </li>
-                    </ul>
-                  </div>
+
                 </div>
               </div>
               <!-- List profile -->
@@ -435,9 +384,8 @@ Header END -->
 
           <!-- Video START -->
           <div class="col-md-3 ">
-
           </div>
-          <div class="card ">
+          <div class="card mt-3">
             <!-- Card header START -->
             <div class="card-header border-0 pb-0">
               <h5 class="card-title">Videos</h5>
@@ -473,9 +421,7 @@ Header END -->
                                 src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
                         </video>
                       <!-- Duration -->
-                      <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">02:20</span>
-                      </div>
+
                     </div>
                     <!-- Video info -->
                     <div class="card-body px-0 pb-0 pt-2">
@@ -500,7 +446,7 @@ Header END -->
         <!-- Main content END -->
         <!-- Right sidebar START -->
         <div class="col-md-3 g-4 my-0 pt-3">
-          <div class="rightbar"> 
+          <div class="rightbar">
           <div class="row g-4">
             <!-- Card START -->
             <div class="col-sm-6 col-lg-12 ">
@@ -517,7 +463,7 @@ Header END -->
                     <li class="mb-2"> <i class="bi bi-calendar-date fa-fw pe-1"></i> Born: <strong> {{$videos ? $videos[0]['user']['date_of_birth']: ''}}
                       </strong> </li>
                     {{-- <li class="mb-2"> <i class="bi bi-heart fa-fw pe-1"></i> Status: <strong> Single </strong> </li> --}}
-                    <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos ? $videos[0]['user']['email']: ''}}</strong> </li>
+                    <!-- <li> <i class="bi bi-envelope fa-fw pe-1"></i> Email: <strong>{{$videos ? $videos[0]['user']['email']: ''}}</strong> </li> -->
                   </ul>
                 </div>
                 <!-- Card body END -->
@@ -540,11 +486,11 @@ JS libraries, plugins and custom scripts -->
   <!-- Bootstrap JS -->
   <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Vendors -->
-  <script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
+  <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
-  <!-- Template Functions -->
-  <script src="assets/js/functions.js"></script>
+  // <!-- Template Functions -->
+  <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script>
   <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
 
