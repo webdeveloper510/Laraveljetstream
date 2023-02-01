@@ -32,10 +32,10 @@
       <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/');?>/public/assets/css/jquery.mCustomScrollbar.css">
       <style>
         .style.attribute {
-    background-color: whitesmoke !important;
-    color: white;
-    font-family: 'Mulish', sans-serif;
-}
+        background-color: whitesmoke !important;
+        color: white;
+        font-family: 'Mulish', sans-serif;
+    }
       </style>
   </head>
   <body>

@@ -213,14 +213,22 @@
                 height: 605px !important;
             }
 
-
             .sidbar {
                 position: fixed !important;
                 top: 81px !important;
             }
-            /* nav.navbar.navbar-expand-lg.mx-0 {
-    height: 390px !important;
-} */
+
+
+         /* sidebar responsive button fix */
+        button.border-0.bg-transparent {
+            position: fixed;
+            top: 70px;
+        }
+
+        video#example1 {
+            height: 320px ;
+            object-fit: cover;
+        }
         </style>
 
     </head>
@@ -230,32 +238,6 @@
         <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-                <div class="row g-0">
-                    <!-- Sidenav START -->
-                    <div class="col-md-3 col-lg-3  gap-4 ">
-                        <div class="sidbar">
-                        <!-- Advanced filter responsive toggler START -->
-                        <div class="d-flex align-items-center  d-lg-none ">
-                            <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                                <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
-
-                            </button>
-                        </div>
-                        <!-- Navbar START-->
-                        <nav class="navbar navbar-expand-lg w-75">
-                            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-                                <!-- Offcanvas header -->
-                                <div class="offcanvas-header">
-                                    <button type="button" class="btn-close text-reset ms-auto"
-                                        data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                </div>
-                                <!-- Offcanvas body -->
-                                <div class="offcanvas-body d-block px-2 px-lg-0">
-                                    <!-- Card START -->
-                                    <div class="card overflow-hidden">
-                                        <!-- Cover image -->
-                                        <div class="h-50px"
                                             style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                                         </div>
                                         <!-- Card body START -->
@@ -270,7 +252,6 @@
                                                 <!-- Info -->
                                                 <h5 class="mb-0">{{ auth()->user()->name }}</h5>
                                                 <!-- {{-- <small>Web Developer at Webestica</small> --}} -->
-                                            </div>
                                             <hr>
                                             <!-- Side Nav START -->
                                             <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
@@ -349,7 +330,9 @@
                                                                     type="video/mp4">
                                                                 <track kind="captions" label="English" srclang="en"
                                                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                                            </video>
+
+                                                                </video>
+                                                                <p>{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</p>
                                                             <!-- Duration -->
                                                             <div
                                                                 class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
@@ -474,7 +457,8 @@ JS libraries, plugins and custom scripts -->
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
         <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> -->
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous"></script>
     </body>
 
     </html>

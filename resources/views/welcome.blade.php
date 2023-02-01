@@ -36,11 +36,27 @@
                 font-family: 'Nunito', sans-serif;
             }
 
+            /* main column video poster css */
+            video[poster] {
+            height: 230px;
+            width: 100%;
+            object-fit: cover;
+            }  
+
+            /* sidebar top position */
+            .welcom{
+                top: 41px;
+            }
+            /* sidebar responsive button */
+            button.border-0.bg-transparent {
+                position: fixed !important;
+                top: 50px !important;
+            }
         </style>
 
     </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <body class="antialiased ">
+        <div class="relative flex items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0 ">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -61,16 +77,16 @@
             <!-- Container START -->
             <div class="container-fluid">
                    <div class="d-flex align-items-center  d-lg-none ">
-                        <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                        <button class="border-0 bg-transparent " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
 
                         </button>
                     </div>
                 <!-- Sidenav START -->
-                <nav class="navbar  navbar-vertical navbar-light">
+                <nav class="navbar  navbar-vertical welcom navbar-light mb-4">
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
-                            <div class="offcanvas-body pt-5 pt-lg-0">
+                        <!-- <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas"> -->
+                            <div class="offcanvas-body pt-5 pt-lg-0 mt-4">
                                 <!-- Card START -->
                                 <!-- Cover image -->
                                 <!-- <div class="h-50px" style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
@@ -117,7 +133,7 @@
                                     </li>
                                     <!-- Side Nav END -->
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </nav>
 
@@ -125,10 +141,10 @@
                 <!-- Main content START -->
                 <div class="page-content  ">
                    
-                    <div class="row mb-4 p-0 ">
+                    <div class="row mb-4 ">
 
-                        <div class="col-md-12 mb-4 mt-3">
-                            <div class="card p-4">
+                        <div class="col-md-12 mb-4 mt-3 ">
+                            <div class="card p-4 mt-2">
                                 <!-- Video main feed -->
                                 <div class="owl-carousel owl-theme  mt-0">
                                     @foreach ($videos as $video)
