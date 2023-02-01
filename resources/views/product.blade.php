@@ -27,8 +27,12 @@
 
   <!-- Theme CSS -->
   <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
-  
+ 
 
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous">
+</script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous">
@@ -139,7 +143,7 @@
     #msform {
         text-align: center;
         position: relative;
-        margin-top: 30px;
+        margin-top: 10px;
     }
 
     ul.ml-10.mt-3 {
@@ -153,9 +157,9 @@
         box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
         padding: 20px 30px;
         box-sizing: border-box;
-        width: 80%;
+        width: 100%;
         text-align: left;
-        margin: 0 10%;
+        margin: 0 0%;
 
         /*stacking fieldsets above each other*/
         position: relative;
@@ -238,6 +242,7 @@
         font-size: 9px;
         width: 33.33%;
         float: left;
+        right: 22px;
         position: relative;
         letter-spacing: 1px;
     }
@@ -320,32 +325,43 @@
     }
 
     
- .col-lg-3 {
+ /* .col-lg-3 {
     position: fixed !important;
     z-index: 1 !important;
-}
+} */
 
 .col-md-9 {
     margin-inline-start: auto !important;
 }
 
-/* .row.pt-20.bg-whitesmoke {
-    background-color: whitesmoke;
-} */
+    /* sidebar responsive button fix */
+    button.border-0.bg-transparent {
+         position: fixed ;
+          top: 68px ;
+     }
+
+     /* mainbar height */
+        .page-content {
+        margin-top: 60px;
+    }
+
+    .sub.btn-primary {
+        border-radius: 22px !important;
+        padding: 10px 25px !important;
+    }
 </style>
 
 <body class="bg-white">
 <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-            <div class="d-flex align-items-center  d-lg-none mt-3 ">
+                <div class="d-flex align-items-center  d-lg-none  mb-5">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-                            <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
-
+                            <i class="btn btn-primary fw-bold fa-solid fa-sliders-h  m-0 "></i>
                         </button>
                     </div>
                 <!-- Sidenav START -->
-                <nav class="navbar  navbar-vertical navbar-light">
+                <nav class="navbar  navbar-vertical navbar-light mt-1">
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
                         <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
                             <div class="offcanvas-body pt-5 pt-lg-0">
@@ -395,16 +411,16 @@
                                     </li>
                                     <!-- Side Nav END -->
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </nav>
                 <div class="page-content">
                     <!-- Official trailer START -->
-                    <div class="row gx-4">
-        {{-- <div>
-        <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
-        </div> --}}
-        <div class="col-md-12  man  gap-4">
+                    <div class="row gx-4 ">
+                {{-- <div>
+                <img src="<?php echo URL::to('public/asstes/loader.gif') ?>">
+                </div> --}}
+                <div class="col-md-12  mt-2 ">
             <form id="msform" method="POST">
                 <!-- progressbar -->
 
@@ -484,7 +500,7 @@
                         <p class="filename"></p>
                     </div>
                     <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    
+
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset>
@@ -501,7 +517,7 @@
                                 Make your video <b>public </b>,<b> unlisted </b>, or <b> private</b>
                             </small>
                         </div>
-                        <ul class="ml-10 mt-3">
+                        <ul class="ml-0 mt-3">
                             <li>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="security" id="exampleRadios1"
@@ -550,9 +566,10 @@
                             </li>
                         </ul>
                     </div>
-                    <button type="submit"  value="Next">Submit</button>
+                    <button type="submit"  class="sub btn btn-primary " value="Next">Submit</button>
                 </fieldset>
             </form>
+
         </div>
     </div>
             </div>
@@ -685,7 +702,16 @@
         $('.goog-te-gadget').html($('.goog-te-gadget').children());
     })
 </script>
+<script src="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Vendors -->
+
+        <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/dropzone.js"></script> -->
+        <!-- Template Functions -->
+        <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> -->
+
+        <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> -->
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 </script>
+
 </html>
 </x-app-layout>

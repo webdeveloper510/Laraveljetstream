@@ -82,7 +82,11 @@
             .gap-xl-3 {
                 margin-left: 12px !important;
             }
-          
+           /* sidebar responsive button fix */
+            button.border-0.bg-transparent {
+                position: fixed ;
+                top: 68px ;
+            }
         </style>
 
         <title>Social - Network, Community and Event Theme</title>
@@ -364,7 +368,7 @@ Header END -->
 
             <!-- Container START -->
             <div class="container-fluid">
-                  <div class="d-flex align-items-center  d-lg-none mt-3">
+                  <div class="d-flex align-items-center  d-lg-none mt-3 mb-3">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
                         </button>
@@ -426,12 +430,12 @@ Header END -->
                 <!-- Sidenav END -->
 
                 <!-- Main content START -->
-                <div class="page-content">
+                <div class="page-content ">
                     <!-- Official trailer START -->
-                    <div class="row gx-4 mt-3 bg-white">
+                    <div class="row gx-4 mt-5 bg-white">
                         <div class="col-md-8 ">
                             <!-- Video START -->
-                            <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100">
+                            <div class="card card-body p-0 rounded-end-lg-0 position-relative h-100 ">
                                 <!-- Video image -->
                                 <div class="card-image video">
                                     <div class="overflow-hidden fullscreen-video w-100">

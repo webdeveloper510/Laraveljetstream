@@ -81,24 +81,12 @@
             .owl-dots {
                 display: none !important;
             }
-
-            /* .row {
-                --bs-gutter-x: auto !important;
-            } */
-
-          
-
-            /* .mx-4 {
-                margin-left: 7.7rem !important;
-            } */
-
-
-
-            /* .page-content {
-                height: 700px !important;
-            } */
-
-            /* main col height */
+ 
+            /* sidebar responsive button fix */
+            button.border-0.bg-transparent {
+                position: fixed ;
+                top: 68px ;
+            }
 
            
         </style>
@@ -119,17 +107,17 @@
         <main>
             <!-- Container START -->
             <div class="container-fluid">
-                   <div class="d-flex align-items-center  d-lg-none mt-3 ">
+                   <div class="d-flex align-items-center  d-lg-none  mb-5">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
 
                         </button>
                     </div>
                 <!-- Sidenav START -->
-                <nav class="navbar  navbar-vertical navbar-light">
+                <nav class="navbar  navbar-vertical navbar-light ">
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
-                            <div class="offcanvas-body pt-5 pt-lg-0">
+                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="offcanvasSideNavbar">
+                            <div class="offcanvas-body pt-5  pt-lg-0 ">
                                 <!-- Card START -->
                                 <!-- Cover image -->
                                 <!-- <div class="h-50px" style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
@@ -176,6 +164,7 @@
                                         <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
                                             <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch Later </span></a>
                                     </li>
+                                </ul>
                                     <!-- Side Nav END -->
                             </div>
                         </div>
@@ -186,10 +175,10 @@
                 <!-- Main content START -->
                 <div class="page-content  ">
                    
-                    <div class="row mb-4 p-0 ">
+                    <div class="row mb-4 p-0 mt-2">
 
-                        <div class="col-md-12 mb-4 mt-3">
-                            <div class="card p-4">
+                        <div class="col-md-12 mb-4 mt-0">
+                            <div class="card p-4 ">
                                 <!-- Video main feed -->
                                 <div class="owl-carousel owl-theme  mt-0">
                                     @foreach ($videos as $video)
@@ -225,7 +214,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="mann px-2">
+                            <div class="mann px-0">
                                 <div class="row mt-4">
                                 <div class="col-12 my-4">
                                     <div class="d-sm-flex justify-content-between align-items-center">

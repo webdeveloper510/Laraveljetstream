@@ -214,14 +214,22 @@
                 height: 605px !important;
             }
 
-
             .sidbar {
                 position: fixed !important;
                 top: 81px !important;
             }
-            /* nav.navbar.navbar-expand-lg.mx-0 {
-    height: 390px !important;
-} */
+
+            
+         /* sidebar responsive button fix */
+        button.border-0.bg-transparent {
+            position: fixed;
+            top: 70px;
+        }
+
+        video#example1 {
+            height: 320px ;
+            object-fit: cover;
+        }
         </style>
 
     </head>
@@ -231,13 +239,13 @@
         <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-            <div class="d-flex align-items-center  d-lg-none mt-3">
+            <div class="d-flex align-items-center  d-lg-none mt-3 mb-3">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
                         </button>
                     </div>
                 <!-- Sidenav START -->
-                <nav class="navbar  navbar-vertical navbar-light mt-4">
+                <nav class="navbar  navbar-vertical navbar-light mt-1">
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
                         <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
                             <div class="offcanvas-body pt-5 pt-lg-0">
@@ -331,7 +339,9 @@
                                                                     type="video/mp4">
                                                                 <track kind="captions" label="English" srclang="en"
                                                                     src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-                                                            </video>
+                                                            
+                                                                </video>
+                                                                <p>{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</p>
                                                             <!-- Duration -->
                                                             
                                                         </div>
@@ -446,7 +456,8 @@ JS libraries, plugins and custom scripts -->
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 
         <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> -->
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous"></script>
     </body>
 
     </html>

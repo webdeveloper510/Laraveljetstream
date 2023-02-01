@@ -50,6 +50,13 @@
             display: none
         }
 
+         /* sidebar responsive button fix */
+        button.border-0.bg-transparent {
+            position: fixed;
+            top: 67px;
+        }
+
+
 
 /* video title */
 .title_color
@@ -283,7 +290,7 @@ Header END -->
 
     <!-- Container START -->
     <div class="container-fluid">
-    <div class="d-flex align-items-center  d-lg-none mt-3">
+    <div class="d-flex align-items-center  d-lg-none mt-3 mb-3">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
 
@@ -347,10 +354,10 @@ Header END -->
                     <!-- Official trailer START -->
                     <div class="row gx-4">
           <!-- Sidenav END -->
-        <div class="col-md-9 my-3   pt-0 gap-0 ">
+        <div class="col-md-9 my-0    pt-0 gap-0 ">
           <div class="height_up ">
           <!-- Card START -->
-          <div class="card ">
+          <div class="card">
               <div class="cover_img"
                   style="background-image:url({{ 'https://images.unsplash.com/photo-1546587348-d12660c30c50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bmF0dXJhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60/' . Auth::user()->cover_img}}); background-position: center;z-index:0; background-size: cover; background-repeat: no-repeat;">
               </div>
@@ -450,11 +457,11 @@ Header END -->
         </div>
         <!-- Main content END -->
         <!-- Right sidebar START -->
-        <div class="col-md-3 g-4 my-0 pt-3">
+        <div class="col-md-3 g-4 my-0 pt-0">
           <div class="rightbar"> 
-          <div class="row g-4">
+          <div class="row g-2">
             <!-- Card START -->
-            <div class="col-sm-6 col-lg-12 ">
+            <div class="col-sm-6 col-lg-12 w-100">
               <div class="card  ">
                 <div class="card-header border-0 pb-0">October
                   <h5 class="card-title">About</h5>
