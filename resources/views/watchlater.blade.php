@@ -15,46 +15,42 @@
 
         <!-- Google Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
 
         <!-- Plugins CSS -->
-        <link rel="stylesheet" type="text/css"
-            href="<?php echo URL::to('/'); ?>/public/assets/vendor/font-awesome/css/all.min.css">
-        <link rel="stylesheet" type="text/css"
-            href="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css">
-        <link rel="stylesheet" type="text/css"
-            href="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/dropzone.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/font-awesome/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/dropzone.css" />
 
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo URL::to('/'); ?>/public/assets/css/style.css">
         <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <style>
+            .goog-te-gadget img {
+                vertical-align: middle;
+                border: none;
+                display: none;
+            }
 
-.goog-te-gadget img {
-            vertical-align: middle;
-            border: none;
-            display: none;
-        }
-        skiptranslate goog-te-gadget {
-            display: none
-        }
+            skiptranslate goog-te-gadget {
+                display: none
+            }
 
-        body {
-            top: 0px !important;
-            position: static !important;
-        }
+            body {
+                top: 0px !important;
+                position: static !important;
+            }
 
-        .goog-te-banner-frame {
-            display: none !important
-        }
+            .goog-te-banner-frame {
+                display: none !important
+            }
 
-        .goog-logo-link {
-            display: none
-        }
+            .goog-logo-link {
+                display: none
+            }
+
             input.form-control.ps-5.bg-light {
                 padding-right: 200px !important;
             }
@@ -201,15 +197,16 @@
             }
 
 
-            body{
-                margin:0 !important;
+            body {
+                margin: 0 !important;
             }
 
             nav.bg-white.border-b.border-gray-100.w-full {
                 position: fixed !important;
-                z-index: 1 ;
+                z-index: 1;
             }
-            .card.overflow-hidden{
+
+            .card.overflow-hidden {
                 height: 605px !important;
             }
 
@@ -219,16 +216,16 @@
             }
 
 
-         /* sidebar responsive button fix */
-        button.border-0.bg-transparent {
-            position: fixed;
-            top: 70px;
-        }
+            /* sidebar responsive button fix */
+            button.border-0.bg-transparent {
+                position: fixed;
+                top: 70px;
+            }
 
-        video#example1 {
-            height: 320px ;
-            object-fit: cover;
-        }
+            video#example1 {
+                height: 320px;
+                object-fit: cover;
+            }
         </style>
 
     </head>
@@ -238,209 +235,203 @@
         <main class="p-1">
             <!-- Container START -->
             <div class="container-fluid">
-                                            style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                                        </div>
-                                        <!-- Card body START -->
-                                        <div class="card-body pt-0">
-                                            <div class="text-center">
-                                                <!-- Avatar -->
-                                                <div class="avatar avatar-lg mb-3">
-                                                    <img class="avatar-img rounded-circle border border-white border-3"
-                                                        src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}"
-                                                        alt="">
+                <div class="d-flex align-items-center  d-lg-none mt-3 mb-3">
+                    <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+                        <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
+
+                    </button>
+                </div>
+                <!-- style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;"> -->
+        
+            <!-- Sidenav START -->
+            <nav class="navbar  navbar-vertical navbar-light">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
+                        <div class="offcanvas offcanvas-start custom-scrollbar rounded " tabindex="-1" id="navbarVerticaloffca nvas">
+                            <div class="offcanvas-body pt-5 pt-lg-0">
+                                <!-- Card START -->
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-lg mb-3">
+                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
+                                </div>
+                                <!-- Info -->
+                                <h5 class="mb-0"><a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
+                                    </a></h5>
+
+                                    <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
+                      <!-- User stat item -->
+                      <div>
+                        <h6 class="mb-0">{{$total_videos}}</h6>
+                        <small>Videos</small>
+                      </div>
+                      <!-- Divider -->
+                      <div class="vr"></div>
+                      <!-- User stat item -->
+                      <div>
+                        <h6 class="mb-0">{{$login_user_subscriber}}</h6>
+                        <small>Subscriber</small>
+                      </div>
+                    </div>
+                        <!-- Divider -->
+                                <hr>
+                                <!-- Side Nav START -->
+                                <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/dashboard">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg" alt=""><span>Home
+                                            </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex" href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your Channel </span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/watchlater">
+                                            <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg" alt=""><span>Watch Later </span></a>
+                                    </li>
+                                    <!-- Side Nav END -->
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="page-content">
+                    
+                <!-- Main content START -->
+                <div class="man  gap-4 ">
+                    <!-- Card START -->
+                    <div class="card md:px-5  h-100">
+                        <!-- Card header START -->
+                        <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
+                            <h1 class="h4 card-title">Videos</h1>
+                            <!-- Button modal -->
+                            <a class="btn btn-primary-soft" href="<?php echo URL::to('/'); ?>/uploadpage"> <i class="fa-solid fa-plus pe-1"></i> Add
+                                video</a>
+                        </div>
+                        <!-- Card header START -->
+                        <!-- Card body START -->
+                        <div class="card-body">
+                            <!-- Tab nav line -->
+                            <ul class="nav nav-tabs nav-bottom-line ">
+                                <li class="nav-item active"> <a class="nav-link active" data-bs-toggle="tab" href="#tab-1"> WATCH LATER </a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                                        PLAYLIST </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mb-0 pb-0">
+                                <!-- Home tab START -->
+                                <div class="tab-pane fade show active" id="tab-1">
+                                    <div class="row g-3">
+                                        @foreach ($product as $data)
+                                        <div class="col-sm-6 col-lg-4">
+                                            <!-- Video START -->
+                                            <div class="card p-0 shadow-none border-0 position-relative">
+                                                <!-- Video image -->
+                                                <div class="position-relative ">
+                                                    <video width="320" height="200" id="example1" controls muted>
+                                                        <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['file'] }}" type="video/mp4">
+                                                        <track kind="captions" label="English" srclang="en" src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
+
+                                                    </video>
+                                                    <h6 class="mb-0 mt-3">{{$data['title'] }}
+                                                        </h6>
+                                                    <!-- <p class="mb-0">{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</p> -->
+                                                    <!-- Duration -->
+                                                    <!-- <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
+                                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</span>
+                                                    </div> -->
                                                 </div>
-                                                <!-- Info -->
-                                                <h5 class="mb-0">{{ auth()->user()->name }}</h5>
-                                                <!-- {{-- <small>Web Developer at Webestica</small> --}} -->
-                                            <hr>
-                                            <!-- Side Nav START -->
-                                            <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/dashboard">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/home-outline-filled.svg"
-                                                            alt=""><span>Home
-                                                        </span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/uploadpage">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg"
-                                                            alt=""><span>Upload Video </span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex"
-                                                        href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg"
-                                                            alt=""><span>Your Channel </span></a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link d-flex" href="<?php echo URL::to('/'); ?>/watchlater">
-                                                        <img class="me-2 h-20px fa-fw"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/icon/like-outline-filled.svg"
-                                                            alt=""><span>Watch Later </span></a>
-                                                </li>
-                                            </ul>
+                                                <!-- Video info -->
+                                                <div class="card-body px-0">
+                                                    <div class="d-flex align-items-center mb-0">
+                                                        <!-- Avatar -->
+                                                        <div class="avatar avatar-xxs me-2">
+                                                            <img class="avatar-img rounded-circle" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['user']['profile_photo_path'] }}" alt="">
+                                                        </div>
+                                                        <!-- Avatar name -->
+                                                        <h6 class="mb-0">{{$data['title'] }}
+                                                        </h6>
+                                                        <span class="ms-auto small">views:{{$data['views']}}</span>
+                                                    </div>
+                                                    <!-- Video title  -->
+                                                    {{-- <h6 class="mb-0">  New movie trailers
+                                                           (2021 - 2022) September </h6> --}}
+                                                </div>
+                                            </div>
+                                            <!-- Video END -->
+                                        </div>
+                                        @endforeach
+                                        <div class="col-sm-6 col-lg-4">
+                                        </div>
+                                        <div class="col-sm-6 col-lg-4">
+                                        </div>
+                                        <div class="col-sm-6 col-lg-4">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </nav>
-                        <!-- Navbar END-->
-                        </div>
-                    </div>
-                    <!-- Main content START -->
-                    <div class="col-md-9 col-lg-9 man  gap-4 ">
-                        <!-- Card START -->
-                        <div class="card md:px-5  h-100">
-                            <!-- Card header START -->
-                            <div class="card-header d-sm-flex align-items-center justify-content-between border-0 pb-0">
-                                <h1 class="h4 card-title">Videos</h1>
-                                <!-- Button modal -->
-                                <a class="btn btn-primary-soft" href="<?php echo URL::to('/');?>/uploadpage"> <i class="fa-solid fa-plus pe-1"></i> Add
-                                    video</a>
-                            </div>
-                            <!-- Card header START -->
-                            <!-- Card body START -->
-                            <div class="card-body">
-                                <!-- Tab nav line -->
-                                <ul class="nav nav-tabs nav-bottom-line ">
-                                    <li class="nav-item active"> <a class="nav-link active" data-bs-toggle="tab"
-                                            href="#tab-1"> WATCH LATER </a>
-                                    </li>
-                                    <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-                                            PLAYLIST </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content mb-0 pb-0">
-                                    <!-- Home tab START -->
-                                    <div class="tab-pane fade show active" id="tab-1">
-                                        <div class="row g-3">
-                                            @foreach ($product as $data)
-                                                <div class="col-sm-6 col-lg-4">
-                                                    <!-- Video START -->
-                                                    <div class="card p-0 shadow-none border-0 position-relative">
-                                                        <!-- Video image -->
-                                                        <div class="position-relative">
-                                                            <video width="320" height="200" id="example1"
-                                                                controls muted>
-                                                                <source
-                                                                    src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['file'] }}"
-                                                                    type="video/mp4">
-                                                                <track kind="captions" label="English" srclang="en"
-                                                                    src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
-
-                                                                </video>
-                                                                <p>{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</p>
-                                                            <!-- Duration -->
-                                                            <div
-                                                                class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                                <span
-                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                                                <span
-                                                                    class="bg-dark bg-opacity-50 px-2 rounded text-white small ms-auto">{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</span>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Video info -->
-                                                        <div class="card-body px-0">
-                                                            <div class="d-flex align-items-center mb-3">
-                                                                <!-- Avatar -->
-                                                                <div class="avatar avatar-xxs me-2">
-                                                                    <img class="avatar-img rounded-circle" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['user']['profile_photo_path'] }}" alt="">
-                                                                </div>
-                                                                <!-- Avatar name -->
-                                                                <h6 class="mb-0">{{$data['title'] }}
-                                                                </h6>
-                                                                <span class="ms-auto small">views:{{$data['views']}}</span>
-                                                            </div>
-                                                            <!-- Video title  -->
-                                                            {{-- <h6 class="mb-0">  New movie trailers
-                                                           (2021 - 2022) September </h6> --}}
-                                                        </div>
-                                                    </div>
-                                                    <!-- Video END -->
-                                                </div>
-                                            @endforeach
-                                            <div class="col-sm-6 col-lg-4">
-                                            </div>
-                                            <div class="col-sm-6 col-lg-4">
-                                            </div>
-                                            <div class="col-sm-6 col-lg-4">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab-2">
-                                        <div class="row g-3">
-                                            <div class="col-md-4">
-                                                <div class="card p-0 shadow-none border-0 position-relative">
-                                                    <!-- Video image -->
-                                                    <div class="position-relative">
-                                                        <img class="rounded"
-                                                            src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/14.jpg"
-                                                            alt="">
-                                                        <!-- Duration -->
-                                                        <div
-                                                            class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
-                                                            <span
-                                                                class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
-                                                            <span
-                                                                class="bg-dark bg-opacity-50 px-2 mx-3 rounded text-white small">1
-                                                                min ago</span>
-                                                        </div>
-                                                        <div class="thumbn position-absolute">
-                                                            <span class="material-symbols-outlined"><small>11</small>
-                                                                <br />playlist_play</span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Video info -->
-                                                    <div class="card-body px-0">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <!-- Avatar -->
-                                                            <div class="avatar avatar-xxs me-2">
-                                                                <img class="avatar-img rounded-circle"
-                                                                    src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/01.jpg"
-                                                                    alt="">
-                                                            </div>
-                                                            <!-- Avatar name -->
-                                                            <h6 class="mb-0"> <a href="#!"> Frances Guerrero <i
-                                                                        class="bi bi-patch-check-fill text-success small"></i>
-                                                                </a> </h6>
-                                                            <span class="ms-auto small">{{$product[0]['views']}}</span>
-                                                        </div>
-                                                        <!-- Video title  -->
-                                                        <h6 class="mb-0"> <a class="stretched-link"
-                                                                href="post-video-details.html"> 8 shocking bitcoin
-                                                                crypto predictions for 2022 </a> </h6>
+                                <div class="tab-pane fade" id="tab-2">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <div class="card p-0 shadow-none border-0 position-relative">
+                                                <!-- Video image -->
+                                                <div class="position-relative">
+                                                    <img class="rounded" src="<?php echo URL::to('/'); ?>/public/assets/images/post/16by9/large/14.jpg" alt="">
+                                                    <!-- Duration -->
+                                                    <!-- <div class="position-absolute bottom-0 start-0 p-3 d-flex w-100">
+                                                        <span class="bg-dark bg-opacity-50 px-2 rounded text-white small">10:20</span>
+                                                        <span class="bg-dark bg-opacity-50 px-2 mx-3 rounded text-white small">1
+                                                            min ago</span>
+                                                    </div> -->
+                                                    <div class="thumbn position-absolute">
+                                                        <span class="material-symbols-outlined"><small>11</small>
+                                                            <br />playlist_play</span>
                                                     </div>
                                                 </div>
-                                                <!-- Video END -->
+                                                <!-- Video info -->
+                                                <div class="card-body px-0">
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <!-- Avatar -->
+                                                        <div class="avatar avatar-xxs me-2">
+                                                            <img class="avatar-img rounded-circle" src="<?php echo URL::to('/'); ?>/public/assets/images/avatar/01.jpg" alt="">
+                                                        </div>
+                                                        <!-- Avatar name -->
+                                                        <h6 class="mb-0"> <a href="#!"> Frances Guerrero <i class="bi bi-patch-check-fill text-success small"></i>
+                                                            </a> </h6>
+                                                        <span class="ms-auto small">{{$product[0]['views']}}</span>
+                                                    </div>
+                                                    <!-- Video title  -->
+                                                    <h6 class="mb-0"> <a class="stretched-link" href="post-video-details.html"> 8 shocking bitcoin
+                                                            crypto predictions for 2022 </a> </h6>
+                                                </div>
                                             </div>
+                                            <!-- Video END -->
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="tab-3">
-                                        <!-- Add Video -->
-                                        <div class="my-sm-5 py-sm-5 text-center">
-                                            <i class="display-1 text-muted bi bi-camera-reels"> </i>
-                                            <h4 class="mt-2 mb-3 text-body">No video founds</h4>
-                                            <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#modalCreateVideo"> Click here to add </button>
-                                        </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-3">
+                                    <!-- Add Video -->
+                                    <div class="my-sm-5 py-sm-5 text-center">
+                                        <i class="display-1 text-muted bi bi-camera-reels"> </i>
+                                        <h4 class="mt-2 mb-3 text-body">No video founds</h4>
+                                        <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreateVideo"> Click here to add </button>
                                     </div>
-                                    <div class="tab-pane fade" id="tab-4">
-                                        <!-- Add Video -->
-                                        <div class="my-sm-5 py-sm-5 text-center">
-                                            <i class="display-1 text-muted bi bi-camera-reels"> </i>
-                                            <h4 class="mt-2 mb-3 text-body">No video founds</h4>
-                                            <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#modalCreateVideo"> Click here to add </button>
-                                        </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-4">
+                                    <!-- Add Video -->
+                                    <div class="my-sm-5 py-sm-5 text-center">
+                                        <i class="display-1 text-muted bi bi-camera-reels"> </i>
+                                        <h4 class="mt-2 mb-3 text-body">No video founds</h4>
+                                        <button class="btn btn-primary-soft btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreateVideo"> Click here to add </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </main>
         <!-- **************** MAIN CONTENT END **************** -->
@@ -455,8 +446,8 @@ JS libraries, plugins and custom scripts -->
         <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/dropzone.js"></script> -->
         <!-- Template Functions -->
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-
-        <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> -->
+            <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> 
+            -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous"></script>
     </body>
