@@ -41,7 +41,7 @@
             height: 230px;
             width: 100%;
             object-fit: cover;
-            }  
+            }
 
             /* sidebar top position */
             .welcom{
@@ -69,9 +69,9 @@
                         @endif
                     @endauth
                 </div>
-            @endif         
+            @endif
 
-              
+
             </div>
           <main>
             <!-- Container START -->
@@ -92,7 +92,7 @@
                                 <!-- <div class="h-50px" style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                                 </div> -->
                                 <!-- Avatar -->
-                              
+
                                 <!-- Info -->
                                 <h5 class="mb-0">
                                     <a href="{{URL::to('/login')}}">Login</h5>
@@ -110,7 +110,7 @@
                         <h6 class="mb-0">2.5K</h6>
                         <small>Subscriber</small>
                       </div> -->
-                      
+
                     </div>
                                 <!-- Divider -->
                                 <hr>
@@ -140,7 +140,7 @@
                 <!-- Sidenav END -->
                 <!-- Main content START -->
                 <div class="page-content  ">
-                   
+
                     <div class="row mb-4 ">
 
                         <div class="col-md-12 mb-4 mt-3 ">
@@ -169,9 +169,9 @@
                                                         <span class="ms-auto small"> {{ $posts['views'] }} views</span>
                                                     </div>
                                                     <!-- Video title  -->
-                                                   
+
                                                 </div>
-                                               
+
                                             </div>
                                         </a>
                                     </div>
@@ -184,14 +184,14 @@
                                 <div class="row mt-4">
                                 <div class="col-12 my-4">
                                     <div class="d-sm-flex justify-content-between align-items-center">
-                                        <h5 class="mb-md-0">Trending </h5>
+                                        <h5 class="mb-md-0">Trending</h5>
                                          </div>
                                     </div>
                                     @foreach ($videos as $video)
                                     @foreach ($video['posts'] as $posts)
                                     @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
                                     <div class=" col-sm-6 col-md-4 col-xl-3 mb-3 item_{{ $posts['id'] }}">
-                                        <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
+                                        <a href="{{ Auth::user() ? URL::to('/watch/' . $posts['encripted_video_url']) : URL::to('/login') }}">
                                             <div class="card">
                                                 <video width="100%" height="100%" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" class="video_autoplay">
                                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}" type="video/mp4">
