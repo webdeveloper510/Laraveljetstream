@@ -24,7 +24,8 @@
         <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.carousel.min.css">
         <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.theme.default.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/publ
+            ic/js/script.js"></script>
         <script src="<?php echo URL::to('/'); ?>/public/js/owl.carousel.min.js"></script>
         <!-- Styles -->
         <style>
@@ -32,6 +33,7 @@
         </style>
 
         <style>
+
             body {
                 font-family: 'Nunito', sans-serif;
             }
@@ -43,6 +45,11 @@
             object-fit: cover;
             }
 
+                        video {
+                max-width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
             /* sidebar top position */
             .welcom{
                 top: 41px;
@@ -70,8 +77,6 @@
                     @endauth
                 </div>
             @endif
-
-
             </div>
           <main>
             <!-- Container START -->
@@ -139,7 +144,7 @@
 
                 <!-- Sidenav END -->
                 <!-- Main content START -->
-                <div class="page-content  ">
+                 <div class="page-content  ">
 
                     <div class="row mb-4 ">
 
@@ -184,14 +189,14 @@
                                 <div class="row mt-4">
                                 <div class="col-12 my-4">
                                     <div class="d-sm-flex justify-content-between align-items-center">
-                                        <h5 class="mb-md-0">Trending</h5>
+                                        <h5 class="mb-md-0">Trending </h5>
                                          </div>
                                     </div>
                                     @foreach ($videos as $video)
                                     @foreach ($video['posts'] as $posts)
                                     @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
                                     <div class=" col-sm-6 col-md-4 col-xl-3 mb-3 item_{{ $posts['id'] }}">
-                                        <a href="{{ Auth::user() ? URL::to('/watch/' . $posts['encripted_video_url']) : URL::to('/login') }}">
+                                        <a href="{{ url('/watch/' . $posts['encripted_video_url']) }}">
                                             <div class="card">
                                                 <video width="100%" height="100%" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" class="video_autoplay">
                                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}" type="video/mp4">
@@ -224,7 +229,7 @@
 
                     </div>
                 </div>
-        </main>
+            </main>
            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <!-- Vendors -->
 
@@ -259,7 +264,6 @@
                             loop: true
                         }
                     }
-
                 });
             });
         </script>
