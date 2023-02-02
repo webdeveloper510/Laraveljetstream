@@ -290,7 +290,7 @@ Header END -->
 
     <!-- Container START -->
     <div class="container-fluid">
-    <div class="d-flex align-items-center  d-lg-none mt-3 mb-3">
+                    <div class="d-flex align-items-center  d-lg-none mt-3 mb-3">
                         <button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
                             <i class="btn btn-primary fw-bold fa-solid fa-sliders-h m-0"></i>
 
