@@ -242,7 +242,7 @@
                     </button>
                 </div>
                 <!-- style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $product[0]['user']['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;"> -->
-        
+
             <!-- Sidenav START -->
             <nav class="navbar  navbar-vertical navbar-light">
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
@@ -297,7 +297,7 @@
                     </div>
                 </nav>
                 <div class="page-content">
-                    
+
                 <!-- Main content START -->
                 <div class="man  gap-4 ">
                     <!-- Card START -->
@@ -335,7 +335,7 @@
                                                         <track kind="captions" label="English" srclang="en" src="https://cdn.jsdelivr.net/gh/BMSVieira/moovie.js@main/demo-template/subtitles/en.vtt">
 
                                                     </video>
-                                                    <h6 class="mb-0 mt-3">{{$data['title'] }}
+                                                    <h6 class="mb-0 mt-3">{{ strlen($data['title']) > 15 ? substr($data['title'], 0, 20) . '...' : $data['title'] }}
                                                         </h6>
                                                     <!-- <p class="mb-0">{{ \Carbon\Carbon::parse($data['created_at'])->diffForHumans() }}</p> -->
                                                     <!-- Duration -->
@@ -352,7 +352,7 @@
                                                             <img class="avatar-img rounded-circle" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $data['user']['profile_photo_path'] }}" alt="">
                                                         </div>
                                                         <!-- Avatar name -->
-                                                        <h6 class="mb-0">{{$data['title'] }}
+                                                        <h6 class="mb-0">{{$data['user']['name'] }}
                                                         </h6>
                                                         <span class="ms-auto small">views:{{$data['views']}}</span>
                                                     </div>
@@ -446,7 +446,7 @@ JS libraries, plugins and custom scripts -->
         <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/vendor/dropzone/dist/dropzone.js"></script> -->
         <!-- Template Functions -->
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-            <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script> 
+            <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/js/functions.js"></script>
             -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" crossorigin="anonymous"></script>

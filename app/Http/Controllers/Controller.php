@@ -417,7 +417,7 @@ class Controller extends BaseController
     }
 
 
-    /*--------------------------------------------------search system---------------------------------------------*/
+    /*----------------------search system-----------------------------*/
 
     public function search(Request $request)
     {
