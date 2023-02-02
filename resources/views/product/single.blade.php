@@ -760,7 +760,7 @@ Header END -->
                     <!-- Official trailer END -->
                     <!-- More related video START -->
                     <div class="row g-3 mb-4">
-                        <div class="col-12 mt-4">
+                        <div class="col-12 mt-5">
                             <h5>More related video </h5>
                         </div>
                         @foreach ($multi_video as $video)
