@@ -4,6 +4,12 @@
     @include('header')
     <head>
         <style>
+            /* single page responsive x-hidden */
+            .sub_main {
+                overflow-x: hidden;
+            }
+
+
             .goog-te-gadget img {
                 vertical-align: middle;
                 border: none;
@@ -365,6 +371,7 @@ Header END -->
 
         <!-- **************** MAIN CONTENT START **************** -->
         <main>
+            <div class="sub_main">
 
             <!-- Container START -->
             <div class="container-fluid">
@@ -653,9 +660,8 @@ Header END -->
                                                 </div>
                                                 <div class=" d-flex align-items-start">
                                                 <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i
-                                                                    class="bi bi-reply-fill flip-horizontal"></i>Share
+                                                    <button class="btn btn-secondary dropdown-toggle p-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-reply-fill flip-horizontal"></i>Share
                                                     </button>
                                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                     <li> {!! $socialshare !!}</li>
@@ -806,7 +812,7 @@ Header END -->
 
             </div>
             <!-- Container END -->
-
+            </div>
         </main>
         <!-- **************** MAIN CONTENT END **************** -->
 

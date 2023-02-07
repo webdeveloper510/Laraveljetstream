@@ -1,6 +1,13 @@
 @media only screen and (max-width: 786px) {
-  
+    div#google_translate_element {
+        display: none !important;
+    }
 
+/* header icons setting and notification hidden in responsive */
+    li.nav-item.nav_icon.ms-2 {
+        display: none;
+    }
+/* /////////// */
     .mann {
         position: relative !important;
        
