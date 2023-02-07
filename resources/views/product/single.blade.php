@@ -410,7 +410,7 @@ Header END -->
                                     </div>
 
                                     </div>
-                                    <span class="material-symbols-outlined">star</span>
+                                    <!-- <span class="material-symbols-outlined">star</span> -->
                                 <!-- Divider -->
                                 <hr>
                                 <!-- Side Nav START -->
