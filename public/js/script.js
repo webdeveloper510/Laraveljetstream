@@ -140,7 +140,8 @@ function rating(a, ratenum, product_id) {
         //console.log(i)
         $(".fa").addClass("fa fa-star").removeClass("fa-star-o");
 
-        $(".rating_star_" + i).attr("style", "color:orange;-webkit-text-stroke-width:1px;-webkit-text-stroke-color:red;");
+        $(".rating_star_" + i).attr("style", "color:white;-webkit-text-stroke-width:1px;-webkit-text-stroke-color:red;");
+
     }
 
     $.ajax({

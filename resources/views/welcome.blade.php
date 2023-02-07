@@ -24,7 +24,8 @@
         <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.carousel.min.css">
         <link rel="stylesheet" href="<?php echo URL::to('/'); ?>/public/css/owl.theme.default.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
+        <script src="<?php echo URL::to('/'); ?>/publ
+            ic/js/script.js"></script>
         <script src="<?php echo URL::to('/'); ?>/public/js/owl.carousel.min.js"></script>
         <!-- Styles -->
         <style>
@@ -32,6 +33,7 @@
         </style>
 
         <style>
+
             body {
                 font-family: 'Nunito', sans-serif;
             }
@@ -41,8 +43,13 @@
             height: 230px;
             width: 100%;
             object-fit: cover;
-            }  
+            }
 
+                        video {
+                max-width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
             /* sidebar top position */
             .welcom{
                 top: 41px;
@@ -69,9 +76,7 @@
                         @endif
                     @endauth
                 </div>
-            @endif         
-
-              
+            @endif
             </div>
           <main>
             <!-- Container START -->
@@ -92,7 +97,7 @@
                                 <!-- <div class="h-50px" style="background-image:url({{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $videos[0]['cover_img'] }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                                 </div> -->
                                 <!-- Avatar -->
-                              
+
                                 <!-- Info -->
                                 <h5 class="mb-0">
                                     <a href="{{URL::to('/login')}}">Login</h5>
@@ -110,7 +115,7 @@
                         <h6 class="mb-0">2.5K</h6>
                         <small>Subscriber</small>
                       </div> -->
-                      
+
                     </div>
                                 <!-- Divider -->
                                 <hr>
@@ -139,8 +144,8 @@
 
                 <!-- Sidenav END -->
                 <!-- Main content START -->
-                <div class="page-content  ">
-                   
+                 <div class="page-content  ">
+
                     <div class="row mb-4 ">
 
                         <div class="col-md-12 mb-4 mt-3 ">
@@ -169,9 +174,9 @@
                                                         <span class="ms-auto small"> {{ $posts['views'] }} views</span>
                                                     </div>
                                                     <!-- Video title  -->
-                                                   
+
                                                 </div>
-                                               
+
                                             </div>
                                         </a>
                                     </div>
@@ -224,7 +229,7 @@
 
                     </div>
                 </div>
-        </main>
+            </main>
            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <!-- Vendors -->
 
@@ -259,7 +264,6 @@
                             loop: true
                         }
                     }
-
                 });
             });
         </script>
