@@ -4,7 +4,9 @@
         z-index: 99 !important;
         top: 0px;
     }
-
+    iframe#\:1\.container {
+    display: none;
+}
     .moovie_currentime span {
         color: white !important;
     }
@@ -81,7 +83,7 @@ div#google_translate_element {
                 </form>
             </div>
 
-        
+
 
               <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
               <!-- <li class="nav-item nav_icon ms-2">
@@ -197,15 +199,15 @@ div#google_translate_element {
             </li> -->
             <!-- Links -->
             <!-- <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear fa-fw me-2"></i>Settings & Privacy</a></li>
-            <li> 
+            <li>
               <a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
                 <i class="fa-fw bi bi-life-preserver me-2"></i>Support
-              </a> 
+              </a>
             </li> -->
-            <!-- <li> 
+            <!-- <li>
               <a class="dropdown-item" href="docs/index.html" target="_blank">
                 <i class="fa-fw bi bi-card-text me-2"></i>Documentation
-              </a> 
+              </a>
             </li> -->
             <!-- <li class="dropdown-divider"></li>
             <li><a class="dropdown-item bg-danger-soft-hover" href="sign-in-advance.html"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>

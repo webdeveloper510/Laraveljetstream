@@ -182,7 +182,7 @@ Header START -->
                     </button>
 
                     <!-- Main navbar START -->
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                    {{-- <div class="collapse navbar-collapse" id="navbarCollapse"> --}}
 
                         <!-- Nav Search START -->
                         <!-- <div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
@@ -365,7 +365,7 @@ Header START -->
                 </div>
             </nav>
             <!-- Logo Nav END -->
-        </header> --}}
+        {{-- </header>  --}}
         <!-- =======================
 Header END -->
 
@@ -389,11 +389,18 @@ Header END -->
 
                                 <!-- Avatar -->
                                 <div class="avatar avatar-lg mb-3">
+                                    @if (Auth::user())
+
                                     <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img class="avatar-img rounded-circle border border-white border-1  mx-auto mb-3" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . Auth::user()->profile_photo_path }}" alt=""></a>
+                                    @endif
                                 </div>
                                 <!-- Info -->
-                                <h5 class="mb-0"><a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
-                                    </a></h5>
+                                <h5 class="mb-0">
+                                    @if (Auth::user())
+                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}">{{ auth()->user()->name }}
+                                    </a>
+                                    @endif
+                                </h5>
 
                                     <div class="hstack gap-2 mt-3 gap-xl-3 justify-content-start">
                                     <!-- User stat item -->
@@ -424,7 +431,11 @@ Header END -->
                                         <a class="nav-link" href="<?php echo URL::to('/'); ?>/uploadpage"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/medal-outline-filled.svg" alt=""><span>Upload Video </span></a>
                                     </li>
                                     <li class="nav-item">
+                                        @if (Auth::user())
+
+
                                         <a class="nav-link" href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"> <img class="me-2 h-20px fa-fw" src="<?php echo URL::to('/'); ?>/public/assets/images/icon/clock-outline-filled.svg" alt=""><span>Your Channel </span></a>
+                                        @endif
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo URL::to('/'); ?>/watchlater">
@@ -487,12 +498,16 @@ Header END -->
                                                     </nav>
                                                 </div>
                                                 <div class=" ml-auto">
+                                                    @if (Auth::user())
+
+
                                                     <button class="btn btn-danger subscribe"
                                                         style="{{ $count <= 0 && $videos[0]['user']['id'] != auth()->user()->id ? 'display:block' : 'display:none' }}"
                                                         onclick="subscribe('{{ $videos[0]['user_id'] }}',1)">SUBSCRIBE</button>
                                                     <button class="btn btn-outline-success subscribes"
                                                         style="{{ $count > 0 ? 'display:block' : 'display:none' }}"
                                                         onclick="subscribe('{{ $videos[0]['user_id'] }}',0)">SUBSCRIBED</button>
+                                                        @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -713,10 +728,13 @@ Header END -->
                                         <div class="row mt-3">
                                             <div class="col-3">
                                                 <div class="profile-image">
-                                                    <a
-                                                        href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
+                                                    @if (Auth::user())
+
+
+                                                    <a href="{{ URL::to('/channel/' . base64_encode(auth()->user()->id)) }}"><img
                                                             src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $commet['user']['profile_photo_path'] }}"
                                                             width="40px" /></a>
+                                                            @endif
                                                 </div>
                                             </div>
                                             <div class="col-9">
@@ -879,8 +897,7 @@ JS libraries, plugins and custom scripts -->
             }
         }
     </script>
-    {{-- ------------------------translator------------------------ --}}
-
+        {{-- --------------Translate----------------- --}}
     <script type="text/javascript">
         function setCookie(key, value, expiry) {
             var expires = new Date();
@@ -903,7 +920,7 @@ JS libraries, plugins and custom scripts -->
     </script>
     {{-- ------------------send auth user detail in script file-------------------------- --}}
     <script>
-        var Auth_user = {!! auth()->user()->toJson() !!};
+
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     {{-- ----------------star rating------------------ --}}

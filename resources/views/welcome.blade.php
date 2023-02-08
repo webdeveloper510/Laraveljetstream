@@ -156,7 +156,7 @@
                                     @foreach ($video['posts'] as $posts)
                                     @if (!in_array($posts['id'], array_column($video['report_video'], 'product_id')))
                                     <div class="item_{{ $posts['id'] }}">
-                                        <a href="{{ Auth::user() ? URL::to('/watch/' . $posts['encripted_video_url']) : URL::to('/login') }}">
+                                        <a href="{{URL::to('/watch/' . $posts['encripted_video_url'])}}">
                                             <div class="card">
                                                 <video width="100%" height="100%" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" class="video_autoplay">
                                                     <source src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' . $posts['file'] }}" type="video/mp4">

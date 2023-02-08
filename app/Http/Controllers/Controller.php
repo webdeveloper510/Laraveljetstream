@@ -138,13 +138,19 @@ class Controller extends BaseController
 
     public function videodetail($id)
     {
+        $auth_id = '';
+        $username = '';
+        if(Auth::user()){
+            $auth_id = auth()->user()->id;
+            $username = auth()->user()->name;
+        }
 
-		$auth_id = auth()->user()->id;
+
         $videos = product::where('encripted_video_url', $id)->with(['comments.replies', 'user', 'like', 'ratings'])->with('comments.user')->get()->toArray();
     //    echo "<pre>";
     //    print_r($videos);die;
         $total_comment = count($videos[0]['comments']);
-        $username = auth()->user()->name;
+
         $Rating = Rating::where('product_id', $id)->avg('rating');
         $subscriber = Subscribe::where(['channel_id' => $videos[0]['user_id']])->sum('count');
         $login_user_subscriber = Subscribe::where(['user_id' => $auth_id])->sum('count');
@@ -241,7 +247,6 @@ class Controller extends BaseController
         for ($i = 0; $i < $length; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-
         return $randomString;
     }
     /*--------------------------------------like dislike---------------------------------------*/
