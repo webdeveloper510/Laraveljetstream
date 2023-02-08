@@ -38,7 +38,7 @@ function subscribe(channel_id, flag) {
     });
 }
 
-// ----------------------------------------Form Validation---------------------------------//
+// -------------------------------Form Validation---------------------------------//
 function printErrorMsg(msg) {
     $.each(msg, function (key, value) {
         console.log(key);
