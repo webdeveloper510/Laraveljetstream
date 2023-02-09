@@ -204,11 +204,7 @@ div#google_translate_element {
                 <i class="fa-fw bi bi-life-preserver me-2"></i>Support
               </a>
             </li> -->
-            <!-- <li>
-              <a class="dropdown-item" href="docs/index.html" target="_blank">
-                <i class="fa-fw bi bi-card-text me-2"></i>Documentation
-              </a>
-            </li> -->
+
             <!-- <li class="dropdown-divider"></li>
             <li><a class="dropdown-item bg-danger-soft-hover" href="sign-in-advance.html"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
             <li> <hr class="dropdown-divider"></li> -->
@@ -286,7 +282,7 @@ div#google_translate_element {
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user() ?Auth::user()->profile_photo_url : '' }}" alt="{{ Auth::user()->name }}" />
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user() ? Auth::user()->profile_photo_url : '' }}" alt="{{ Auth::user()->name }}" />
                             </button>
                             @else
                             <span class="inline-flex rounded-md">
