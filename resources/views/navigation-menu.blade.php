@@ -95,10 +95,10 @@ div#google_translate_element {
                                 </a>
                             </li>
                     <li class="nav-item nav_icon dropdown ms-2 mt-1">
-                            <a class="nav-link icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                            {{-- <a class="nav-link icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                     <span class="badge-notif animation-blink"></span>
                                 <i class="bi bi-bell-fill fs-6"> </i>
-                            </a>
+                            </a> --}}
                 <div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0" aria-labelledby="notifDropdown">
                     <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
