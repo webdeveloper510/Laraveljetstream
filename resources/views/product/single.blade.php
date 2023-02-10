@@ -918,7 +918,7 @@ JS libraries, plugins and custom scripts -->
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
-    {{-- ------------------send auth user detail in script file-------------------------- --}}
+    {{-- ------------------send auth user detail in script file----------------------- --}}
     <script>
 
     </script>

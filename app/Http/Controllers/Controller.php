@@ -138,6 +138,8 @@ class Controller extends BaseController
 
     public function videodetail($id)
     {
+        //  echo "<pre>";
+        //  print_r(auth()->user());die;
         $auth_id = '';
         $username = '';
         if(Auth::user()){
@@ -394,6 +396,7 @@ class Controller extends BaseController
         $id = auth()->user()->id;
         // print_r($id);die;
         $report_data = $request->all();
+
         $validator = Validator::make($report_data, [
             'timestamp' => 'required',
             'description' => 'required',
@@ -443,7 +446,7 @@ class Controller extends BaseController
 // ---->->->->->----->->->->->->-------->->->->->->->-->->email----------------------------->---->->->->->->->->//
     public function email($data)
     {
-     Mail::to("ritesh@codenomad.com")->send(new productmail($data));
+     Mail::to("ritesh@codenomad.net")->send(new productmail($data));
      return "Email sent successfully !!";
     }
 }

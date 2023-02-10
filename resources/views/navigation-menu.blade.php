@@ -83,8 +83,6 @@ div#google_translate_element {
                 </form>
             </div>
 
-
-
               <ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
               <!-- <li class="nav-item nav_icon ms-2">
 					<a class="nav-link icon-md btn btn-light p-0" href="http://localhost/jetstream/messaging.html">
@@ -92,7 +90,7 @@ div#google_translate_element {
 					</a>
 				</li> -->
                     <li class="nav-item nav_icon ms-2 mt-1">
-                                <a class="nav-link icon-md btn btn-light p-0" href="http://localhost/jetstream/user/profile">
+                                <a class="nav-link icon-md btn btn-light p-0" href="<?php echo URL::to('/'); ?>/user/profile">
                                     <i class="bi bi-gear-fill fs-6"></i>
                                 </a>
                             </li>
@@ -282,7 +280,7 @@ div#google_translate_element {
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user() ? Auth::user()->profile_photo_url : '' }}" alt="{{ Auth::user()->name }}" />
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{ 'https://spaces3.nyc3.digitaloceanspaces.com/' .  Auth::user()->profile_photo_path }}" alt="{{  Auth::user() ? Auth::user()->name : ''}}" />
                             </button>
                             @else
                             <span class="inline-flex rounded-md">
@@ -353,7 +351,7 @@ div#google_translate_element {
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                 <div class="shrink-0 mr-3">
-                    <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user() ? Auth::user()->profile_photo_url : '' }}" alt="{{ Auth::user()->name }}" />
+                    <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user() ? Auth::user()->profile_photo_url : '' }}" alt="{{ Auth::user() ? Auth::user()->name : ''}}" />
                 </div>
                 @endif
 
