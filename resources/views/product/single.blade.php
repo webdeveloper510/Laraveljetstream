@@ -851,7 +851,9 @@ JS libraries, plugins and custom scripts -->
     </body>
     <script src="<?php echo URL::to('/'); ?>/public/js/script.js"></script>
 
-
+    <script>
+        var Auth_user = {!! json_encode(auth()->user()) !!};
+      </script>
 
     {!! Toastr::message() !!}
     <script>
